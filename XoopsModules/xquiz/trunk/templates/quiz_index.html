@@ -1,0 +1,326 @@
+<{if $showQuiz == 0}>
+	<{if $Parent >= 0}>
+	<h5>
+		<a href="<{$xoops_url}>/modules/quiz/index.php?cid=<{$Parent}>">
+			<img src="<{$xoops_url}>/modules/quiz/images/back.png">
+			<{$smarty.const._QUIZ_BACK}>
+		</a>
+	</h5><hr  noshade="noshade" size="1" />
+	<{/if}>
+	<{if $categoryNum != 0}>
+	<br/>
+	<br/>
+	<h4><{$smarty.const._QUIZ_CATEGORIES}></h4>
+	<hr  noshade="noshade" size="1" />
+	<br/>
+	<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
+		<tr>
+			<th width='20%'>
+			<{$smarty.const._CATEGORY_IMAGE}>
+			</th>
+			<th>
+				<{$smarty.const._CATEGORY_TITLE}>
+			</th>
+		</tr>
+		<{foreach item=category from=$listCategory}>
+			<tr class="<{cycle values="even,odd"}>">
+				<td>
+					<a href="<{$xoops_url}>/modules/quiz/index.php?cid=<{$category.cid}>">
+						<img src="<{$xoops_url}>/modules/quiz/images/topics/<{$category.imgurl}>">
+					</a>
+				</td>
+				<td>
+				<table>
+					<tr>
+						<td>
+							<a href="<{$xoops_url}>/modules/quiz/index.php?cid=<{$category.cid}>">
+							<{$category.title}>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<{$category.description}>
+						</td>
+					</tr>
+				</table>	
+				</td>
+			</tr>
+		<{/foreach}>
+	</table>
+	<br/>
+	<hr  noshade="noshade" size="1" />
+	<{/if}>
+
+	<{if $quizNum != 0}>
+	<br/>
+	<h4><{$smarty.const._AM_QUIZ_QUIZS}></h4>
+	<hr  noshade="noshade" size="1" />
+	<br/>
+	<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
+		<tr>
+			<th>
+			</th>
+			<th>
+				<{$smarty.const._QUIZ_NAME}>
+			</th>
+			<th>
+				<{$smarty.const._QUIZ_QUEST_NUM}>
+			</th>
+			<th>
+				<{$smarty.const._QUIZ_BDATE}>
+			</th>
+			<th>
+				<{$smarty.const._QUIZ_EDATE}>
+			</th>
+			<th>
+				<{$smarty.const._QUIZ_STATUS}>
+			</th>
+		</tr>
+		<{foreach item=quiz from=$listQuiz}>
+			<{if $quiz.status==1}>
+			<tr class="<{cycle values="even,odd"}>">
+				<td>
+					<img src="<{$xoops_url}>/modules/quiz/images/home.png">
+				</td>
+				<td>
+					<{$quiz.name}>
+				</td>
+				<td>
+					<{$quiz.question}>
+				</td>
+				<td>
+					<{$quiz.bdate}>
+				</td>
+				<td>
+					<{$quiz.edate}>
+				</td>
+				<td>
+					<{if $quiz.active==1}>
+						<a href="<{$xoops_url}>/modules/quiz?act=v&q=<{$quiz.id}>">
+						<img src="<{$xoops_url}>/modules/quiz/images/on.png">
+						<{$smarty.const._QUIZ_GO}>
+						</a>
+					<{else}>
+						<a href="<{$xoops_url}>/modules/quiz?act=s&q=<{$quiz.id}>">
+						<img src="<{$xoops_url}>/modules/quiz/images/off.png">
+						<{$smarty.const._QUIZ_VIEW_STAT}>
+						</a>
+					<{/if}>	
+				</td>
+			</tr>
+			<{/if}>
+		<{/foreach}>
+	</table>
+	<br/>
+	<hr  noshade="noshade" size="1" />
+	<{/if}>
+<{/if}>
+
+<{if $showQuiz == 2}>
+<br/>
+<h5><a href="<{$xoops_url}>/modules/quiz/index.php?cid=<{$quizCategoryId}>"><{$quizCategory}></a>-><{$quizName}></h5><hr  noshade="noshade" size="1" />
+<br/>
+<h5><{$quizDescription}></h5>
+<br/>
+<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
+	<tr>
+		<td>
+		</td>
+		<td>
+			<{$smarty.const._QUIZ_USER}>
+		</td>
+		<td>
+			<{$smarty.const._QUIZ_USER_NAME}>
+		</td>
+		<td>
+			<{$smarty.const._QUIZ_SCORE}>
+		</td>
+		<td>
+			<{$smarty.const._QUIZ_DATE}>
+		</td>
+	</tr>
+	<{foreach item=quizStat from=$quizStat}>
+		<tr class="<{cycle values="even,odd"}>">
+			<td width='5%'>
+				<a href="<{$xoops_url}>/userinfo.php?uid=<{$quizStat.userid}>">
+				<img src="<{$xoops_url}>/modules/quiz/images/user.png">
+				</a>
+			</td>
+			<td width='25%'>
+				<a href="<{$xoops_url}>/userinfo.php?uid=<{$quizStat.userid}>">
+				<{$quizStat.uname}>
+				</a>
+			</td>
+			<td width='25%'>
+				<a href="<{$xoops_url}>/userinfo.php?uid=<{$quizStat.userid}>">
+				<{$quizStat.name}>
+				</a>
+			</td>
+			<td width='5%'>
+				<{$quizStat.score}>
+			</td>
+			<td>
+				<{$quizStat.date}>
+			</td>
+		</tr>
+	<{/foreach}>
+</table>
+<br/>
+<hr  noshade="noshade" size="1" />
+	<{$commentsnav}> <{$lang_notice}>
+	<{if $comment_mode == "flat"}>
+		<{include file="db:system_comments_flat.html"}> 
+		<{elseif $comment_mode == "thread"}> 
+		<{include file="db:system_comments_thread.html"}> 
+		<{elseif $comment_mode == "nest"}> 
+		<{include file="db:system_comments_nest.html"}> 
+	<{/if}>
+<{/if}>
+
+<{if $showQuiz == 1}>
+	<{if $emptyList != 1}>
+		<br/>
+		<h5><a href="<{$xoops_url}>/modules/quiz/index.php?cid=<{$quizCategoryId}>"><{$quizCategory}></a>-><{$quizName}></h5>
+		<hr  noshade="noshade" size="1" />
+		<br/>
+		<h5><{$quizDescription}></h5>
+		<br/>
+		<{$listquestfrom.javascript}>
+		<form name="<{$listquestfrom.name}>" action="<{$listquestfrom.action}>" method="<{$listquestfrom.method}>" <{$listquestfrom.extra}>>
+		<br>
+  		<table class="outer" cellspacing="1" align="center">
+		    <!-- start of form elements loop -->
+    		<{foreach item=element from=$listquestfrom.elements}>
+      			<{if $element.hidden != true}>
+			      <tr class="<{cycle values="even,odd"}>">
+        			<td><{$element.caption}></td>
+      			  </tr>	
+				  <tr class="<{cycle values="even,odd"}>">
+			        <td><{$element.body}></td>
+      			  </tr>	
+    <{else}>
+      <{$element.body}>
+    <{/if}>
+<{/foreach}>
+<!-- end of form elements loop -->
+</table>
+</form>
+<{else}>
+<table align="center" cellspacing="0" class="outer">
+	<tr>
+		<td>
+		<{$smarty.const._QUEST_EMPTY}>
+		</td>
+	</tr>
+</table>
+<{/if}>
+	<{$commentsnav}> <{$lang_notice}>
+	<{if $comment_mode == "flat"}>
+		<{include file="db:system_comments_flat.html"}> 
+		<{elseif $comment_mode == "thread"}> 
+		<{include file="db:system_comments_thread.html"}> 
+		<{elseif $comment_mode == "nest"}> 
+		<{include file="db:system_comments_nest.html"}> 
+	<{/if}>
+<{/if}>
+<{if $showQuiz == 3}>
+<hr  noshade="noshade" size="1" />
+<br/>
+<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
+	<tr>
+		<th>
+			<{$smarty.const._QUIZ_NAME}>
+		</th>
+		<th>
+			<{$smarty.const._QUIZ_DATE}>
+		</th>
+		<th>
+			<{$smarty.const._QUIZ_SCORE}>
+		</th>
+		<th>
+			<{$smarty.const._QUIZ_DITAIL}>
+		</th>
+	</tr>
+	<{foreach item=quizProfile from=$quizProfile}>
+		<{if !$quizProfile.active OR $quizProfileConfig}>
+		<tr class="<{cycle values="even,odd"}>">
+			<td>
+				<a href="<{$xoops_url}>/modules/quiz/index.php?act=v&q=<{$quizProfile.id}>">
+				<{$quizProfile.name}>
+				</a>
+			</td>
+			<td>
+				<{$quizProfile.date}>
+			</td>
+			<td>
+				<{$quizProfile.score}>
+			</td>
+			<td>
+				<a href="<{$xoops_url}>/modules/quiz/index.php?act=p&qi=<{$quizProfile.id}>">
+				<img src="<{$xoops_url}>/modules/quiz/images/detail.gif">
+				</a>
+			</td>
+		</tr>
+		<{/if}>
+	<{/foreach}>
+</table>
+<br/>
+<hr  noshade="noshade" size="1" />
+<{/if}> 
+<{if $showQuiz == 4}>
+<br/>
+	<a href="<{$xoops_url}>/modules/quiz/index.php?act=p">
+		<img src="<{$xoops_url}>/modules/quiz/images/back.png">
+		<{$smarty.const._QUIZ_BACK}>
+	</a>
+</h5>
+<hr  noshade="noshade" size="1" />
+<br/>
+<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
+	<{foreach item=questProfile from=$questProfile}>
+		<tr>
+			<td>
+			<br/>
+			<{$questProfile.qnumber}>-<{$questProfile.question}>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<{$smarty.const._QUEST_SCORE}>
+			</th>
+			<th>
+				<{$smarty.const._USER_ANSWER}>
+			</th>
+			<th>
+				<{$smarty.const._QUEST_ANSWER}>
+			</th>
+			<th>
+				<{$smarty.const._QUIZ_STATUS}>
+			</th>
+		</tr>
+		<tr class="<{cycle values="even,odd"}>">
+			<td>
+				<{$questProfile.score}>
+			</td>
+			<td>
+				<{$questProfile.userAns}>
+			</td>
+			<td>
+				<{$questProfile.answer}>
+			</td>
+			<td>
+				<{if $questProfile.userAns == $questProfile.answer}>
+				<img src="<{$xoops_url}>/modules/quiz/images/valid.png">
+				<{else}>
+				<img src="<{$xoops_url}>/modules/quiz/images/invalid.png">
+				<{/if}>
+				
+			</td>
+		</tr>
+	<{/foreach}>
+</table>
+<br/>
+<hr  noshade="noshade" size="1" />
+<{/if}>
+<{include file='db:system_notification_select.html'}>
