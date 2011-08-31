@@ -1,0 +1,10 @@
+<{if $warning}><{$warning}><{/if}>
+<div id="help" style="visibility:hidden;position:absolute;z-index:1000;top:-100"></div>
+<script src='<{$xoops_url}>/modules/xquiz/js/main15.js' type='text/javascript'></script>
+<{if $script_a}><{$script_a}><{/if}>
+<table class="outer" width="100%">
+<th colspan="4"><{$smarty.const._AM_XQUIZ_FORMUL}></th>
+<{foreach item=tr from=$tablea}>
+<{$tr}>
+<{/foreach}>
+</table>

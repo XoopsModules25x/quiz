@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/modules/xquiz/scripts/xquiz.css" />
+<div id="dhtmltooltip"></div>
+<script src="<{$xoops_url}>/modules/xquiz/scripts/xquiz.js" type="text/javascript"><!--//--></script>
+
+<{if $admin_module == 1}>
+	<a href="<{$xoops_url}>/modules/xquiz/admin/modform.php"><img src="<{$xoops_url}>/modules/xquiz/images/key.gif"></a>
+<{/if}>
+
+<{if $form_form}>
+    <fieldset class="fieldclass">
+	<legend class="blockTitle"><{$form_title}></legend>
+    <br />
+
+	<{foreach item=form from=$form_form}>
+		<{if $form.help}>
+	    	<li>
+			<{if $form.bold}>
+		    	<a style="font-weight: bold"   href="<{$form.itemurl}>" onMouseOver="ddrivetip('<{$form.help}>')"; onMouseOut="hideddrivetip()"><{$form.title}></a>
+        	<{else}>
+    			<a style="font-weight: normal" href="<{$form.itemurl}>" onMouseOver="ddrivetip('<{$form.help}>')"; onMouseOut="hideddrivetip()"><{$form.title}></a>
+		    <{/if}>
+		    </li>
+	    <{else}>
+		    <li>
+			<{if $form.bold}>
+		    	<a style="font-weight: bold"   href="<{$form.itemurl}>"><{$form.title}></a>
+    	    <{else}>
+    			<a style="font-weight: normal" href="<{$form.itemurl}>"><{$form.title}></a>
+		    <{/if}>
+		    </li>
+	    <{/if}>
+	<{/foreach}>
+
+    </fieldset>
+<{/if}>
+
+<br />
+<{if $qcm_qcm}>
+    <fieldset class="fieldclass">
+	<legend class="blockTitle"><{$qcm_title}></legend>
+    <br />
+
+	<{foreach item=qcm from=$qcm_qcm}>
+		<{if $qcm.help}>
+	    	<li>
+			<{if $qcm.bold}>
+		    	<a style="font-weight: bold"   href="<{$qcm.itemurl}>" onMouseOver="ddrivetip('<{$qcm.help}>')"; onMouseOut="hideddrivetip()"><{$qcm.title}></a>
+        	<{else}>
+    			<a style="font-weight: normal" href="<{$qcm.itemurl}>" onMouseOver="ddrivetip('<{$qcm.help}>')"; onMouseOut="hideddrivetip()"><{$qcm.title}></a>
+		    <{/if}>
+		    </li>
+	    <{else}>
+		    <li>
+			<{if $qcm.bold}>
+		    	<a style="font-weight: bold"   href="<{$qcm.itemurl}>"><{$qcm.title}></a>
+    	    <{else}>
+    			<a style="font-weight: normal" href="<{$qcm.itemurl}>"><{$qcm.title}></a>
+		    <{/if}>
+		    </li>
+	    <{/if}>
+	<{/foreach}>
+
+    </fieldset>
+<{/if}>

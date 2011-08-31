@@ -1,0 +1,13 @@
+#dhtmltooltip{
+	position: absolute;
+	width: 500px;
+	border: 1px solid #647899;
+	padding: 5px;
+	margin: 0px;
+	background-color: #EFF4F9;
+	visibility: hidden;
+	z-index: 100;
+	/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
+
+}

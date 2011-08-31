@@ -1,0 +1,45 @@
+<{if $warning}><{$warning}><{/if}>
+<div id="help" style="visibility:hidden;position:absolute;z-index:1000;top:-100"></div>
+<script src='<{$xoops_url}>/modules/xquiz/js/main15.js' type='text/javascript'></script>
+<{if $script_a}><{$script_a}><{/if}>
+<img id='toptableicon' src='<{$xoops_url}>/modules/xquiz/images/close12.gif' alt='' /></a>&nbsp;<{$smarty.const._FRM_XQUIZ_ICO}></h3>
+<div id='toptable'>
+	<fieldset>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/dupliquer.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_CLONE}></b> <{$smarty.const._AM_XQUIZ_CLONE_TEXT}>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/editdelete.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_SUP}></b> <{$smarty.const._AM_XQUIZ_SUP_TEXT}>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/kedit.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_MODIF}></b> <{$smarty.const._AM_XQUIZ_MODIF_TEXT}>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/kfind.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_LISTE}></b> <{$smarty.const._AM_XQUIZ_LISTE_TEXT}>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/params.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_DEST}></b> <{$smarty.const._AM_XQUIZ_DEST_TEXT}>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/export.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_EXPORT}></b> <{$smarty.const._AM_XQUIZ_EXPORT_TEXT}>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/form.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_SEE}><{$smarty.const._FRM_XQUIZ}></b> <{$smarty.const._AM_XQUIZ_SEE}><{$smarty.const._FRM_XQUIZ_TEXT}>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/on.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_CHANGE_STATUS}></b> <{$smarty.const._AM_XQUIZ_CHANGE_STATUS_ACTIVE}>
+		<li><img src='<{$xoops_url}>/modules/xquiz/images/off.gif' height='15' width='15'> : <b><{$smarty.const._AM_XQUIZ_CHANGE_STATUS}></b> <{$smarty.const._AM_XQUIZ_CHANGE_STATUS_DESACTIVE}>
+	</fieldset>
+</div>
+<{if $collapsebar_script}><{$collapsebar_script}><{/if}>
+<{if $collapsebar}><{$collapsebar}><{/if}>
+<br><br>
+<table class="outer" width="100%">
+	<tr>
+		<th><center><{$smarty.const._FRM_XQUIZUL}></center></th>
+		<th colspan="7"><center><{$smarty.const._FRM_XQUIZ_ACT}></center></th>
+		<th><center><{$smarty.const._AM_XQUIZ_STAT}></center></th>
+	</tr>
+	<{foreach from=$data key=id item=titre}>
+	<tr class="<{cycle value='even,odd'}>">
+		<td align="center" width="30%"><{$titre}></td>
+   		<td align="center"><a href="<{$xoops_url}>/modules/xquiz/admin/modform.php?id=<{$id}>&op=cloneform"><img src="<{$xoops_url}>/modules/xquiz/images/dupliquer.gif" alt=""  onMouseOver="stm(Text[12],Style[1])" onMouseOut="htm()">  </a></td>
+   		<td align="center"><a href="<{$xoops_url}>/modules/xquiz/admin/modform.php?id=<{$id}>&op=delform"><img src="<{$xoops_url}>/modules/xquiz/images/editdelete.gif" alt=""  onMouseOver="stm(Text[5],Style[1])" onMouseOut="htm()">  </a></td>
+   		<td align="center"><a href="<{$xoops_url}>/modules/xquiz/admin/modform.php?id=<{$id}>&op=modform"><img src="<{$xoops_url}>/modules/xquiz/images/kedit.gif" alt=""  onMouseOver="stm(Text[6],Style[1])" onMouseOut="htm()">  </a></td>
+   		<td align="center"><a href="<{$xoops_url}>/modules/xquiz/admin/modform.php?id=<{$id}>&op=showform"><img src="<{$xoops_url}>/modules/xquiz/images/kfind.gif" alt=""  onMouseOver="stm(Text[7],Style[1])" onMouseOut="htm()">  </a></td>
+   		<td align="center"><a href="<{$xoops_url}>/modules/xquiz/admin/mailindex.php?id=<{$id}>"><img src="<{$xoops_url}>/modules/xquiz/images/params.gif" alt=""  onMouseOver="stm(Text[8],Style[1])" onMouseOut="htm()">  </a></td>
+   		<td align="center"><a href="<{$xoops_url}>/modules/xquiz/admin/export.php?id=<{$id}>"><img src="<{$xoops_url}>/modules/xquiz/images/export.gif" alt="" onMouseOver="stm(Text[11],Style[1])" onMouseOut="htm()"></a></td>
+   		<td align="center"><a href="<{$xoops_url}>/modules/xquiz/xquiz.php?id=<{$id}>"><img src="<{$xoops_url}>/modules/xquiz/images/form.gif" alt="" onMouseOver="stm(Text[9],Style[1])" onMouseOut="htm()"></a></td>
+  		<{if $status[$id] == 1}>
+			<td width="5%"><center><a href="active.php?id=<{$id}>&status=<{$status[$id]}>&url=modform.php"><img src="<{$xoops_url}>/modules/xquiz/images/on.gif" alt="" onMouseOver="stm(Text[10],Style[1])" onMouseOut="htm()"></a></td>
+		<{else}>
+			<td width="5%"><center><a href="active.php?id=<{$id}>&status=<{$status[$id]}>&url=modform.php"><img src="<{$xoops_url}>/modules/xquiz/images/off.gif" alt="" onMouseOver="stm(Text[10],Style[1])" onMouseOut="htm()"></a></td>
+		<{/if}>
+	</tr>
+	<{/foreach}>
+</table>

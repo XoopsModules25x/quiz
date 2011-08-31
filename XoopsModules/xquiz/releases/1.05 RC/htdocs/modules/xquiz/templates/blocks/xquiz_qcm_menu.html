@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" media="all" href="<{$block.css_file}>" />
+<div id="dhtmltooltip"></div>
+<script src="<{$xoops_url}>/modules/xquiz/js/xquiz.js" type="text/javascript">
+<{if $block.admin_module == 1}>
+	<a href="<{$xoops_url}>/modules/xquiz/admin/modform.php"><img src="<{$xoops_url}>/modules/xquiz/images/key.gif"></a>
+<{/if}>
+<ul style="list-style: decimal inside;">
+	<{foreach item=form from=$block.xquizs}>
+	<{if $form.help}>
+	    <li>
+		<{if $form.bold}>
+	    	<a style="font-weight: bold"   href="<{$form.itemurl}>" onMouseOver="ddrivetip('<{$form.help}>')"; onMouseOut="hideddrivetip()"><{$form.title}></a>
+        <{else}>
+    		<a style="font-weight: normal" href="<{$form.itemurl}>" onMouseOver="ddrivetip('<{$form.help}>')"; onMouseOut="hideddrivetip()"><{$form.title}></a>
+	    <{/if}>
+	    </li>
+    <{else}>
+	    <li>
+		<{if $form.bold}>
+	    	<a style="font-weight: bold"   href="<{$form.itemurl}>"><{$form.title}></a>
+        <{else}>
+    		<a style="font-weight: normal" href="<{$form.itemurl}>"><{$form.title}></a>
+	    <{/if}>
+	    </li>
+    <{/if}>
+
+    </span>
+  <{/foreach}>
+</ul>

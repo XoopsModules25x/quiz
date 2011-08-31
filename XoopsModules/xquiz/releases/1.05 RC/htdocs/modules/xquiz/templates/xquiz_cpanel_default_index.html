@@ -1,0 +1,56 @@
+<{if $warning}><{$warning}><{/if}>
+<div id="help" style="visibility:hidden;position:absolute;z-index:1000;top:-100"></div>
+<script src='<{$xoops_url}>/modules/xquiz/js/main15.js' type='text/javascript'></script>
+<{if $script_a}><{$script_a}><{/if}>
+<fieldset><legend style='font-weight: bold; color: green;'><{$smarty.const._AM_XQUIZ_MEG}></legend>
+<{if $qcm == '1'}>
+<table cellspacing='1' width='100%'><div style='color: red; font-weight: bold;'><img src='<{$xoops_url}>/modules/xquiz/images/attention.gif'><{$smarty.const._AM_XQUIZ_WQCM}></div></table>
+<{else}>
+<table cellspacing='1' width='100%'><div style='color: blue; font-weight: bold;'><img src='<{$xoops_url}>/modules/xquiz/images/attention.gif'><{$smarty.const._AM_XQUIZ_WME}></div></table>
+<{/if}>
+</fieldset>
+<br />
+<form action="index.php?id=<{$id}>" method="post">
+	<table class="outer" cellspacing="1" width="100%">
+		<th><{$title}></th>
+	</table>
+	<table class="outer" cellspacing="1" width="100%">
+		<th><center><{$smarty.const._AM_XQUIZ_ELE_CREATE}></center></th>
+		<tr><td class="even"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=name"><{$smarty.const._AM_XQUIZ_ELE_TNAME}></a></td></tr>
+		<tr><td class="odd"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=email"><{$smarty.const._AM_XQUIZ_ELE_TEMAIL}></a></td></tr>
+		<tr><td class="even"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=twitter"><{$smarty.const._AM_XQUIZ_ELE_TWITTER}></a></td></tr>
+		<tr><td class="odd"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=facebook"><{$smarty.const._AM_XQUIZ_ELE_FACEBOOK}></a></td></tr>
+		<tr><td class="even"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=text"><{$smarty.const._AM_XQUIZ_ELE_TEXT}></a></td></tr>
+		<tr><td class="odd"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=textarea"><{$smarty.const._AM_XQUIZ_ELE_TAREA}></a></td></tr>
+		<tr><td class="even"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=areamodif"><{$smarty.const._AM_XQUIZ_ELE_MODIF}></a></td></tr>
+		<tr><td class="odd"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=select"><{$smarty.const._AM_XQUIZ_ELE_SELECT}></a></td></tr>
+		<tr><td class="even"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=checkbox"><{$smarty.const._AM_XQUIZ_ELE_CHECK}></a></td></tr>
+		<tr><td class="odd"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=radio"><{$smarty.const._AM_XQUIZ_ELE_RADIO}></a></td></tr>
+		<tr><td class="even"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=yn"><{$smarty.const._AM_XQUIZ_ELE_YN}></a></td></tr>
+		<tr><td class="odd"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=date"><{$smarty.const._AM_XQUIZ_ELE_DATE}></a></td></tr>
+		<tr><td class="even"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=sep"><{$smarty.const._AM_XQUIZ_ELE_SEP}></a></td></tr>
+		<tr><td class="odd"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=upload"><{$smarty.const._AM_XQUIZ_ELE_UPLOAD}></a></td></tr>
+		<tr><td class="even"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=mail"><{$smarty.const._AM_XQUIZ_ELE_MAIL}></a></td></tr>
+		<tr><td class="odd"><li><a href="<{$xoops_url}>/modules/xquiz/admin/elements.php?id=<{$id}>&op=edit&amp;ele_type=mailunique"><{$smarty.const._AM_XQUIZ_ELE_MAILU}></a></td></tr>
+	</table>
+	<br />
+	<table class="outer" cellspacing="1" width="100%">
+		<tr>
+			<th><{$smarty.const._AM_XQUIZ_ELE_CAPTION2}></th>
+			<th><{$smarty.const._AM_XQUIZ_ELE_DEFAULT}></th>
+			<th align="center"><{$smarty.const._AM_XQUIZ_ELE_REQ}></th>
+			<th colspan="2" align="center"><{$smarty.const._AM_XQUIZ_ELE_ORDER}></th>
+			<th align="center"><{$smarty.const._AM_XQUIZ_ELE_DISPLAY}></th>
+			<th colspan="3">&nbsp;</th>
+		</tr>
+		<{foreach item=info from=$data}>
+		<{$info}>
+		<{/foreach}>
+		<tr>
+			<td class="foot" colspan="3"></td>
+			<td class="foot" colspan="2" align="center"><{$submit}></td>
+			<td class="foot" colspan="4"></td>
+		</tr>
+	</table>
+	<{$op}>
+</form>

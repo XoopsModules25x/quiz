@@ -1,0 +1,14 @@
+<{if $warning}><{$warning}><{/if}>
+<div id="help" style="visibility:hidden;position:absolute;z-index:1000;top:-100"></div>
+<script src='<{$xoops_url}>/modules/xquiz/js/main15.js' type='text/javascript'></script>
+<{if $script_a}><{$script_a}><{/if}>
+<table class='outer' width='100%'><td><img src='<{$xoops_url}>/modules/xquiz/images/attention.gif'> <{$smarty.const._AM_XQUIZ_EXCSV}></td></table>
+<br /><br /><table class="outer" width="100%">
+<th><{$smarty.const._AM_XQUIZ_FORMUL}></th>
+<{foreach from=$data key=idb item=export}>
+<tr class="<{cycle value='odd,even'}>"><td class="head" ALIGN=center><a href="<{$xoops_url}>/modules/xquiz/admin/export.php?id=<{$idb}>"><{$export.title}></a></td></tr>
+<{if $export.file}>
+<tr><td class="odd" ALIGN=center><a href="<{$xoops_url}>/uploads/xquiz/form_<{$id}>.csv" target="_blank"><img src="<{$xoops_url}>/modules/xquiz/images/xls.gif" alt="" onMouseOver="stm(Text[1],Style[1])" onMouseOut="htm()"></a> (<{$export.file_date}>)</td></tr>
+<{/if}>
+<{/foreach}>
+</table>
