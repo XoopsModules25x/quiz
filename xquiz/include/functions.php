@@ -23,8 +23,8 @@
 if (!defined('XOOPS_ROOT_PATH')) {
 	die('XOOPS root path not defined');
 }
-@define( '_GLOBAL_LEFT' , @_ADM_USE_RTL == 1 ? 'right' : 'left' ) ;
-@define( '_GLOBAL_RIGHT' , @_ADM_USE_RTL == 1 ? 'left' : 'right' ) ;
+@define('_GLOBAL_LEFT' , @_ADM_USE_RTL == 1 ? 'right' : 'left' ) ;
+@define('_GLOBAL_RIGHT' , @_ADM_USE_RTL == 1 ? 'left' : 'right' ) ;
 include_once XOOPS_ROOT_PATH.'/modules/quiz/class/question.php';
 
 function findUserScore($userId ,$id)

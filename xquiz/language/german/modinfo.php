@@ -21,40 +21,40 @@ define('_AM_QUIZ_PROFILE_SCORE_DESC','With this option chosen each user can see 
 
 define('_AM_QUIZ_QUIZS_LATES','Latest qiuzzes');
 define('_AM_QUIZ_QUIZS_LATES_ACTIVE','Latest active qizzes');
-define('_MI_UPLOADFILESIZE', 'MAX File-size Upload (KB) 1048576 = 1 Meg');
+define('_MI_UPLOADFILESIZE','MAX File-size Upload (KB) 1048576 = 1 Meg');
 define('_AM_QUIZ_PROFILE','Meine Übersicht');
 define('_AM_QUIZ_DATEFORMAT', "Datumsformat");
 define('_AM_QUIZ_DATEFORMAT_DESC',"Please refer to the Php documentation (http://php.net/manual/en/function.date.php) for more information on how to select the format. Note, if you don't type anything then the default date's format will be used");
 //text for notification
 
-define('_MI_QUIZ_GLOBAL_NOTIFY', 'Allgemein');
-define('_MI_QUIZ_GLOBAL_NOTIFYDSC', 'Global QUIZ notification options.');
+define('_MI_QUIZ_GLOBAL_NOTIFY','Allgemein');
+define('_MI_QUIZ_GLOBAL_NOTIFYDSC','Global QUIZ notification options.');
 
-define('_MI_QUIZ_STORY_NOTIFY', 'Quiz');
-define('_MI_QUIZ_STORY_NOTIFYDSC', 'Notification options that applies to the current quiz.');
+define('_MI_QUIZ_STORY_NOTIFY','Quiz');
+define('_MI_QUIZ_STORY_NOTIFYDSC','Notification options that applies to the current quiz.');
 
-define('_MI_QUIZ_GLOBAL_NEWCATEGORY_NOTIFY', 'Neue Kategorie');
-define('_MI_QUIZ_GLOBAL_NEWCATEGORY_NOTIFYCAP', 'Benachrichtigung an mich, wenn neue Kategorie erstellt wurde.');
-define('_MI_QUIZ_GLOBAL_NEWCATEGORY_NOTIFYDSC', 'Eine PN erhalten, wenn eine Kategorie erstellt wurde.');
-define('_MI_QUIZ_GLOBAL_NEWCATEGORY_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} Benachrichtigung : Neue Quiz Kategorie');
+define('_MI_QUIZ_GLOBAL_NEWCATEGORY_NOTIFY','Neue Kategorie');
+define('_MI_QUIZ_GLOBAL_NEWCATEGORY_NOTIFYCAP','Benachrichtigung an mich, wenn neue Kategorie erstellt wurde.');
+define('_MI_QUIZ_GLOBAL_NEWCATEGORY_NOTIFYDSC','Eine PN erhalten, wenn eine Kategorie erstellt wurde.');
+define('_MI_QUIZ_GLOBAL_NEWCATEGORY_NOTIFYSBJ','[{X_SITENAME}] {X_MODULE} Benachrichtigung : Neue Quiz Kategorie');
 
-define('_MI_QUIZ_GLOBAL_STORYSUBMIT_NOTIFY', 'Neues Quiz');
-define('_MI_QUIZ_GLOBAL_STORYSUBMIT_NOTIFYCAP', 'Notify me when any new quiz is submitted (awaiting approval).');
-define('_MI_QUIZ_GLOBAL_STORYSUBMIT_NOTIFYDSC', 'Receive notification when any new quiz is submitted (awaiting approval).');
-define('_MI_QUIZ_GLOBAL_STORYSUBMIT_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} Benachrichtigung : Neues Quiz hinzugefügt');
+define('_MI_QUIZ_GLOBAL_STORYSUBMIT_NOTIFY','Neues Quiz');
+define('_MI_QUIZ_GLOBAL_STORYSUBMIT_NOTIFYCAP','Notify me when any new quiz is submitted (awaiting approval).');
+define('_MI_QUIZ_GLOBAL_STORYSUBMIT_NOTIFYDSC','Receive notification when any new quiz is submitted (awaiting approval).');
+define('_MI_QUIZ_GLOBAL_STORYSUBMIT_NOTIFYSBJ','[{X_SITENAME}] {X_MODULE} Benachrichtigung : Neues Quiz hinzugefügt');
 
-define('_MI_QUIZ_STORY_APPROVE_NOTIFY', 'Quiz aktiviert');
-define('_MI_QUIZ_STORY_APPROVE_NOTIFYCAP', 'Notify me when this quiz is activated.');
-define('_MI_QUIZ_STORY_APPROVE_NOTIFYDSC', 'Receive notification when this quiz is activated.');
-define('_MI_QUIZ_STORY_APPROVE_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} Benachrichtigung : Quiz aktiviert');
+define('_MI_QUIZ_STORY_APPROVE_NOTIFY','Quiz aktiviert');
+define('_MI_QUIZ_STORY_APPROVE_NOTIFYCAP','Notify me when this quiz is activated.');
+define('_MI_QUIZ_STORY_APPROVE_NOTIFYDSC','Receive notification when this quiz is activated.');
+define('_MI_QUIZ_STORY_APPROVE_NOTIFYSBJ','[{X_SITENAME}] {X_MODULE} Benachrichtigung : Quiz aktiviert');
 
 define('_MI_QUIZ_CATEGORY_NOTIFY','Kategorie');
 define('_MI_QUIZ_CATEGORY_NOTIFYDSC','Notification options that apply to the current category');
 
-define('_MI_QUIZ_CATEGORY_STORYPOSTED_NOTIFY', 'Neues Quiz hinzugefügt');
-define('_MI_QUIZ_CATEGORY_STORYPOSTED_NOTIFYCAP', 'Notify me when any new quiz is submitted to this category.');
-define('_MI_QUIZ_CATEGORY_STORYPOSTED_NOTIFYDSC', 'Receive notification when any new quiz is submitted to this category.');
-define('_MI_QUIZ_CATEGORY_STORYPOSTED_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} Benachrichtigung : Neues Quiz');
+define('_MI_QUIZ_CATEGORY_STORYPOSTED_NOTIFY','Neues Quiz hinzugefügt');
+define('_MI_QUIZ_CATEGORY_STORYPOSTED_NOTIFYCAP','Notify me when any new quiz is submitted to this category.');
+define('_MI_QUIZ_CATEGORY_STORYPOSTED_NOTIFYDSC','Receive notification when any new quiz is submitted to this category.');
+define('_MI_QUIZ_CATEGORY_STORYPOSTED_NOTIFYSBJ','[{X_SITENAME}] {X_MODULE} Benachrichtigung : Neues Quiz');
 define('_AM_QUIZ_MAIL_SCORE','User score email for user.');
 define('_AM_QUIZ_MAIL_SCORE_DESC','With this option chosen user score email for user after tries quiz.');
 //////////////////////////////////////////////////////////

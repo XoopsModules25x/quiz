@@ -99,7 +99,7 @@ define('_AM_CATEGORYIMG','Category Image');
 define('_AM_IMGNAEXLOC','Image name + extension located in %S');
 define('_AM_CATEGORY_PICTURE','Upload picture');
 define('_AM_UPLOAD_WARNING','<B>Warning, do not forget to give write permissions to the following folder: %s</B>');
-define('_AM_VIEWFORM', 'View Permissions');
+define('_AM_VIEWFORM','View Permissions');
 define('_AM_UPLOAD_ERROR','Erroe in file uploading!');
 define('_ADD_CATEGORY','Category added successfully.');
 define('_EDIT_CATEGORY','Category edited successfully.');
