@@ -100,7 +100,7 @@ define('_AM_CATEGORYIMG','Kategoriebild');
 define('_AM_IMGNAEXLOC','Bildname auswählen %S');
 define('_AM_CATEGORY_PICTURE','Bild hinzufügen');
 define('_AM_UPLOAD_WARNING','<B>Bitte nutzen Sie nur kleine Bilder. Beachten Sie: Der Ordner "topics" benötigt Schreibrechte:<br />%s</B>');
-define('_AM_VIEWFORM', 'Wer darf die Kategorie sehen?');
+define('_AM_VIEWFORM','Wer darf die Kategorie sehen?');
 define('_AM_UPLOAD_ERROR','Fehler beim Hinzufügen der Datei, bitte Schreibrechte prüfen.');
 define('_ADD_CATEGORY','Kategorie wurde erstellt.');
 define('_EDIT_CATEGORY','Kategorie wurde erfolgreich bearbeiten.');

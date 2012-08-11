@@ -60,7 +60,7 @@ define('_CATEGORY_IMAGE','Kategoriebild');
 define('_QUIZ_BACK','Zurück');
 define('_QUIZ_DITAIL','Zeige Details');
 define('_USER_ANSWER','Geantwortet');
-define("_QUIZ_EMAIL_DESC", "Dear %s, this is a message transfered from your account at ".$xoopsConfig['sitename']);
+define("_QUIZ_EMAIL_DESC","Dear %s, this is a message transfered from your account at ".$xoopsConfig['sitename']);
 define('_QUIZ_EMAIL_MESSAGE','Email message');
 define('_QUIZ_SCORE_PROFILE','More details in your quiz profile');
 define('_QUIZ_EMAIL_SUBJECT','Quiz Ergebnis');

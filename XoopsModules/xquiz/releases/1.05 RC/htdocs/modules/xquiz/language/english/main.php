@@ -1,14 +1,14 @@
 <?php
-define("_XQUIZ_FORM_TITLE", "Contact us by filling out this form.");
+define("_XQUIZ_FORM_TITLE","Contact us by filling out this form.");
 define("_MSG_XQUIZ_SUBJECT", $xoopsConfig['sitename'].' - Contact Us Form');
 define("_MSG_XQUIZ_FORM", ' Form: ');
-define("_MSG_XQUIZ_SENT", "Your message has been sent.");
-define("_MSG_XQUIZ_THANK", "<br />Thank you for your comments.");
+define("_MSG_XQUIZ_SENT","Your message has been sent.");
+define("_MSG_XQUIZ_THANK","<br />Thank you for your comments.");
 define("_MSG_XQUIZ_SUP","<br /> Take care data have been erased");
 define("_MSG_XQUIZ_BIG","The join file is too big to be uploaded.");
 define("_MSG_XQUIZ_UNSENT","Please join a file with a size down to ");
 define("_MSG_XQUIZ_UNTYPE","You could not join this type's file.<br />Types which are authorize are : ");
-define("_MSG_XQUIZ_USEREMAIL", "Email Address '%s' is not valid");
+define("_MSG_XQUIZ_USEREMAIL","Email Address '%s' is not valid");
 
 define("_XQUIZ_NEWFORMADDED","New form added successfully!");
 define("_XQUIZ_FORMMOD","Form title modified successfully!");
