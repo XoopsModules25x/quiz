@@ -21,7 +21,7 @@ define('_AM_QUIZ_QUIZS_LATES','Derniers quizs');
 define('_AM_QUIZ_QUIZS_LATES_ACTIVE','Derniers quiz en cours');
 define('_MI_UPLOADFILESIZE','Taille MAX pour l\'upload (KB) 1048576 = 1 Mo');
 define('_AM_QUIZ_PROFILE','Profil');
-define('_AM_QUIZ_DATEFORMAT', "Format de date");
+define('_AM_QUIZ_DATEFORMAT',"Format de date");
 define('_AM_QUIZ_DATEFORMAT_DESC',"Merci de consultat la documentation de Php (http://php.net/manual/fr/function.date.php) pour plus d'information sur la façon de choisir le format. Note, si vous n'indiquez rien, alors le format de date par défaut sera utilisé");
 //text for notification
 

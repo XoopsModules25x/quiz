@@ -21,7 +21,7 @@ define('_AM_QUIZ_QUIZS_LATES','Laatste quizzen');
 define('_AM_QUIZ_QUIZS_LATES_ACTIVE','Laatste actieve quizzen');
 define('_MI_UPLOADFILESIZE','MAX bestandsgrrootte voor upload (in KB, 1048576 = 1 Meg');
 define('_AM_QUIZ_PROFILE','Profiel');
-define('_AM_QUIZ_DATEFORMAT', "Datum format");
+define('_AM_QUIZ_DATEFORMAT',"Datum format");
 define('_AM_QUIZ_DATEFORMAT_DESC',"Wij verwijzen u naar de PHP documentatie (http://php.net/manual/en/function.date.php) voor meer info over het kiezen van een datumformat. Wanneer u hier niets ingeeft wordt het standaard datumformat aangehouden.");
 //text for notification
 
