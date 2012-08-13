@@ -250,8 +250,8 @@ define("_AM_XQUIZ_MENUEDIT","Modify the element");
 
 define("_AM_XQUIZ_NOFORM","No existing form");
 
-define('_AM_XQUIZ_SUBMIT_BUG', "Submit a Bug");
-define('_AM_XQUIZ_SUGGEST', "Request a feature");
+define('_AM_XQUIZ_SUBMIT_BUG',"Submit a Bug");
+define('_AM_XQUIZ_SUGGEST',"Request a feature");
 
 define("_AM_XQUIZ_NBANSWER","Number of good answers");
 define("_AM_XQUIZ_AVG","Avg : ");

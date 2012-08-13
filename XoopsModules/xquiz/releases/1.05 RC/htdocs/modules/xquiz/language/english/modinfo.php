@@ -84,37 +84,37 @@ define("_MI_XQUIZMENU_BNAME","Form");
 define("_MI_VERSION","1.05");
 
 // Beta
-define('_MI_WARNING_BETA', "This module comes as is, without any guarantees whatsoever. 
+define('_MI_WARNING_BETA',"This module comes as is, without any guarantees whatsoever. 
 This module is BETA, meaning it is still under active development. This release is meant for
 <b>testing purposes only</b> and we <b>strongly</b> recommend that you do not use it on a live 
 website or in a production environment.");
 
 // RC
-define('_MI_WARNING_RC', "This module comes as is, without any guarantees whatsoever. This module 
+define('_MI_WARNING_RC',"This module comes as is, without any guarantees whatsoever. This module 
 is a Release Candidate and should not be used on a production web site. The module is still under 
 active development and its use is under your own responsibility, which means the author is not responsible.");
 
 // Final
-define('_MI_WARNING_FINAL', "This module comes as is, without any guarantees whatsoever. Although this 
+define('_MI_WARNING_FINAL',"This module comes as is, without any guarantees whatsoever. Although this 
 module is not beta, it is still under active development. This release can be used in a live website 
 or a production environment, but its use is under your own responsibility, which means the author 
 is not responsible.");
 
-define('_MI_XQUIZ_AUTHOR_INFO', "Developers");
-define('_MI_XQUIZ_DEVELOPER_LEAD', "Lead developer(s)");
-define('_MI_XQUIZ_DEVELOPER_CONTRIBUTOR', "Contributor(s)");
-define('_MI_XQUIZ_DEVELOPER_WEBSITE', "Website");
-define('_MI_XQUIZ_DEVELOPER_EMAIL', "Email");
-define('_MI_XQUIZ_DEVELOPER_CREDITS', "Special thanks");
-define('_MI_XQUIZ_DEMO_SITE', "Frxoops Demo Site");
-define('_MI_XQUIZ_MODULE_INFO', "Module Developpment Informations");
-define('_MI_XQUIZ_MODULE_STATUS', "Status");
-define('_MI_XQUIZ_MODULE_RELEASE_DATE', "Release date");
-define('_MI_XQUIZ_MODULE_DEMO', "Demo Site");
-define('_MI_XQUIZ_MODULE_SUPPORT', "Official support site");
-define('_MI_XQUIZ_MODULE_BUG', "Report a bug for this module");
-define('_MI_XQUIZ_MODULE_FEATURE', "Suggest a new feature for this module");
-define('_MI_XQUIZ_MODULE_DISCLAIMER', "Disclaimer");
-define('_MI_XQUIZ_AUTHOR_WORD', "The Author's Word");
-define('_MI_XQUIZ_VERSION_HISTORY', "Version History");
+define('_MI_XQUIZ_AUTHOR_INFO',"Developers");
+define('_MI_XQUIZ_DEVELOPER_LEAD',"Lead developer(s)");
+define('_MI_XQUIZ_DEVELOPER_CONTRIBUTOR',"Contributor(s)");
+define('_MI_XQUIZ_DEVELOPER_WEBSITE',"Website");
+define('_MI_XQUIZ_DEVELOPER_EMAIL',"Email");
+define('_MI_XQUIZ_DEVELOPER_CREDITS',"Special thanks");
+define('_MI_XQUIZ_DEMO_SITE',"Frxoops Demo Site");
+define('_MI_XQUIZ_MODULE_INFO',"Module Developpment Informations");
+define('_MI_XQUIZ_MODULE_STATUS',"Status");
+define('_MI_XQUIZ_MODULE_RELEASE_DATE',"Release date");
+define('_MI_XQUIZ_MODULE_DEMO',"Demo Site");
+define('_MI_XQUIZ_MODULE_SUPPORT',"Official support site");
+define('_MI_XQUIZ_MODULE_BUG',"Report a bug for this module");
+define('_MI_XQUIZ_MODULE_FEATURE',"Suggest a new feature for this module");
+define('_MI_XQUIZ_MODULE_DISCLAIMER',"Disclaimer");
+define('_MI_XQUIZ_AUTHOR_WORD',"The Author's Word");
+define('_MI_XQUIZ_VERSION_HISTORY',"Version History");
 ?>
