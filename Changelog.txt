@@ -1,0 +1,7 @@
+== Version 1.0 Beta ==
+First public release
+== Version 1.0 Final ==
+1- Add date format manully in module setting
+2- Add export result of quizzes to csv file
+3- Fixed bug send email via getmailer function
+4- Fixed bug edit question with same description
