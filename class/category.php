@@ -45,7 +45,7 @@ class Category extends XoopsTree
 	*/
 	function Category($table_name, $id_name, $pid_name)
 	{
-		$this->db =& Database::getInstance();
+		$this->db = Database::getInstance();
 		$this->table = $table_name;
 		$this->id = $id_name;
 		$this->pid = $pid_name;
@@ -256,7 +256,7 @@ class Category extends XoopsTree
 	function getPermChildArray($sel_id=0,$order='',$parray = array(),$r_prefix='')
 	{
 		global $xoopsUser ,$module_id ;
-		$myts =& MyTextSanitizer::getInstance();
+		$myts = MyTextSanitizer::getInstance();
 		$sel_id = intval($sel_id);
 		$sql = 'SELECT * FROM '.$this->table.' WHERE '.$this->pid.'="'.$sel_id.'"';
 		if ( $order != '' ) {
@@ -462,7 +462,7 @@ function CategoryForm($op = "add" ,$eId = 0)
 	{	
 	global $xoopsDB,$xoopsModule,$xoopsModuleConfig;
 	$xt = new Category($xoopsDB->prefix('quiz_cat'), 'cid', 'pid');
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$maxuploadsize = $xoopsModuleConfig['maxuploadsize'];
 	$addCategory_form = new XoopsThemeForm(_AM_NEW_CATEGORY, "addcategoyfrom", 
 					XOOPS_URL.'/modules/quiz/admin/backend.php','post',true);

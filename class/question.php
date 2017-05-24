@@ -234,7 +234,7 @@ class Question
 
 		$delImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
 		$editImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
-		$ts =& MyTextSanitizer::getInstance();
+		$ts = MyTextSanitizer::getInstance();
 		foreach ($listQuestion as $key)
 		{
 			$class = ($class == 'even') ? 'odd' : 'even';

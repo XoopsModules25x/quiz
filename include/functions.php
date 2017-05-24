@@ -197,7 +197,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 		$delImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
 		$validImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/valid.png \" alt='' >";
 		$invalidImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/invalid.png \" alt='' >";
-		$ts =& MyTextSanitizer::getInstance();
+		$ts = MyTextSanitizer::getInstance();
 		foreach ($list as $key)
 		{	
 			$correct = ($key['answer'] == $key['userAns'])? $validImage:$invalidImage ;
