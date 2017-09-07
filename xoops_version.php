@@ -11,11 +11,11 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org) 
+ * @copyright   	XOOPS Project (https://xoops.org)
  * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
  * @package         xquiz
  * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$ 
+ * @version      	$Id$
  *
  * Version : $Id:
  * ****************************************************************************
@@ -42,10 +42,10 @@
  // Menu
  $modversion['hasMain'] = 1;
  global $xoopsUser;
- if (!empty($xoopsUser)){
-	$modversion['sub'][1]['name'] = _AM_QUIZ_PROFILE;
-	$modversion['sub'][1]['url'] = "index.php?act=p";
-	}
+ if (!empty($xoopsUser)) {
+     $modversion['sub'][1]['name'] = _AM_QUIZ_PROFILE;
+     $modversion['sub'][1]['url'] = "index.php?act=p";
+ }
  
 $modversion['sqlfile']['mysql'] = "sql/mysql.sql";
 $modversion['tables'][0] = "question";
@@ -62,7 +62,7 @@ $modversion['templates'][1]['description'] = '';
 
 //Search
 $modversion['hasSearch'] = 1;
- $modversion['search']['file'] = "include/search.inc.php"; 
+ $modversion['search']['file'] = "include/search.inc.php";
  $modversion['search']['func'] = "quiz_search";
 
  /* Select the number of news items to display on top page
@@ -75,7 +75,7 @@ $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = array('5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30);
+$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
 //number of question per page in admin page
 $i++;
 $modversion['config'][$i]['name'] = 'questionList';
@@ -84,7 +84,7 @@ $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = array('5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30);
+$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
 //number of question per page in user page
 $i++;
 $modversion['config'][$i]['name'] = 'userList';
@@ -93,7 +93,7 @@ $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = array('5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30);
+$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
 //number of quiz per page in user page
 $i++;
 $modversion['config'][$i]['name'] = 'quizUserList';
@@ -102,7 +102,7 @@ $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = array('5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30);
+$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
 
  //number of category per page in admin page
  $i++;
@@ -112,7 +112,7 @@ $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = array('5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30);
+$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
  //MAX Filesize Upload in kilo bytes
  $i++;
 $modversion['config'][$i]['name'] = 'maxuploadsize';
@@ -138,7 +138,7 @@ $modversion['config'][$i]['description'] = '_AM_QUIZ_SEE_SCORE_DESC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
-//just user can see quiz statistics 
+//just user can see quiz statistics
 $i++;
 $modversion['config'][$i]['name'] = 'seeStat';
 $modversion['config'][$i]['title'] = '_AM_QUIZ_SEE_STAT';
@@ -170,12 +170,14 @@ $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = 'dhtmltextarea';
-$modversion['config'][$i]['options'] = array( 'Plain Editor' => 'textarea', 'XoopsEditor' => 'dhtmltextarea'
-						, 'Tiny Editor' => 'tinymce', 'FCK Editor' => 'fckeditor', 'Koivi Editor' => 'koivi' );
+$modversion['config'][$i]['options'] = [
+    'Plain Editor'  => 'textarea', 'XoopsEditor' => 'dhtmltextarea'
+    , 'Tiny Editor' => 'tinymce', 'FCK Editor' => 'fckeditor', 'Koivi Editor' => 'koivi'
+];
 
 ////////////////////////////////////////////////////////////
 // Blocks
-//recent quiz 
+//recent quiz
 $modversion['blocks'][1]['file'] = "quiz_quizs.php";
 $modversion['blocks'][1]['name'] = _AM_QUIZ_QUIZS_LATES;
 $modversion['blocks'][1]['description'] = _AM_QUIZ_QUIZS_LATES;
@@ -183,7 +185,7 @@ $modversion['blocks'][1]['show_func'] = "quiz_listQuizs";
 $modversion['blocks'][1]['template'] = 'quiz_block_quizs.html';
 $modversion['blocks'][1]['edit_func'] = "quiz_listQuizs_edit";
 $modversion['blocks'][1]['options'] = '5';
-//recent active quiz 
+//recent active quiz
 $modversion['blocks'][2]['file'] = "quiz_actives.php";
 $modversion['blocks'][2]['name'] = _AM_QUIZ_QUIZS_LATES_ACTIVE;
 $modversion['blocks'][2]['description'] = _AM_QUIZ_QUIZS_LATES_ACTIVE;
@@ -251,8 +253,6 @@ $modversion['notification']['event'][4]['mail_template'] = 'story_approve_notify
 $modversion['notification']['event'][4]['mail_subject'] = _MI_QUIZ_STORY_APPROVE_NOTIFYSBJ;
 
 //Comments
-$modversion['hasComments'] = 1; 
-$modversion['comments']['itemName'] = 'q'; 
-$modversion['comments']['pageName'] = 'index.php'; 
-
-?>
+$modversion['hasComments'] = 1;
+$modversion['comments']['itemName'] = 'q';
+$modversion['comments']['pageName'] = 'index.php';

@@ -51,9 +51,9 @@ SUCH DAMAGE.
 
    Usage:
 
-   	First an instance of the mimetype class must be created, then the
-	getType method should be called with the filename.  It will return
-	the mime type, an example follows.
+    First an instance of the mimetype class must be created, then the
+    getType method should be called with the filename.  It will return
+    the mime type, an example follows.
 
    Example:
 
@@ -67,43 +67,45 @@ SUCH DAMAGE.
    e-mail me.
 **/
 if (!defined('XOOPS_ROOT_PATH')) {
-	die("XOOPS root path not defined");
+    die("XOOPS root path not defined");
 }
 
 class cmimetype
 {
-   function getType($filename) {
-      // get base name of the filename provided by user
-      $filename = basename($filename);
+    public function getType($filename)
+    {
+        // get base name of the filename provided by user
+        $filename = basename($filename);
 
-      // break file into parts seperated by .
-      $filename = explode('.', $filename);
+        // break file into parts seperated by .
+        $filename = explode('.', $filename);
 
-      // take the last part of the file to get the file extension
-      $filename = $filename[count($filename)-1];
+        // take the last part of the file to get the file extension
+        $filename = $filename[count($filename)-1];
 
-      // find mime type
-      return $this->privFindType($filename);
-   }
+        // find mime type
+        return $this->privFindType($filename);
+    }
 
-   function privFindType($ext) {
-      // create mimetypes array
-      $mimetypes = $this->privBuildMimeArray();
+    public function privFindType($ext)
+    {
+        // create mimetypes array
+        $mimetypes = $this->privBuildMimeArray();
 
-      // return mime type for extension
-      if (isset($mimetypes[$ext])) {
-         return $mimetypes[$ext];
-      // if the extension wasn't found return octet-stream
-      } else {
-         return 'unknown';
-      }
+        // return mime type for extension
+        if (isset($mimetypes[$ext])) {
+            return $mimetypes[$ext];
+            // if the extension wasn't found return octet-stream
+        } else {
+            return 'unknown';
+        }
+    }
 
-   }
+    public function privBuildMimeArray()
+    {
+        return [
 
-   function privBuildMimeArray() {
-      return array(
-
-		 "ez" => "application/andrew-inset",
+         "ez" => "application/andrew-inset",
          "hqx" => "application/mac-binhex40",
          "cpt" => "application/mac-compactpro",
          "doc" => "application/msword",
@@ -174,8 +176,8 @@ class cmimetype
          "xhtml" => "application/xhtml+xml",
          "xht" => "application/xhtml+xml",
          "zip" => "application/x-zip-compressed",
-		 "Zip" => "application/x-zip-compressed",
-		 "ZIP" => "application/x-zip-compressed",
+         "Zip" => "application/x-zip-compressed",
+         "ZIP" => "application/x-zip-compressed",
          "au" => "audio/basic",
          "XM" => "audio/fasttracker",
          "snd" => "audio/basic",
@@ -197,18 +199,18 @@ class cmimetype
          "wax" => "audio/x-windows-media",
          "pdb" => "chemical/x-pdb",
          "xyz" => "chemical/x-xyz",
-		 "bmp" => "image/bmp",
+         "bmp" => "image/bmp",
          "gif" => "image/gif",
          "ief" => "image/ief",
          "jpeg" => "image/pjpeg",
-		 "jpeg" => "image/jpeg",
+         "jpeg" => "image/jpeg",
          "jpg" => "image/jpeg",
          "jpe" => "image/jpeg",
          "png" => "image/x-png",
          "tiff" => "image/tiff",
          "tif" => "image/tif",
          "ico" => "image/icon",
-		 "djvu" => "image/vnd.djvu",
+         "djvu" => "image/vnd.djvu",
          "djv" => "image/vnd.djvu",
          "wbmp" => "image/vnd.wap.wbmp",
          "ras" => "image/x-cmu-raster",
@@ -232,8 +234,8 @@ class cmimetype
          "htm" => "text/html",
          "asc" => "text/plain",
          "txt" => "text/plain",
-		 "Log" => "text/plain",
-		 "log" => "text/plain",
+         "Log" => "text/plain",
+         "log" => "text/plain",
          "rtx" => "text/richtext",
          "rtf" => "text/rtf",
          "sgml" => "text/sgml",
@@ -255,8 +257,7 @@ class cmimetype
          "php" => "text/php",
          "php3" => "text/php3",
          "ice" => "x-conference-xcooltalk",
-	     "unknown" => "application/octet-stream"
-	  );
-   }
+         "unknown" => "application/octet-stream"
+        ];
+    }
 }
-?>

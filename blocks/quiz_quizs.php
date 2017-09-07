@@ -11,25 +11,26 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org) 
+ * @copyright   	XOOPS Project (https://xoops.org)
  * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
  * @package         xquiz
  * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$ 
+ * @version      	$Id$
  *
  * Version : $Id:
  * ****************************************************************************
  */
 include_once XOOPS_ROOT_PATH.'/modules/quiz/class/quiz.php';
 include_once XOOPS_ROOT_PATH.'/modules/quiz/class/question.php';
-function quiz_listQuizs($options){
-$block=array();
-$block = Quiz::quiz_listQuizLoader(0,$options[0]);
-return $block;
+function quiz_listQuizs($options)
+{
+    $block= [];
+    $block = Quiz::quiz_listQuizLoader(0, $options[0]);
+    return $block;
 }
-function quiz_listQuizs_edit($options){
-$form = _BL_QUIZ_OPTION.": <input type='text' size='9' name='options[0]' value='$options[0]' />";
-$form .= "";
-return $form;
+function quiz_listQuizs_edit($options)
+{
+    $form = _BL_QUIZ_OPTION.": <input type='text' size='9' name='options[0]' value='$options[0]' />";
+    $form .= "";
+    return $form;
 }
-?>
