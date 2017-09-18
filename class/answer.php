@@ -55,7 +55,7 @@ class answer
      */
     public function setAnswer($answer)
     {
-        $this->answer = mysql_real_escape_string($answer);
+        $this->answer = mysqli_real_escape_string($answer);
     }
     
     /**
@@ -113,7 +113,7 @@ class answer
     public static function deleteAnswers($questionId)
     {
         global $xoopsDB;
-        $questionId = mysql_real_escape_string($questionId);
+        $questionId = mysqli_real_escape_string($questionId);
         $query = "DELETE FROM " . $xoopsDB->prefix("quiz_answers") . " WHERE  
 					  question_id = '$questionId' ";
         $res = $xoopsDB->query($query);
