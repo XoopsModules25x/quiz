@@ -378,7 +378,7 @@ class Quiz
             true
         );
         
-        if ($op == "edit") {
+        if ("edit" == $op) {
             $quiz = Quiz::retriveQuiz($eId);
             $quiz_id_v = $quiz['id'];
             $quiz_name_v = $quiz['name'];
@@ -390,7 +390,7 @@ class Quiz
             $quiz_id = new XoopsFormHidden("quizId", $quiz_id_v);
             $addQuiz_form->addElement($quiz_id);
             $submit_button = new XoopsFormButton("", "editQuizSubmit", _QUIZ_SUBMIT, "submit");
-        } elseif ($op == "add") {
+        } elseif ("add" == $op) {
             $quiz_name_v = "";
             $quiz_category_id = 0;
             $quiz_desc_v = "";
@@ -526,7 +526,7 @@ class Quiz
             $quizCategory = "<a href=\"".XOOPS_URL."/modules/quiz/index.php?cid="
                         .$category['cid']."\">".$category['title']."</a>";
                                     
-            $class = ($class == 'even') ? 'odd' : 'even';
+            $class = ('even' == $class) ? 'odd' : 'even';
             
             $temp = $temp."
 			<tr class='".$class."'>

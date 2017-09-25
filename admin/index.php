@@ -90,7 +90,7 @@ try {
             break;
         
         case 'Quest':
-            if (Quiz::quiz_numQuizLoader() == 0) {
+            if (0 == Quiz::quiz_numQuizLoader()) {
                 throw new Exception(_AM_NO_QUIZ);
             }
             QuizzadminMenu(2, _QUIZ_QUIZS);
@@ -132,7 +132,7 @@ try {
             break;
         
         case 'Stat':
-            if (Quiz::quiz_numQuizLoader() == 0) {
+            if (0 == Quiz::quiz_numQuizLoader()) {
                 throw new Exception(_AM_NO_QUIZ);
             }
             QuizzadminMenu(3, _QUIZ_QUIZS);
@@ -163,7 +163,7 @@ try {
                     $q ++;
                 }
                 ////////////////////////////////////////
-                if (isset($_GET ['exp']) && $_GET ['exp'] == 'on') {
+                if (isset($_GET ['exp']) && 'on' == $_GET ['exp']) {
                     $exportQuiz = [];
                     $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('quiz_users') . ' WHERE id = ' . $id);
                     $q = 1;
@@ -239,7 +239,7 @@ try {
                 $detImage = "<img src= \"" . XOOPS_URL . "/modules/quiz/images/detail.gif \" >";
                 
                 foreach ($listQuiz as $key) {
-                    $class = ($class == 'even') ? 'odd' : 'even';
+                    $class = ('even' == $class) ? 'odd' : 'even';
                     
                     $temp = $temp . "
 						<tr class='" . $class . "'>
@@ -312,7 +312,7 @@ try {
         
 
         case 'Qst':
-            if (Quiz::quiz_numQuizLoader() == 0) {
+            if (0 == Quiz::quiz_numQuizLoader()) {
                 throw new Exception(_AM_NO_QUIZ);
             }
             QuizzadminMenu(6, _QUIZ_QUIZS);

@@ -222,7 +222,7 @@ class questions
         $editImage = "<img src= \"" . XOOPS_URL . "/modules/quiz/images/edit.gif \" title=" . _QUIZ_EDIT . " alt='' >";
         //$ts = & MyTextSanitizer::getInstance ();
         foreach ($listQuestion as $key) {
-            $class = ($class == 'even') ? 'odd' : 'even';
+            $class = ('even' == $class) ? 'odd' : 'even';
 
             $temp = $temp . "
 			<tr class='" . $class . "'>
@@ -390,7 +390,7 @@ class questions
                 $i       = 1;
                 foreach ($this->answers as $answer) {
                     $check = '';
-                    if ($answer->getIs_correct() == 1) {
+                    if (1 == $answer->getIs_correct()) {
                         $check = " checked='checked'";
                     }
                     $strAdd .= "
@@ -434,7 +434,7 @@ class questions
                 $i       = 1;
                 foreach ($this->answers as $answer) {
                     $check = '';
-                    if ($answer->getIs_correct() == 1) {
+                    if (1 == $answer->getIs_correct()) {
                         $check = " checked='checked'";
                     }
                     $strAdd .= "
@@ -573,9 +573,9 @@ class questions
         for ($i = 1; $i <= count($ans); $i++) {
             $answerObj = new answer();
             $answerObj->setAnswer($ans [$i]);
-            if ((!empty($is_cor [$i])) && ($this->type == 'CM')) {
+            if ((!empty($is_cor [$i])) && ('CM' == $this->type)) {
                 $answerObj->setIs_correct(1);
-            } elseif (($i == $is_cor) && ($this->type == 'MC')) {
+            } elseif (($i == $is_cor) && ('MC' == $this->type)) {
                 $answerObj->setIs_correct(1);
             }
             $answerObj->setQuestId($this->id);
@@ -650,9 +650,9 @@ class questions
         for ($i = 1; $i <= count($ans); $i++) {
             $answerObj = new answer();
             $answerObj->setAnswer($ans [$i]);
-            if ((!empty($is_cor [$i])) && ($this->type == 'CM')) {
+            if ((!empty($is_cor [$i])) && ('CM' == $this->type)) {
                 $answerObj->setIs_correct(1);
-            } elseif (($i == $is_cor) && ($this->type == 'MC')) {
+            } elseif (($i == $is_cor) && ('MC' == $this->type)) {
                 $answerObj->setIs_correct(1);
             }
             $answerObj->setQuestId($this->id);
@@ -724,7 +724,7 @@ class questions
             $listQuest[$q]['qnumber']       = $myrow['qnumber'];
             $listQuest[$q]['score']         = $myrow['score'];
             $qry                            = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('quiz_answers') . " WHERE question_id = " . $myrow['question_id']);
-            if ($xoopsDB->getRowsNum($qry) != 0) {
+            if (0 != $xoopsDB->getRowsNum($qry)) {
                 $listQuest[$q]['answer'] = [];
                 $t                       = 1;
                 while ($ansRow = $xoopsDB->fetchArray($qry)) {

@@ -211,7 +211,7 @@ try {
             if (isset($_POST ['cateTitle'])) {
                 $title = $myts->stripSlashesGPC($_POST ['cateTitle']);
             }
-            if (isset($_POST ['topic_imgurl']) && $_POST ['topic_imgurl'] != '') {
+            if (isset($_POST ['topic_imgurl']) && '' != $_POST ['topic_imgurl']) {
                 $imgurl = $myts->stripSlashesGPC($_POST ['topic_imgurl']);
             }
             if (isset($_POST ['cateDesc'])) {
@@ -226,7 +226,7 @@ try {
             if (isset($_POST ['xoops_upload_file'])) {
                 $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
                 $fldname = (get_magic_quotes_gpc()) ? stripslashes($fldname ['name']) : $fldname ['name'];
-                if (xoops_trim($fldname != '')) {
+                if (xoops_trim('' != $fldname)) {
                     $sfiles = new sFiles();
                     $dstpath = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/images/topics';
                     $destname = $sfiles->createUploadName($dstpath, $fldname, true);
@@ -265,7 +265,7 @@ try {
             if (isset($_POST ['cateTitle'])) {
                 $title = $myts->stripSlashesGPC($_POST ['cateTitle']);
             }
-            if (isset($_POST ['topic_imgurl']) && $_POST ['topic_imgurl'] != '') {
+            if (isset($_POST ['topic_imgurl']) && '' != $_POST ['topic_imgurl']) {
                 $imgurl = $myts->stripSlashesGPC($_POST ['topic_imgurl']);
             }
             if (isset($_POST ['cateDesc'])) {
@@ -285,7 +285,7 @@ try {
             if (isset($_POST ['xoops_upload_file'])) {
                 $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
                 $fldname = (get_magic_quotes_gpc()) ? stripslashes($fldname ['name']) : $fldname ['name'];
-                if (xoops_trim($fldname != '')) {
+                if (xoops_trim('' != $fldname)) {
                     $sfiles = new sFiles();
                     $dstpath = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/images/topics';
                     $destname = $sfiles->createUploadName($dstpath, $fldname, true);

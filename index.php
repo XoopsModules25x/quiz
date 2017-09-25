@@ -261,7 +261,7 @@ try {
             if (isset($_GET ['cid']) && is_numeric($_GET ['cid'])) {
                 $cid = $_GET ['cid'];
             }
-            if ((! Category::checkExistCategory($cid)) && $cid != 0) {
+            if ((! Category::checkExistCategory($cid)) && 0 != $cid) {
                 throw new Exception(_QUIZ_NOT_EXIST);
             }
             $xt = new Category($xoopsDB->prefix('quiz_cat'), 'cid', 'pid');
@@ -281,7 +281,7 @@ try {
 
             $count = 0;
             foreach ($listQuiz as $key) {
-                if ($key ['status'] == 1) {
+                if (1 == $key ['status']) {
                     $count ++;
                 }
             }

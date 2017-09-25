@@ -72,12 +72,12 @@ class Category extends XoopsTree
     {
         $sel_id = intval($sel_id);
         $sql = 'SELECT '.$this->pid.' FROM '.$this->table.' WHERE '.$this->id.'="'.$sel_id.'"';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= ' ORDER BY '.$order;
         }
         $result=$this->db->query($sql);
         list($r_id) = $this->db->fetchRow($result);
-        if ($r_id == 0) {
+        if (0 == $r_id) {
             return $idarray;
         }
         array_push($idarray, $r_id);
@@ -97,21 +97,21 @@ class Category extends XoopsTree
     */
     public function makeMySelBox($title, $order='', $preset_id=0, $none=0, $sel_name='', $onchange="", $se=0)
     {
-        if ($sel_name == "") {
+        if ("" == $sel_name) {
             $sel_name = $this->id;
         }
         echo "<select name='".$sel_name."'";
-        if ($onchange != "") {
+        if ("" != $onchange) {
             echo " onchange='".$onchange."'";
         }
         echo ">\n";
         $sql = "SELECT ".$this->id.", ".$title." FROM ".$this->table." WHERE ".$this->pid."='0'";
-        if ($order != "") {
+        if ("" != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
         if ($none) {
-            $val = ($se==0)?0:-1;
+            $val = (0 == $se)?0:-1;
             echo "<option value='$val'>----------</option>\n";
         }
         while (list($catid, $name) = $this->db->fetchRow($result)) {
@@ -145,12 +145,12 @@ class Category extends XoopsTree
     {
         $sel_id = intval($sel_id);
         $sql = 'SELECT * FROM '.$this->table.' WHERE '.$this->pid.'="'.$sel_id.'"';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= ' ORDER BY '.$order;
         }
         $result = $this->db->query($sql);
         $count = $this->db->getRowsNum($result);
-        if ($count == 0) {
+        if (0 == $count) {
             return $parray;
         }
         while ($row = $this->db->fetchArray($result)) {
@@ -170,12 +170,12 @@ class Category extends XoopsTree
     {
         $sel_id = intval($sel_id);
         $sql = 'SELECT * FROM '.$this->table.' WHERE '.$this->pid.'="'.$sel_id.'"';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= ' ORDER BY '.$order;
         }
         $result = $this->db->query($sql);
         $count = $this->db->getRowsNum($result);
-        if ($count == 0) {
+        if (0 == $count) {
             return $parray;
         }
         while ($row = $this->db->fetchArray($result)) {
@@ -191,7 +191,7 @@ class Category extends XoopsTree
         $listCategory = [];
         $q=1;
         $query = ' SELECT * FROM ' . $this->table;
-        if ($order != '') {
+        if ('' != $order) {
             $query .= ' ORDER BY '.$order;
         }
         $query .= ' LIMIT '.$eu.' , '.$limit;
@@ -226,7 +226,7 @@ class Category extends XoopsTree
         $sql = "SELECT * FROM ".$this->table." WHERE ".$this->id."=".$sel_id."";
         $result = $this->db->query($sql);
         $count = $this->db->getRowsNum($result);
-        if ($count==0) {
+        if (0 == $count) {
             return $arr;
         }
         while ($myrow=$this->db->fetchArray($result)) {
@@ -259,12 +259,12 @@ class Category extends XoopsTree
         $myts = MyTextSanitizer::getInstance();
         $sel_id = intval($sel_id);
         $sql = 'SELECT * FROM '.$this->table.' WHERE '.$this->pid.'="'.$sel_id.'"';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= ' ORDER BY '.$order;
         }
         $result = $this->db->query($sql);
         $count = $this->db->getRowsNum($result);
-        if ($count == 0) {
+        if (0 == $count) {
             return $parray;
         }
         $perm_name = 'quiz_view';
@@ -428,7 +428,7 @@ function showCategories($start, $limit)
     $goImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/cat.gif \" title="._QUIZ_EDIT." alt='' >";
         
     foreach ($listCategory as $key) {
-        $class = ($class == 'even') ? 'odd' : 'even';
+        $class = ('even' == $class) ? 'odd' : 'even';
         $temp = $temp."
 			<tr class='".$class."'>
 				<td>
@@ -484,7 +484,7 @@ function CategoryForm($op = "add", $eId = 0)
     $gperm_handler = &xoops_gethandler('groupperm');
     $full_list = array_keys($group_list);
     ////////////////
-    if ($op == "edit") {
+    if ("edit" == $op) {
         $category = $xt->getCategory($eId);
         $category_id_v = $eId;
         $category_title_v = $myts->htmlSpecialChars($category[0]['title']);
@@ -501,7 +501,7 @@ function CategoryForm($op = "add", $eId = 0)
         $category_id = new XoopsFormHidden("cateId", $category_id_v);
         $addCategory_form->addElement($category_id);
         $submit_button = new XoopsFormButton("", "editCateSubmit", _QUIZ_SUBMIT, "submit");
-    } elseif ($op == "add") {
+    } elseif ("add" == $op) {
         $category_title_v = "";
         $category_desc_v = "";
         $category_parent_id = 0;

@@ -26,7 +26,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 function quiz_notify_iteminfo($category, $item_id)
 {
-    if ($category == 'global') {
+    if ('global' == $category) {
         $item['name'] = '';
         $item['url'] = '';
         return $item;
@@ -34,7 +34,7 @@ function quiz_notify_iteminfo($category, $item_id)
 
     global $xoopsDB;
 
-    if ($category=='quiz') {
+    if ('quiz' == $category) {
         // Assume we have a valid quiz id
         $sql = 'SELECT name FROM '.$xoopsDB->prefix('quiz') . ' WHERE id = ' . intval($item_id);
         $result = $xoopsDB->query($sql);
@@ -48,7 +48,7 @@ function quiz_notify_iteminfo($category, $item_id)
         }
     }
 
-    if ($category=='category') {
+    if ('category' == $category) {
         $sql = 'SELECT name FROM ' . $xoopsDB->prefix('quiz') . ' WHERE cid = '.intval($item_id);
         $result = $xoopsDB->query($sql);
         if ($result) {

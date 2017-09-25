@@ -23,8 +23,8 @@
 if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
 }
-@define('_GLOBAL_LEFT', @_ADM_USE_RTL == 1 ? 'right' : 'left') ;
-@define('_GLOBAL_RIGHT', @_ADM_USE_RTL == 1 ? 'left' : 'right') ;
+@define('_GLOBAL_LEFT', 1 == @_ADM_USE_RTL ? 'right' : 'left') ;
+@define('_GLOBAL_RIGHT', 1 == @_ADM_USE_RTL ? 'left' : 'right') ;
 include_once XOOPS_ROOT_PATH.'/modules/quiz/class/question.php';
 
 function findUserScore($userId, $id)
@@ -200,7 +200,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         $ts = MyTextSanitizer::getInstance();
         foreach ($list as $key) {
             $correct = ($key['answer'] == $key['userAns'])? $validImage:$invalidImage ;
-            $class = ($class == 'even') ? 'odd' : 'even';
+            $class = ('even' == $class) ? 'odd' : 'even';
             $temp = $temp."
 			<tr class='".$class."'>
 				<td>

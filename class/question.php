@@ -258,7 +258,7 @@ class Question
         $editImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
         $ts = MyTextSanitizer::getInstance();
         foreach ($listQuestion as $key) {
-            $class = ($class == 'even') ? 'odd' : 'even';
+            $class = ('even' == $class) ? 'odd' : 'even';
             
             $temp = $temp."
 			<tr class='".$class."'>
@@ -355,7 +355,7 @@ class Question
     
         );
         
-        if ($op == "edit") {
+        if ("edit" == $op) {
             $question = Question::retriveQuestion($eId);
             $question_id_v = $question['id'];
             $question_qid_v = $question['qid'];
@@ -374,7 +374,7 @@ class Question
             $addQuest_form->addElement($question_number);
             
             $submit_button = new XoopsFormButton("", "editQuestSubmit", _QUIZ_SUBMIT, "submit");
-        } elseif ($op == "add") {
+        } elseif ("add" == $op) {
             $question_id_v = '';
             $question_qid_v = $qId;
             $question_question_v = '';
