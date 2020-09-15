@@ -3,13 +3,8 @@
 		<{if $quiz.status==1 && $quiz.active==1}>
 			<tr class="<{cycle values="even,odd"}>">
 				<td>
-					<a href="<{$xoops_url}>/modules/xquiz/?act=v&q=<{$quiz.id}>">
+					<a href="<{$xoops_url}>/modules/xquiz/quiz.php?act=v&q=<{$quiz.id}>">
 						<{$quiz.name}>
-					</a>
-				</td>
-				<td>
-					<a href="<{$xoops_url}>/modules/xquiz/?act=v&q=<{$quiz.id}>">
-						<{$quiz.question}> <{$smarty.const._MB_XQUIZ_QUESTION}>
 					</a>
 				</td>
 			</tr>

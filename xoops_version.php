@@ -21,7 +21,8 @@
  * ****************************************************************************
  */
  $modversion['name'] = "xQuiz";
- $modversion['version'] = "2.0 Pre-alpha";
+ $modversion['version'] = "2.0"; 
+ $modversion['module_status'] = "Pre-alpha";   
  $modversion['description'] = "A quiz module to generate multi-option quizzes";
  $modversion['author'] = "Mojtaba Jamali, Mamba, LioMJ";
  $modversion['credits'] = "XOOPS, Mojtaba Jamali (jamali.mojtaba@gmail.com)";
@@ -31,10 +32,10 @@
  $modversion['iconsmall'] = "assets/images/icon_small.png";
  $modversion['iconbig'] = "assets/images/icon_big.png";
  $modversion['image'] = "assets/images/xquiz_logo.png";
- $modversion['dirname'] = "xquiz";
- $modversion['modname'] = 'xquiz';
- $modversion['status_version'] = "2.00";
- $modversion['status'] = "Pre-alpha";
+ $modversion['dirname'] = basename(__DIR__);
+ $modversion['modname'] = basename(__DIR__);
+ 
+ 
  // Admin
  $modversion['hasAdmin'] = 1;
  $modversion['adminindex'] = "admin/index.php";
@@ -126,7 +127,7 @@ $modversion['config'][$i]['title'] = '_AM_XQUIZ_DATEFORMAT';
 $modversion['config'][$i]['description'] = '_AM_XQUIZ_DATEFORMAT_DESC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = "m";
+$modversion['config'][$i]['default'] = "j F Y g:i a";
 
 //user can see quiz score after quiz
 $i++;

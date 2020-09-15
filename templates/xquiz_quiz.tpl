@@ -2,44 +2,60 @@
                     <a href="index.php" title="<{$module_name}>">
                         <{$smarty.const._MD_XQUIZ_MODULENAME}>
 						 &nbsp;&raquo;&nbsp;
-						<{$smarty.const._MD_XQUIZ_CATEGORIES}>
                     </a>
         </div>
 
 <{if $showQuiz == 0}>
-	<!--<{if $Parent >= 0}>
+	<{if $Parent >= 0}>
 	<h5>
-		<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$Parent}>">
+		<a href="<{$xoops_url}>/modules/xquiz/quiz.php?cid=<{$Parent}>">
 			<img src="<{$xoops_url}>/modules/xquiz/assets/images/back.png">
 			<{$smarty.const._XQUIZ_BACK}>
 		</a>
 	</h5>
-	<{/if}>-->
+	<{/if}>
 	<{if $categoryNum != 0}>
-	<h5><{$smarty.const._MD_XQUIZ_CATEGORIES}></h5>
+	<br/>
+	<br/>
+	<h4><{$smarty.const._MD_XQUIZ_CATEGORIES}></h4>
 	
-	<div class="container-fluid">
-<div class="row">
+	<br/>
+	<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
+		<tr>
+			<th width='20%'>
+			<{$smarty.const._CATEGORY_IMAGE}>
+			</th>
+			<th>
+				<{$smarty.const._CATEGORY_TITLE}>
+			</th>
+		</tr>
 		<{foreach item=category from=$listCategory}>
-		<div class="col">
-			<div class="card" style="width:100%">
+			<tr class="<{cycle values="even,odd"}>">
+				<td>
 					<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$category.cid}>">
-						<img class="card-img-top" src="<{$xoops_url}>/modules/xquiz/assets/images/category/<{$category.imgurl}>" style="width:100%;">
+						<img src="<{$xoops_url}>/modules/xquiz/assets/images/category/<{$category.imgurl}>">
 					</a>
-			<div class="card-body">
-					<h4 class="card-title"><a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$category.cid}>"><{$category.title}></a></h4>
-					<p class="card-text"><{$category.description}></p>
-					<!--<a href="#" class="btn btn-primary">See Profile</a>-->
-			</div>
-			</div>
-		</div>
-		
+				</td>
+				<td>
+				<table>
+					<tr>
+						<td>
+							<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$category.cid}>">
+							<{$category.title}>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<{$category.description}>
+						</td>
+					</tr>
+				</table>	
+				</td>
+			</tr>
 		<{/foreach}>
-
-</div>  
-</div>  	
-	
-	
+	</table>
+	<br/>
 	
 	<{/if}>
 
@@ -48,11 +64,21 @@
 	<h4><{$smarty.const._AM_XQUIZ_QUIZS}></h4>
 	
 	<br/>
-	<table width='100%' class="table table-striped">
+	<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 		<tr>
-			
+			<th>
+			</th>
 			<th>
 				<{$smarty.const._XQUIZ_NAME}>
+			</th>
+			<th>
+				<{$smarty.const._XQUIZ_QUEST_NUM}>
+			</th>
+			<th>
+				<{$smarty.const._XQUIZ_BDATE}>
+			</th>
+			<th>
+				<{$smarty.const._XQUIZ_EDATE}>
 			</th>
 			<th>
 				<{$smarty.const._XQUIZ_STATUS}>
@@ -60,15 +86,21 @@
 		</tr>
 		<{foreach item=quiz from=$listQuiz}>
 			<{if $quiz.status==1}>
-			<tr>
-
+			<tr class="<{cycle values="even,odd"}>">
 				<td>
-					<{$quiz.name}> <br>
-					<small>
-					<strong><{$smarty.const._XQUIZ_BDATE}>: </strong>	<{$quiz.bdate}><br>
-					<strong><{$smarty.const._XQUIZ_EDATE}>: </strong><{$quiz.edate}><br>
-					<strong><{$smarty.const._XQUIZ_QUEST_NUM}>: </strong><{$quiz.totalquestion}><br>
-					</small>
+					<img src="<{$xoops_url}>/modules/xquiz/assets/images/home.png">
+				</td>
+				<td>
+					<{$quiz.name}>
+				</td>
+				<td>
+					<{$quiz.question}>
+				</td>
+				<td>
+					<{$quiz.bdate}>
+				</td>
+				<td>
+					<{$quiz.edate}>
 				</td>
 				<td>
 					<{if $quiz.active==1}>
@@ -156,11 +188,11 @@
 <{if $showQuiz == 1}>
 	<{if $emptyList != 1}>
 		<br/>
-		<div class="alert alert-info">
-		<h5><a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$quizCategoryId}>"><{$quizCategory}></a> :: <{$quizName}></h5> 
-			<{$quizDescription}>
-		</div>
-
+		<h5><a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$quizCategoryId}>"><{$quizCategory}></a>-><{$quizName}></h5>
+		
+		<br/>
+		<h5><{$quizDescription}></h5>
+		<br/>
 		<{$listquestfrom.javascript}>
 		<form name="<{$listquestfrom.name}>" action="<{$listquestfrom.action}>" method="<{$listquestfrom.method}>" <{$listquestfrom.extra}>>
 		<br>
@@ -168,10 +200,10 @@
 		    <!-- start of form elements loop -->
     		<{foreach item=element from=$listquestfrom.elements}>
       			<{if $element.hidden != true}>
-			      <tr>
+			      <tr class="<{cycle values="even,odd"}>">
         			<td><{$element.caption}></td>
       			  </tr>	
-				  <tr>
+				  <tr class="<{cycle values="even,odd"}>">
 			        <td><{$element.body}></td>
       			  </tr>	
     <{else}>

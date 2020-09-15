@@ -377,8 +377,8 @@ try {
             }
             $tpl->assign('menu_css', $menu->getCSS());
             $tpl->assign('menu', $menu->render());
-            $tpl->assign('quiz_version', sprintf(_XQUIZ_VERSION, $xoopsModule->getInfo('version') . '(' . $xoopsModule->getInfo('status') . ')', $xoopsModule->getInfo('name')));
-            $tpl->assign('xoops_version', sprintf(_XOOPS_VERSION, XOOPS_VERSION));
+            $tpl->assign('quiz_version', sprintf(_XQUIZ_VERSION, $xoopsModule->getInfo('version') . '(' . $xoopsModule->getInfo('module_status') . ')', $xoopsModule->getInfo('name')));
+            //$tpl->assign('xoops_version', sprintf(_XOOPS_VERSION, XOOPS_VERSION));
             $tpl->assign('php_version', sprintf(_PHP_VERSION, phpversion()));
             //$tpl->assign('mysql_version', sprintf(_MYSQL_VERSION, mysqli_get_server_info()));
             echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/xquiz/templates/admin/xquiz_adminindex.tpl');

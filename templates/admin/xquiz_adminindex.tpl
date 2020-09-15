@@ -26,9 +26,9 @@
 	<div class="hometitle" ><{$smarty.const._XQUIZ_VERSION_TITLE}></div>
 		<div class="textbody" >
 		<br/>
-		<{$php_version}><br/><br/>
-		<{$mysql_version}><br/><br/>
-		<{$xoops_version}><br/><br/>
+		<{$php_version}><br/>
+		<!--<{$mysql_version}><br/>
+		<{$xoops_version}><br/>-->
 		<{$quiz_version}><br/><br/>
 	</div>
 	</div>
