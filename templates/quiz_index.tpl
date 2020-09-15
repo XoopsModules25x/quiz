@@ -2,7 +2,7 @@
 	<{if $Parent >= 0}>
 	<h5>
 		<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$Parent}>">
-			<img src="<{$xoops_url}>/modules/xquiz/images/back.png">
+			<img src="<{$xoops_url}>/modules/xquiz/assets/images/back.png">
 			<{$smarty.const._QUIZ_BACK}>
 		</a>
 	</h5><hr  noshade="noshade" size="1" />
@@ -26,7 +26,7 @@
 			<tr class="<{cycle values="even,odd"}>">
 				<td>
 					<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$category.cid}>">
-						<img src="<{$xoops_url}>/modules/xquiz/images/topics/<{$category.imgurl}>">
+						<img src="<{$xoops_url}>/modules/xquiz/assets/images/topics/<{$category.imgurl}>">
 					</a>
 				</td>
 				<td>
@@ -81,7 +81,7 @@
 			<{if $quiz.status==1}>
 			<tr class="<{cycle values="even,odd"}>">
 				<td>
-					<img src="<{$xoops_url}>/modules/xquiz/images/home.png">
+					<img src="<{$xoops_url}>/modules/xquiz/assets/images/home.png">
 				</td>
 				<td>
 					<{$quiz.name}>
@@ -98,12 +98,12 @@
 				<td>
 					<{if $quiz.active==1}>
 						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=v&q=<{$quiz.id}>">
-						<img src="<{$xoops_url}>/modules/xquiz/images/on.png">
+						<img src="<{$xoops_url}>/modules/xquiz/assets/images/on.png">
 						<{$smarty.const._QUIZ_GO}>
 						</a>
 					<{else}>
 						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=s&q=<{$quiz.id}>">
-						<img src="<{$xoops_url}>/modules/xquiz/images/off.png">
+						<img src="<{$xoops_url}>/modules/xquiz/assets/images/off.png">
 						<{$smarty.const._QUIZ_VIEW_STAT}>
 						</a>
 					<{/if}>	
@@ -144,7 +144,7 @@
 		<tr class="<{cycle values="even,odd"}>">
 			<td width='5%'>
 				<a href="<{$xoops_url}>/userinfo.php?uid=<{$quizStat.userid}>">
-				<img src="<{$xoops_url}>/modules/xquiz/images/user.png">
+				<img src="<{$xoops_url}>/modules/xquiz/assets/images/user.png">
 				</a>
 			</td>
 			<td width='25%'>
@@ -258,7 +258,7 @@
 			</td>
 			<td>
 				<a href="<{$xoops_url}>/modules/xquiz/index.php?act=p&qi=<{$quizProfile.id}>">
-				<img src="<{$xoops_url}>/modules/xquiz/images/detail.gif">
+				<img src="<{$xoops_url}>/modules/xquiz/assets/images/detail.gif">
 				</a>
 			</td>
 		</tr>
@@ -271,7 +271,7 @@
 <{if $showQuiz == 4}>
 <br/>
 	<a href="<{$xoops_url}>/modules/xquiz/index.php?act=p">
-		<img src="<{$xoops_url}>/modules/xquiz/images/back.png">
+		<img src="<{$xoops_url}>/modules/xquiz/assets/images/back.png">
 		<{$smarty.const._QUIZ_BACK}>
 	</a>
 </h5>
@@ -311,9 +311,9 @@
 			</td>
 			<td>
 				<{if $questProfile.userAns == $questProfile.answer}>
-				<img src="<{$xoops_url}>/modules/xquiz/images/valid.png">
+				<img src="<{$xoops_url}>/modules/xquiz/assets/images/valid.png">
 				<{else}>
-				<img src="<{$xoops_url}>/modules/xquiz/images/invalid.png">
+				<img src="<{$xoops_url}>/modules/xquiz/assets/images/invalid.png">
 				<{/if}>
 				
 			</td>

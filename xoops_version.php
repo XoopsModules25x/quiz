@@ -20,7 +20,7 @@
  * Version : $Id:
  * ****************************************************************************
  */
- $modversion['name'] = "xquiz";
+ $modversion['name'] = "xQuiz";
  $modversion['version'] = "1.0";
  $modversion['description'] = "A quiz module to generate multi-option quizzes";
  $modversion['author'] = "Mojtaba Jamali";
@@ -28,9 +28,9 @@
  $modversion['help'] = "help.php";
  $modversion['license'] = "GNU General Public License (GPL) see LICENSE";
  $modversion['official'] = 0;
- $modversion['iconsmall'] = "images/icon_small.png";
- $modversion['iconbig'] = "images/icon_big.png";
- $modversion['image'] = "images/quiz.png";
+ $modversion['iconsmall'] = "assets/images/icon_small.png";
+ $modversion['iconbig'] = "assets/images/icon_big.png";
+ $modversion['image'] = "assets/images/quiz.png";
  $modversion['dirname'] = "xquiz";
  $modversion['modname'] = 'xquiz';
  $modversion['status_version'] = "1.00";
@@ -57,7 +57,7 @@ $modversion['tables'][5] = "quiz_questions";
 $modversion['tables'][6] = "quiz_answers";
 
 // Templates
-$modversion['templates'][1]['file'] = 'quiz_index.html';
+$modversion['templates'][1]['file'] = 'quiz_index.tpl';
 $modversion['templates'][1]['description'] = '';
 
 //Search
@@ -182,7 +182,7 @@ $modversion['blocks'][1]['file'] = "quiz_quizs.php";
 $modversion['blocks'][1]['name'] = _AM_QUIZ_QUIZS_LATES;
 $modversion['blocks'][1]['description'] = _AM_QUIZ_QUIZS_LATES;
 $modversion['blocks'][1]['show_func'] = "quiz_listQuizs";
-$modversion['blocks'][1]['template'] = 'quiz_block_quizs.html';
+$modversion['blocks'][1]['template'] = 'quiz_block_quizs.tpl';
 $modversion['blocks'][1]['edit_func'] = "quiz_listQuizs_edit";
 $modversion['blocks'][1]['options'] = '5';
 //recent active quiz
@@ -190,7 +190,7 @@ $modversion['blocks'][2]['file'] = "quiz_actives.php";
 $modversion['blocks'][2]['name'] = _AM_QUIZ_QUIZS_LATES_ACTIVE;
 $modversion['blocks'][2]['description'] = _AM_QUIZ_QUIZS_LATES_ACTIVE;
 $modversion['blocks'][2]['show_func'] = "quiz_listActiveQuizs";
-$modversion['blocks'][2]['template'] = 'quiz_block_actives.html';
+$modversion['blocks'][2]['template'] = 'quiz_block_actives.tpl';
 $modversion['blocks'][2]['edit_func'] = "quiz_listActiveQuizs_edit";
 $modversion['blocks'][2]['options'] = '5';
 

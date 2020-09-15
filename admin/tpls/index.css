@@ -82,7 +82,7 @@ height: 650px;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	background-color:#7F822A;
-	background-image:url(../images/arrow_down_green.png);
+	background-image:url(../assets/images/arrow_down_green.png);
 	position: absolute;
 	width: 90px;
 	z-index: 190;

@@ -228,7 +228,7 @@ try {
                 $fldname = (get_magic_quotes_gpc()) ? stripslashes($fldname ['name']) : $fldname ['name'];
                 if (xoops_trim('' != $fldname)) {
                     $sfiles = new sFiles();
-                    $dstpath = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/images/topics';
+                    $dstpath = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/assets/images/topics';
                     $destname = $sfiles->createUploadName($dstpath, $fldname, true);
                     $permittedtypes = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'];
                     $uploader = new XoopsMediaUploader($dstpath, $permittedtypes, $maxuploadsize);
@@ -287,7 +287,7 @@ try {
                 $fldname = (get_magic_quotes_gpc()) ? stripslashes($fldname ['name']) : $fldname ['name'];
                 if (xoops_trim('' != $fldname)) {
                     $sfiles = new sFiles();
-                    $dstpath = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/images/topics';
+                    $dstpath = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/assets/images/topics';
                     $destname = $sfiles->createUploadName($dstpath, $fldname, true);
                     $permittedtypes = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'];
                     $uploader = new XoopsMediaUploader($dstpath, $permittedtypes, $maxuploadsize);

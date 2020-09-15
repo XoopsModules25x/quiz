@@ -198,7 +198,7 @@ try {
 							<td width='40%'>
 							</td>
 							<td width='3%'>
-								<img src='" . XOOPS_URL . "/modules/xquiz/images/xls.gif' />
+								<img src='" . XOOPS_URL . "/modules/xquiz/assets/images/xls.gif' />
 							</td>
 							<td>
 								<a href='" . XOOPS_URL . "/uploads/quiz.csv'>
@@ -213,7 +213,7 @@ try {
                 }
                 ///////////////////////////////////////
                 quiz_collapsableBar('newsub', 'topnewsubicon');
-                $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
+                $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
 				 	</a>&nbsp;" . _QUIZ_STATISTICS . "</h4><br/>
 						<div id='newsub' style='text-align: center;'>
 						<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
@@ -236,7 +236,7 @@ try {
 						</tr>";
                 
                 $class = 'even';
-                $detImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/images/detail.gif \" >";
+                $detImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/detail.gif \" >";
                 
                 foreach ($listQuiz as $key) {
                     $class = ('even' == $class) ? 'odd' : 'even';
@@ -360,12 +360,12 @@ try {
         default:
             QuizzadminMenu(0, _QUIZ_INDEX);
             $menu = new QuizMenu();
-            $menu->addItem('Categories', 'index.php?op=Cate', '../images/menus/categories.png', _QUIZ_CATEGORIES);
-            $menu->addItem('Permissions', 'index.php?op=Perm', '../images/menus/permmision.png', _QUIZ_PERMISSIONS);
-            $menu->addItem('Quizzes', 'index.php?op=Quiz', '../images/menus/quizzes.png', _QUIZ_QUIZS);
-            $menu->addItem('Questions', 'index.php?op=Quest', '../images/menus/questions.png', _QUIZ_QUESTIONS);
-            $menu->addItem('Statistics', 'index.php?op=Stat', '../images/menus/statistic.png', _QUIZ_STATISTICS);
-            $menu->addItem('Preference', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid') . '&amp;&confcat_id=1', '../images/menus/config.png', _QUIZ_PREFERENCE);
+            $menu->addItem('Categories', 'index.php?op=Cate', '../assets/images/menus/categories.png', _QUIZ_CATEGORIES);
+            $menu->addItem('Quizzes', 'index.php?op=Quiz', '../assets/images/menus/quizzes.png', _QUIZ_QUIZS);
+            $menu->addItem('Questions', 'index.php?op=Quest', '../assets/images/menus/questions.png', _QUIZ_QUESTIONS);
+            $menu->addItem('Statistics', 'index.php?op=Stat', '../assets/images/menus/statistic.png', _QUIZ_STATISTICS);
+			$menu->addItem('Permissions', 'index.php?op=Perm', '../assets/images/menus/permmision.png', _QUIZ_PERMISSIONS);
+            $menu->addItem('Preference', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid') . '&amp;&confcat_id=1', '../assets/images/menus/config.png', _QUIZ_PREFERENCE);
             
             if (! class_exists('XoopsTpl')) {
                 include_once XOOPS_ROOT_PATH . '/class/template.php';

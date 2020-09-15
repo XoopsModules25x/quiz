@@ -435,7 +435,7 @@ class Quiz
         
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
-                    XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
+                    XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
 				 	</a>&nbsp;"._AM_QUIZ_NEW."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $addQuiz_form->display();
@@ -456,7 +456,7 @@ class Quiz
         $listQuiz = self::quiz_listQuizLoader($start, $limit, $categoryId);
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
-                 XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
+                 XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
 				 </a>&nbsp;"._QUIZ_QUIZS."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
@@ -465,7 +465,7 @@ class Quiz
 							<form method='get' action='index.php'>
 							<input type='hidden' name='op' value='Quiz'>
 							<input type='hidden' name='act' value='add'>
-							<img src= \"".XOOPS_URL."/modules/xquiz/images/new.png \" >
+							<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/new.png \" >
 							<input type='submit' value='"._AM_NEW_QUIZ."'>
 							</form>
 							</td>
@@ -506,13 +506,13 @@ class Quiz
 					</tr>";
                  
         $class = 'even';
-        $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/on.png \" >";
-        $offImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/off.png \" >";
-        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
-        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
-        $statImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/stat.gif \" title="._QUIZ_STAT." alt='' >";
-        $addImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/add.png \" title="._QUIZ_QUEST_ADD." alt='' >";
-        $exportImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/export.png \" title="._QUIZ_CSV_EXPORT." alt='' >";
+        $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/on.png \" >";
+        $offImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/off.png \" >";
+        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
+        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
+        $statImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/stat.gif \" title="._QUIZ_STAT." alt='' >";
+        $addImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/add.png \" title="._QUIZ_QUEST_ADD." alt='' >";
+        $exportImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/export.png \" title="._QUIZ_CSV_EXPORT." alt='' >";
         
         foreach ($listQuiz as $key) {
             $status = ($key['status']) ? $onImage:$offImage;
@@ -606,7 +606,7 @@ class Quiz
     
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
-                 XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
+                 XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
 				 </a>&nbsp;".DELQUIZFORM."</h4><br/>
 					<div id='newquiz' style='text-align: center;'>";
         $delQuiz_form->display();

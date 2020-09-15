@@ -76,9 +76,9 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 	}
 
 	var iconClose = new Image();
-	iconClose.src = '../images/close12.gif';
+	iconClose.src = '../assets/images/close12.gif';
 	var iconOpen = new Image();
-	iconOpen.src = '../images/open12.gif';
+	iconOpen.src = '../assets/images/open12.gif';
 
 	function toggleIcon ( iconName )
 	{
@@ -157,12 +157,12 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         
         $quiz = Quiz::retriveQuiz($quizId);
         $thisUser =& $member_handler->getUser($uid);
-        $userImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/user.png \" alt='' >";
-        $quizImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/quizz.png \" alt='' >";
+        $userImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/user.png \" alt='' >";
+        $quizImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/quizz.png \" alt='' >";
 
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
-                 XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
+                 XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
 				 </a>&nbsp;"._USER_ANSWER_DETAIL."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
@@ -194,9 +194,9 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 					</tr>";
                  
         $class = 'even';
-        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
-        $validImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/valid.png \" alt='' >";
-        $invalidImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/invalid.png \" alt='' >";
+        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
+        $validImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/valid.png \" alt='' >";
+        $invalidImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/invalid.png \" alt='' >";
         $ts = MyTextSanitizer::getInstance();
         foreach ($list as $key) {
             $correct = ($key['answer'] == $key['userAns'])? $validImage:$invalidImage ;
