@@ -97,12 +97,12 @@
 				</td>
 				<td>
 					<{if $quiz.active==1}>
-						<a href="<{$xoops_url}>/modules/quiz?act=v&q=<{$quiz.id}>">
+						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=v&q=<{$quiz.id}>">
 						<img src="<{$xoops_url}>/modules/xquiz/images/on.png">
 						<{$smarty.const._QUIZ_GO}>
 						</a>
 					<{else}>
-						<a href="<{$xoops_url}>/modules/quiz?act=s&q=<{$quiz.id}>">
+						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=s&q=<{$quiz.id}>">
 						<img src="<{$xoops_url}>/modules/xquiz/images/off.png">
 						<{$smarty.const._QUIZ_VIEW_STAT}>
 						</a>
