@@ -1,6 +1,5 @@
 <?php
 /**
- * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
  * Copyright (c) Mojtaba Jamali of persian xoops project (http://www.irxoops.org/)
  *
@@ -11,389 +10,160 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org)
- * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @copyright       XOOPS Project (https://xoops.org)
+ * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @package         xquiz
  * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$
- *
- * Version : $Id:
- * ****************************************************************************
+ * @version         $Id: $
  */
-include 'admin_header.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.sfiles.php';
+require 'header.php';
 
-if (isset($_POST ['addQuizSubmit'])) {
-    $action = 'addQuiz';
-} elseif (isset($_POST ['editQuizSubmit'])) {
-    $action = 'editQuiz';
-} elseif (isset($_POST ['delQuizSubmit'])) {
-    $action = 'delQuiz';
-} elseif (isset($_POST ['addQuestSubmit'])) {
-    $action = 'addQuest';
-} elseif (isset($_POST ['addQstSubmit'])) {
-    $action = 'addQst';
-} elseif (isset($_POST ['editQstSubmit'])) {
-    $action = 'editQst';
-} elseif (isset($_POST ['delQstSubmit'])) {
-    $action = 'delQst';
-} elseif (isset($_POST ['editQuestSubmit'])) {
-    $action = 'editQuest';
-} elseif (isset($_POST ['delQuestSubmit'])) {
-    $action = 'delQuest';
-} elseif (isset($_POST ['addCateSubmit'])) {
-    $action = 'addCategory';
-} elseif (isset($_POST ['editCateSubmit'])) {
-    $action = 'editCategory';
-} elseif (isset($_POST ['delCateSubmit'])) {
-    $action = 'delCategory';
+$op = xquiz_CleanVars($_REQUEST, 'op', 'new', 'string');
+// Admin header
+xoops_cp_header();
+// Redirect to content page
+if (!isset($_REQUEST)) {
+    redirect_header('quiz.php', 3, _AM_XQUIZ_MSG_NOTINFO);
+
+    // Include footer
+
+    xoops_cp_footer();
+
+    exit();
 }
 
-$myts = & MyTextSanitizer::getInstance();
+switch ($op) {
+    case 'addcategory':
+        $obj = $category_handler->create();
+        $obj->setVars($_REQUEST);
+        $obj->setVar('category_created', time());
 
-$maxuploadsize = $xoopsModuleConfig ['maxuploadsize'];
+        if (!$category_handler->insert($obj)) {
+            redirect_header('onclick="javascript:history.go(-1);"', 1, _AM_XQUIZ_MSG_ERROR);
 
-try {
-    if (! $GLOBALS ['xoopsSecurity']->check()) {
-        throw new Exception($GLOBALS ['xoopsSecurity']->getErrors() . _QUEST_SECURITY_ERROR);
-    }
-    
-    switch ($action) {
-        case 'addQuiz':
-            $name = $_POST ['quizName'];
-            $description = $_POST ['quizDesc'];
-            $bdate = $_POST ['quizBDate'] ['date'];
-            $btime = $_POST ['quizBDate'] ['time'];
-            $edate = $_POST ['quizEDate'] ['date'];
-            $etime = $_POST ['quizEDate'] ['time'];
-            $weight = $_POST ['quizWeight'];
-            $categoryId = $_POST ['quizCategory'];
-            
-            $objQuiz = new Quiz();
-            $objQuiz->set_name($name);
-            $objQuiz->set_description($description);
-            $objQuiz->set_btime($btime);
-            $objQuiz->set_etime($etime);
-            $objQuiz->set_bdate($bdate);
-            $objQuiz->set_edate($edate);
-            $objQuiz->set_weight($weight);
-            $objQuiz->set_cid($categoryId);
-            
-            $objQuiz->addQuiz();
-            throw new Exception(_XQUIZ_ADD . "||?op=Quiz");
-            break;
-        
-        case 'editQuiz':
-            $id = $_POST ['quizId'];
-            $name = $_POST ['quizName'];
-            $description = $_POST ['quizDesc'];
-            $bdate = $_POST ['quizBDate'] ['date'];
-            $btime = $_POST ['quizBDate'] ['time'];
-            $edate = $_POST ['quizEDate'] ['date'];
-            $etime = $_POST ['quizEDate'] ['time'];
-            $weight = $_POST ['quizWeight'];
-            $categoryId = $_POST ['quizCategory'];
-            
-            $objQuiz = new Quiz();
-            $objQuiz->set_id($id);
-            $objQuiz->set_name($name);
-            $objQuiz->set_description($description);
-            $objQuiz->set_btime($btime);
-            $objQuiz->set_etime($etime);
-            $objQuiz->set_bdate($bdate);
-            $objQuiz->set_edate($edate);
-            $objQuiz->set_weight($weight);
-            $objQuiz->set_cid($categoryId);
-            
-            $objQuiz->editQuiz();
-            throw new Exception(_XQUIZ_EDIT . "||?op=Quiz");
-            break;
-        
-        case 'delQuiz':
-            $id = $_POST ['quizId'];
-            $confirm = $_POST ['delConfirm'];
-            if (! $confirm) {
-                throw new Exception(_XQUIZ_RETURN);
+            xoops_cp_footer();
+
+            exit();
+        }
+
+        // Redirect page
+        redirect_header('category.php', 1, _AM_XQUIZ_MSG_INSERTSUCCESS);
+        xoops_cp_footer();
+        exit();
+        break;
+    case 'editcategory':
+        $category_id = xquiz_CleanVars($_REQUEST, 'category_id', 0, 'int');
+        if ($category_id > 0) {
+            $obj = $category_handler->get($category_id);
+
+            $obj->setVars($_POST);
+
+            if (!$category_handler->insert($obj)) {
+                redirect_header('onclick="javascript:history.go(-1);"', 1, _AM_XQUIZ_MSG_ERROR);
+
+                xoops_cp_footer();
+
+                exit();
             }
-            $objQuiz = new Quiz();
-            $objQuiz->set_id($id);
-            $objQuiz->deleteQuiz();
-            throw new Exception(_XQUIZ_DELETE . "||?op=Quiz");
-            break;
-        
-        case 'addQuest':
-            $qid = $myts->addslashes($_POST ['quizId']);
-            
-            if (! Quiz::quiz_checkExpireQuiz($qid)) {
-                throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
+        }
+
+        // Redirect page
+        redirect_header('category.php', 1, _AM_XQUIZ_MSG_EDITSUCCESS);
+        xoops_cp_footer();
+        exit();
+        break;
+    case 'deletecategory':
+        $category_id = xquiz_CleanVars($_REQUEST, 'category_id', 0, 'int');
+        $obj = $category_handler->get($category_id);
+        if (!$category_handler->delete($obj)) {
+            echo $obj->getHtmlErrors();
+        }
+
+        // Redirect page
+        redirect_header('category.php', 1, _AM_XQUIZ_MSG_DELETESUCCESS);
+        xoops_cp_footer();
+        exit();
+        break;
+    case 'additem':
+        $obj = $item_handler->create();
+        $obj->setVars($_POST);
+        $obj->setVar('item_create', time());
+        //$obj->setVar('item_order', $item_handler->setitemorder());
+        $obj->setVar('item_img', $item_handler->uploadimg($_POST['item_img']));
+        $obj->setVar('item_startdate', date('Y-m-d H:i:s', strtotime($_POST['item_startdate']['date']) + $_POST['item_startdate']['time']));
+        $obj->setVar('item_enddate', date('Y-m-d H:i:s', strtotime($_POST['item_enddate']['date']) + $_POST['item_enddate']['time']));
+
+        if (!$item_handler->insert($obj)) {
+            redirect_header('onclick="javascript:history.go(-1);"', 1, _AM_XQUIZ_MSG_ERROR);
+
+            xoops_cp_footer();
+
+            exit();
+        }
+
+        // Redirect page
+        redirect_header('quiz.php', 1, _AM_XQUIZ_MSG_INSERTSUCCESS);
+        xoops_cp_footer();
+        exit();
+        break;
+    case 'edititem':
+        $item_id = xquiz_CleanVars($_REQUEST, 'item_id', 0, 'int');
+        if ($item_id > 0) {
+            $obj = $item_handler->get($item_id);
+
+            $obj->setVars($_REQUEST);
+
+            //$obj->setVar('item_order', $item_handler->setitemorder());
+
+            $obj->setVar('item_startdate', date('Y-m-d H:i:s', strtotime($_POST['item_startdate']['date']) + $_POST['item_startdate']['time']));
+
+            $obj->setVar('item_enddate', date('Y-m-d H:i:s', strtotime($_POST['item_enddate']['date']) + $_POST['item_enddate']['time']));
+
+            if (!$item_handler->insert($obj)) {
+                //redirect_header ( 'onclick="javascript:history.go(-1);"', 1, _AM_XQUIZ_MSG_ERROR );
+
+                xoops_cp_footer();
+
+                exit();
             }
-            if (Quiz::quiz_checkActiveQuiz($qid)) {
-                throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
+        }
+        // Redirect page
+        redirect_header('quiz.php', 1, _AM_XQUIZ_MSG_EDITSUCCESS);
+        xoops_cp_footer();
+        exit();
+        break;
+    case 'deleteitem':
+        $item_id = xquiz_CleanVars($_REQUEST, 'item_id', 0, 'int');
+        $obj = $item_handler->get($item_id);
+        unlink(XOOPS_URL . '/uploads/xquiz/image/' . $obj->getVar('item_img'));
+        if (!$item_handler->delete($obj)) {
+            echo $obj->getHtmlErrors();
+        }
+        // Redirect page
+        redirect_header('quiz.php', 1, _AM_XQUIZ_MSG_DELETESUCCESS);
+        xoops_cp_footer();
+        exit();
+        break;
+    case 'item_status':
+        $item_id = xquiz_CleanVars($_REQUEST, 'item_id', 0, 'int');
+        if ($item_id > 0) {
+            $obj = $item_handler->get($item_id);
+
+            $old = $obj->getVar('item_status');
+
+            $obj->setVar('item_status', !$old);
+
+            if ($item_handler->insert($obj)) {
+                exit();
             }
-            $question = $_POST ['questionDesc'];
-            $score = $_POST ['questionScore'];
-            $ans1 = $_POST ['questionAns1'];
-            $ans2 = $_POST ['questionAns2'];
-            $ans3 = $_POST ['questionAns3'];
-            $ans4 = $_POST ['questionAns4'];
-            $answer = $_POST ['questionAnswer'];
-            $qnumber = Question::questionNumber($qid) + 1;
-            
-            $objQuestion = new Question();
-            $objQuestion->set_qid($qid);
-            $objQuestion->set_question($question);
-            $objQuestion->set_score($score);
-            $objQuestion->set_qnumber($qnumber);
-            $objQuestion->set_ans1($ans1);
-            $objQuestion->set_ans2($ans2);
-            $objQuestion->set_ans3($ans3);
-            $objQuestion->set_ans4($ans4);
-            $objQuestion->set_answer($answer);
-            
-            $objQuestion->addQuestion();
-            throw new Exception(_QUEST_ADD . "||?op=Quest");
-            break;
-        
-        case 'editQuest':
-            if (isset($id)) {
-                if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
-                }
-                if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
-                }
-            }
-            $id = $_POST ['questionId'];
-            $qid = $_POST ['quizId'];
-            $question = $_POST ['questionDesc'];
-            $score = $_POST ['questionScore'];
-            $ans1 = $_POST ['questionAns1'];
-            $ans2 = $_POST ['questionAns2'];
-            $ans3 = $_POST ['questionAns3'];
-            $ans4 = $_POST ['questionAns4'];
-            $answer = $_POST ['questionAnswer'];
-            $qnumber = $_POST ['questionNumber'];
-            
-            $objQuestion = new Question();
-            $objQuestion->set_id($id);
-            $objQuestion->set_qid($qid);
-            $objQuestion->set_question($question);
-            $objQuestion->set_score($score);
-            $objQuestion->set_qnumber($qnumber);
-            $objQuestion->set_ans1($ans1);
-            $objQuestion->set_ans2($ans2);
-            $objQuestion->set_ans3($ans3);
-            $objQuestion->set_ans4($ans4);
-            $objQuestion->set_answer($answer);
-            
-            $objQuestion->editQuestion();
-            throw new Exception(_QUEST_EDIT . "||?op=Quest");
-            break;
-        
-        case 'delQuest':
-            $id = $_POST ['questId'];
-            $confirm = $_POST ['delConfirm'];
-            if (! $confirm) {
-                throw new Exception(_XQUIZ_RETURN . "||?op=Quest");
-            }
-            $objQuest = new Question();
-            $objQuest->set_id($id);
-            $objQuest->deleteQuestion();
-            throw new Exception(_QUEST_DELETE . "||?op=Quest");
-            break;
-        
-        case 'addCategory':
-            $title = "";
-            $imgurl = "";
-            $description = "";
-            $pid = 0;
-            $weight = 0;
-            if (isset($_POST ['cateTitle'])) {
-                $title = $myts->stripSlashesGPC($_POST ['cateTitle']);
-            }
-            if (isset($_POST ['topic_imgurl']) && '' != $_POST ['topic_imgurl']) {
-                $imgurl = $myts->stripSlashesGPC($_POST ['topic_imgurl']);
-            }
-            if (isset($_POST ['cateDesc'])) {
-                $description = $myts->previewTarea($_POST ['cateDesc']);
-            }
-            if (isset($_POST ['cateParent']) && is_numeric($_POST ['cateParent'])) {
-                $pid = $_POST ['cateParent'];
-            }
-            if (isset($_POST ['cateWeight']) && is_numeric($_POST ['cateWeight'])) {
-                $weight = $_POST ['cateWeight'];
-            }
-            if (isset($_POST ['xoops_upload_file'])) {
-                $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
-                $fldname = (get_magic_quotes_gpc()) ? stripslashes($fldname ['name']) : $fldname ['name'];
-                if (xoops_trim('' != $fldname)) {
-                    $sfiles = new sFiles();
-                    $dstpath = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/assets/images/category';
-                    $destname = $sfiles->createUploadName($dstpath, $fldname, true);
-                    $permittedtypes = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'];
-                    $uploader = new XoopsMediaUploader($dstpath, $permittedtypes, $maxuploadsize);
-                    $uploader->setTargetFileName($destname);
-                    if ($uploader->fetchMedia($_POST ['xoops_upload_file'] [0])) {
-                        if ($uploader->upload()) {
-                            $imgurl = basename($destname);
-                        } else {
-                            throw new Exception(_AM_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
-                        }
-                    } else {
-                        throw new Exception($uploader->getErrors() . "||?op=Category");
-                    }
-                }
-            }
-            $newCid = Category::addCategory($title, $pid, $description, $imgurl, $weight);
-            // Permissions
-            $gperm_handler = &xoops_gethandler('groupperm');
-            if (isset($_POST ['groups_quiz_can_view'])) {
-                foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
-                    $gperm_handler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
-                }
-            }
-            throw new Exception(_ADD_CATEGORY . "||?op=Category");
-            break;
-        
-        case 'editCategory':
-            $title = "";
-            $imgurl = "";
-            $description = "";
-            $pid = 0;
-            $weight = 0;
-            $cid = 0;
-            if (isset($_POST ['cateTitle'])) {
-                $title = $myts->stripSlashesGPC($_POST ['cateTitle']);
-            }
-            if (isset($_POST ['topic_imgurl']) && '' != $_POST ['topic_imgurl']) {
-                $imgurl = $myts->stripSlashesGPC($_POST ['topic_imgurl']);
-            }
-            if (isset($_POST ['cateDesc'])) {
-                $description = $myts->stripSlashesGPC($_POST ['cateDesc']);
-            }
-            if (isset($_POST ['cateParent']) && is_numeric($_POST ['cateParent'])) {
-                $pid = $_POST ['cateParent'];
-            }
-            if (isset($_POST ['cateWeight']) && is_numeric($_POST ['cateWeight'])) {
-                $weight = $_POST ['cateWeight'];
-            }
-            if (isset($_POST ['cateId']) && is_numeric($_POST ['cateId'])) {
-                $cid = $_POST ['cateId'];
-            } else {
-                throw new Exception(_QUEST_SECURITY_ERROR . "||?op=Category");
-            }
-            if (isset($_POST ['xoops_upload_file'])) {
-                $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
-                $fldname = (get_magic_quotes_gpc()) ? stripslashes($fldname ['name']) : $fldname ['name'];
-                if (xoops_trim('' != $fldname)) {
-                    $sfiles = new sFiles();
-                    $dstpath = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/assets/images/category';
-                    $destname = $sfiles->createUploadName($dstpath, $fldname, true);
-                    $permittedtypes = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'];
-                    $uploader = new XoopsMediaUploader($dstpath, $permittedtypes, $maxuploadsize);
-                    $uploader->setTargetFileName($destname);
-                    if ($uploader->fetchMedia($_POST ['xoops_upload_file'] [0])) {
-                        if ($uploader->upload()) {
-                            $imgurl = basename($destname);
-                        } else {
-                            throw new Exception(_AM_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
-                        }
-                    } else {
-                        throw new Exception($uploader->getErrors() . "||?op=Category");
-                    }
-                }
-            }
-            Category::editCategory($cid, $title, $pid, $description, $imgurl, $weight);
-            // Permissions
-            $gperm_handler = &xoops_gethandler('groupperm');
-            if (isset($_POST ['groups_quiz_can_view'])) {
-                foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
-                    $gperm_handler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));
-                }
-            }
-            throw new Exception(_EDIT_CATEGORY . "||?op=Category");
-            break;
-        
-        case 'delCategory':
-            $confirm = $_POST ['delConfirm'];
-            if (! $confirm) {
-                throw new Exception(_XQUIZ_RETURN . "||?op=Category");
-            }
-            if (isset($_POST ['categoryId']) && is_numeric($_POST ['categoryId'])) {
-                $cid = $_POST ['categoryId'];
-            }
-            Category::deleteCategory($cid);
-            throw new Exception(_DELETE_CATEGORY . "||?op=Category");
-            break;
-        
-        case 'addQst':
-            $qid = $myts->addslashes($_POST ['quizId']);
-            
-            if (! Quiz::quiz_checkExpireQuiz($qid)) {
-                throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
-            }
-            if (Quiz::quiz_checkActiveQuiz($qid)) {
-                throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
-            }
-            $question = $_POST ['questionDesc'];
-            $score = $_POST ['questionScore'];
-            $type = $_POST ['type'];
-            $qnumber = $_POST ['questionNumber'];
-            
-            $obj = new questions();
-            $obj->setQid($qid);
-            $obj->setQnumber($qnumber);
-            $obj->setScore($score);
-            $obj->setQuestion($question);
-            $obj->setType($type);
-            $obj->addQuestion($_POST ['answers'], $_POST ['corrects']);
-            
-            throw new Exception(_QUEST_ADD . "||?op=Question");
-            break;
-        case 'editQst':
-            if (isset($id)) {
-                if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Question");
-                }
-                if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Question");
-                }
-            }
-            $id = $_POST ['questionId'];
-            $qid = $_POST ['quizId'];
-            $question = $_POST ['questionDesc'];
-            $score = $_POST ['questionScore'];
-            $qnumber = $_POST ['questionNumber'];
-            $qtype = $_POST ['type'];
-            
-            $questionObj = new questions();
-            $questionObj->setId($id);
-            $questionObj->setQid($qid);
-            $questionObj->setQuestion($question);
-            $questionObj->setScore($score);
-            $questionObj->setQnumber($qnumber);
-            $questionObj->setType($qtype);
-            $questionObj->editQuestion($_POST ['answers'], $_POST ['corrects']);
-            
-            throw new Exception(_QUEST_EDIT . "||?op=Question");
-            break;
-            
-        case 'delQst':
-            $id = $_POST ['questId'];
-            $confirm = $_POST ['delConfirm'];
-            if (! $confirm) {
-                throw new Exception(_XQUIZ_RETURN . "||?op=Question");
-            }
-            $objQuest = new questions();
-            $objQuest->setId($id);
-            $objQuest->deleteQuestion();
-            throw new Exception(_QUEST_DELETE . "||?op=Question");
-            break;
-        
-        default:
-            echo $action;
-    }
-} catch (Exception $e) {
-    $arr = explode('||', $e->getMessage(), 2);
-    redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php' . $arr [1], 3, $arr [0]);
+
+            echo $obj->getHtmlErrors();
+        }
+        break;
 }
+
+// Redirect page
+redirect_header('quiz.php', 3, _AM_XQUIZ_MSG_NOTINFO);
+// Include footer
+xoops_cp_footer();
+exit();

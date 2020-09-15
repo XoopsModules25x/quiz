@@ -1,4 +1,74 @@
 <?php
+/**
+ * xquiz - MODULE FOR XOOPS
+ * Copyright (c) Mojtaba Jamali of persian xoops project (http://www.irxoops.org/)
+ *
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @copyright       XOOPS Project (https://xoops.org)
+ * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @package         xquiz
+ * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version         $Id: $
+ */
+
+//index
+define('_AM_XQUIZ_INDEX_INFO', 'Index');
+define('_AM_XQUIZ_INDEX_CATEGORIES', 'There are %s categories in our database');
+define('_AM_XQUIZ_INDEX_ITEMS', 'There are %s items in our database');
+
+// Add icons
+define('_AM_XQUIZ_ADD_XQUIZ', 'Add Quiz List');
+define('_AM_XQUIZ_ADD_CATEGORY', 'Add Quiz Category');
+
+// Category page
+define('_AM_XQUIZ_CATEGORY_ID', 'Id');
+define('_AM_XQUIZ_CATEGORY_TITLE', 'Title');
+define('_AM_XQUIZ_CATEGORY_ACTION', 'Action');
+define('_AM_XQUIZ_CATEGORY_FORM', 'Add new Quiz Category');
+define('_AM_XQUIZ_CATEGORY_XQUIZ', 'Quiz');
+define('_AM_XQUIZ_CATEGORY_EMPTY', 'Error: There are no category created yet. Before you can create a new quiz list, you must create a category first.');
+define('_AM_XQUIZ_CATEGORY_DELETECONFIRM', "Are you sure you want to delete <span class='bold red'>%s</span></b> category and <b>ALL</b> of its Quiz Lists? This action is not reversible !!");
+
+// Item page
+define('_AM_XQUIZ_ITEM_ID', 'Id');
+define('_AM_XQUIZ_ITEM_ORDER', 'Order');
+define('_AM_XQUIZ_ITEM_TITLE', 'Title');
+define('_AM_XQUIZ_ITEM_IMG', 'Quiz List');
+define('_AM_XQUIZ_ITEM_CATEGORY', 'Quiz Category');
+define('_AM_XQUIZ_ITEM_ACTION', 'Action');
+define('_AM_XQUIZ_ITEM_FORM', 'Add new item');
+define('_AM_XQUIZ_ITEM_CAPTION', 'Caption');
+define('_AM_XQUIZ_ITEM_LINK', 'Link');
+define('_AM_XQUIZ_ITEM_ACTIVE', 'Active');
+define('_AM_XQUIZ_ITEM_STATUS', 'Status');
+define('_AM_XQUIZ_ITEM_FORMUPLOAD', 'Select your image');
+define('_AM_XQUIZ_ITEM_LANGUAGECODE', 'Language Code');
+define('_AM_XQUIZ_ITEM_STARTDATE', 'Start Date');
+define('_AM_XQUIZ_ITEM_ENDDATE', 'End Date');
+define('_AM_XQUIZ_TARGET', 'Open Link in');
+define('_AM_XQUIZ_TARGET_0', 'Same Window');
+define('_AM_XQUIZ_TARGET_1', 'New Window');
+define('_AM_XQUIZ_UPCOMING', 'Upcoming');
+define('_AM_XQUIZ_EXPIRED', 'Expired');
+define('_AM_XQUIZ_RUNNING', 'Running');
+define('_AM_XQUIZ_INACTIVE', 'Inactive');
+
+// Msg
+define('_AM_XQUIZ_MSG_EDIT_ERROR', 'Error in edit');
+define('_AM_XQUIZ_MSG_DELETE', 'Are you sure you want delete this item/category');
+define('_AM_XQUIZ_MSG_NOTINFO', 'Not select');
+define('_AM_XQUIZ_MSG_ERROR', 'Error');
+define('_AM_XQUIZ_MSG_WAIT', 'Please wait');
+define('_AM_XQUIZ_MSG_INSERTSUCCESS', 'Added Successfully');
+define('_AM_XQUIZ_MSG_EDITSUCCESS', 'Updated Successfully');
+define('_AM_XQUIZ_MSG_DELETESUCCESS', 'Deleted Successfully');
+
 define('_MD_PREFERENCES', 'Features');
 define('_MD_UPDATE', 'Update');
 define('_XQUIZ_INDEX', 'Dashboard');
@@ -127,3 +197,4 @@ define('_XQUIZ_ANSWER_TYPE_MC', 'Multi Choice');
 define('_XQUIZ_ANSWER_TYPE_CM', 'Choose One or More');
 define('_XQUIZ_ANSWER_TYPE_FB', 'Fill in the Blank(s)');
 define('_XQUIZ_ANSWER_TYPE', 'Answer Type');
+

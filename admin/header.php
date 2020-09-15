@@ -16,23 +16,24 @@
  * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
  * @version         $Id: $
  */
-function xquiz_CleanVars($global, $key, $default = '', $type = 'int')
-{
-    switch ($type) {
-        case 'string':
-            //$ret = (isset($global[$key])) ? $global[$key] : $default;
-            $ret = isset($global[$key]) ? filter_var($global[$key], FILTER_SANITIZE_ADD_SLASHES) : $default;
-            break;
-        case 'int':
-        default:
-            //$ret = (isset($global[$key])) ? intval($global[$key]) : intval($default);
-            $ret = isset($global[$key]) ? filter_var($global[$key], FILTER_SANITIZE_NUMBER_INT) : $default;
-            break;
-    }
+require '../../../mainfile.php';
+require_once XOOPS_ROOT_PATH . '/include/cp_header.php';
+require_once XOOPS_ROOT_PATH . '/class/tree.php';
+include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 
-    if (false === $ret) {
-        return $default;
-    }
+include XOOPS_ROOT_PATH . '/modules/xquiz/include/functions.php';
 
-    return $ret;
+if (file_exists($GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/moduleadmin.php'))) {
+    include_once $GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/moduleadmin.php');
+
+//return true;
+} else {
+    redirect_header('../../../admin.php', 5, _AM_MODULEADMIN_MISSING, false);
+
+    //return false;
 }
+
+xoops_load('xoopsformloader');
+
+$item_handler = xoops_getModuleHandler('item', 'xquiz');
+$category_handler = xoops_getModuleHandler('category', 'xquiz');

@@ -16,23 +16,13 @@
  * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
  * @version         $Id: $
  */
-function xquiz_CleanVars($global, $key, $default = '', $type = 'int')
+function xoops_module_update_xquiz()
 {
-    switch ($type) {
-        case 'string':
-            //$ret = (isset($global[$key])) ? $global[$key] : $default;
-            $ret = isset($global[$key]) ? filter_var($global[$key], FILTER_SANITIZE_ADD_SLASHES) : $default;
-            break;
-        case 'int':
-        default:
-            //$ret = (isset($global[$key])) ? intval($global[$key]) : intval($default);
-            $ret = isset($global[$key]) ? filter_var($global[$key], FILTER_SANITIZE_NUMBER_INT) : $default;
-            break;
-    }
+    $db = Database::getInstance();
 
-    if (false === $ret) {
-        return $default;
-    }
+    $sql = 'ALTER TABLE `' . $db->prefix('xquiz_item') . '` ADD `item_img` varchar(255) NOT NULL;';
 
-    return $ret;
+    $db->query($sql);
+
+    return true;
 }

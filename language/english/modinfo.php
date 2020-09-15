@@ -1,4 +1,48 @@
 <?php
+/**
+ * xquiz - MODULE FOR XOOPS
+ * Copyright (c) Mojtaba Jamali of persian xoops project (http://www.irxoops.org/)
+ *
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @copyright       XOOPS Project (https://xoops.org)
+ * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @package         xquiz
+ * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version         $Id: $
+ */
+
+// module info
+define('_MI_XQUIZ_TITLE', 'xQuiz');
+define('_MI_XQUIZ_DESC', 'Make Quiz');
+
+// menu
+define('_AM_XQUIZ_HOME', 'Home');
+define('_AM_XQUIZ_CATEGORY', 'Quiz Category');
+define('_AM_XQUIZ_XQUIZ', 'Quiz Lists');
+
+// block
+define('_MI_XQUIZ_NIVOSLIDER', 'Nivo Slider Quiz');
+define('_MI_XQUIZ_SLICKSLIDER', 'Slick Slider Quiz');
+
+// preferences
+define('_MI_XQUIZ_CONFCAT_IMAGE', '<b>:: Quiz List Upload Preferences ::</b>');
+define('_MI_XQUIZ_CONFCAT_IMAGE_DSC', '');
+define('_MI_XQUIZ_IMAGE_MIME', 'Mimetypes');
+define('_MI_XQUIZ_IMAGE_MIME_DESC', 'Select mimetypes for upload');
+define('_MI_XQUIZ_IMAGE_SIZE', 'Max size');
+define('_MI_XQUIZ_IMAGE_SIZE_DESC', 'Set Max image size');
+define('_MI_XQUIZ_IMAGE_MAXWIDTH', 'Max width');
+define('_MI_XQUIZ_IMAGE_MAXWIDTH_DESC', 'Set max image widht');
+define('_MI_XQUIZ_IMAGE_MAXHEIGHT', 'Max height');
+define('_MI_XQUIZ_IMAGE_MAXHEIGHT_DESC', 'Set max image height');
+
+
 define('_AM_XQUIZ_LIST_NUM', 'Maximum number of quizzes shown in the moderate section per page ');
 define('_AM_QUEST_LIST_NUM', 'Maximum number of questions shown in the moderate section per page ');
 define('_AM_CATEGORY_LIST_NUM', 'Maximum number of categories shown in the moderate section per page ');
@@ -58,3 +102,4 @@ define('_AM_XQUIZ_MAIL_SCORE', 'User score email for user.');
 define('_AM_XQUIZ_MAIL_SCORE_DESC', 'With this option chosen user score email for user after tries quiz.');
 //////////////////////////////////////////////////////////
 define('_AM_XQUIZ_EDITORS', 'default editor');
+
