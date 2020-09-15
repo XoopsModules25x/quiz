@@ -237,10 +237,10 @@ try {
                         if ($uploader->upload()) {
                             $imgurl = basename($destname);
                         } else {
-                            throw new Exception(_AM_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Cate");
+                            throw new Exception(_AM_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
                         }
                     } else {
-                        throw new Exception($uploader->getErrors() . "||?op=Cate");
+                        throw new Exception($uploader->getErrors() . "||?op=Category");
                     }
                 }
             }
@@ -252,7 +252,7 @@ try {
                     $gperm_handler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
-            throw new Exception(_ADD_CATEGORY . "||?op=Cate");
+            throw new Exception(_ADD_CATEGORY . "||?op=Category");
             break;
         
         case 'editCategory':
@@ -280,7 +280,7 @@ try {
             if (isset($_POST ['cateId']) && is_numeric($_POST ['cateId'])) {
                 $cid = $_POST ['cateId'];
             } else {
-                throw new Exception(_QUEST_SECURITY_ERROR . "||?op=Cate");
+                throw new Exception(_QUEST_SECURITY_ERROR . "||?op=Category");
             }
             if (isset($_POST ['xoops_upload_file'])) {
                 $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
@@ -296,10 +296,10 @@ try {
                         if ($uploader->upload()) {
                             $imgurl = basename($destname);
                         } else {
-                            throw new Exception(_AM_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Cate");
+                            throw new Exception(_AM_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
                         }
                     } else {
-                        throw new Exception($uploader->getErrors() . "||?op=Cate");
+                        throw new Exception($uploader->getErrors() . "||?op=Category");
                     }
                 }
             }
@@ -311,19 +311,19 @@ try {
                     $gperm_handler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
-            throw new Exception(_EDIT_CATEGORY . "||?op=Cate");
+            throw new Exception(_EDIT_CATEGORY . "||?op=Category");
             break;
         
         case 'delCategory':
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_QUIZ_RETURN . "||?op=Cate");
+                throw new Exception(_QUIZ_RETURN . "||?op=Category");
             }
             if (isset($_POST ['categoryId']) && is_numeric($_POST ['categoryId'])) {
                 $cid = $_POST ['categoryId'];
             }
             Category::deleteCategory($cid);
-            throw new Exception(_DELETE_CATEGORY . "||?op=Cate");
+            throw new Exception(_DELETE_CATEGORY . "||?op=Category");
             break;
         
         case 'addQst':

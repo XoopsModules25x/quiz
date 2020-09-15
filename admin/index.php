@@ -192,7 +192,7 @@ try {
                     ;
                     fclose($fp);
                     echo "
-						<div id='newsel' style='text-align: center;'>
+						<div id='newsel' style='text-align: left;'>
 						<table width='100%' cellspacing='0' cellpadding='3' border='0' class='outer'>
 						<tr class='even'>
 							<td width='40%'>
@@ -215,7 +215,7 @@ try {
                 quiz_collapsableBar('newsub', 'topnewsubicon');
                 $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
 				 	</a>&nbsp;" . _QUIZ_STATISTICS . "</h4><br/>
-						<div id='newsub' style='text-align: center;'>
+						<div id='newsub' style='text-align: left;'>
 						<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='bg3'>
 							<th>
@@ -264,7 +264,7 @@ try {
                 echo $temp;
                 
                 $nav = new XoopsPageNav($nume, $limitUser, $start, 'start', "op=Stat&Id=$id");
-                echo "<div align='center'>" . $nav->renderImageNav() . '</div><br />';
+                echo "<div align='left'>" . $nav->renderImageNav() . '</div><br />';
             }
             
             //	///////////////////////////////////////////////////////////////
@@ -279,7 +279,7 @@ try {
             Category::category_permissionForm();
             break;
         
-        case 'Cate':
+        case 'Category':
             QuizzadminMenu(5, _QUIZ_CATEGORIES);
             switch ($action) {
                 case 'add':
@@ -360,7 +360,7 @@ try {
         default:
             QuizzadminMenu(0, _QUIZ_INDEX);
             $menu = new QuizMenu();
-            $menu->addItem('Categories', 'index.php?op=Cate', '../assets/images/menus/categories.png', _QUIZ_CATEGORIES);
+            $menu->addItem('Categories', 'index.php?op=Category', '../assets/images/menus/categories.png', _QUIZ_CATEGORIES);
             $menu->addItem('Quizzes', 'index.php?op=Quiz', '../assets/images/menus/quizzes.png', _QUIZ_QUIZS);
             $menu->addItem('Questions', 'index.php?op=Quest', '../assets/images/menus/questions.png', _QUIZ_QUESTIONS);
             $menu->addItem('Statistics', 'index.php?op=Stat', '../assets/images/menus/statistic.png', _QUIZ_STATISTICS);

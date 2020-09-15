@@ -62,11 +62,11 @@ function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
     echo "<div id='buttontop'>";
     echo "<table style=\"width: 100%; padding: 0; \" cellspacing=\"0\"><tr>";
     echo "<td style=\"width: 100%; font-size: 12px; text-align: "._GLOBAL_LEFT."; color: #2F5376; padding: 0 6px; line-height: 18px;\">
-		  <img src=\"../assets/images/quiz.png\"></td>
+		  <img src=\"../assets/images/xquiz_logo.png\"></td>
 		  <div align='center'> | 
 			<a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod="
             .$xoopsModule ->getVar('mid')."&amp;&confcat_id=1\"><span>"._QUIZ_PREFERENCE."</span></a> | 
-			<a href=\"../../system/admin.php?fct=modulesadmin&op=update&module=quiz
+			<a href=\"../../system/admin.php?fct=modulesadmin&op=update&module=xquiz
 			&amp;&confcat_id=1\"><span>"._QUIZ_UPDATE."</span></a> | 
 		 </div>";
     echo "</tr></table>";
@@ -75,7 +75,7 @@ function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
     echo "<div id='buttonbar'>";
     echo "<ul>";
     echo "<li id='".$tblCol[0]."'><a href=\"index.php\"><span>"._QUIZ_INDEX."</span></a></li>";
-    echo "<li id='".$tblCol[5]."'><a href=\"index.php?op=Cate\"><span>"._QUIZ_CATEGORIES."</span></a></li>";
+    echo "<li id='".$tblCol[5]."'><a href=\"index.php?op=Category\"><span>"._QUIZ_CATEGORIES."</span></a></li>";
     echo "<li id='".$tblCol[1]."'><a href=\"index.php?op=Quiz\"><span>"._QUIZ_QUIZS."</span></a></li>";
     echo "<li id='".$tblCol[2]."'><a href=\"index.php?op=Quest\"><span>"._QUIZ_QUESTIONS."</span></a></li>";
     //echo "<li id='".$tblCol[6]."'><a href=\"index.php?op=Qst\"><span>"._QUIZ_QUESTIONS."</span></a></li>";

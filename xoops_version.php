@@ -23,14 +23,14 @@
  $modversion['name'] = "xQuiz";
  $modversion['version'] = "1.0";
  $modversion['description'] = "A quiz module to generate multi-option quizzes";
- $modversion['author'] = "Mojtaba Jamali";
- $modversion['credits'] = "jamali.mojtaba@gmail.com";
+ $modversion['author'] = "Mojtaba Jamali, Mamba, LioMJ";
+ $modversion['credits'] = "XOOPS, Mojtaba Jamali (jamali.mojtaba@gmail.com)";
  $modversion['help'] = "help.php";
  $modversion['license'] = "GNU General Public License (GPL) see LICENSE";
  $modversion['official'] = 0;
  $modversion['iconsmall'] = "assets/images/icon_small.png";
  $modversion['iconbig'] = "assets/images/icon_big.png";
- $modversion['image'] = "assets/images/quiz.png";
+ $modversion['image'] = "assets/images/xquiz_logo.png";
  $modversion['dirname'] = "xquiz";
  $modversion['modname'] = 'xquiz';
  $modversion['status_version'] = "1.00";

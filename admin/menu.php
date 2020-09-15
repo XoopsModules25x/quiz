@@ -24,7 +24,7 @@ $adminmenu[0]['title'] = _AM_QUIZ_INDEX;
 $adminmenu[0]['link'] = 'admin/index.php';
 
 $adminmenu[1]['title'] = _AM_QUIZ_CATEGORY;
-$adminmenu[1]['link'] = 'admin/index.php?op=Cate';
+$adminmenu[1]['link'] = 'admin/index.php?op=Category';
 
 $adminmenu[2]['title'] = _AM_QUIZ_PERMISSIONS;
 $adminmenu[2]['link'] = 'admin/index.php?op=Perm';

@@ -401,7 +401,7 @@ function showCategories($start, $limit)
 						<tr class='odd'>
 							<td>
 							<form method='get' action='index.php'>
-							<input type='hidden' name='op' value='Cate'>
+							<input type='hidden' name='op' value='Category'>
 							<input type='hidden' name='act' value='add'>
 							<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/new.png \" >
 							<input type='submit' value='"._AM_NEW_CATEGORY."'>
@@ -443,12 +443,12 @@ function showCategories($start, $limit)
                 "
 				</td>
 				<td>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Cate&act=del&Id=".$key['cid']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Category&act=del&Id=".$key['cid']."\">
 				".
                 $delImage
                 ."
 				</a>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Cate&act=edit&Id=".$key['cid']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Category&act=edit&Id=".$key['cid']."\">
 				".
                 $editImage
                 ."
@@ -459,7 +459,7 @@ function showCategories($start, $limit)
     $temp = $temp."</table></div>";
     echo $temp;
         
-    $nav  = new XoopsPageNav($nume, $limit, $start, 'start', 'op=Cate');
+    $nav  = new XoopsPageNav($nume, $limit, $start, 'start', 'op=Category');
     echo "<div align='center'>".$nav->renderImageNav().'</div><br />';
 }
 
