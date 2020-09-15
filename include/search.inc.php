@@ -23,7 +23,7 @@
 function quiz_search($queryarray, $andor, $limit, $offset, $userid)
 {
     global $xoopsDB;
-    $sql = "SELECT id,name,description,bdate FROM ".$xoopsDB->prefix("quiz")."";
+    $sql = "SELECT id,name,description,bdate FROM ".$xoopsDB->prefix("xquiz_quizzes")."";
     if (is_array($queryarray) && $count = count($queryarray)) {
         $sql .= " WHERE bdate < NOW() AND((name LIKE '$queryarray[0]' OR description LIKE
                '$queryarray[0]')";
@@ -35,7 +35,7 @@ function quiz_search($queryarray, $andor, $limit, $offset, $userid)
         $sql .= ") ";
     }
     $sql .= "ORDER BY id DESC";
-    $query = $xoopsDB->query("SELECT COUNT(*) FROM ".$xoopsDB->prefix("quiz")." WHERE id>0");
+    $query = $xoopsDB->query("SELECT COUNT(*) FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE id>0");
     list($numrows) = $xoopsDB->fetchrow($query);
        
     $result = $xoopsDB->query($sql, $limit, $offset);

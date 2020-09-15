@@ -348,15 +348,15 @@ try {
             $obj->setType($type);
             $obj->addQuestion($_POST ['answers'], $_POST ['corrects']);
             
-            throw new Exception(_QUEST_ADD . "||?op=Qst");
+            throw new Exception(_QUEST_ADD . "||?op=Question");
             break;
         case 'editQst':
             if (isset($id)) {
                 if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Qst");
+                    throw new Exception(_QUEST_ADD_RULE . "||?op=Question");
                 }
                 if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Qst");
+                    throw new Exception(_QUEST_ADD_RULE . "||?op=Question");
                 }
             }
             $id = $_POST ['questionId'];
@@ -375,19 +375,19 @@ try {
             $questionObj->setType($qtype);
             $questionObj->editQuestion($_POST ['answers'], $_POST ['corrects']);
             
-            throw new Exception(_QUEST_EDIT . "||?op=Qst");
+            throw new Exception(_QUEST_EDIT . "||?op=Question");
             break;
             
         case 'delQst':
             $id = $_POST ['questId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_QUIZ_RETURN . "||?op=Qst");
+                throw new Exception(_QUIZ_RETURN . "||?op=Question");
             }
             $objQuest = new questions();
             $objQuest->setId($id);
             $objQuest->deleteQuestion();
-            throw new Exception(_QUEST_DELETE . "||?op=Qst");
+            throw new Exception(_QUEST_DELETE . "||?op=Question");
             break;
         
         default:

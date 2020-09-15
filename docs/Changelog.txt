@@ -1,5 +1,6 @@
-== Version 1.x  ==
+== Version 2.0 Pre Alpha  ==
 
+Rename database tables (liomj)
 Move Images folder to assets (liomj)
 Change Html to tpl template (liomj)
 Fix question link in index template (liomj)

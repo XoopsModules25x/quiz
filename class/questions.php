@@ -156,7 +156,7 @@ class questions
         global $xoopsDB;
         $listQuiz = [];
         $q        = 1;
-        $query    = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('quiz_questions') . ' WHERE quiz_id = ' . $qid . ' LIMIT ' . $eu . ' , ' . $limit);
+        $query    = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_questions') . ' WHERE quiz_id = ' . $qid . ' LIMIT ' . $eu . ' , ' . $limit);
         while ($myrow = $xoopsDB->fetchArray($query)) {
             $listQuiz [$q] ['id']       = $myrow ['question_id'];
             $listQuiz [$q] ['qid']      = $myrow ['quiz_id'];
@@ -178,7 +178,7 @@ class questions
     public static function questions_numOfQuestions($qId)
     {
         global $xoopsDB;
-        $result = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('quiz_questions') . " WHERE quiz_id = $qId");
+        $result = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_questions') . " WHERE quiz_id = $qId");
         return $xoopsDB->getRowsNum($result);
     }
 
@@ -236,10 +236,10 @@ class questions
 				" . self::$qTypes [$key ['type']] . "
 				</td>
 				<td>
-				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Qst&act=del&Id=" . $key ['id'] . "\">
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Question&act=del&Id=" . $key ['id'] . "\">
 				" . $delImage . "
 				</a>
-				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Qst&act=edit&Id=" . $key ['id'] . "&qId=" . $key ['qid'] . "\">
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Question&act=edit&Id=" . $key ['id'] . "&qId=" . $key ['qid'] . "\">
 				" . $editImage . "
 				</a>
 				</td>
@@ -248,7 +248,7 @@ class questions
 
         $temp = $temp . "</table></div>";
         echo $temp;
-        $nav = new XoopsPageNav($nume, $limit, $start, 'start', "op=Qst&Id=$qid");
+        $nav = new XoopsPageNav($nume, $limit, $start, 'start', "op=Question&Id=$qid");
         echo "<div align='center'>" . $nav->renderImageNav() . '</div><br />';
     }
 
@@ -512,7 +512,7 @@ class questions
 						<tr class='odd'>
 							<td>
 							<form method='get' action='index.php' onchange=\"MM_jumpMenu('parent',this,0)\">
-								<input type='hidden' name='op' value='Qst'>
+								<input type='hidden' name='op' value='Question'>
 								<lable>" . _AM_QUIZ_QUIZS_SELECT . "
 									<select name='Id'>";
         foreach ($list as $key) {
@@ -526,7 +526,7 @@ class questions
 							</td>
 							<td>
 							<form method='get' action='index.php'>
-							<input type='hidden' name='op' value='Qst'>
+							<input type='hidden' name='op' value='Question'>
 							<input type='hidden' name='act' value='add'>
 							<lable>" . _AM_QUIZ_QUIZS_SELECT . "
 									<select name='Id'>";
@@ -563,7 +563,7 @@ class questions
     public function addQuestion($ans, $is_cor)
     {
         global $xoopsDB;
-        $query = "Insert into " . $xoopsDB->prefix("quiz_questions") . "
+        $query = "Insert into " . $xoopsDB->prefix("xquiz_questions") . "
 				(quiz_id,question_type,question,qnumber,score)
 				VALUES ( '$this->qid', '$this->type', '$this->question','$this->qnumber',
 				'$this->score');";
@@ -596,7 +596,7 @@ class questions
     public static function questionNumber($quizId)
     {
         global $xoopsDB;
-        $query = $xoopsDB->query("SELECT COUNT(quiz_id) AS CID FROM " . $xoopsDB->prefix("quiz_questions") . " WHERE quiz_id = '$quizId'");
+        $query = $xoopsDB->query("SELECT COUNT(quiz_id) AS CID FROM " . $xoopsDB->prefix("xquiz_questions") . " WHERE quiz_id = '$quizId'");
         $myrow = $xoopsDB->fetchArray($query);
         return $myrow ['CID'];
     }
@@ -610,14 +610,14 @@ class questions
     {
         global $xoopsDB;
         $this->id       = $questId;
-        $query          = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('quiz_questions') . " WHERE question_id = '$this->id'");
+        $query          = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_questions') . " WHERE question_id = '$this->id'");
         $myrow          = $xoopsDB->fetchArray($query);
         $this->qid      = $myrow ['quiz_id'];
         $this->qnumber  = $myrow ['qnumber'];
         $this->score    = $myrow ['score'];
         $this->type     = $myrow ['question_type'];
         $this->question = $myrow ['question'];
-        $query          = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('quiz_answers') . " WHERE question_id = '$this->id'");
+        $query          = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_answers') . " WHERE question_id = '$this->id'");
 
         while ($myrow = $xoopsDB->fetchArray($query)) {
             $answerObj = new answer();
@@ -638,7 +638,7 @@ class questions
     public function editQuestion($ans, $is_cor)
     {
         global $xoopsDB;
-        $query = "UPDATE " . $xoopsDB->prefix("quiz_questions") . " SET 
+        $query = "UPDATE " . $xoopsDB->prefix("xquiz_questions") . " SET 
 					  quiz_id = '$this->qid'
 					 ,question = '$this->question'
 					 ,qnumber = '$this->qnumber'
@@ -671,7 +671,7 @@ class questions
     public function deleteQuestion()
     {
         global $xoopsDB;
-        $query = "DELETE FROM " . $xoopsDB->prefix("quiz_questions") . " WHERE  
+        $query = "DELETE FROM " . $xoopsDB->prefix("xquiz_questions") . " WHERE  
 					  question_id = '$this->id' ";
         $res   = $xoopsDB->query($query);
         answer::deleteAnswers($this->id);
@@ -716,14 +716,14 @@ class questions
         global $xoopsDB;
         $listQuest = [];
         $q         = 1;
-        $query     = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('quiz_questions') . " WHERE quiz_id = $qId");
+        $query     = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_questions') . " WHERE quiz_id = $qId");
         while ($myrow = $xoopsDB->fetchArray($query)) {
             $listQuest[$q]['question_id']   = $myrow['question_id'];
             $listQuest[$q]['question_type'] = $myrow['question_type'];
             $listQuest[$q]['question']      = $myrow['question'];
             $listQuest[$q]['qnumber']       = $myrow['qnumber'];
             $listQuest[$q]['score']         = $myrow['score'];
-            $qry                            = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('quiz_answers') . " WHERE question_id = " . $myrow['question_id']);
+            $qry                            = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_answers') . " WHERE question_id = " . $myrow['question_id']);
             if (0 != $xoopsDB->getRowsNum($qry)) {
                 $listQuest[$q]['answer'] = [];
                 $t                       = 1;

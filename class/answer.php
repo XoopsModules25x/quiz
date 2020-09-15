@@ -95,7 +95,7 @@ class answer
     public function addAnswer()
     {
         global $xoopsDB;
-        $query = "Insert into " . $xoopsDB->prefix("quiz_answers") . "(question_id ,is_correct ,answer)
+        $query = "Insert into " . $xoopsDB->prefix("xquiz_answers") . "(question_id ,is_correct ,answer)
 				VALUES ('$this->questId', '$this->is_correct', '$this->answer');";
         $res = $xoopsDB->query($query);
         
@@ -114,7 +114,7 @@ class answer
     {
         global $xoopsDB;
         $questionId = mysqli_real_escape_string($questionId);
-        $query = "DELETE FROM " . $xoopsDB->prefix("quiz_answers") . " WHERE  
+        $query = "DELETE FROM " . $xoopsDB->prefix("xquiz_answers") . " WHERE  
 					  question_id = '$questionId' ";
         $res = $xoopsDB->query($query);
         if (! $res) {

@@ -247,7 +247,7 @@ class Category extends XoopsTree
     public static function retriveCategory($eId)
     {
         global $xoopsDB;
-        $query =$xoopsDB->query("SELECT cid,title FROM ". $xoopsDB->prefix('quiz_cat') ." WHERE cid = '$eId'");
+        $query =$xoopsDB->query("SELECT cid,title FROM ". $xoopsDB->prefix('xquiz_categories') ." WHERE cid = '$eId'");
         $myrow = $xoopsDB->fetchArray($query);
         return $myrow;
     }
@@ -290,7 +290,7 @@ class Category extends XoopsTree
     public static function addCategory($title, $pid, $desc, $imgurl, $weight)
     {
         global $xoopsDB;
-        $query = "Insert into ".$xoopsDB->prefix("quiz_cat")."(cid ,pid ,title ,description ,imgurl ,weight)
+        $query = "Insert into ".$xoopsDB->prefix("xquiz_categories")."(cid ,pid ,title ,description ,imgurl ,weight)
 				VALUES (NULL , '$pid', '$title', '$desc', '$imgurl', '$weight');";
         $res = $xoopsDB->query($query);
         
@@ -304,7 +304,7 @@ class Category extends XoopsTree
     public static function editCategory($cid, $title, $pid, $desc, $imgurl, $weight)
     {
         global $xoopsDB;
-        $query = "UPDATE ".$xoopsDB->prefix("quiz_cat")." SET 
+        $query = "UPDATE ".$xoopsDB->prefix("xquiz_categories")." SET 
 					  pid = '$pid'
 					 ,title = '$title'
 					 ,description = '$desc'
@@ -321,12 +321,12 @@ class Category extends XoopsTree
     public static function deleteCategory($id)
     {
         global $xoopsDB;
-        $xt = new Category($xoopsDB->prefix('quiz_cat'), 'cid', 'pid');
+        $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         $list = $xt->getAllChildId($id);
 
         global $module_id;
         $perm_name = 'quiz_view';
-        $query = "DELETE FROM ".$xoopsDB->prefix("quiz_cat")." WHERE  
+        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_categories")." WHERE  
 					  cid = '$id' ";
         $res = $xoopsDB->query($query);
         xoops_groupperm_deletebymoditem($module_id, $perm_name, $id);
@@ -334,7 +334,7 @@ class Category extends XoopsTree
             throw new Exception(_QUEST_DATABASE);
         }
         //delet quiz of category
-        $query = "DELETE FROM ".$xoopsDB->prefix("quiz")." WHERE  
+        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE  
 					  cid = '$id' ";
         $res = $xoopsDB->query($query);
         xoops_groupperm_deletebymoditem($module_id, $perm_name, $id);
@@ -345,7 +345,7 @@ class Category extends XoopsTree
         //Delete subcategories and subquizs
         foreach ($list as $cid) {
             $perm_name = 'quiz_view';
-            $query = "DELETE FROM ".$xoopsDB->prefix("quiz_cat")." WHERE  
+            $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_categories")." WHERE  
 						cid = '$cid' ";
             $res = $xoopsDB->query($query);
             xoops_groupperm_deletebymoditem($module_id, $perm_name, $cid);
@@ -355,7 +355,7 @@ class Category extends XoopsTree
     public static function category_permissionForm()
     {
         global $module_id ,$xoopsDB;
-        $xt = new Category($xoopsDB->prefix('quiz_cat'), 'cid', 'pid');
+        $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         if (!$xt->getChildTreeArray(0)) {
             throw new Exception(_QUIZ_NO_CATEGORY);
         }
@@ -373,7 +373,7 @@ class Category extends XoopsTree
     public static function checkExistCategory($cid)
     {
         global $xoopsDB;
-        $query = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("quiz_cat")." WHERE cid='$cid'");
+        $query = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("xquiz_categories")." WHERE cid='$cid'");
         $res = $xoopsDB->getRowsNum($query);
 
         if ($res > 0) {
@@ -387,7 +387,7 @@ class Category extends XoopsTree
 function showCategories($start, $limit)
 {
     global $xoopsDB;
-    $xt = new Category($xoopsDB->prefix('quiz_cat'), 'cid', 'pid');
+    $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
     
     $listCategory = $xt->getList($start, $limit, 'title');
     //$nume = $xt->getNumberList();
@@ -467,7 +467,7 @@ function showCategories($start, $limit)
 function CategoryForm($op = "add", $eId = 0)
 {
     global $xoopsDB,$xoopsModule,$xoopsModuleConfig;
-    $xt = new Category($xoopsDB->prefix('quiz_cat'), 'cid', 'pid');
+    $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
     $myts = MyTextSanitizer::getInstance();
     $maxuploadsize = $xoopsModuleConfig['maxuploadsize'];
     $addCategory_form = new XoopsThemeForm(

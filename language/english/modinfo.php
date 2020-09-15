@@ -6,7 +6,7 @@ define('_AM_QUEST_USER_LIST_NUM', 'Maximum number of users shown in the stats ma
 define('_AM_QUIZ_USER_LIST_NUM', 'Maximum number of questions shown in the user section per page');
 define('_AM_QUIZ_QUIZS', 'Quizzes');
 define('_AM_QUIZ_QUESTIONS', 'Questions');
-define('_AM_QUIZ_STATISTICS', 'Stats');
+define('_AM_QUIZ_STATISTICS', 'Statistics');
 define('_AM_QUIZ_INDEX', 'Main page');
 define('_AM_QUIZ_SEE_SCORE', 'Users are able to see score after quiz take part');
 define('_AM_QUIZ_PERMISSIONS', 'Permissions');

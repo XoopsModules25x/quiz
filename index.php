@@ -215,7 +215,7 @@ try {
             global $xoopsModuleConfig;
             $dateformat = $xoopsModuleConfig ['dateformat'];
             $q = 1;
-            $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('quiz_users') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limit);
+            $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limit);
             while ($myrow = $xoopsDB->fetchArray($query)) {
                 $listQuiz [$q] ['id'] = $myrow ['id'];
                 $listQuiz [$q] ['userid'] = $myrow ['userid'];
@@ -264,7 +264,7 @@ try {
             if ((! Category::checkExistCategory($cid)) && 0 != $cid) {
                 throw new Exception(_QUIZ_NOT_EXIST);
             }
-            $xt = new Category($xoopsDB->prefix('quiz_cat'), 'cid', 'pid');
+            $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
 
             $parentId = - 1;
             if ($cid > 0) {
@@ -422,7 +422,7 @@ try {
             }
             echo "<br/>Sum of Score :$sumScore ";
             /*$date = date ( DATE_ATOM );
-             $query = "INSERT INTO " . $xoopsDB->prefix ( 'quiz_users' ) . "
+             $query = "INSERT INTO " . $xoopsDB->prefix ( 'xquiz_score' ) . "
              (id ,userid ,score ,date) VALUES('$quizId','$user','$sumScore','$date')";
              $res = $xoopsDB->query ( $query );
              if (! $res)
@@ -469,7 +469,7 @@ try {
             throw new Exception ( _QUIZ_DATABASE );
 
             $date = date ( DATE_ATOM );
-            $query = "INSERT INTO " . $xoopsDB->prefix ( 'quiz_users' ) . "
+            $query = "INSERT INTO " . $xoopsDB->prefix ( 'xquiz_score' ) . "
             (id ,userid ,score ,date) VALUES('$quizId','$user','$userScore','$date')";
             $res = $xoopsDB->query ( $query );
             if (! $res)

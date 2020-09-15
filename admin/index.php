@@ -131,7 +131,7 @@ try {
             }
             break;
         
-        case 'Stat':
+        case 'Statistics':
             if (0 == Quiz::quiz_numQuizLoader()) {
                 throw new Exception(_AM_NO_QUIZ);
             }
@@ -151,7 +151,7 @@ try {
                 $listQuiz = [];
                 $q = 1;
                 $eu = ($start - 0);
-                $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('quiz_users') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limitUser);
+                $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limitUser);
                 while ($myrow = $xoopsDB->fetchArray($query)) {
                     $listQuiz [$q] ['id'] = $myrow ['id'];
                     $listQuiz [$q] ['userid'] = $myrow ['userid'];
@@ -165,7 +165,7 @@ try {
                 ////////////////////////////////////////
                 if (isset($_GET ['exp']) && 'on' == $_GET ['exp']) {
                     $exportQuiz = [];
-                    $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('quiz_users') . ' WHERE id = ' . $id);
+                    $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id);
                     $q = 1;
                     while ($myrow = $xoopsDB->fetchArray($query)) {
                         $exportQuiz [$q] ['id'] = $myrow ['id'];
@@ -177,7 +177,7 @@ try {
                         $exportQuiz [$q] ['date'] = formatTimestamp(strtotime($myrow ['date']), $dateformat);
                         $q ++;
                     }
-                    $fp = fopen('../../../uploads/quiz.csv', 'w+b') or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Stat', 3, '_QUIZ_OPEN_CSV_ERR');
+                    $fp = fopen('../../../uploads/quiz.csv', 'w+b') or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Statistics', 3, '_QUIZ_OPEN_CSV_ERR');
                     $msg = _QUIZ_USER . ',' . _QUIZ_USER_NAME . ',' . _QUIZ_DATE . ',' . _QUIZ_SCORE . '
 ';
                     foreach ($exportQuiz as $key) {
@@ -188,7 +188,7 @@ try {
                     $msg = html_entity_decode($msg, ENT_NOQUOTES, 'utf-8');
                     $msg = chr(255) . chr(254) . iconv("UTF-8", "UTF-16LE", $msg);
                     #end region
-                    fwrite($fp, $msg) or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Stat', 3, '_QUIZ_OPEN_CSV_ERR');
+                    fwrite($fp, $msg) or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Statistics', 3, '_QUIZ_OPEN_CSV_ERR');
                     ;
                     fclose($fp);
                     echo "
@@ -256,22 +256,22 @@ try {
 							" . $key ['date'] . "
 							</td>
 							<td>
-							<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Stat&Id=" . $key ['id'] . "&uid=" . $key ['userid'] . "\">" . $detImage . "</a>
+							<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Statistics&Id=" . $key ['id'] . "&uid=" . $key ['userid'] . "\">" . $detImage . "</a>
 							</td>
 						</tr>";
                 }
                 $temp = $temp . "</table></div>";
                 echo $temp;
                 
-                $nav = new XoopsPageNav($nume, $limitUser, $start, 'start', "op=Stat&Id=$id");
+                $nav = new XoopsPageNav($nume, $limitUser, $start, 'start', "op=Statistics&Id=$id");
                 echo "<div align='left'>" . $nav->renderImageNav() . '</div><br />';
             }
             
             //	///////////////////////////////////////////////////////////////
             break;
         
-        case 'Perm':
-            $xt = new Category($xoopsDB->prefix('quiz_cat'), 'cid', 'pid');
+        case 'Permission':
+            $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
             if (! $xt->getChildTreeArray(0)) {
                 throw new Exception(_QUIZ_NO_CATEGORY);
             }
@@ -311,7 +311,7 @@ try {
         //////////////////////////////////////////////////////////////////////////////
         
 
-        case 'Qst':
+        case 'Question':
             if (0 == Quiz::quiz_numQuizLoader()) {
                 throw new Exception(_AM_NO_QUIZ);
             }
@@ -362,9 +362,9 @@ try {
             $menu = new QuizMenu();
             $menu->addItem('Categories', 'index.php?op=Category', '../assets/images/menus/categories.png', _QUIZ_CATEGORIES);
             $menu->addItem('Quizzes', 'index.php?op=Quiz', '../assets/images/menus/quizzes.png', _QUIZ_QUIZS);
-            $menu->addItem('Questions', 'index.php?op=Quest', '../assets/images/menus/questions.png', _QUIZ_QUESTIONS);
-            $menu->addItem('Statistics', 'index.php?op=Stat', '../assets/images/menus/statistic.png', _QUIZ_STATISTICS);
-			$menu->addItem('Permissions', 'index.php?op=Perm', '../assets/images/menus/permmision.png', _QUIZ_PERMISSIONS);
+            $menu->addItem('Questions', 'index.php?op=Question', '../assets/images/menus/questions.png', _QUIZ_QUESTIONS);
+            $menu->addItem('Statistics', 'index.php?op=Statistics', '../assets/images/menus/statistic.png', _QUIZ_STATISTICS);
+			$menu->addItem('Permissions', 'index.php?op=Permission', '../assets/images/menus/permmision.png', _QUIZ_PERMISSIONS);
             $menu->addItem('Preference', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid') . '&amp;&confcat_id=1', '../assets/images/menus/config.png', _QUIZ_PREFERENCE);
             
             if (! class_exists('XoopsTpl')) {

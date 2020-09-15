@@ -21,7 +21,7 @@
  * ****************************************************************************
  */
  $modversion['name'] = "xQuiz";
- $modversion['version'] = "1.0";
+ $modversion['version'] = "2.0 Pre-alpha";
  $modversion['description'] = "A quiz module to generate multi-option quizzes";
  $modversion['author'] = "Mojtaba Jamali, Mamba, LioMJ";
  $modversion['credits'] = "XOOPS, Mojtaba Jamali (jamali.mojtaba@gmail.com)";
@@ -48,13 +48,11 @@
  }
  
 $modversion['sqlfile']['mysql'] = "sql/mysql.sql";
-$modversion['tables'][0] = "question";
-$modversion['tables'][1] = "quiz";
-$modversion['tables'][2] = "quiz_cat";
-$modversion['tables'][3] = "quiz_users";
-$modversion['tables'][4] = "question_user";
-$modversion['tables'][5] = "quiz_questions";
-$modversion['tables'][6] = "quiz_answers";
+$modversion['tables'][0] = "xquiz_quizzes";
+$modversion['tables'][1] = "xquiz_categories";
+$modversion['tables'][2] = "xquiz_score";
+$modversion['tables'][3] = "xquiz_questions";
+$modversion['tables'][4] = "xquiz_answers";
 
 // Templates
 $modversion['templates'][1]['file'] = 'quiz_index.tpl';

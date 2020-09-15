@@ -27,7 +27,7 @@ $adminmenu[1]['title'] = _AM_QUIZ_CATEGORY;
 $adminmenu[1]['link'] = 'admin/index.php?op=Category';
 
 $adminmenu[2]['title'] = _AM_QUIZ_PERMISSIONS;
-$adminmenu[2]['link'] = 'admin/index.php?op=Perm';
+$adminmenu[2]['link'] = 'admin/index.php?op=Permission';
 
 $adminmenu[3]['title'] = _AM_QUIZ_QUIZS;
 $adminmenu[3]['link'] = 'admin/index.php?op=Quiz';
@@ -36,10 +36,10 @@ $adminmenu[3]['link'] = 'admin/index.php?op=Quiz';
 //$adminmenu[4]['link'] = 'admin/index.php?op=Quest';
 
 $adminmenu[4]['title'] = _AM_QUIZ_QUESTIONS;
-$adminmenu[4]['link'] = 'admin/index.php?op=Qst';
+$adminmenu[4]['link'] = 'admin/index.php?op=Question';
 
 $adminmenu[5]['title'] = _AM_QUIZ_STATISTICS;
-$adminmenu[5]['link'] = 'admin/index.php?op=Stat';
+$adminmenu[5]['link'] = 'admin/index.php?op=Statistics';
 
 
 

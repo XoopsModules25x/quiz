@@ -4,7 +4,7 @@ define('_MD_UPDATE', 'Update');
 define('_QUIZ_INDEX', 'List');
 define('_QUIZ_QUIZS', 'Quizzes');
 define('_QUIZ_QUESTIONS', 'Questions');
-define('_QUIZ_STATISTICS', 'Stats');
+define('_QUIZ_STATISTICS', 'Statistics');
 define('_QUIZ_PREFERENCE', 'Preferences');
 define('_QUIZ_UPDATE', 'Update');
 define('_AM_QUIZ_MODADMIN', 'Moderate');

@@ -30,7 +30,7 @@ include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/question.php';
 function findUserScore($userId, $id)
 {
     global $xoopsDB;
-    $query =$xoopsDB->query("SELECT * FROM ". $xoopsDB->prefix('quiz_users')
+    $query =$xoopsDB->query("SELECT * FROM ". $xoopsDB->prefix('xquiz_score')
         ." WHERE id = $id AND userid = '$userId'");
         
     $res = $xoopsDB->getRowsNum($query);
@@ -46,7 +46,7 @@ function findUserScore($userId, $id)
     function numUserScore($qId)
     {
         global $xoopsDB;
-        $result = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('quiz_users')." WHERE id = $qId");
+        $result = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_score')." WHERE id = $qId");
         return $xoopsDB->getRowsNum($result);
     }
     #endregion
@@ -106,7 +106,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 						<tr class='odd'>
 							<td>
 							<form method='get' action='index.php'\">
-								<input type='hidden' name='op' value='Stat'>
+								<input type='hidden' name='op' value='Statistics'>
 								
 								<lable>"._AM_QUIZ_QUIZS_SELECT."
 									<select name='Id'>";
@@ -168,7 +168,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
 							<td>
-							<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Stat&Id=".$quiz['id']."\">".$quizImage.$quiz['name']."</a>
+							<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Statistics&Id=".$quiz['id']."\">".$quizImage.$quiz['name']."</a>
 							<a href='".XOOPS_URL."/userinfo.php?uid=".$uid."'>".$userImage.$thisUser->getVar('uname')."</a>
 							</td>
 						</tr>
@@ -230,8 +230,8 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         global $xoopsDB,$xoopsModuleConfig;
         $dateformat = $xoopsModuleConfig['dateformat'];
         $list = [];
-        $query = "SELECT * FROM ". $xoopsDB->prefix('quiz_users') ." 
-			NATURAL JOIN ". $xoopsDB->prefix('quiz') ." 
+        $query = "SELECT * FROM ". $xoopsDB->prefix('xquiz_score') ." 
+			NATURAL JOIN ". $xoopsDB->prefix('xquiz_quizzes') ." 
 			WHERE userid = $uid";
         $query =$xoopsDB->query($query);
         $q = 0;

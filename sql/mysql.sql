@@ -1,18 +1,4 @@
-CREATE TABLE question (
-  id int(10) unsigned NOT NULL auto_increment,
-  qid int(10) unsigned NOT NULL,
-  question varchar(200) character set utf8 collate utf8_bin NOT NULL,
-  qnumber int(10) unsigned NOT NULL ,
-  score int(10) unsigned NOT NULL ,
-  ans1 varchar(200) character set utf8 collate utf8_bin default NULL,
-  ans2 varchar(200) character set utf8 collate utf8_bin default NULL,
-  ans3 varchar(200) character set utf8 collate utf8_bin default NULL,
-  ans4 varchar(200) character set utf8 collate utf8_bin default NULL,
-  answer enum('1','2','3','4') NOT NULL,
-  PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE quiz (
+CREATE TABLE xquiz_quizzes (
   id int(10) unsigned NOT NULL auto_increment,
   name varchar(45) character set utf8 collate utf8_bin NOT NULL,
   cid int(10) unsigned NOT NULL,
@@ -23,7 +9,7 @@ CREATE TABLE quiz (
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE quiz_users (
+CREATE TABLE xquiz_score (
   id int(10) unsigned NOT NULL,
   userid int(11) unsigned NOT NULL,
   score int(11) NOT NULL,
@@ -31,7 +17,7 @@ CREATE TABLE quiz_users (
   PRIMARY KEY  (id,userid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE quiz_cat (
+CREATE TABLE xquiz_categories (
   cid int(11) unsigned NOT NULL auto_increment,
   pid int(11) unsigned NOT NULL default '0',
   title varchar(100) NOT NULL default '',
@@ -42,16 +28,7 @@ CREATE TABLE quiz_cat (
   KEY pid (pid)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
-
-CREATE TABLE question_user (
-  questId int(10) NOT NULL,
-  quizId int(10) NOT NULL,
-  userId int(11) NOT NULL,
-  userAns enum('1','2','3','4') NOT NULL,
-  PRIMARY KEY  (questId,quizId,userId)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE quiz_questions (
+CREATE TABLE xquiz_questions (
   question_id int(10) unsigned NOT NULL auto_increment,
   quiz_id int(10) unsigned NOT NULL,
   score int(10) default '1',
@@ -62,8 +39,7 @@ CREATE TABLE quiz_questions (
   KEY quiz_id (quiz_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-
-CREATE TABLE quiz_answers (
+CREATE TABLE xquiz_answers (
   answer_id int(10) NOT NULL auto_increment,
   question_id int(10) NOT NULL,
   is_correct tinyint(1) default '0',

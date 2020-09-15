@@ -36,7 +36,7 @@ function quiz_notify_iteminfo($category, $item_id)
 
     if ('quiz' == $category) {
         // Assume we have a valid quiz id
-        $sql = 'SELECT name FROM '.$xoopsDB->prefix('quiz') . ' WHERE id = ' . intval($item_id);
+        $sql = 'SELECT name FROM '.$xoopsDB->prefix('xquiz_quizzes') . ' WHERE id = ' . intval($item_id);
         $result = $xoopsDB->query($sql);
         if ($result) {
             $result_array = $xoopsDB->fetchArray($result);
@@ -49,7 +49,7 @@ function quiz_notify_iteminfo($category, $item_id)
     }
 
     if ('category' == $category) {
-        $sql = 'SELECT name FROM ' . $xoopsDB->prefix('quiz') . ' WHERE cid = '.intval($item_id);
+        $sql = 'SELECT name FROM ' . $xoopsDB->prefix('xquiz_quizzes') . ' WHERE cid = '.intval($item_id);
         $result = $xoopsDB->query($sql);
         if ($result) {
             $result_array = $xoopsDB->fetchArray($result);
