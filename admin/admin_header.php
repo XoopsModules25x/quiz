@@ -65,24 +65,24 @@ function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
 		  <img src=\"../assets/images/xquiz_logo.png\"></td>
 		  <div align='center'> | 
 			<a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod="
-            .$xoopsModule ->getVar('mid')."&amp;&confcat_id=1\"><span>"._QUIZ_PREFERENCE."</span></a> | 
+            .$xoopsModule ->getVar('mid')."&amp;&confcat_id=1\"><span>"._XQUIZ_PREFERENCE."</span></a> | 
 			<a href=\"../../system/admin.php?fct=modulesadmin&op=update&module=xquiz
-			&amp;&confcat_id=1\"><span>"._QUIZ_UPDATE."</span></a> | 
+			&amp;&confcat_id=1\"><span>"._XQUIZ_UPDATE."</span></a> | 
 		 </div>";
     echo "</tr></table>";
     echo "</div>";
 
     echo "<div id='buttonbar'>";
     echo "<ul>";
-    echo "<li id='".$tblCol[0]."'><a href=\"index.php\"><span>"._QUIZ_INDEX."</span></a></li>";
-    echo "<li id='".$tblCol[5]."'><a href=\"index.php?op=Category\"><span>"._QUIZ_CATEGORIES."</span></a></li>";
-    echo "<li id='".$tblCol[1]."'><a href=\"index.php?op=Quiz\"><span>"._QUIZ_QUIZS."</span></a></li>";
-    //echo "<li id='".$tblCol[2]."'><a href=\"index.php?op=Quest\"><span>"._QUIZ_QUESTIONS."</span></a></li>";
-    echo "<li id='".$tblCol[6]."'><a href=\"index.php?op=Question\"><span>"._QUIZ_QUESTIONS."</span></a></li>";
-    echo "<li id='".$tblCol[3]."'><a href=\"index.php?op=Statistics\"><span>"._QUIZ_STATISTICS."</span></a></li>";  
-	echo "<li id='".$tblCol[4]."'><a href=\"index.php?op=Permission\"><span>"._QUIZ_PERMISSIONS."</span></a></li>";
+    echo "<li id='".$tblCol[0]."'><a href=\"index.php\"><span>"._XQUIZ_INDEX."</span></a></li>";
+    echo "<li id='".$tblCol[5]."'><a href=\"index.php?op=Category\"><span>"._XQUIZ_CATEGORIES."</span></a></li>";
+    echo "<li id='".$tblCol[1]."'><a href=\"index.php?op=Quiz\"><span>"._XQUIZ_QUIZS."</span></a></li>";
+    //echo "<li id='".$tblCol[2]."'><a href=\"index.php?op=Quest\"><span>"._XQUIZ_QUESTIONS."</span></a></li>";
+    echo "<li id='".$tblCol[6]."'><a href=\"index.php?op=Question\"><span>"._XQUIZ_QUESTIONS."</span></a></li>";
+    echo "<li id='".$tblCol[3]."'><a href=\"index.php?op=Statistics\"><span>"._XQUIZ_STATISTICS."</span></a></li>";  
+	echo "<li id='".$tblCol[4]."'><a href=\"index.php?op=Permission\"><span>"._XQUIZ_PERMISSIONS."</span></a></li>";
     echo "<li id='".$tblCol[7]."'><a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod="
-        .$xoopsModule ->getVar('mid')."&amp;&confcat_id=1\"><span>"._QUIZ_PREFERENCE."</span></a></li>";
+        .$xoopsModule ->getVar('mid')."&amp;&confcat_id=1\"><span>"._XQUIZ_PREFERENCE."</span></a></li>";
     
     echo "</ul></div>";
     echo "<br style='clear:both;' />";

@@ -15,7 +15,7 @@ class questions
     private       $question;
     private       $score;
     private       $answers;
-    public static $qTypes = ['MC' => _QUIZ_ANSWER_TYPE_MC, 'CM' => _QUIZ_ANSWER_TYPE_CM, 'FB' => _QUIZ_ANSWER_TYPE_FB];
+    public static $qTypes = ['MC' => _XQUIZ_ANSWER_TYPE_MC, 'CM' => _XQUIZ_ANSWER_TYPE_CM, 'FB' => _XQUIZ_ANSWER_TYPE_FB];
 
     /**
      * @return String
@@ -198,7 +198,7 @@ class questions
 
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;" . _QUIZ_QUESTIONS . "</h4><br/>
+				 </a>&nbsp;" . _XQUIZ_QUESTIONS . "</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'>
@@ -209,17 +209,17 @@ class questions
 							" . _QUEST_SCORE . "
 						</th>
 						<th>
-							" . _QUIZ_ANSWER_TYPE . "
+							" . _XQUIZ_ANSWER_TYPE . "
 						</th>
 						<th>
-							" . _QUIZ_ACTION . "
+							" . _XQUIZ_ACTION . "
 						</th>
 					</tr>";
 
         $class = 'even';
 
-        $delImage  = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/delete.gif \" title=" . _QUIZ_DEL . " alt='' >";
-        $editImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/edit.gif \" title=" . _QUIZ_EDIT . " alt='' >";
+        $delImage  = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/delete.gif \" title=" . _XQUIZ_DEL . " alt='' >";
+        $editImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/edit.gif \" title=" . _XQUIZ_EDIT . " alt='' >";
         //$ts = & MyTextSanitizer::getInstance ();
         foreach ($listQuestion as $key) {
             $class = ('even' == $class) ? 'odd' : 'even';
@@ -266,9 +266,9 @@ class questions
         $question_question_v = '';
         $question_number_v   = questions::questionNumber($qId) + 1;
 
-        $submit_button      = new XoopsFormButton("", "addQstSubmit", _QUIZ_SUBMIT, "submit");
+        $submit_button      = new XoopsFormButton("", "addQstSubmit", _XQUIZ_SUBMIT, "submit");
         $quest_list_array_v = Quiz::quiz_listQuizArray();
-        $quiz_name          = new XoopsFormSelect(_QUIZ_NAME, "quizId", $question_qid_v);
+        $quiz_name          = new XoopsFormSelect(_XQUIZ_NAME, "quizId", $question_qid_v);
         $quiz_name->addOptionArray($quest_list_array_v);
         $question_number = new XoopsFormText(_QUEST_NUMBER, "questionNumber", 15, 5, $question_number_v);
         $question_score  = new XoopsFormText(_QUEST_SCORE, "questionScore", 15, 5);
@@ -300,28 +300,28 @@ class questions
                 $thead   = "<th>" . _QUEST_ANSWER . "</th>";
         }
         ob_start();
-        $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/Add_Ans.png \" title=" . _QUIZ_ADD_ANSWER . ">";
+        $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/Add_Ans.png \" title=" . _XQUIZ_ADD_ANSWER . ">";
         echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/xquiz/js/table.js'></script>
 			<table width='100%' cellspacing='1' cellpadding='3' border='0' id='tblQuiz' >
 				<thead>
 					<tr>
 						<th colspan='5'>
 						$addImage
-						<input type='button' value='" . _QUIZ_ADD_ANSWER . "' onclick='xquiz_addRowToTable(null,\"$cor_val\");' />
+						<input type='button' value='" . _XQUIZ_ADD_ANSWER . "' onclick='xquiz_addRowToTable(null,\"$cor_val\");' />
 						</th>
 					</tr>
 					<tr>
 						<th>#</th>
 						$thead
-						<th>" . _QUIZ_ANSWER_TEXT . "</th>
-						<th>" . _QUIZ_DELET_ANS . "</th>
+						<th>" . _XQUIZ_ANSWER_TEXT . "</th>
+						<th>" . _XQUIZ_DELET_ANS . "</th>
 					</tr>
 				</thead>
 				<tbody>
 				</tbody>
 			</table>";
 
-        $ansFormTable = new XoopsFormLabel(_QUIZ_ANSWERS_LABEL, ob_get_contents());
+        $ansFormTable = new XoopsFormLabel(_XQUIZ_ANSWERS_LABEL, ob_get_contents());
         ob_end_clean();
 
         $question_type  = new XoopsFormHidden("type", $type);
@@ -359,10 +359,10 @@ class questions
         ////////
         $question_number = new XoopsFormText(_QUEST_NUMBER, "questionNumber", 15, 5, $this->getQnumber());
 
-        $submit_button = new XoopsFormButton("", "editQstSubmit", _QUIZ_SUBMIT, "submit");
+        $submit_button = new XoopsFormButton("", "editQstSubmit", _XQUIZ_SUBMIT, "submit");
 
         $quest_list_array_v = Quiz::quiz_listQuizArray();
-        $quiz_name          = new XoopsFormSelect(_QUIZ_NAME, "quizId", $this->getQid());
+        $quiz_name          = new XoopsFormSelect(_XQUIZ_NAME, "quizId", $this->getQid());
         $quiz_name->addOptionArray($quest_list_array_v);
         $question_score = new XoopsFormText(_QUEST_SCORE, "questionScore", 15, 5, $this->getScore());
         global $xoopsModuleConfig;
@@ -381,8 +381,8 @@ class questions
             $options_tray->addElement($contents_contents);
         }
         $strAdd   = "";
-        $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/Add_Ans.png \" title=" . _QUIZ_ADD_ANSWER . ">";
-        $delImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/delete.png \" onclick = 'xquiz_deleteCurrentRow(this)' title=" . _QUIZ_DELET_ANS . ">";
+        $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/Add_Ans.png \" title=" . _XQUIZ_ADD_ANSWER . ">";
+        $delImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/delete.png \" onclick = 'xquiz_deleteCurrentRow(this)' title=" . _XQUIZ_DELET_ANS . ">";
         switch ($this->type) {
             case 'CM':
                 $cor_val = 'checkbox';
@@ -460,14 +460,14 @@ class questions
 					<tr>
 						<th colspan='5'>
 						$addImage
-						<input type='button' value='" . _QUIZ_ADD_ANSWER . "' onclick='xquiz_addRowToTable(null,\"$cor_val\");' />
+						<input type='button' value='" . _XQUIZ_ADD_ANSWER . "' onclick='xquiz_addRowToTable(null,\"$cor_val\");' />
 						</th>
 					</tr>
 					<tr>
 						<th>#</th>
 						$thead
-						<th>" . _QUIZ_ANSWER_TEXT . "</th>
-						<th>" . _QUIZ_DELET_ANS . "</th>
+						<th>" . _XQUIZ_ANSWER_TEXT . "</th>
+						<th>" . _XQUIZ_DELET_ANS . "</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -475,7 +475,7 @@ class questions
 				</tbody>
 			</table>";
 
-        $ansFormTable = new XoopsFormLabel(_QUIZ_ANSWERS_LABEL, ob_get_contents());
+        $ansFormTable = new XoopsFormLabel(_XQUIZ_ANSWERS_LABEL, ob_get_contents());
         ob_end_clean();
 
         $question_type  = new XoopsFormHidden("type", $this->getType());
@@ -513,7 +513,7 @@ class questions
 							<td>
 							<form method='get' action='index.php' onchange=\"MM_jumpMenu('parent',this,0)\">
 								<input type='hidden' name='op' value='Question'>
-								<lable>" . _AM_QUIZ_QUIZS_SELECT . "
+								<lable>" . _AM_XQUIZ_QUIZS_SELECT . "
 									<select name='Id'>";
         foreach ($list as $key) {
             echo "<option value='" . $key ['id'] . "'>" . $key ['name'] . "</option>";
@@ -528,7 +528,7 @@ class questions
 							<form method='get' action='index.php'>
 							<input type='hidden' name='op' value='Question'>
 							<input type='hidden' name='act' value='add'>
-							<lable>" . _AM_QUIZ_QUIZS_SELECT . "
+							<lable>" . _AM_XQUIZ_QUIZS_SELECT . "
 									<select name='Id'>";
         foreach ($list as $key) {
             echo "<option value='" . $key ['id'] . "'>" . $key ['name'] . "</option>";
@@ -536,7 +536,7 @@ class questions
 
         echo "						</select>
 							</lable>
-							<lable>" . _QUIZ_ANSWER_TYPE . "
+							<lable>" . _XQUIZ_ANSWER_TYPE . "
 									<select name='type'>";
         foreach (self::$qTypes as $key => $value) {
             echo "<option value='$key'>$value</option>";
@@ -687,10 +687,10 @@ class questions
      */
     public static function confirmForm($id)
     {
-        $delQuest_form = new XoopsThemeForm(_QUIZ_DELQUESTFORM, "delqstfrom", XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true);
+        $delQuest_form = new XoopsThemeForm(_XQUIZ_DELQUESTFORM, "delqstfrom", XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true);
         $quest_id      = new XoopsFormHidden("questId", $id);
-        $quest_confirm = new XoopsFormRadioYN(_QUIZ_DELETE_CAPTION, "delConfirm", 0);
-        $submit_button = new XoopsFormButton("", "delQstSubmit", _QUIZ_SUBMIT, "submit");
+        $quest_confirm = new XoopsFormRadioYN(_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
+        $submit_button = new XoopsFormButton("", "delQstSubmit", _XQUIZ_SUBMIT, "submit");
         $quest_token   = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
 
         $delQuest_form->addElement($quest_id);
@@ -700,7 +700,7 @@ class questions
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 	</a>&nbsp;" . _AM_QUIZ_DELETE . "</h4><br/>
+				 	</a>&nbsp;" . _AM_XQUIZ_DELETE . "</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $delQuest_form->display();
         echo "</div>";

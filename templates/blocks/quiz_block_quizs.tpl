@@ -10,7 +10,7 @@
 					</td>
 					<td>
 						<a href="<{$xoops_url}>/modules/xquiz/?act=v&q=<{$quiz.id}>">
-							<{$smarty.const._BL_QUIZ_ACTIVE}>
+							<{$smarty.const._MB_XQUIZ_ACTIVE}>
 						</a>	
 					</td>
 					<{else}>
@@ -21,7 +21,7 @@
 					</td>
 					<td>
 						<a href="<{$xoops_url}>/modules/xquiz/?act=s&q=<{$quiz.id}>">
-							<{$smarty.const._BL_QUIZ_UNACTIVE}>
+							<{$smarty.const._MB_XQUIZ_UNACTIVE}>
 						</a>	
 					</td>
 				<{/if}>	

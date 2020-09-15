@@ -9,7 +9,7 @@
 				</td>
 				<td>
 					<a href="<{$xoops_url}>/modules/xquiz/?act=v&q=<{$quiz.id}>">
-						<{$quiz.question}> <{$smarty.const._BL_QUESTION}>
+						<{$quiz.question}> <{$smarty.const._MB_XQUIZ_QUESTION}>
 					</a>
 				</td>
 			</tr>

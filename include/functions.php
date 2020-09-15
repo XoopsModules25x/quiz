@@ -108,7 +108,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 							<form method='get' action='index.php'\">
 								<input type='hidden' name='op' value='Statistics'>
 								
-								<lable>"._AM_QUIZ_QUIZS_SELECT."
+								<lable>"._AM_XQUIZ_QUIZS_SELECT."
 									<select name='Id'>";
         foreach ($list as $key) {
             echo "<option value='".$key['id']."'>".$key['name']."</option>";
@@ -118,7 +118,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         echo "						</select>
 								</lable>
 								<lable>
-								"._QUIZ_CSV_EXPORT."
+								"._XQUIZ_CSV_EXPORT."
 								</lable>
 								<input type='checkbox' name='exp'>
 								<input type='submit' value='"._AM_QUEST_GO."'>
@@ -189,12 +189,12 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 							"._USER_ANSWER."
 						</th>
 						<th>
-							"._QUIZ_STATUS."
+							"._XQUIZ_STATUS."
 						</th>
 					</tr>";
                  
         $class = 'even';
-        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
+        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._XQUIZ_DEL." alt='' >";
         $validImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/valid.png \" alt='' >";
         $invalidImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/invalid.png \" alt='' >";
         $ts = MyTextSanitizer::getInstance();
@@ -268,13 +268,13 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         if (!is_object($user)) {
             $user =& $GLOBALS["xoopsUser"];
         }
-        $msg = sprintf(_QUIZ_EMAIL_DESC, $user->getVar("uname"));
+        $msg = sprintf(_XQUIZ_EMAIL_DESC, $user->getVar("uname"));
         $msg .= "\n\n";
         $msg .= formatTimestamp(time(), $dateformat);
         $msg .= "\n";
-        $msg .= _QUIZ_EMAIL_MESSAGE . ":\n";
-        $msg .= _QUIZ_FINAL_SCORE." = ".$score."\n";
-        $msg .=  _QUIZ_SCORE_PROFILE. ": ". XOOPS_URL . "/modules/xquiz/index.php?act=p&q=".$qid."\n";
+        $msg .= _XQUIZ_EMAIL_MESSAGE . ":\n";
+        $msg .= _XQUIZ_FINAL_SCORE." = ".$score."\n";
+        $msg .=  _XQUIZ_SCORE_PROFILE. ": ". XOOPS_URL . "/modules/xquiz/index.php?act=p&q=".$qid."\n";
         $msg .= $xoopsConfig['sitename'] . ": ". XOOPS_URL . "\n";
         $system_mailer = (defined('ICMS_VERSION_NAME') && ICMS_VERSION_NAME)?getMailer():xoops_getMailer();
         $xoopsMailer =&$system_mailer;
@@ -282,7 +282,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         $xoopsMailer->setToEmails($user->getVar("email"));
         $xoopsMailer->setFromEmail($xoopsConfig['adminmail']);
         $xoopsMailer->setFromName($xoopsConfig['sitename']);
-        $xoopsMailer->setSubject(_QUIZ_EMAIL_SUBJECT);
+        $xoopsMailer->setSubject(_XQUIZ_EMAIL_SUBJECT);
         $xoopsMailer->setBody($msg);
         return $xoopsMailer->send();
     }

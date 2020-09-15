@@ -368,10 +368,10 @@ class Quiz
         //check for category existance
         $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         if (!$xt->getChildTreeArray(0)) {
-            throw new Exception(_QUIZ_NO_CATEGORY);
+            throw new Exception(_XQUIZ_NO_CATEGORY);
         }
         $addQuiz_form = new XoopsThemeForm(
-            _AM_QUIZ_NEW,
+            _AM_XQUIZ_NEW,
             "addquizfrom",
                         XOOPS_URL.'/modules/xquiz/admin/backend.php',
             'post',
@@ -389,7 +389,7 @@ class Quiz
             $quiz_weight_v = $quiz['weight'];
             $quiz_id = new XoopsFormHidden("quizId", $quiz_id_v);
             $addQuiz_form->addElement($quiz_id);
-            $submit_button = new XoopsFormButton("", "editQuizSubmit", _QUIZ_SUBMIT, "submit");
+            $submit_button = new XoopsFormButton("", "editQuizSubmit", _XQUIZ_SUBMIT, "submit");
         } elseif ("add" == $op) {
             $quiz_name_v = "";
             $quiz_category_id = 0;
@@ -397,19 +397,19 @@ class Quiz
             $quiz_bdate_v = time()+(3600*24*2);
             $quiz_edate_v = time()+(3600*24*16);
             $quiz_weight_v = 0;
-            $submit_button = new XoopsFormButton("", "addQuizSubmit", _QUIZ_SUBMIT, "submit");
+            $submit_button = new XoopsFormButton("", "addQuizSubmit", _XQUIZ_SUBMIT, "submit");
         }
-        $quiz_name = new XoopsFormText(_QUIZ_NAME, "quizName", 50, 100, $quiz_name_v);
+        $quiz_name = new XoopsFormText(_XQUIZ_NAME, "quizName", 50, 100, $quiz_name_v);
         ob_start();
         $xt->makeMySelBox("title", "cid ASC", $quiz_category_id, 0, 'quizCategory');
-        $quiz_category = new XoopsFormLabel(_QUIZ_CATEGORY, ob_get_contents());
+        $quiz_category = new XoopsFormLabel(_XQUIZ_CATEGORY, ob_get_contents());
         ob_end_clean();
-        $quiz_begin_date = new XoopsFormDateTime(_QUIZ_BDATE, "quizBDate", 15, $quiz_bdate_v);
-        $quiz_end_date = new XoopsFormDateTime(_QUIZ_EDATE, "quizEDate", 15, $quiz_edate_v);
-        $quiz_weight = new XoopsFormText(_QUIZ_WEIGHT, "quizWeight", 5, 3, $quiz_weight_v);
+        $quiz_begin_date = new XoopsFormDateTime(_XQUIZ_BDATE, "quizBDate", 15, $quiz_bdate_v);
+        $quiz_end_date = new XoopsFormDateTime(_XQUIZ_EDATE, "quizEDate", 15, $quiz_edate_v);
+        $quiz_weight = new XoopsFormText(_XQUIZ_WEIGHT, "quizWeight", 5, 3, $quiz_weight_v);
         $quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
     
-        $options_tray = new XoopsFormElementTray(_QUIZ_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_XQUIZ_DESC, '<br />');
         if (class_exists('XoopsFormEditor')) {
             $options['name'] = 'quizDesc';
             $options['value'] = $quiz_desc_v;
@@ -436,7 +436,7 @@ class Quiz
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
                     XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 	</a>&nbsp;"._AM_QUIZ_NEW."</h4><br/>
+				 	</a>&nbsp;"._AM_XQUIZ_NEW."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $addQuiz_form->display();
         echo "</div>";
@@ -457,7 +457,7 @@ class Quiz
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
                  XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;"._QUIZ_QUIZS."</h4><br/>
+				 </a>&nbsp;"._XQUIZ_QUIZS."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
@@ -472,7 +472,7 @@ class Quiz
 							<td>
 							<form method='get' action='index.php'\">
 								<input type='hidden' name='op' value='Quiz'>
-								<lable>"._QUIZ_CATEGORY_SELECT."
+								<lable>"._XQUIZ_CATEGORY_SELECT."
 				 				$select
 								</lable>
 								<input type='submit' value='"._AM_QUEST_GO."'>
@@ -483,36 +483,36 @@ class Quiz
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'>
 						<td>
-							"._QUIZ_NAME."
+							"._XQUIZ_NAME."
 						</td>
 						<td>
-							"._QUIZ_CATEGORY."
+							"._XQUIZ_CATEGORY."
 						</td>
 						<td>
-							"._QUIZ_QUEST_NUM."
+							"._XQUIZ_QUEST_NUM."
 						</td>
 						<td>
-							"._QUIZ_BDATE."
+							"._XQUIZ_BDATE."
 						</td>
 						<td>
-							"._QUIZ_EDATE."
+							"._XQUIZ_EDATE."
 						</td>
 						<td>
-							"._QUIZ_WEIGHT."
+							"._XQUIZ_WEIGHT."
 						</td>
 						<td>
-							"._QUIZ_ACTION."
+							"._XQUIZ_ACTION."
 						</td>
 					</tr>";
                  
         $class = 'even';
         $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/on.png \" >";
         $offImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/off.png \" >";
-        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
-        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
-        $statImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/stat.gif \" title="._QUIZ_STAT." alt='' >";
-        $addImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/add.png \" title="._QUIZ_QUEST_ADD." alt='' >";
-        $exportImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/export.png \" title="._QUIZ_CSV_EXPORT." alt='' >";
+        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._XQUIZ_DEL." alt='' >";
+        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._XQUIZ_EDIT." alt='' >";
+        $statImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/stat.gif \" title="._XQUIZ_STAT." alt='' >";
+        $addImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/add.png \" title="._XQUIZ_QUEST_ADD." alt='' >";
+        $exportImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/export.png \" title="._XQUIZ_CSV_EXPORT." alt='' >";
         
         foreach ($listQuiz as $key) {
             $status = ($key['status']) ? $onImage:$offImage;
@@ -588,15 +588,15 @@ class Quiz
     public static function confirmForm($id)
     {
         $delQuiz_form = new XoopsThemeForm(
-        _QUIZ_DELQUIZFORM,
+        _XQUIZ_DELQUIZFORM,
         "delquizfrom",
                     XOOPS_URL.'/modules/xquiz/admin/backend.php',
         'post',
         true
     );
         $quiz_id = new XoopsFormHidden("quizId", $id);
-        $quiz_confirm = new XoopsFormRadioYN(_QUIZ_DELETE_CAPTION, "delConfirm", 0);
-        $submit_button = new XoopsFormButton("", "delQuizSubmit", _QUIZ_SUBMIT, "submit");
+        $quiz_confirm = new XoopsFormRadioYN(_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
+        $submit_button = new XoopsFormButton("", "delQuizSubmit", _XQUIZ_SUBMIT, "submit");
         $quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
     
         $delQuiz_form->addElement($quiz_id);

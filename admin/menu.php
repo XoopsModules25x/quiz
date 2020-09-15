@@ -20,25 +20,25 @@
  * Version : $Id:
  * ****************************************************************************
  */
-$adminmenu[0]['title'] = _AM_QUIZ_INDEX;
+$adminmenu[0]['title'] = _AM_XQUIZ_INDEX;
 $adminmenu[0]['link'] = 'admin/index.php';
 
-$adminmenu[1]['title'] = _AM_QUIZ_CATEGORY;
+$adminmenu[1]['title'] = _AM_XQUIZ_CATEGORY;
 $adminmenu[1]['link'] = 'admin/index.php?op=Category';
 
-$adminmenu[2]['title'] = _AM_QUIZ_PERMISSIONS;
+$adminmenu[2]['title'] = _AM_XQUIZ_PERMISSIONS;
 $adminmenu[2]['link'] = 'admin/index.php?op=Permission';
 
-$adminmenu[3]['title'] = _AM_QUIZ_QUIZS;
+$adminmenu[3]['title'] = _AM_XQUIZ_QUIZS;
 $adminmenu[3]['link'] = 'admin/index.php?op=Quiz';
 
-//$adminmenu[4]['title'] = _AM_QUIZ_QUESTIONS;
+//$adminmenu[4]['title'] = _AM_XQUIZ_QUESTIONS;
 //$adminmenu[4]['link'] = 'admin/index.php?op=Quest';
 
-$adminmenu[4]['title'] = _AM_QUIZ_QUESTIONS;
+$adminmenu[4]['title'] = _AM_XQUIZ_QUESTIONS;
 $adminmenu[4]['link'] = 'admin/index.php?op=Question';
 
-$adminmenu[5]['title'] = _AM_QUIZ_STATISTICS;
+$adminmenu[5]['title'] = _AM_XQUIZ_STATISTICS;
 $adminmenu[5]['link'] = 'admin/index.php?op=Statistics';
 
 

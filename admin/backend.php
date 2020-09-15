@@ -80,7 +80,7 @@ try {
             $objQuiz->set_cid($categoryId);
             
             $objQuiz->addQuiz();
-            throw new Exception(_QUIZ_ADD . "||?op=Quiz");
+            throw new Exception(_XQUIZ_ADD . "||?op=Quiz");
             break;
         
         case 'editQuiz':
@@ -106,19 +106,19 @@ try {
             $objQuiz->set_cid($categoryId);
             
             $objQuiz->editQuiz();
-            throw new Exception(_QUIZ_EDIT . "||?op=Quiz");
+            throw new Exception(_XQUIZ_EDIT . "||?op=Quiz");
             break;
         
         case 'delQuiz':
             $id = $_POST ['quizId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_QUIZ_RETURN);
+                throw new Exception(_XQUIZ_RETURN);
             }
             $objQuiz = new Quiz();
             $objQuiz->set_id($id);
             $objQuiz->deleteQuiz();
-            throw new Exception(_QUIZ_DELETE . "||?op=Quiz");
+            throw new Exception(_XQUIZ_DELETE . "||?op=Quiz");
             break;
         
         case 'addQuest':
@@ -194,7 +194,7 @@ try {
             $id = $_POST ['questId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_QUIZ_RETURN . "||?op=Quest");
+                throw new Exception(_XQUIZ_RETURN . "||?op=Quest");
             }
             $objQuest = new Question();
             $objQuest->set_id($id);
@@ -317,7 +317,7 @@ try {
         case 'delCategory':
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_QUIZ_RETURN . "||?op=Category");
+                throw new Exception(_XQUIZ_RETURN . "||?op=Category");
             }
             if (isset($_POST ['categoryId']) && is_numeric($_POST ['categoryId'])) {
                 $cid = $_POST ['categoryId'];
@@ -382,7 +382,7 @@ try {
             $id = $_POST ['questId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_QUIZ_RETURN . "||?op=Question");
+                throw new Exception(_XQUIZ_RETURN . "||?op=Question");
             }
             $objQuest = new questions();
             $objQuest->setId($id);

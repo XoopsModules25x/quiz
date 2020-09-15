@@ -357,12 +357,12 @@ class Category extends XoopsTree
         global $module_id ,$xoopsDB;
         $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         if (!$xt->getChildTreeArray(0)) {
-            throw new Exception(_QUIZ_NO_CATEGORY);
+            throw new Exception(_XQUIZ_NO_CATEGORY);
         }
         $listCategory = $xt->getChildTreeArray(0, 'title');
-        $title_of_form = _QUIZ_PERM_FORM_TITLE;
+        $title_of_form = _XQUIZ_PERM_FORM_TITLE;
         $perm_name = 'quiz_view';
-        $perm_desc = _QUIZ_PERM_FORM_DESC;
+        $perm_desc = _XQUIZ_PERM_FORM_DESC;
         $form = new XoopsGroupPermForm($title_of_form, $module_id, $perm_name, $perm_desc);
 
         foreach ($listCategory as $key) {
@@ -395,7 +395,7 @@ function showCategories($start, $limit)
     quiz_collapsableBar('newsub', 'topnewsubicon');
     $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
                  XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;"._QUIZ_CATEGORIES."</h4><br/>
+				 </a>&nbsp;"._XQUIZ_CATEGORIES."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
@@ -418,14 +418,14 @@ function showCategories($start, $limit)
 							"._CATEGORY_WEIGHT."
 						</th>
 						<th>
-							"._QUIZ_ACTION."
+							"._XQUIZ_ACTION."
 						</th>
 					</tr>";
                  
     $class = 'even';
-    $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
-    $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
-    $goImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/cat.gif \" title="._QUIZ_EDIT." alt='' >";
+    $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._XQUIZ_DEL." alt='' >";
+    $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._XQUIZ_EDIT." alt='' >";
+    $goImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/cat.gif \" title="._XQUIZ_EDIT." alt='' >";
         
     foreach ($listCategory as $key) {
         $class = ('even' == $class) ? 'odd' : 'even';
@@ -500,7 +500,7 @@ function CategoryForm($op = "add", $eId = 0)
         
         $category_id = new XoopsFormHidden("cateId", $category_id_v);
         $addCategory_form->addElement($category_id);
-        $submit_button = new XoopsFormButton("", "editCateSubmit", _QUIZ_SUBMIT, "submit");
+        $submit_button = new XoopsFormButton("", "editCateSubmit", _XQUIZ_SUBMIT, "submit");
     } elseif ("add" == $op) {
         $category_title_v = "";
         $category_desc_v = "";
@@ -508,7 +508,7 @@ function CategoryForm($op = "add", $eId = 0)
         $category_weight_v = 0;
         $topicimage='blank.png';
         $groups_quiz_can_view_checkbox = new XoopsFormCheckBox(_AM_VIEWFORM, 'groups_quiz_can_view[]', $full_list);
-        $submit_button = new XoopsFormButton("", "addCateSubmit", _QUIZ_SUBMIT, "submit");
+        $submit_button = new XoopsFormButton("", "addCateSubmit", _XQUIZ_SUBMIT, "submit");
     }
             
     $category_title = new XoopsFormText(_CATEGORY_TITLE, "cateTitle", 50, 100, $category_title_v);
@@ -584,15 +584,15 @@ function CategoryForm($op = "add", $eId = 0)
     function confirmForm($id)
     {
         $delCategory_form = new XoopsThemeForm(
-            _QUIZ_DELCATEGORY_FORM,
+            _XQUIZ_DELCATEGORY_FORM,
             "delcategoryfrom",
                         XOOPS_URL.'/modules/xquiz/admin/backend.php',
             'post',
             true
         );
         $category_id = new XoopsFormHidden("categoryId", $id);
-        $category_confirm = new XoopsFormRadioYN(_QUIZ_DELETE_CAPTION, "delConfirm", 0);
-        $submit_button = new XoopsFormButton("", "delCateSubmit", _QUIZ_SUBMIT, "submit");
+        $category_confirm = new XoopsFormRadioYN(_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
+        $submit_button = new XoopsFormButton("", "delCateSubmit", _XQUIZ_SUBMIT, "submit");
         $category_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
         
         $delCategory_form->addElement($category_id);
@@ -603,7 +603,7 @@ function CategoryForm($op = "add", $eId = 0)
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
                     XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 	</a>&nbsp;"._AM_QUIZ_DELETE."</h4><br/>
+				 	</a>&nbsp;"._AM_XQUIZ_DELETE."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $delCategory_form->display();
         echo "</div>";
