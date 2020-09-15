@@ -642,7 +642,10 @@ class Quiz
             $listQuiz[$q]['bdate'] = formatTimestamp(strtotime($myrow['bdate']), $dateformat);
             $listQuiz[$q]['edate'] = formatTimestamp(strtotime($myrow['edate']), $dateformat);
             $listQuiz[$q]['weight'] = $myrow['weight'];
-            $listQuiz[$q]['question'] = question::question_numQuestionLoader($myrow['id']);
+			global $xoopsDB;
+			$cid=$myrow['cid'];
+			$totalquestion = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_questions').' WHERE quiz_id = '.$cid.'');
+            $listQuiz[$q]['totalquestion'] = $xoopsDB->getRowsNum($totalquestion);
             
             $today = strtotime(date("Y-m-d"));
             if (strtotime($myrow['bdate']) <= $today) {

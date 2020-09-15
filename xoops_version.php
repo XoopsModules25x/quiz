@@ -126,7 +126,7 @@ $modversion['config'][$i]['title'] = '_AM_XQUIZ_DATEFORMAT';
 $modversion['config'][$i]['description'] = '_AM_XQUIZ_DATEFORMAT_DESC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = "m";
+$modversion['config'][$i]['default'] = "j F Y g:i a";
 
 //user can see quiz score after quiz
 $i++;
