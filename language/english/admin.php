@@ -1,7 +1,7 @@
 <?php
 define('_MD_PREFERENCES', 'Features');
 define('_MD_UPDATE', 'Update');
-define('_XQUIZ_INDEX', 'List');
+define('_XQUIZ_INDEX', 'Dashboard');
 define('_XQUIZ_QUIZS', 'Quizzes');
 define('_XQUIZ_QUESTIONS', 'Questions');
 define('_XQUIZ_STATISTICS', 'Statistics');

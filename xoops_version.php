@@ -33,8 +33,8 @@
  $modversion['image'] = "assets/images/xquiz_logo.png";
  $modversion['dirname'] = "xquiz";
  $modversion['modname'] = 'xquiz';
- $modversion['status_version'] = "1.00";
- $modversion['status'] = "Final";
+ $modversion['status_version'] = "2.00";
+ $modversion['status'] = "Pre-alpha";
  // Admin
  $modversion['hasAdmin'] = 1;
  $modversion['adminindex'] = "admin/index.php";

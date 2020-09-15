@@ -21,7 +21,6 @@
  * ****************************************************************************
  */
 include("../../../mainfile.php");
-$xoopsOption['template_main'] = 'quiz_index.html';
 include '../../../include/cp_header.php';
 include_once XOOPS_ROOT_PATH."/class/xoopsmodule.php";
 include_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";

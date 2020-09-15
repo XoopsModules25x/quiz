@@ -21,7 +21,7 @@
  * ****************************************************************************
  */
 require('../../mainfile.php');
-$xoopsOption ['template_main'] = 'quiz_index.html';
+$xoopsOption['template_main'] = 'quiz_index.tpl';
 require(XOOPS_ROOT_PATH . '/header.php');
 include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 include_once XOOPS_ROOT_PATH . "/class/xoopsformloader.php";
