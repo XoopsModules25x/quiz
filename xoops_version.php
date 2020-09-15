@@ -55,7 +55,7 @@ $modversion['tables'][3] = "xquiz_questions";
 $modversion['tables'][4] = "xquiz_answers";
 
 // Templates
-$modversion['templates'][1]['file'] = 'quiz_index.tpl';
+$modversion['templates'][1]['file'] = 'xquiz_index.tpl';
 $modversion['templates'][1]['description'] = '';
 
 //Search
@@ -177,18 +177,18 @@ $modversion['config'][$i]['options'] = [
 // Blocks
 //recent quiz
 $modversion['blocks'][1]['file'] = "quiz_quizs.php";
-$modversion['blocks'][1]['name'] = _AM_XQUIZ_QUIZS_LATES;
-$modversion['blocks'][1]['description'] = _AM_XQUIZ_QUIZS_LATES;
+$modversion['blocks'][1]['name'] = _MB_XQUIZ_LATESTQUIZ;
+$modversion['blocks'][1]['description'] = _MB_XQUIZ_LATESTQUIZ;
 $modversion['blocks'][1]['show_func'] = "quiz_listQuizs";
-$modversion['blocks'][1]['template'] = 'quiz_block_quizs.tpl';
+$modversion['blocks'][1]['template'] = 'xquiz_block_quizs.tpl';
 $modversion['blocks'][1]['edit_func'] = "quiz_listQuizs_edit";
 $modversion['blocks'][1]['options'] = '5';
 //recent active quiz
 $modversion['blocks'][2]['file'] = "quiz_actives.php";
-$modversion['blocks'][2]['name'] = _AM_XQUIZ_QUIZS_LATES_ACTIVE;
-$modversion['blocks'][2]['description'] = _AM_XQUIZ_QUIZS_LATES_ACTIVE;
+$modversion['blocks'][2]['name'] = _MB_XQUIZ_LATESTQUIZ_ACTIVE;
+$modversion['blocks'][2]['description'] = _MB_XQUIZ_LATESTQUIZ_ACTIVE;
 $modversion['blocks'][2]['show_func'] = "quiz_listActiveQuizs";
-$modversion['blocks'][2]['template'] = 'quiz_block_actives.tpl';
+$modversion['blocks'][2]['template'] = 'xquiz_block_actives.tpl';
 $modversion['blocks'][2]['edit_func'] = "quiz_listActiveQuizs_edit";
 $modversion['blocks'][2]['options'] = '5';
 

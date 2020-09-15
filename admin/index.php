@@ -381,7 +381,7 @@ try {
             $tpl->assign('xoops_version', sprintf(_XOOPS_VERSION, XOOPS_VERSION));
             $tpl->assign('php_version', sprintf(_PHP_VERSION, phpversion()));
             //$tpl->assign('mysql_version', sprintf(_MYSQL_VERSION, mysqli_get_server_info()));
-            echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/xquiz/templates/admin/qz_index.tpl');
+            echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/xquiz/templates/admin/xquiz_adminindex.tpl');
             break;
 			
 			$mysql_version = substr(trim(mysql_get_server_info()), 0, 3);

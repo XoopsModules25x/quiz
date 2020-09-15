@@ -1,3 +1,10 @@
+		<div class="breadcrumb">
+                    <a href="index.php" title="<{$module_name}>">
+                        <{$smarty.const._MD_XQUIZ_MODULENAME}>
+						 &nbsp;&raquo;&nbsp;
+                    </a>
+        </div>
+
 <{if $showQuiz == 0}>
 	<{if $Parent >= 0}>
 	<h5>
@@ -26,7 +33,7 @@
 			<tr class="<{cycle values="even,odd"}>">
 				<td>
 					<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$category.cid}>">
-						<img src="<{$xoops_url}>/modules/xquiz/assets/images/topics/<{$category.imgurl}>">
+						<img src="<{$xoops_url}>/modules/xquiz/assets/images/category/<{$category.imgurl}>">
 					</a>
 				</td>
 				<td>

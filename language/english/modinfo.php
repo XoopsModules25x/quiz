@@ -19,10 +19,9 @@ define('_AM_XQUIZ_PROFILE_SCORE', 'Users are able to see score after quiz take p
 define('_AM_XQUIZ_PROFILE_SCORE_DESC', 'With this option chosen each user can see his results after quiz take part in profile,
 		otherwize results are shown at the end of each quiz');
 
-define('_AM_XQUIZ_QUIZS_LATES', 'Latest qiuzzes');
-define('_AM_XQUIZ_QUIZS_LATES_ACTIVE', 'Latest active qizzes');
+
 define('_MI_UPLOADFILESIZE', 'MAX File-size Upload (KB) 1048576 = 1 Meg');
-define('_AM_XQUIZ_PROFILE', 'Profile');
+define('_AM_XQUIZ_PROFILE', 'My Score');
 define('_AM_XQUIZ_DATEFORMAT', "Date's format");
 define('_AM_XQUIZ_DATEFORMAT_DESC', "Please refer to the Php documentation (http://php.net/manual/en/function.date.php) for more information on how to select the format. Note, if you don't type anything then the default date's format will be used");
 //text for notification
@@ -36,7 +35,7 @@ define('_MI_XQUIZ_STORY_NOTIFYDSC', 'Notification options that applies to the cu
 define('_MI_XQUIZ_GLOBAL_NEWCATEGORY_NOTIFY', 'New category');
 define('_MI_XQUIZ_GLOBAL_NEWCATEGORY_NOTIFYCAP', 'Notify me when a new category is created.');
 define('_MI_XQUIZ_GLOBAL_NEWCATEGORY_NOTIFYDSC', 'Receive notification when a new category is created.');
-define('_MI_XQUIZ_GLOBAL_NEWCATEGORY_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} auto-notify : New quiz topic');
+define('_MI_XQUIZ_GLOBAL_NEWCATEGORY_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} auto-notify : New quiz category');
 
 define('_MI_XQUIZ_GLOBAL_STORYSUBMIT_NOTIFY', 'New quiz Submitted');
 define('_MI_XQUIZ_GLOBAL_STORYSUBMIT_NOTIFYCAP', 'Notify me when any new quiz is submitted (awaiting approval).');

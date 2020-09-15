@@ -1,5 +1,5 @@
 <?php
-define("_AC_NAMEMODULE", "Quiz");
+define("_MD_XQUIZ_MODULENAME", "Quiz");
 define("_AC_COPYRIGHT", "M-Jamali");
 define('_QUEST_NUMBER', 'Questions number');
 define('_QUEST_SCORE', 'Questions score');

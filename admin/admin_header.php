@@ -62,7 +62,7 @@ function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
     echo "<table style=\"width: 100%; padding: 0; \" cellspacing=\"0\"><tr>";
     echo "<td style=\"width: 100%; font-size: 12px; text-align: "._GLOBAL_LEFT."; color: #2F5376; padding: 0 6px; line-height: 18px;\">
 		  <img src=\"../assets/images/xquiz_logo.png\"></td>
-		  <div align='center'> | 
+		  <div align='center'>  | 
 			<a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod="
             .$xoopsModule ->getVar('mid')."&amp;&confcat_id=1\"><span>"._XQUIZ_PREFERENCE."</span></a> | 
 			<a href=\"../../system/admin.php?fct=modulesadmin&op=update&module=xquiz

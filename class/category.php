@@ -273,7 +273,7 @@ class Category extends XoopsTree
         } else {
             $groups = XOOPS_GROUP_ANONYMOUS;
         }
-        $gperm_handler =& xoops_gethandler('groupperm');
+        $gperm_handler =xoops_gethandler('groupperm');
                 
         while ($row = $this->db->fetchArray($result)) {
             $row['prefix'] = $r_prefix.'.';
@@ -540,12 +540,12 @@ function CategoryForm($op = "add", $eId = 0)
     
     
     
-    $uploadirectory='/modules/' . $xoopsModule->dirname().'/assets/images/topics';
+    $uploadirectory='/modules/' . $xoopsModule->dirname().'/assets/images/category';
     $imgtray = new XoopsFormElementTray(_AM_CATEGORYIMG, '<br />');
 
-    $imgpath=sprintf(_AM_IMGNAEXLOC, 'modules/' . $xoopsModule -> dirname() . '/assets/images/topics/');
+    $imgpath=sprintf(_AM_IMGNAEXLOC, 'modules/' . $xoopsModule -> dirname() . '/assets/images/category/');
     $imageselect= new XoopsFormSelect($imgpath, 'topic_imgurl', $topicimage);
-    $topics_array = XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH . '/modules/xquiz/assets/images/topics/');
+    $topics_array = XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH . '/modules/xquiz/assets/images/category/');
     foreach ($topics_array as $image) {
         $imageselect->addOption("$image", $image);
     }
@@ -553,7 +553,7 @@ function CategoryForm($op = "add", $eId = 0)
     $imgtray->addElement($imageselect, false);
     $imgtray -> addElement(new XoopsFormLabel('', "<br /><img src='" . XOOPS_URL . "/" . $uploadirectory . "/" . $topicimage . "' name='image3' id='image3' alt='' />"));
 
-    $uploadfolder=sprintf(_AM_UPLOAD_WARNING, XOOPS_URL . '/modules/' . $xoopsModule -> dirname().'/assets/images/topics');
+    $uploadfolder=sprintf(_AM_UPLOAD_WARNING, XOOPS_URL . '/modules/' . $xoopsModule -> dirname().'/assets/images/category');
     $fileseltray= new XoopsFormElementTray('', '<br />');
     $fileseltray->addElement(new XoopsFormFile(_AM_CATEGORY_PICTURE, 'attachedfile', $maxuploadsize), false);
     $fileseltray->addElement(new XoopsFormLabel($uploadfolder), false);
