@@ -3,7 +3,7 @@ var RADIO_NAME = 'corrects'; // this is being set via script
 var TABLE_NAME = 'tblQuiz'; // this should be named in the HTML
 var ROW_BASE = 1; // first number (for display)
 var hasLoaded = false;
-var DELETE_IMAGE = 'http://localhost/CMS/xps233/htdocs/modules/quiz/images/delete.png';
+var DELETE_IMAGE = 'http://localhost/CMS/xps233/htdocs/modules/xquiz/images/delete.png';
 
 window.onload=xquiz_fillInRows;
 

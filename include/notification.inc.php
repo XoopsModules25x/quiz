@@ -41,7 +41,7 @@ function quiz_notify_iteminfo($category, $item_id)
         if ($result) {
             $result_array = $xoopsDB->fetchArray($result);
             $item['name'] = $result_array['name'];
-            $item['url'] = XOOPS_URL . '/modules/quiz/index.php?act=v&q=' . intval($item_id);
+            $item['url'] = XOOPS_URL . '/modules/xquiz/index.php?act=v&q=' . intval($item_id);
             return $item;
         } else {
             return null;
@@ -54,7 +54,7 @@ function quiz_notify_iteminfo($category, $item_id)
         if ($result) {
             $result_array = $xoopsDB->fetchArray($result);
             $item['name'] = $result_array['cid'];
-            $item['url'] = XOOPS_URL . '/modules/quiz/index.php?cid=' . intval($item_id);
+            $item['url'] = XOOPS_URL . '/modules/xquiz/index.php?cid=' . intval($item_id);
             return $item;
         } else {
             return null;

@@ -21,7 +21,7 @@
  * ****************************************************************************
  */
 include 'admin_header.php';
-include_once XOOPS_ROOT_PATH . '/modules/quiz/class/class.sfiles.php';
+include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.sfiles.php';
 
 if (isset($_POST ['addQuizSubmit'])) {
     $action = 'addQuiz';
@@ -395,5 +395,5 @@ try {
     }
 } catch (Exception $e) {
     $arr = explode('||', $e->getMessage(), 2);
-    redirect_header(XOOPS_URL . '/modules/quiz/admin/index.php' . $arr [1], 3, $arr [0]);
+    redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php' . $arr [1], 3, $arr [0]);
 }

@@ -197,7 +197,7 @@ class questions
         $listQuestion = self::questions_list($start, $limit, $qid);
 
         quiz_collapsableBar('newsub', 'topnewsubicon');
-        $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+        $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 </a>&nbsp;" . _QUIZ_QUESTIONS . "</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
@@ -218,8 +218,8 @@ class questions
 
         $class = 'even';
 
-        $delImage  = "<img src= \"" . XOOPS_URL . "/modules/quiz/images/delete.gif \" title=" . _QUIZ_DEL . " alt='' >";
-        $editImage = "<img src= \"" . XOOPS_URL . "/modules/quiz/images/edit.gif \" title=" . _QUIZ_EDIT . " alt='' >";
+        $delImage  = "<img src= \"" . XOOPS_URL . "/modules/xquiz/images/delete.gif \" title=" . _QUIZ_DEL . " alt='' >";
+        $editImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/images/edit.gif \" title=" . _QUIZ_EDIT . " alt='' >";
         //$ts = & MyTextSanitizer::getInstance ();
         foreach ($listQuestion as $key) {
             $class = ('even' == $class) ? 'odd' : 'even';
@@ -236,10 +236,10 @@ class questions
 				" . self::$qTypes [$key ['type']] . "
 				</td>
 				<td>
-				<a href=\"" . XOOPS_URL . "/modules/quiz/admin/index.php?op=Qst&act=del&Id=" . $key ['id'] . "\">
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Qst&act=del&Id=" . $key ['id'] . "\">
 				" . $delImage . "
 				</a>
-				<a href=\"" . XOOPS_URL . "/modules/quiz/admin/index.php?op=Qst&act=edit&Id=" . $key ['id'] . "&qId=" . $key ['qid'] . "\">
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Qst&act=edit&Id=" . $key ['id'] . "&qId=" . $key ['qid'] . "\">
 				" . $editImage . "
 				</a>
 				</td>
@@ -260,7 +260,7 @@ class questions
      */
     public static function QuestAddForm($qId, $type = 'MC')
     {
-        $addQuest_form = new XoopsThemeForm(_AM_QUEST_FORM, "addquestfrom", XOOPS_URL . '/modules/quiz/admin/backend.php', 'post', true);
+        $addQuest_form = new XoopsThemeForm(_AM_QUEST_FORM, "addquestfrom", XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true);
 
         $question_qid_v      = $qId;
         $question_question_v = '';
@@ -300,8 +300,8 @@ class questions
                 $thead   = "<th>" . _QUEST_ANSWER . "</th>";
         }
         ob_start();
-        $addImage = "<img src= \"" . XOOPS_URL . "/modules/quiz/images/Add_Ans.png \" title=" . _QUIZ_ADD_ANSWER . ">";
-        echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/quiz/js/table.js'></script>
+        $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/images/Add_Ans.png \" title=" . _QUIZ_ADD_ANSWER . ">";
+        echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/xquiz/js/table.js'></script>
 			<table width='100%' cellspacing='1' cellpadding='3' border='0' id='tblQuiz' >
 				<thead>
 					<tr>
@@ -337,7 +337,7 @@ class questions
         $addQuest_form->addElement($submit_button, true);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
-        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 	</a>&nbsp;" . _AM_QUEST_NEW . "</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $addQuest_form->display();
@@ -351,7 +351,7 @@ class questions
      */
     public function QuestEditForm($questId)
     {
-        $editQuest_form = new XoopsThemeForm(_AM_QUEST_FORM, "editquestfrom", XOOPS_URL . '/modules/quiz/admin/backend.php', 'post', true);
+        $editQuest_form = new XoopsThemeForm(_AM_QUEST_FORM, "editquestfrom", XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true);
 
         $this->retriveQuestion($questId);
         ////////////////////temp
@@ -381,8 +381,8 @@ class questions
             $options_tray->addElement($contents_contents);
         }
         $strAdd   = "";
-        $addImage = "<img src= \"" . XOOPS_URL . "/modules/quiz/images/Add_Ans.png \" title=" . _QUIZ_ADD_ANSWER . ">";
-        $delImage = "<img src= \"" . XOOPS_URL . "/modules/quiz/images/delete.png \" onclick = 'xquiz_deleteCurrentRow(this)' title=" . _QUIZ_DELET_ANS . ">";
+        $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/images/Add_Ans.png \" title=" . _QUIZ_ADD_ANSWER . ">";
+        $delImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/images/delete.png \" onclick = 'xquiz_deleteCurrentRow(this)' title=" . _QUIZ_DELET_ANS . ">";
         switch ($this->type) {
             case 'CM':
                 $cor_val = 'checkbox';
@@ -454,7 +454,7 @@ class questions
                 }
         }
         ob_start();
-        echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/quiz/js/table.js'></script>
+        echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/xquiz/js/table.js'></script>
 			<table width='100%' cellspacing='1' cellpadding='3' border='0' id='tblQuiz' >
 				<thead>
 					<tr>
@@ -492,7 +492,7 @@ class questions
         $editQuest_form->addElement($submit_button, true);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
-        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 	</a>&nbsp;" . _AM_QUEST_NEW . "</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $editQuest_form->display();
@@ -687,7 +687,7 @@ class questions
      */
     public static function confirmForm($id)
     {
-        $delQuest_form = new XoopsThemeForm(_QUIZ_DELQUESTFORM, "delqstfrom", XOOPS_URL . '/modules/quiz/admin/backend.php', 'post', true);
+        $delQuest_form = new XoopsThemeForm(_QUIZ_DELQUESTFORM, "delqstfrom", XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true);
         $quest_id      = new XoopsFormHidden("questId", $id);
         $quest_confirm = new XoopsFormRadioYN(_QUIZ_DELETE_CAPTION, "delConfirm", 0);
         $submit_button = new XoopsFormButton("", "delQstSubmit", _QUIZ_SUBMIT, "submit");
@@ -699,7 +699,7 @@ class questions
         $delQuest_form->addElement($submit_button);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
-        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 	</a>&nbsp;" . _AM_QUIZ_DELETE . "</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $delQuest_form->display();

@@ -31,8 +31,8 @@
  $modversion['iconsmall'] = "images/icon_small.png";
  $modversion['iconbig'] = "images/icon_big.png";
  $modversion['image'] = "images/quiz.png";
- $modversion['dirname'] = "quiz";
- $modversion['modname'] = 'quiz';
+ $modversion['dirname'] = "xquiz";
+ $modversion['modname'] = 'xquiz';
  $modversion['status_version'] = "1.00";
  $modversion['status'] = "Final";
  // Admin

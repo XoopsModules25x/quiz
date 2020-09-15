@@ -25,10 +25,10 @@ $xoopsOption ['template_main'] = 'quiz_index.html';
 require(XOOPS_ROOT_PATH . '/header.php');
 include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 include_once XOOPS_ROOT_PATH . "/class/xoopsformloader.php";
-include_once XOOPS_ROOT_PATH . '/modules/quiz/include/functions.php';
-include_once XOOPS_ROOT_PATH . '/modules/quiz/class/quiz.php';
-include_once XOOPS_ROOT_PATH . '/modules/quiz/class/category.php';
-include_once XOOPS_ROOT_PATH . '/modules/quiz/class/questions.php';
+include_once XOOPS_ROOT_PATH . '/modules/xquiz/include/functions.php';
+include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
+include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
+include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/questions.php';
 
 try {
     $action = (isset($_GET ['act'])) ? $_GET ['act'] : '';
@@ -484,7 +484,7 @@ try {
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 } catch (Exception $e) {
-    redirect_header(XOOPS_URL . '/modules/quiz/index.php', 3, $e->getMessage());
+    redirect_header(XOOPS_URL . '/modules/xquiz/index.php', 3, $e->getMessage());
 }
 
 include XOOPS_ROOT_PATH . '/include/comment_view.php';

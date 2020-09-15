@@ -168,7 +168,7 @@ class Quiz
      */
     public function set_bdate($bdate)
     {
-        if (!ereg("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $bdate)) {
+        if (!preg_match("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $bdate)) {
             throw new Exception(_QUEST_VALID_BDATE);
         }
             
@@ -373,7 +373,7 @@ class Quiz
         $addQuiz_form = new XoopsThemeForm(
             _AM_QUIZ_NEW,
             "addquizfrom",
-                        XOOPS_URL.'/modules/quiz/admin/backend.php',
+                        XOOPS_URL.'/modules/xquiz/admin/backend.php',
             'post',
             true
         );
@@ -435,7 +435,7 @@ class Quiz
         
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
-                    XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                    XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 	</a>&nbsp;"._AM_QUIZ_NEW."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $addQuiz_form->display();
@@ -456,7 +456,7 @@ class Quiz
         $listQuiz = self::quiz_listQuizLoader($start, $limit, $categoryId);
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
-                 XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                 XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 </a>&nbsp;"._QUIZ_QUIZS."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
@@ -465,7 +465,7 @@ class Quiz
 							<form method='get' action='index.php'>
 							<input type='hidden' name='op' value='Quiz'>
 							<input type='hidden' name='act' value='add'>
-							<img src= \"".XOOPS_URL."/modules/quiz/images/new.png \" >
+							<img src= \"".XOOPS_URL."/modules/xquiz/images/new.png \" >
 							<input type='submit' value='"._AM_NEW_QUIZ."'>
 							</form>
 							</td>
@@ -506,24 +506,24 @@ class Quiz
 					</tr>";
                  
         $class = 'even';
-        $onImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/on.png \" >";
-        $offImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/off.png \" >";
-        $delImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
-        $editImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
-        $statImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/stat.gif \" title="._QUIZ_STAT." alt='' >";
-        $addImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/add.png \" title="._QUIZ_QUEST_ADD." alt='' >";
-        $exportImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/export.png \" title="._QUIZ_CSV_EXPORT." alt='' >";
+        $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/on.png \" >";
+        $offImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/off.png \" >";
+        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
+        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
+        $statImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/stat.gif \" title="._QUIZ_STAT." alt='' >";
+        $addImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/add.png \" title="._QUIZ_QUEST_ADD." alt='' >";
+        $exportImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/export.png \" title="._QUIZ_CSV_EXPORT." alt='' >";
         
         foreach ($listQuiz as $key) {
             $status = ($key['status']) ? $onImage:$offImage;
             $active = ($key['active']) ? $onImage:$offImage;
             //$statEdit = (!$key['active']) ? $statImage:$editImage;
             $questLink = ((!$key['status'])&&($key['active']))?
-                    "<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Quest&act=add&Id="
+                    "<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=add&Id="
                         .$key['id']."\">".$addImage." ".$key['question']."
 					</a>":$key['question'];
             $category = Category::retriveCategory($key['cid']);
-            $quizCategory = "<a href=\"".XOOPS_URL."/modules/quiz/index.php?cid="
+            $quizCategory = "<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid="
                         .$category['cid']."\">".$category['title']."</a>";
                                     
             $class = ('even' == $class) ? 'odd' : 'even';
@@ -531,7 +531,7 @@ class Quiz
             $temp = $temp."
 			<tr class='".$class."'>
 				<td>
-					<a href=\"".XOOPS_URL."/modules/quiz/index.php?act=v&q=".$key['id']."\">".$key['name']."</a>
+					<a href=\"".XOOPS_URL."/modules/xquiz/index.php?act=v&q=".$key['id']."\">".$key['name']."</a>
 				</td>
 				<td>
 					".$quizCategory."
@@ -555,22 +555,22 @@ class Quiz
                 .$key['weight']."
 				</td>
 				<td>
-				<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Quiz&act=del&Id=".$key['id']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quiz&act=del&Id=".$key['id']."\">
 				".
                 $delImage
                 ."
 				</a>
-				<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Quiz&act=edit&Id=".$key['id']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quiz&act=edit&Id=".$key['id']."\">
 				".
                 $editImage
                 ."
 				</a>
-				<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Stat&Id=".$key['id']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Stat&Id=".$key['id']."\">
 				".
                 $statImage
                 ."
 				</a>
-				<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Stat&Id=".$key['id']."&exp=on\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Stat&Id=".$key['id']."&exp=on\">
 				".
                 $exportImage
                 ."
@@ -590,7 +590,7 @@ class Quiz
         $delQuiz_form = new XoopsThemeForm(
         _QUIZ_DELQUIZFORM,
         "delquizfrom",
-                    XOOPS_URL.'/modules/quiz/admin/backend.php',
+                    XOOPS_URL.'/modules/xquiz/admin/backend.php',
         'post',
         true
     );
@@ -606,7 +606,7 @@ class Quiz
     
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
-                 XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                 XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 </a>&nbsp;".DELQUIZFORM."</h4><br/>
 					<div id='newquiz' style='text-align: center;'>";
         $delQuiz_form->display();

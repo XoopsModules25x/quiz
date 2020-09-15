@@ -230,7 +230,7 @@ class Question
         $listQuestion = self::question_listQuestionLoader($start, $limit, $qid);
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
-                 XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                 XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 </a>&nbsp;"._QUIZ_QUESTIONS."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
@@ -254,8 +254,8 @@ class Question
                  
         $class = 'even';
 
-        $delImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
-        $editImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
+        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
+        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
         $ts = MyTextSanitizer::getInstance();
         foreach ($listQuestion as $key) {
             $class = ('even' == $class) ? 'odd' : 'even';
@@ -275,12 +275,12 @@ class Question
 				".$key['answer']."
 				</td>
 				<td>
-				<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Quest&act=del&Id=".$key['id']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=del&Id=".$key['id']."\">
 				".
                 $delImage
                 ."
 				</a>
-				<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Quest&act=edit&Id=".$key['id']."&qId=".$key['qid']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=edit&Id=".$key['id']."&qId=".$key['qid']."\">
 				".
                 $editImage
                 ."
@@ -347,7 +347,7 @@ class Question
             _AM_QUEST_FORM,
     
             "addquestfrom",
-                        XOOPS_URL.'/modules/quiz/admin/backend.php',
+                        XOOPS_URL.'/modules/xquiz/admin/backend.php',
     
             'post',
     
@@ -438,7 +438,7 @@ class Question
         
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
-                    XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                    XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 	</a>&nbsp;"._AM_QUEST_NEW."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $addQuest_form->display();
@@ -531,7 +531,7 @@ class Question
         $delQuest_form = new XoopsThemeForm(
             _QUIZ_DELQUESTFORM,
             "delquestfrom",
-                        XOOPS_URL.'/modules/quiz/admin/backend.php',
+                        XOOPS_URL.'/modules/xquiz/admin/backend.php',
             'post',
             true
         );
@@ -547,7 +547,7 @@ class Question
         
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
-                    XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                    XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 	</a>&nbsp;"._AM_QUIZ_DELETE."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $delQuest_form->display();

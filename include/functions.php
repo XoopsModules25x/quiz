@@ -25,7 +25,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
 }
 @define('_GLOBAL_LEFT', 1 == @_ADM_USE_RTL ? 'right' : 'left') ;
 @define('_GLOBAL_RIGHT', 1 == @_ADM_USE_RTL ? 'left' : 'right') ;
-include_once XOOPS_ROOT_PATH.'/modules/quiz/class/question.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/question.php';
 
 function findUserScore($userId, $id)
 {
@@ -157,18 +157,18 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         
         $quiz = Quiz::retriveQuiz($quizId);
         $thisUser =& $member_handler->getUser($uid);
-        $userImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/user.png \" alt='' >";
-        $quizImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/quizz.png \" alt='' >";
+        $userImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/user.png \" alt='' >";
+        $quizImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/quizz.png \" alt='' >";
 
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
-                 XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                 XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 </a>&nbsp;"._USER_ANSWER_DETAIL."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
 							<td>
-							<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Stat&Id=".$quiz['id']."\">".$quizImage.$quiz['name']."</a>
+							<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Stat&Id=".$quiz['id']."\">".$quizImage.$quiz['name']."</a>
 							<a href='".XOOPS_URL."/userinfo.php?uid=".$uid."'>".$userImage.$thisUser->getVar('uname')."</a>
 							</td>
 						</tr>
@@ -194,9 +194,9 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 					</tr>";
                  
         $class = 'even';
-        $delImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
-        $validImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/valid.png \" alt='' >";
-        $invalidImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/invalid.png \" alt='' >";
+        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
+        $validImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/valid.png \" alt='' >";
+        $invalidImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/invalid.png \" alt='' >";
         $ts = MyTextSanitizer::getInstance();
         foreach ($list as $key) {
             $correct = ($key['answer'] == $key['userAns'])? $validImage:$invalidImage ;
@@ -274,7 +274,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         $msg .= "\n";
         $msg .= _QUIZ_EMAIL_MESSAGE . ":\n";
         $msg .= _QUIZ_FINAL_SCORE." = ".$score."\n";
-        $msg .=  _QUIZ_SCORE_PROFILE. ": ". XOOPS_URL . "/modules/quiz/index.php?act=p&q=".$qid."\n";
+        $msg .=  _QUIZ_SCORE_PROFILE. ": ". XOOPS_URL . "/modules/xquiz/index.php?act=p&q=".$qid."\n";
         $msg .= $xoopsConfig['sitename'] . ": ". XOOPS_URL . "\n";
         $system_mailer = (defined('ICMS_VERSION_NAME') && ICMS_VERSION_NAME)?getMailer():xoops_getMailer();
         $xoopsMailer =&$system_mailer;

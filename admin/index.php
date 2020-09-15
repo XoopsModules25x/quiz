@@ -177,7 +177,7 @@ try {
                         $exportQuiz [$q] ['date'] = formatTimestamp(strtotime($myrow ['date']), $dateformat);
                         $q ++;
                     }
-                    $fp = fopen('../../../uploads/quiz.csv', 'w+b') or redirect_header(XOOPS_URL . '/modules/quiz/admin/index.php?op=Stat', 3, '_QUIZ_OPEN_CSV_ERR');
+                    $fp = fopen('../../../uploads/quiz.csv', 'w+b') or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Stat', 3, '_QUIZ_OPEN_CSV_ERR');
                     $msg = _QUIZ_USER . ',' . _QUIZ_USER_NAME . ',' . _QUIZ_DATE . ',' . _QUIZ_SCORE . '
 ';
                     foreach ($exportQuiz as $key) {
@@ -188,7 +188,7 @@ try {
                     $msg = html_entity_decode($msg, ENT_NOQUOTES, 'utf-8');
                     $msg = chr(255) . chr(254) . iconv("UTF-8", "UTF-16LE", $msg);
                     #end region
-                    fwrite($fp, $msg) or redirect_header(XOOPS_URL . '/modules/quiz/admin/index.php?op=Stat', 3, '_QUIZ_OPEN_CSV_ERR');
+                    fwrite($fp, $msg) or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Stat', 3, '_QUIZ_OPEN_CSV_ERR');
                     ;
                     fclose($fp);
                     echo "
@@ -198,7 +198,7 @@ try {
 							<td width='40%'>
 							</td>
 							<td width='3%'>
-								<img src='" . XOOPS_URL . "/modules/quiz/images/xls.gif' />
+								<img src='" . XOOPS_URL . "/modules/xquiz/images/xls.gif' />
 							</td>
 							<td>
 								<a href='" . XOOPS_URL . "/uploads/quiz.csv'>
@@ -213,7 +213,7 @@ try {
                 }
                 ///////////////////////////////////////
                 quiz_collapsableBar('newsub', 'topnewsubicon');
-                $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 	</a>&nbsp;" . _QUIZ_STATISTICS . "</h4><br/>
 						<div id='newsub' style='text-align: center;'>
 						<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
@@ -236,7 +236,7 @@ try {
 						</tr>";
                 
                 $class = 'even';
-                $detImage = "<img src= \"" . XOOPS_URL . "/modules/quiz/images/detail.gif \" >";
+                $detImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/images/detail.gif \" >";
                 
                 foreach ($listQuiz as $key) {
                     $class = ('even' == $class) ? 'odd' : 'even';
@@ -256,7 +256,7 @@ try {
 							" . $key ['date'] . "
 							</td>
 							<td>
-							<a href=\"" . XOOPS_URL . "/modules/quiz/admin/index.php?op=Stat&Id=" . $key ['id'] . "&uid=" . $key ['userid'] . "\">" . $detImage . "</a>
+							<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Stat&Id=" . $key ['id'] . "&uid=" . $key ['userid'] . "\">" . $detImage . "</a>
 							</td>
 						</tr>";
                 }
@@ -380,8 +380,8 @@ try {
             $tpl->assign('quiz_version', sprintf(_QUIZ_VERSION, $xoopsModule->getInfo('version') . '(' . $xoopsModule->getInfo('status') . ')', $xoopsModule->getInfo('name')));
             $tpl->assign('xoops_version', sprintf(_XOOPS_VERSION, XOOPS_VERSION));
             $tpl->assign('php_version', sprintf(_PHP_VERSION, phpversion()));
-            $tpl->assign('mysql_version', sprintf(_MYSQL_VERSION, mysql_get_server_info()));
-            echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/quiz/admin/tpls/qz_index.html');
+            $tpl->assign('mysql_version', sprintf(_MYSQL_VERSION, mysqli_get_server_info()));
+            echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/xquiz/admin/tpls/qz_index.html');
             break;
     }
 } catch (Exception $e) {

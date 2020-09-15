@@ -25,12 +25,12 @@ $xoopsOption['template_main'] = 'quiz_index.html';
 include '../../../include/cp_header.php';
 include_once XOOPS_ROOT_PATH."/class/xoopsmodule.php";
 include_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
-include_once XOOPS_ROOT_PATH.'/modules/quiz/include/functions.php';
-include_once XOOPS_ROOT_PATH.'/modules/quiz/class/question.php';
-include_once XOOPS_ROOT_PATH.'/modules/quiz/class/questions.php';
-include_once XOOPS_ROOT_PATH.'/modules/quiz/class/quiz.php';
-include_once XOOPS_ROOT_PATH.'/modules/quiz/class/category.php';
-include_once XOOPS_ROOT_PATH.'/modules/quiz/class/menu.class.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/include/functions.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/question.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/questions.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/quiz.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/category.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/menu.class.php';
 include_once XOOPS_ROOT_PATH.'/class/xoopsform/grouppermform.php';
 include_once XOOPS_ROOT_PATH.'/class/uploader.php';
 include_once XOOPS_ROOT_PATH.'/class/pagenav.php';
@@ -38,17 +38,17 @@ include_once XOOPS_ROOT_PATH.'/class/pagenav.php';
 
 $module_id = $xoopsModule->getVar('mid');
 if (is_object($xoopsUser)) {
-    $xoopsModule = XoopsModule::getByDirname("quiz");
-    if (!$xoopsUser->isAdmin($xoopsModule->mid())) {
+    $xoopsModule = XoopsModule::getByDirname("xquiz");
+   if (!$xoopsUser->isAdmin($xoopsModule->mid())) {
         redirect_header(XOOPS_URL."/", 1, _NOPERM);
     }
 } else {
     redirect_header(XOOPS_URL."/", 1, _NOPERM);
 }
-    $module_handler =& xoops_gethandler('module');
-    $module =& $module_handler->getByDirname("quiz");
-    $config_handler =& xoops_gethandler('config');
-    $moduleConfig =& $config_handler->getConfigsByCat(0, $module->getVar('mid'));
+    $module_handler = xoops_gethandler('module');
+    $module =$module_handler->getByDirname("xquiz");
+    $config_handler = xoops_gethandler('config');
+    $moduleConfig =$config_handler->getConfigsByCat(0, $module->getVar('mid'));
 function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
 {
     /* Nice button styles */

@@ -20,8 +20,8 @@
  * Version : $Id:
  * ****************************************************************************
  */
-include_once XOOPS_ROOT_PATH.'/modules/quiz/class/quiz.php';
-include_once XOOPS_ROOT_PATH.'/modules/quiz/class/question.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/quiz.php';
+include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/question.php';
 function quiz_listQuizs($options)
 {
     $block= [];

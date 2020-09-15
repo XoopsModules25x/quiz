@@ -394,7 +394,7 @@ function showCategories($start, $limit)
     $nume = count($listCategory);
     quiz_collapsableBar('newsub', 'topnewsubicon');
     $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
-                 XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                 XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 </a>&nbsp;"._QUIZ_CATEGORIES."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
@@ -403,7 +403,7 @@ function showCategories($start, $limit)
 							<form method='get' action='index.php'>
 							<input type='hidden' name='op' value='Cate'>
 							<input type='hidden' name='act' value='add'>
-							<img src= \"".XOOPS_URL."/modules/quiz/images/new.png \" >
+							<img src= \"".XOOPS_URL."/modules/xquiz/images/new.png \" >
 							<input type='submit' value='"._AM_NEW_CATEGORY."'>
 							</form>
 							</td>
@@ -423,9 +423,9 @@ function showCategories($start, $limit)
 					</tr>";
                  
     $class = 'even';
-    $delImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
-    $editImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
-    $goImage = "<img src= \"".XOOPS_URL."/modules/quiz/images/cat.gif \" title="._QUIZ_EDIT." alt='' >";
+    $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/delete.gif \" title="._QUIZ_DEL." alt='' >";
+    $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/edit.gif \" title="._QUIZ_EDIT." alt='' >";
+    $goImage = "<img src= \"".XOOPS_URL."/modules/xquiz/images/cat.gif \" title="._QUIZ_EDIT." alt='' >";
         
     foreach ($listCategory as $key) {
         $class = ('even' == $class) ? 'odd' : 'even';
@@ -435,7 +435,7 @@ function showCategories($start, $limit)
 				"
                 .$goImage.
                 "
-					<a href=\"".XOOPS_URL."/modules/quiz/index.php?cid=".$key['cid']."\">".$key['title']."</a>
+					<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\">".$key['title']."</a>
 				</td>
 				<td>
 				"
@@ -443,12 +443,12 @@ function showCategories($start, $limit)
                 "
 				</td>
 				<td>
-				<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Cate&act=del&Id=".$key['cid']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Cate&act=del&Id=".$key['cid']."\">
 				".
                 $delImage
                 ."
 				</a>
-				<a href=\"".XOOPS_URL."/modules/quiz/admin/index.php?op=Cate&act=edit&Id=".$key['cid']."\">
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Cate&act=edit&Id=".$key['cid']."\">
 				".
                 $editImage
                 ."
@@ -473,7 +473,7 @@ function CategoryForm($op = "add", $eId = 0)
     $addCategory_form = new XoopsThemeForm(
         _AM_NEW_CATEGORY,
         "addcategoyfrom",
-                    XOOPS_URL.'/modules/quiz/admin/backend.php',
+                    XOOPS_URL.'/modules/xquiz/admin/backend.php',
         'post',
         true
     );
@@ -545,7 +545,7 @@ function CategoryForm($op = "add", $eId = 0)
 
     $imgpath=sprintf(_AM_IMGNAEXLOC, 'modules/' . $xoopsModule -> dirname() . '/images/topics/');
     $imageselect= new XoopsFormSelect($imgpath, 'topic_imgurl', $topicimage);
-    $topics_array = XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH . '/modules/quiz/images/topics/');
+    $topics_array = XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH . '/modules/xquiz/images/topics/');
     foreach ($topics_array as $image) {
         $imageselect->addOption("$image", $image);
     }
@@ -574,7 +574,7 @@ function CategoryForm($op = "add", $eId = 0)
 
     quiz_collapsableBar('newquiz', 'topnewquiz');
     echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
-            XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+            XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 		 	</a>&nbsp;"._AM_CATEGORY_NEW."</h4><br/>
 				<div id='newquiz' style='text-align: center;'>";
     $addCategory_form->display();
@@ -586,7 +586,7 @@ function CategoryForm($op = "add", $eId = 0)
         $delCategory_form = new XoopsThemeForm(
             _QUIZ_DELCATEGORY_FORM,
             "delcategoryfrom",
-                        XOOPS_URL.'/modules/quiz/admin/backend.php',
+                        XOOPS_URL.'/modules/xquiz/admin/backend.php',
             'post',
             true
         );
@@ -602,7 +602,7 @@ function CategoryForm($op = "add", $eId = 0)
         
         quiz_collapsableBar('newquiz', 'topnewquiz');
         echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" .
-                    XOOPS_URL . "/modules/quiz/images/close12.gif' alt='' />
+                    XOOPS_URL . "/modules/xquiz/images/close12.gif' alt='' />
 				 	</a>&nbsp;"._AM_QUIZ_DELETE."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $delCategory_form->display();
