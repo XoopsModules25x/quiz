@@ -1,22 +1,19 @@
-CREATE TABLE `xquiz_item` (
-	`item_id` int(10) NOT NULL auto_increment,
-	`item_title` varchar(255) NOT NULL,
-	`item_caption` text,
-	`item_category` int(11) NOT NULL,
-	`item_link` varchar(255) NOT NULL,
-	`item_linktarget`  TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
-	`item_status` tinyint(1) NOT NULL,
-	`item_create` int (10) NOT NULL,
-	`item_uid` int(11) NOT NULL,
-	`item_order` int(11) NOT NULL,
-	`item_img` varchar(255) NOT NULL,
-	`item_type` varchar (60) NOT NULL,
-	`item_startdate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`item_enddate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `item_languagecode` varchar (60) NOT NULL,
-	PRIMARY KEY (`item_id`),
-	KEY `select` (`item_category`, `item_status`, `item_type`),
-	KEY `order` (`item_order`)
+CREATE TABLE `xquiz_quiz` (
+	`quiz_id` int(10) NOT NULL auto_increment,
+	`quiz_title` varchar(255) NOT NULL,
+	`quiz_description` text,
+	`quiz_category` int(11) NOT NULL,
+	`quiz_status` tinyint(1) NOT NULL,
+	`quiz_create` int (10) NOT NULL,
+	`quiz_uid` int(11) NOT NULL,
+	`quiz_order` int(11) NOT NULL,
+	`quiz_img` varchar(255) NOT NULL,
+	`quiz_type` varchar (60) NOT NULL,
+	`quiz_startdate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`quiz_enddate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`quiz_id`),
+	KEY `select` (`quiz_category`, `quiz_status`, `quiz_type`),
+	KEY `order` (`quiz_order`)
 ) ENGINE=MyISAM;
 
 CREATE TABLE `xquiz_category` (

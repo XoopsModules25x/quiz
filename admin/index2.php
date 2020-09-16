@@ -360,12 +360,12 @@ try {
         default:
             QuizzadminMenu(0, _XQUIZ_INDEX);
             $menu = new QuizMenu();
-            $menu->addItem('Categories', 'index.php?op=Category', '../assets/images/menus/categories.png', _XQUIZ_CATEGORIES);
-            $menu->addItem('Quizzes', 'index.php?op=Quiz', '../assets/images/menus/quizzes.png', _XQUIZ_QUIZS);
-            $menu->addItem('Questions', 'index.php?op=Question', '../assets/images/menus/questions.png', _XQUIZ_QUESTIONS);
-            $menu->addItem('Statistics', 'index.php?op=Statistics', '../assets/images/menus/statistic.png', _XQUIZ_STATISTICS);
-			$menu->addItem('Permissions', 'index.php?op=Permission', '../assets/images/menus/permmision.png', _XQUIZ_PERMISSIONS);
-            $menu->addItem('Preference', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid') . '&amp;&confcat_id=1', '../assets/images/menus/config.png', _XQUIZ_PREFERENCE);
+            $menu->addQuiz('Categories', 'index.php?op=Category', '../assets/images/menus/categories.png', _XQUIZ_CATEGORIES);
+            $menu->addQuiz('Quizzes', 'index.php?op=Quiz', '../assets/images/menus/quizzes.png', _XQUIZ_QUIZS);
+            $menu->addQuiz('Questions', 'index.php?op=Question', '../assets/images/menus/questions.png', _XQUIZ_QUESTIONS);
+            $menu->addQuiz('Statistics', 'index.php?op=Statistics', '../assets/images/menus/statistic.png', _XQUIZ_STATISTICS);
+			$menu->addQuiz('Permissions', 'index.php?op=Permission', '../assets/images/menus/permmision.png', _XQUIZ_PERMISSIONS);
+            $menu->addQuiz('Preference', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid') . '&amp;&confcat_id=1', '../assets/images/menus/config.png', _XQUIZ_PREFERENCE);
             
             if (! class_exists('XoopsTpl')) {
                 include_once XOOPS_ROOT_PATH . '/class/template.php';

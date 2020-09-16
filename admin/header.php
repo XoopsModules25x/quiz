@@ -35,5 +35,5 @@ if (file_exists($GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/m
 
 xoops_load('xoopsformloader');
 
-$item_handler = xoops_getModuleHandler('item', 'xquiz');
+$quiz_handler = xoops_getModuleHandler('quiz', 'xquiz');
 $category_handler = xoops_getModuleHandler('category', 'xquiz');

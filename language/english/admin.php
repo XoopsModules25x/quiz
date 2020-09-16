@@ -20,7 +20,7 @@
 //index
 define('_AM_XQUIZ_INDEX_INFO', 'Index');
 define('_AM_XQUIZ_INDEX_CATEGORIES', 'There are %s categories in our database');
-define('_AM_XQUIZ_INDEX_ITEMS', 'There are %s items in our database');
+define('_AM_XQUIZ_INDEX_QUIZS', 'There are %s quizs in our database');
 
 // Add icons
 define('_AM_XQUIZ_ADD_XQUIZ', 'Add Quiz List');
@@ -32,25 +32,25 @@ define('_AM_XQUIZ_CATEGORY_TITLE', 'Title');
 define('_AM_XQUIZ_CATEGORY_ACTION', 'Action');
 define('_AM_XQUIZ_CATEGORY_FORM', 'Add new Quiz Category');
 define('_AM_XQUIZ_CATEGORY_XQUIZ', 'Quiz');
-define('_AM_XQUIZ_CATEGORY_EMPTY', 'Error: There are no category created yet. Before you can create a new quiz list, you must create a category first.');
+define('_AM_XQUIZ_CATEGORY_EMPTY', 'Error: There are no quiz category created yet. Before you can create a new quiz list, you must create a quiz category first.');
 define('_AM_XQUIZ_CATEGORY_DELETECONFIRM', "Are you sure you want to delete <span class='bold red'>%s</span></b> category and <b>ALL</b> of its Quiz Lists? This action is not reversible !!");
 
-// Item page
-define('_AM_XQUIZ_ITEM_ID', 'Id');
-define('_AM_XQUIZ_ITEM_ORDER', 'Order');
-define('_AM_XQUIZ_ITEM_TITLE', 'Title');
-define('_AM_XQUIZ_ITEM_IMG', 'Quiz List');
-define('_AM_XQUIZ_ITEM_CATEGORY', 'Quiz Category');
-define('_AM_XQUIZ_ITEM_ACTION', 'Action');
-define('_AM_XQUIZ_ITEM_FORM', 'Add new item');
-define('_AM_XQUIZ_ITEM_CAPTION', 'Caption');
-define('_AM_XQUIZ_ITEM_LINK', 'Link');
-define('_AM_XQUIZ_ITEM_ACTIVE', 'Active');
-define('_AM_XQUIZ_ITEM_STATUS', 'Status');
-define('_AM_XQUIZ_ITEM_FORMUPLOAD', 'Select your image');
-define('_AM_XQUIZ_ITEM_LANGUAGECODE', 'Language Code');
-define('_AM_XQUIZ_ITEM_STARTDATE', 'Start Date');
-define('_AM_XQUIZ_ITEM_ENDDATE', 'End Date');
+// Quiz page
+define('_AM_XQUIZ_QUIZ_ID', 'Id');
+define('_AM_XQUIZ_QUIZ_ORDER', 'Order');
+define('_AM_XQUIZ_QUIZ_TITLE', 'Quiz Title');
+define('_AM_XQUIZ_QUIZ_IMG', 'Image');
+define('_AM_XQUIZ_QUIZ_CATEGORY', 'Quiz Category');
+define('_AM_XQUIZ_QUIZ_ACTION', 'Action');
+define('_AM_XQUIZ_QUIZ_FORM', 'Add new quiz');
+define('_AM_XQUIZ_QUIZ_DESCRIPTION', 'Description');
+define('_AM_XQUIZ_QUIZ_TOTALQUESTION', 'Total Question');
+define('_AM_XQUIZ_QUIZ_ACTIVE', 'Active');
+define('_AM_XQUIZ_QUIZ_STATUS', 'Status');
+define('_AM_XQUIZ_QUIZ_FORMUPLOAD', 'Select your image');
+define('_AM_XQUIZ_QUIZ_LANGUAGECODE', 'Language Code');
+define('_AM_XQUIZ_QUIZ_STARTDATE', 'Start Date');
+define('_AM_XQUIZ_QUIZ_ENDDATE', 'End Date');
 define('_AM_XQUIZ_TARGET', 'Open Link in');
 define('_AM_XQUIZ_TARGET_0', 'Same Window');
 define('_AM_XQUIZ_TARGET_1', 'New Window');
@@ -61,7 +61,7 @@ define('_AM_XQUIZ_INACTIVE', 'Inactive');
 
 // Msg
 define('_AM_XQUIZ_MSG_EDIT_ERROR', 'Error in edit');
-define('_AM_XQUIZ_MSG_DELETE', 'Are you sure you want delete this item/category');
+define('_AM_XQUIZ_MSG_DELETE', 'Are you sure you want delete this quiz/category');
 define('_AM_XQUIZ_MSG_NOTINFO', 'Not select');
 define('_AM_XQUIZ_MSG_ERROR', 'Error');
 define('_AM_XQUIZ_MSG_WAIT', 'Please wait');

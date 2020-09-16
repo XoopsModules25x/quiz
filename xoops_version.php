@@ -31,7 +31,7 @@ $modversion = [
     'name' => _MI_XQUIZ_TITLE,
     'description' => _MI_XQUIZ_DESC,
     'version' => 2.0,
-    'author' => 'Mojtaba Jamali, Mamba, Lio MJ',
+    'author' => 'Mojtaba Jamali, Michael Beck, Lio MJ',
     'credits' => 'XOOPS, Mojtaba Jamali (jamali.mojtaba@gmail.com)',
     'license' => 'GNU GPL 2.0',
     'license_url' => 'www.gnu.org/licenses/gpl-2.0.html/',
@@ -58,7 +58,7 @@ $modversion = [
     'sqlfile' => ['mysql' => 'sql/mysql.sql'],
     // ------------------- Tables ----------------------------
     'tables' => [
-        $moduleDirName . '_' . 'item',
+        $moduleDirName . '_' . 'quiz',
         $moduleDirName . '_' . 'category',
     ],
 ];
@@ -72,7 +72,7 @@ $modversion['hasMain'] = 1;
 
 //Comments
 $modversion['hasComments'] = 1;
-$modversion['comments']['itemName'] = 'q';
+$modversion['comments']['quizName'] = 'q';
 $modversion['comments']['pageName'] = 'index.php';
 
 //Search
@@ -86,7 +86,7 @@ $modversion['templates'] = [
     ['file' => 'admin/xquiz_header.tpl', 'description' => ''],
     ['file' => 'admin/xquiz_footer.tpl', 'description' => ''],
     ['file' => 'admin/xquiz_quiz.tpl', 'description' => ''],
-    ['file' => 'blocks/xquiz_item.tpl', 'description' => ''],
+    ['file' => 'blocks/xquiz_quiz.tpl', 'description' => ''],
     ['file' => 'blocks/xquiz_nivoslider.tpl', 'description' => ''],
     ['file' => 'blocks/xquiz_slickslider.tpl', 'description' => ''],
 ];
@@ -117,7 +117,7 @@ $modversion['blocks'][2]['options'] = '5';
 // Notification
 $modversion['hasNotification'] = 1;
 $modversion['notification']['lookup_file'] = 'include/notification.inc.php';
-$modversion['notification']['lookup_func'] = 'quiz_notify_iteminfo';
+$modversion['notification']['lookup_func'] = 'quiz_notify_quizinfo';
 
 $modversion['notification']['category'][1]['name'] = 'global';
 $modversion['notification']['category'][1]['title'] = _MI_XQUIZ_GLOBAL_NOTIFY;
@@ -128,14 +128,14 @@ $modversion['notification']['category'][2]['name'] = 'quiz';
 $modversion['notification']['category'][2]['title'] = _MI_XQUIZ_STORY_NOTIFY;
 $modversion['notification']['category'][2]['description'] = _MI_XQUIZ_STORY_NOTIFYDSC;
 $modversion['notification']['category'][2]['subscribe_from'] = 'index.php';
-$modversion['notification']['category'][2]['item_name'] = 'q';
+$modversion['notification']['category'][2]['quiz_name'] = 'q';
 $modversion['notification']['category'][2]['allow_bookmark'] = 1;
 
 $modversion['notification']['category'][3]['name'] = 'category';
 $modversion['notification']['category'][3]['title'] = _MI_XQUIZ_CATEGORY_NOTIFY;
 $modversion['notification']['category'][3]['description'] = _MI_XQUIZ_CATEGORY_NOTIFYDSC;
 $modversion['notification']['category'][3]['subscribe_from'] = 'index.php';
-$modversion['notification']['category'][3]['item_name'] = 'cid';
+$modversion['notification']['category'][3]['quiz_name'] = 'cid';
 $modversion['notification']['category'][3]['allow_bookmark'] = 1;
 
 $modversion['notification']['event'][1]['name'] = 'new_category';
@@ -230,112 +230,3 @@ $modversion['config'][] = [
     'default' => '1200',
 ];
 
-/* Select the number of news items to display on top page
- */
- //number of quiz per page in admin page
- $i=1;
-$modversion['config'][$i]['name'] = 'quizList';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_LIST_NUM';
-$modversion['config'][$i]['description'] = '';
-$modversion['config'][$i]['formtype'] = 'select';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
-//number of question per page in admin page
-$i++;
-$modversion['config'][$i]['name'] = 'questionList';
-$modversion['config'][$i]['title'] = '_AM_QUEST_LIST_NUM';
-$modversion['config'][$i]['description'] = '';
-$modversion['config'][$i]['formtype'] = 'select';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
-//number of question per page in user page
-$i++;
-$modversion['config'][$i]['name'] = 'userList';
-$modversion['config'][$i]['title'] = '_AM_QUEST_USER_LIST_NUM';
-$modversion['config'][$i]['description'] = '';
-$modversion['config'][$i]['formtype'] = 'select';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
-//number of quiz per page in user page
-$i++;
-$modversion['config'][$i]['name'] = 'quizUserList';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_USER_LIST_NUM';
-$modversion['config'][$i]['description'] = '';
-$modversion['config'][$i]['formtype'] = 'select';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
-
- //number of category per page in admin page
- $i++;
-$modversion['config'][$i]['name'] = 'categoryList';
-$modversion['config'][$i]['title'] = '_AM_CATEGORY_LIST_NUM';
-$modversion['config'][$i]['description'] = '';
-$modversion['config'][$i]['formtype'] = 'select';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 5;
-$modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30];
- //MAX Filesize Upload in kilo bytes
- $i++;
-$modversion['config'][$i]['name'] = 'maxuploadsize';
-$modversion['config'][$i]['title'] = '_MI_UPLOADFILESIZE';
-$modversion['config'][$i]['description'] = '_MI_UPLOADFILESIZE_DESC';
-$modversion['config'][$i]['formtype'] = 'textbox';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 1048576;
-//Format of the date to use in the module, if you don't specify anything then the default date's format will be used
-$i++;
-$modversion['config'][$i]['name'] = 'dateformat';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_DATEFORMAT';
-$modversion['config'][$i]['description'] = '_AM_XQUIZ_DATEFORMAT_DESC';
-$modversion['config'][$i]['formtype'] = 'textbox';
-$modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = "j F Y g:i a";
-
-//user can see quiz score after quiz
-$i++;
-$modversion['config'][$i]['name'] = 'seeScore';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_SEE_SCORE';
-$modversion['config'][$i]['description'] = '_AM_XQUIZ_SEE_SCORE_DESC';
-$modversion['config'][$i]['formtype'] = 'yesno';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 1;
-//just user can see quiz statistics
-$i++;
-$modversion['config'][$i]['name'] = 'seeStat';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_SEE_STAT';
-$modversion['config'][$i]['description'] = '';
-$modversion['config'][$i]['formtype'] = 'yesno';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 1;
-//mail user score after quiz take part
-$i++;
-$modversion['config'][$i]['name'] = 'mailScore';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_MAIL_SCORE';
-$modversion['config'][$i]['description'] = '_AM_XQUIZ_MAIL_SCORE_DESC';
-$modversion['config'][$i]['formtype'] = 'yesno';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 1;
-//user can see score in profile befor quiz end date
-$i++;
-$modversion['config'][$i]['name'] = 'seeScoreProfile';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_PROFILE_SCORE';
-$modversion['config'][$i]['description'] = '_AM_XQUIZ_PROFILE_SCORE_DESC';
-$modversion['config'][$i]['formtype'] = 'yesno';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 1;
-//user can select wysiwyg editor
-$i++;
-$modversion['config'][$i]['name'] = 'use_wysiwyg';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_EDITORS';
-$modversion['config'][$i]['description'] = '';
-$modversion['config'][$i]['formtype'] = 'select';
-$modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = 'dhtmltextarea';
-$modversion['config'][$i]['options'] = [
-    'Plain Editor'  => 'textarea', 'XoopsEditor' => 'dhtmltextarea'
-    , 'Tiny Editor' => 'tinymce', 'FCK Editor' => 'fckeditor', 'Koivi Editor' => 'koivi'
-];

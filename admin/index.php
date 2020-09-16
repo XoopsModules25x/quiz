@@ -28,7 +28,7 @@ $folder = [
 $index_admin = new ModuleAdmin();
 $index_admin->addInfoBox(_AM_XQUIZ_INDEX_INFO);
 $index_admin->addInfoBoxLine(_AM_XQUIZ_INDEX_INFO, _AM_XQUIZ_INDEX_CATEGORIES, $category_handler->categoryCount());
-$index_admin->addInfoBoxLine(_AM_XQUIZ_INDEX_INFO, _AM_XQUIZ_INDEX_ITEMS, $item_handler->itemCount());
+$index_admin->addInfoBoxLine(_AM_XQUIZ_INDEX_INFO, _AM_XQUIZ_INDEX_QUIZS, $quiz_handler->quizCount());
 foreach (array_keys($folder) as $i) {
     $index_admin->addConfigBoxLine($folder[$i], 'folder');
 

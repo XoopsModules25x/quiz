@@ -55,11 +55,11 @@ class QuizMenu
     public $FontExtraSize = 9;
     public $FontExtraWeight = 'normal';
     public $TextAlign = 'center';
-    private $_items = [];
+    private $_quizs = [];
     
-    public function addItem($id, $link='', $icon='', $name='', $extra='', $alt='')
+    public function addQuiz($id, $link='', $icon='', $name='', $extra='', $alt='')
     {
-        if (isset($this->_items[$id])) {
+        if (isset($this->_quizs[$id])) {
             return false;
         }
         $rtn['link'] = $link;
@@ -67,14 +67,14 @@ class QuizMenu
         $rtn['name'] = $name;
         $rtn['extra'] = $extra;
         $rtn['alt'] = $alt;
-        $this->_items[$id] = $rtn;
+        $this->_quizs[$id] = $rtn;
         return true;
     }
     
     public function setLink($id, $link)
     {
-        if (isset($this->_items[$id])) {
-            $this->_items[$id]['link'] = $link;
+        if (isset($this->_quizs[$id])) {
+            $this->_quizs[$id]['link'] = $link;
             return true;
         } else {
             return false;
@@ -83,8 +83,8 @@ class QuizMenu
     
     public function setIcon($id, $icon)
     {
-        if (isset($this->_items[$id])) {
-            $this->_items[$id]['icon'] = $icon;
+        if (isset($this->_quizs[$id])) {
+            $this->_quizs[$id]['icon'] = $icon;
             return true;
         } else {
             return false;
@@ -93,8 +93,8 @@ class QuizMenu
     
     public function setName($id, $name)
     {
-        if (isset($this->_items[$id])) {
-            $this->_items[$id]['name'] = $name;
+        if (isset($this->_quizs[$id])) {
+            $this->_quizs[$id]['name'] = $name;
             return true;
         } else {
             return false;
@@ -103,8 +103,8 @@ class QuizMenu
     
     public function setExtra($id, $extra)
     {
-        if (isset($this->_items[$id])) {
-            $this->_items[$id]['extra'] = $extra;
+        if (isset($this->_quizs[$id])) {
+            $this->_quizs[$id]['extra'] = $extra;
             return true;
         } else {
             return false;
@@ -113,8 +113,8 @@ class QuizMenu
     
     public function setAlt($id, $alt)
     {
-        if (isset($this->_items[$id])) {
-            $this->_items[$id]['alt'] = $alt;
+        if (isset($this->_quizs[$id])) {
+            $this->_quizs[$id]['alt'] = $alt;
             return true;
         } else {
             return false;
@@ -211,7 +211,7 @@ class QuizMenu
     public function render()
     {
         $ret = "<div class='rmmenuicon'>";
-        foreach ($this->_items as $k => $v) {
+        foreach ($this->_quizs as $k => $v) {
             $ret .= "<a href='$v[link]' title='".('' != $v['alt'] ? $v['alt'] : $v['name']) . "'>" . ('' != $v['icon'] ? "<img src='$v[icon]' alt='$v[name]' /> " : '');
             if ('' != $v['name']) {
                 $ret .= "<span>$v[name]</span>";

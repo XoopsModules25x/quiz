@@ -20,11 +20,11 @@
 $(document).ready(
         function() {
            // Controls Drag + Drop for categories       
-           $('#xo-item-sort tbody.xo-item').sortable({
+           $('#xo-quiz-sort tbody.xo-quiz').sortable({
                 placeholder: 'ui-state-highlight',
                 update: function(event, ui) {
                     var list = $(this).sortable('serialize');
-                    $.post('item.php?op=order', list);
+                    $.post('quiz.php?op=order', list);
                 }
             }
                     );

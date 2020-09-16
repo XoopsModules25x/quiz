@@ -1,4 +1,4 @@
-function item_setStatus(data, img, file) {
+function quiz_setStatus(data, img, file) {
     // Post request
     $.post(file, data,
             function(reponse, textStatus) {
@@ -13,7 +13,7 @@ function item_setStatus(data, img, file) {
             });
 }
 
-function item_setDefault(data, img, file) {
+function quiz_setDefault(data, img, file) {
     // Post request
     $.post(file, data,
             function(reponse, textStatus) {

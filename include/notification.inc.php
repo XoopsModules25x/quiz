@@ -24,38 +24,38 @@ if (!defined('XOOPS_ROOT_PATH')) {
     die("XOOPS root path not defined");
 }
 
-function quiz_notify_iteminfo($category, $item_id)
+function quiz_notify_quizinfo($category, $quiz_id)
 {
     if ('global' == $category) {
-        $item['name'] = '';
-        $item['url'] = '';
-        return $item;
+        $quiz['name'] = '';
+        $quiz['url'] = '';
+        return $quiz;
     }
 
     global $xoopsDB;
 
     if ('quiz' == $category) {
         // Assume we have a valid quiz id
-        $sql = 'SELECT name FROM '.$xoopsDB->prefix('xquiz_quizzes') . ' WHERE id = ' . intval($item_id);
+        $sql = 'SELECT name FROM '.$xoopsDB->prefix('xquiz_quizzes') . ' WHERE id = ' . intval($quiz_id);
         $result = $xoopsDB->query($sql);
         if ($result) {
             $result_array = $xoopsDB->fetchArray($result);
-            $item['name'] = $result_array['name'];
-            $item['url'] = XOOPS_URL . '/modules/xquiz/index.php?act=v&q=' . intval($item_id);
-            return $item;
+            $quiz['name'] = $result_array['name'];
+            $quiz['url'] = XOOPS_URL . '/modules/xquiz/index.php?act=v&q=' . intval($quiz_id);
+            return $quiz;
         } else {
             return null;
         }
     }
 
     if ('category' == $category) {
-        $sql = 'SELECT name FROM ' . $xoopsDB->prefix('xquiz_quizzes') . ' WHERE cid = '.intval($item_id);
+        $sql = 'SELECT name FROM ' . $xoopsDB->prefix('xquiz_quizzes') . ' WHERE cid = '.intval($quiz_id);
         $result = $xoopsDB->query($sql);
         if ($result) {
             $result_array = $xoopsDB->fetchArray($result);
-            $item['name'] = $result_array['cid'];
-            $item['url'] = XOOPS_URL . '/modules/xquiz/index.php?cid=' . intval($item_id);
-            return $item;
+            $quiz['name'] = $result_array['cid'];
+            $quiz['url'] = XOOPS_URL . '/modules/xquiz/index.php?cid=' . intval($quiz_id);
+            return $quiz;
         } else {
             return null;
         }

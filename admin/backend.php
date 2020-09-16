@@ -84,21 +84,20 @@ switch ($op) {
         xoops_cp_footer();
         exit();
         break;
-    case 'additem':
-        $obj = $item_handler->create();
+    case 'addquiz':
+        $obj = $quiz_handler->create();
         $obj->setVars($_POST);
-        $obj->setVar('item_create', time());
-        //$obj->setVar('item_order', $item_handler->setitemorder());
-        $obj->setVar('item_img', $item_handler->uploadimg($_POST['item_img']));
-        $obj->setVar('item_startdate', date('Y-m-d H:i:s', strtotime($_POST['item_startdate']['date']) + $_POST['item_startdate']['time']));
-        $obj->setVar('item_enddate', date('Y-m-d H:i:s', strtotime($_POST['item_enddate']['date']) + $_POST['item_enddate']['time']));
+        $obj->setVar('quiz_create', time());
+		$obj->setVar('quiz_img', $quiz_handler->uploadimg($_POST['quiz_img']));
+        $obj->setVar('quiz_startdate', date('Y-m-d H:i:s', strtotime($_POST['quiz_startdate']['date']) + $_POST['quiz_startdate']['time']));
+        $obj->setVar('quiz_enddate', date('Y-m-d H:i:s', strtotime($_POST['quiz_enddate']['date']) + $_POST['quiz_enddate']['time']));
 
-        if (!$item_handler->insert($obj)) {
-            redirect_header('onclick="javascript:history.go(-1);"', 1, _AM_XQUIZ_MSG_ERROR);
+        if (!$quiz_handler->insert($obj)) {
+		//redirect_header('onclick="javascript:history.go(-1);"', 1, _AM_XQUIZ_MSG_ERROR);
 
             xoops_cp_footer();
 
-            exit();
+            //exit();
         }
 
         // Redirect page
@@ -106,20 +105,20 @@ switch ($op) {
         xoops_cp_footer();
         exit();
         break;
-    case 'edititem':
-        $item_id = xquiz_CleanVars($_REQUEST, 'item_id', 0, 'int');
-        if ($item_id > 0) {
-            $obj = $item_handler->get($item_id);
+    case 'editquiz':
+        $quiz_id = xquiz_CleanVars($_REQUEST, 'quiz_id', 0, 'int');
+        if ($quiz_id > 0) {
+            $obj = $quiz_handler->get($quiz_id);
 
             $obj->setVars($_REQUEST);
 
-            //$obj->setVar('item_order', $item_handler->setitemorder());
+            //$obj->setVar('quiz_order', $quiz_handler->setquizorder());
 
-            $obj->setVar('item_startdate', date('Y-m-d H:i:s', strtotime($_POST['item_startdate']['date']) + $_POST['item_startdate']['time']));
+            $obj->setVar('quiz_startdate', date('Y-m-d H:i:s', strtotime($_POST['quiz_startdate']['date']) + $_POST['quiz_startdate']['time']));
 
-            $obj->setVar('item_enddate', date('Y-m-d H:i:s', strtotime($_POST['item_enddate']['date']) + $_POST['item_enddate']['time']));
+            $obj->setVar('quiz_enddate', date('Y-m-d H:i:s', strtotime($_POST['quiz_enddate']['date']) + $_POST['quiz_enddate']['time']));
 
-            if (!$item_handler->insert($obj)) {
+            if (!$quiz_handler->insert($obj)) {
                 //redirect_header ( 'onclick="javascript:history.go(-1);"', 1, _AM_XQUIZ_MSG_ERROR );
 
                 xoops_cp_footer();
@@ -132,11 +131,11 @@ switch ($op) {
         xoops_cp_footer();
         exit();
         break;
-    case 'deleteitem':
-        $item_id = xquiz_CleanVars($_REQUEST, 'item_id', 0, 'int');
-        $obj = $item_handler->get($item_id);
-        unlink(XOOPS_URL . '/uploads/xquiz/image/' . $obj->getVar('item_img'));
-        if (!$item_handler->delete($obj)) {
+    case 'deletequiz':
+        $quiz_id = xquiz_CleanVars($_REQUEST, 'quiz_id', 0, 'int');
+        $obj = $quiz_handler->get($quiz_id);
+        unlink(XOOPS_URL . '/uploads/xquiz/image/' . $obj->getVar('quiz_img'));
+        if (!$quiz_handler->delete($obj)) {
             echo $obj->getHtmlErrors();
         }
         // Redirect page
@@ -144,16 +143,16 @@ switch ($op) {
         xoops_cp_footer();
         exit();
         break;
-    case 'item_status':
-        $item_id = xquiz_CleanVars($_REQUEST, 'item_id', 0, 'int');
-        if ($item_id > 0) {
-            $obj = $item_handler->get($item_id);
+    case 'quiz_status':
+        $quiz_id = xquiz_CleanVars($_REQUEST, 'quiz_id', 0, 'int');
+        if ($quiz_id > 0) {
+            $obj = $quiz_handler->get($quiz_id);
 
-            $old = $obj->getVar('item_status');
+            $old = $obj->getVar('quiz_status');
 
-            $obj->setVar('item_status', !$old);
+            $obj->setVar('quiz_status', !$old);
 
-            if ($item_handler->insert($obj)) {
+            if ($quiz_handler->insert($obj)) {
                 exit();
             }
 

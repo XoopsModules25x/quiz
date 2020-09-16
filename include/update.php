@@ -20,7 +20,7 @@ function xoops_module_update_xquiz()
 {
     $db = Database::getInstance();
 
-    $sql = 'ALTER TABLE `' . $db->prefix('xquiz_item') . '` ADD `item_img` varchar(255) NOT NULL;';
+    $sql = 'ALTER TABLE `' . $db->prefix('xquiz_quiz') . '` ADD `quiz_img` varchar(255) NOT NULL;';
 
     $db->query($sql);
 

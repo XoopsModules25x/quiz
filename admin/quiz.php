@@ -22,7 +22,7 @@ xoops_cp_header();
 $op = xquiz_CleanVars($_REQUEST, 'op', '', 'string');
 
 switch ($op) {
-    case 'new_item':
+    case 'new_quiz':
         if (!$totalCategories = $category_handler->categoryCount()) {
             xoops_error(_AM_XQUIZ_CATEGORY_EMPTY);
 
@@ -30,25 +30,25 @@ switch ($op) {
 
             exit();
         }
-            $obj = $item_handler->create();
+            $obj = $quiz_handler->create();
             $obj->getQuizForm();
         break;
-    case 'edit_item':
-        $item_id = xquiz_CleanVars($_REQUEST, 'item_id', 0, 'int');
-        if ($item_id > 0) {
-            $obj = $item_handler->get($item_id);
+    case 'edit_quiz':
+        $quiz_id = xquiz_CleanVars($_REQUEST, 'quiz_id', 0, 'int');
+        if ($quiz_id > 0) {
+            $obj = $quiz_handler->get($quiz_id);
 
             $obj->getQuizForm();
         } else {
-            redirect_header('item.php', 1, _AM_XQUIZ_MSG_EDIT_ERROR);
+            redirect_header('quiz.php', 1, _AM_XQUIZ_MSG_EDIT_ERROR);
         }
         break;
-    case 'delete_item':
-        $item_id = xquiz_CleanVars($_REQUEST, 'item_id', 0, 'int');
-        if ($item_id > 0) {
+    case 'delete_quiz':
+        $quiz_id = xquiz_CleanVars($_REQUEST, 'quiz_id', 0, 'int');
+        if ($quiz_id > 0) {
             // Prompt message
 
-            xoops_confirm(['item_id' => $item_id], 'backend.php?op=deleteitem', _AM_XQUIZ_MSG_DELETE);
+            xoops_confirm(['quiz_id' => $quiz_id], 'backend.php?op=deletequiz', _AM_XQUIZ_MSG_DELETE);
 
             xoops_cp_footer();
         }
@@ -59,11 +59,11 @@ switch ($op) {
 
             foreach ($_POST['mod'] as $order) {
                 if ($order > 0) {
-                    $contentorder = $item_handler->get($order);
+                    $contentorder = $quiz_handler->get($order);
 
-                    $contentorder->setVar('item_order', $i);
+                    $contentorder->setVar('quiz_order', $i);
 
-                    if (!$item_handler->insert($contentorder)) {
+                    if (!$quiz_handler->insert($contentorder)) {
                         $error = true;
                     }
 
@@ -92,10 +92,10 @@ switch ($op) {
         $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/admin.css');
 
         $info = [];
-        $info['item_sort'] = 'item_order';
-        $info['item_order'] = 'DESC';
+        $info['quiz_sort'] = 'quiz_order';
+        $info['quiz_order'] = 'DESC';
 
-        // get item from category
+        // get quiz from category
         if (isset($_REQUEST['category'])) {
             $info['category'] = $_REQUEST['category'];
         } else {
@@ -104,33 +104,33 @@ switch ($op) {
 
         // get limited information
         if (isset($_REQUEST['limit'])) {
-            $info['item_limit'] = xquiz_CleanVars($_REQUEST, 'limit', 0, 'int');
+            $info['quiz_limit'] = xquiz_CleanVars($_REQUEST, 'limit', 0, 'int');
         } else {
-            $info['item_limit'] = 40;
+            $info['quiz_limit'] = 40;
         }
 
         // get start information
         if (isset($_REQUEST['start'])) {
-            $info['item_start'] = xquiz_CleanVars($_REQUEST, 'start', 0, 'int');
+            $info['quiz_start'] = xquiz_CleanVars($_REQUEST, 'start', 0, 'int');
         } else {
-            $info['item_start'] = 0;
+            $info['quiz_start'] = 0;
         }
 
         $info['type'] = 'xquiz';
         $info['allcategories'] = $category_handler->getall();
-        $items = $item_handler->itemSAdminList($info);
-        $item_numrows = $item_handler->itemCount($info);
+        $quizs = $quiz_handler->quizSAdminList($info);
+        $quiz_numrows = $quiz_handler->quizCount($info);
 
-        if ($item_numrows > $info['item_limit']) {
-            $item_pagenav = new XoopsPageNav($item_numrows, $info['item_limit'], $info['item_start'], 'start', 'limit=' . $info['item_limit']);
+        if ($quiz_numrows > $info['quiz_limit']) {
+            $quiz_pagenav = new XoopsPageNav($quiz_numrows, $info['quiz_limit'], $info['quiz_start'], 'start', 'limit=' . $info['quiz_limit']);
 
-            $item_pagenav = $item_pagenav->renderNav(4);
+            $quiz_pagenav = $quiz_pagenav->renderNav(4);
         } else {
-            $item_pagenav = '';
+            $quiz_pagenav = '';
         }
 
-        $xoopsTpl->assign('items', $items);
-        $xoopsTpl->assign('item_pagenav', $item_pagenav);
+        $xoopsTpl->assign('quizs', $quizs);
+        $xoopsTpl->assign('quiz_pagenav', $quiz_pagenav);
 
         // Call template file
         $xoopsTpl->display(XOOPS_ROOT_PATH . '/modules/xquiz/templates/admin/xquiz_quiz.tpl');

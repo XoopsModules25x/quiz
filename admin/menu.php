@@ -32,5 +32,5 @@ $i++;
 $adminmenu[$i] = [
     'title' => _AM_XQUIZ_XQUIZ,
     'link' => 'admin/quiz.php',
-    'icon' => 'assets/images/item.png',
+    'icon' => 'assets/images/quiz.png',
 ];

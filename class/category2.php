@@ -88,9 +88,9 @@ class Category extends XoopsTree
     
 
     /** Makes a nicely ordered selection box
-    * @param string $title Field containing the items to display in the list
+    * @param string $title Field containing the quizs to display in the list
     * @param string $order Sort order of the options
-    * @param integer $preset_id is used to specify a preselected item
+    * @param integer $preset_id is used to specify a preselected quiz
     * @param integer $none set to 1 to add an option with value 0
     * @param string $sel_name Name of the select element
     * @param string $onchange	Action to take when the selection is changed
@@ -329,7 +329,7 @@ class Category extends XoopsTree
         $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_categories")." WHERE  
 					  cid = '$id' ";
         $res = $xoopsDB->query($query);
-        xoops_groupperm_deletebymoditem($module_id, $perm_name, $id);
+        xoops_groupperm_deletebymodquiz($module_id, $perm_name, $id);
         if (!$res) {
             throw new Exception(_QUEST_DATABASE);
         }
@@ -337,7 +337,7 @@ class Category extends XoopsTree
         $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE  
 					  cid = '$id' ";
         $res = $xoopsDB->query($query);
-        xoops_groupperm_deletebymoditem($module_id, $perm_name, $id);
+        xoops_groupperm_deletebymodquiz($module_id, $perm_name, $id);
         if (!$res) {
             throw new Exception(_QUEST_DATABASE);
         }
@@ -348,7 +348,7 @@ class Category extends XoopsTree
             $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_categories")." WHERE  
 						cid = '$cid' ";
             $res = $xoopsDB->query($query);
-            xoops_groupperm_deletebymoditem($module_id, $perm_name, $cid);
+            xoops_groupperm_deletebymodquiz($module_id, $perm_name, $cid);
         }
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -366,7 +366,7 @@ class Category extends XoopsTree
         $form = new XoopsGroupPermForm($title_of_form, $module_id, $perm_name, $perm_desc);
 
         foreach ($listCategory as $key) {
-            $form->addItem($key['cid'], $key['title'], $key['pid']);
+            $form->addQuiz($key['cid'], $key['title'], $key['pid']);
         }
         echo $form->render();
     }
