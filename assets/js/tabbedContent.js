@@ -2,7 +2,7 @@
 
 var TabbedContent = {
 	init: function() {	
-		$(".tab_quiz").mouseover(function() {
+		$(".tab_item").mouseover(function() {
 		
 			var background = $(this).parent().find(".moving_bg");
 			

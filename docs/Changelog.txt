@@ -1,7 +1,5 @@
 == Version 2.0 Pre Alpha  ==
 
-Update Admin Templates (liomj) 
-Update Front End Templates to Bootstrap 4 (liomj)
 Rename database tables (liomj)
 Move Images folder to assets (liomj)
 Change Html to tpl template (liomj)

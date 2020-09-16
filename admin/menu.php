@@ -1,5 +1,6 @@
 <?php
 /**
+ * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
  * Copyright (c) Mojtaba Jamali of persian xoops project (http://www.irxoops.org/)
  *
@@ -10,27 +11,32 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       XOOPS Project (https://xoops.org)
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @copyright   	XOOPS Project (https://xoops.org)
+ * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
  * @package         xquiz
  * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version         $Id: $
+ * @version      	$Id$
+ *
+ * Version : $Id:
+ * ****************************************************************************
  */
-$i = 1;
-$adminmenu[$i] = [
-    'title' => _AM_XQUIZ_HOME,
-    'link' => 'admin/index.php',
-    'icon' => 'assets/images/home.png',
-];
-$i++;
-$adminmenu[$i] = [
-    'title' => _AM_XQUIZ_CATEGORY,
-    'link' => 'admin/category.php',
-    'icon' => 'assets/images/category.png',
-];
-$i++;
-$adminmenu[$i] = [
-    'title' => _AM_XQUIZ_XQUIZ,
-    'link' => 'admin/quiz.php',
-    'icon' => 'assets/images/quiz.png',
-];
+$adminmenu[0]['title'] = _AM_XQUIZ_INDEX;
+$adminmenu[0]['link'] = 'admin/index.php';
+
+$adminmenu[1]['title'] = _AM_XQUIZ_CATEGORY;
+$adminmenu[1]['link'] = 'admin/index.php?op=Category';
+
+$adminmenu[2]['title'] = _AM_XQUIZ_PERMISSIONS;
+$adminmenu[2]['link'] = 'admin/index.php?op=Permission';
+
+$adminmenu[3]['title'] = _AM_XQUIZ_QUIZS;
+$adminmenu[3]['link'] = 'admin/index.php?op=Quiz';
+
+//$adminmenu[4]['title'] = _AM_XQUIZ_QUESTIONS;
+//$adminmenu[4]['link'] = 'admin/index.php?op=Quest';
+
+$adminmenu[4]['title'] = _AM_XQUIZ_QUESTIONS;
+$adminmenu[4]['link'] = 'admin/index.php?op=Question';
+
+$adminmenu[5]['title'] = _AM_XQUIZ_STATISTICS;
+$adminmenu[5]['link'] = 'admin/index.php?op=Statistics';

@@ -1,24 +1,49 @@
-CREATE TABLE `xquiz_quiz` (
-	`quiz_id` int(10) NOT NULL auto_increment,
-	`quiz_title` varchar(255) NOT NULL,
-	`quiz_description` text,
-	`quiz_category` int(11) NOT NULL,
-	`quiz_status` tinyint(1) NOT NULL,
-	`quiz_create` int (10) NOT NULL,
-	`quiz_uid` int(11) NOT NULL,
-	`quiz_order` int(11) NOT NULL,
-	`quiz_img` varchar(255) NOT NULL,
-	`quiz_type` varchar (60) NOT NULL,
-	`quiz_startdate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`quiz_enddate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (`quiz_id`),
-	KEY `select` (`quiz_category`, `quiz_status`, `quiz_type`),
-	KEY `order` (`quiz_order`)
-) ENGINE=MyISAM;
+CREATE TABLE xquiz_quizzes (
+  id int(10) unsigned NOT NULL auto_increment,
+  name varchar(45) character set utf8 collate utf8_bin NOT NULL,
+  cid int(10) unsigned NOT NULL,
+  description text character set utf8 collate utf8_bin,
+  bdate datetime NOT NULL,
+  edate datetime NOT NULL,
+  weight int(11) default '0',
+  PRIMARY KEY  (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE `xquiz_category` (
-	`category_id` int (11) unsigned NOT NULL  auto_increment,
-	`category_title` varchar (255)   NOT NULL ,
-	`category_created` int (10)   NOT NULL default '0',
-	PRIMARY KEY (`category_id`)
-) ENGINE=MyISAM;
+CREATE TABLE xquiz_score (
+  id int(10) unsigned NOT NULL,
+  userid int(11) unsigned NOT NULL,
+  score int(11) NOT NULL,
+  date datetime NOT NULL,
+  PRIMARY KEY  (id,userid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE xquiz_categories (
+  cid int(11) unsigned NOT NULL auto_increment,
+  pid int(11) unsigned NOT NULL default '0',
+  title varchar(100) NOT NULL default '',
+  imgurl varchar(255) NOT NULL default '',
+  description text NOT NULL,
+  weight int(11) NOT NULL default '0',
+  PRIMARY KEY  (cid),
+  KEY pid (pid)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+CREATE TABLE xquiz_questions (
+  question_id int(10) unsigned NOT NULL auto_increment,
+  quiz_id int(10) unsigned NOT NULL,
+  score int(10) default '1',
+  qnumber int(5) unsigned default '1',
+  question_type varchar(2) default NULL,
+  question text,
+  PRIMARY KEY  (question_id),
+  KEY quiz_id (quiz_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE xquiz_answers (
+  answer_id int(10) NOT NULL auto_increment,
+  question_id int(10) NOT NULL,
+  is_correct tinyint(1) default '0',
+  answer varchar(255) default NULL,
+  PRIMARY KEY  (answer_id),
+  KEY question_id (question_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

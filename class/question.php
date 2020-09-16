@@ -422,7 +422,7 @@ class Question
         $question_answer = new XoopsFormRadio(_QUEST_ANSWER, "questionAnswer", $question_answer_v, " | ");
         $temp = [1 =>_QUEST_ANS1, 2 =>_QUEST_ANS2, 3 =>_QUEST_ANS3, 4 =>_QUEST_ANS4];
         $question_answer->addOptionArray($temp);//$temp = array(value=>'name');
-        $question_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
+        //$question_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
         
         $addQuest_form->addElement($quiz_name, true);
         $addQuest_form->addElement($question_score, true);
@@ -432,7 +432,7 @@ class Question
         $addQuest_form->addElement($question_ans3, true);
         $addQuest_form->addElement($question_ans4, true);
         $addQuest_form->addElement($question_answer, true);
-        $addQuest_form->addElement($question_token, true);
+        //$addQuest_form->addElement($question_token, true);
         $addQuest_form->addElement($submit_button, true);
         
         
@@ -538,10 +538,10 @@ class Question
         $quest_id = new XoopsFormHidden("questId", $id);
         $quest_confirm = new XoopsFormRadioYN(_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
         $submit_button = new XoopsFormButton("", "delQuestSubmit", _XQUIZ_SUBMIT, "submit");
-        $quest_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
+        //$quest_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
         
         $delQuest_form->addElement($quest_id);
-        $delQuest_form->addElement($quest_token, true);
+       //$delQuest_form->addElement($quest_token, true);
         $delQuest_form->addElement($quest_confirm, true);
         $delQuest_form->addElement($submit_button);
         

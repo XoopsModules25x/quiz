@@ -154,11 +154,11 @@ try {
                     $listQuest_form->addElement($question_answers [$q], true);
                     $q ++;
                 }
-                $quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
+                //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
                 $submit_button = new XoopsFormButton("", "submit", _QUEST_SUBMIT, "submit");
                 $listQuest_form->addElement($submit_button, true);
                 $listQuest_form->addElement($quizId, true);
-                $listQuest_form->addElement($quiz_token, true);
+                //$listQuest_form->addElement($quiz_token, true);
                 $listQuest_form->assign($xoopsTpl);
 
                 /////////////////////////////////////////////////////////////////////////////////////////
