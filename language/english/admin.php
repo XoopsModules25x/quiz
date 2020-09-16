@@ -8,6 +8,7 @@ define('_XQUIZ_QUESTIONS', 'Questions');
 define('_XQUIZ_STATISTICS', 'Statistics');
 define('_AM_XQUIZ_PREFERENCE', 'Preferences');
 define('_AM_XQUIZ_UPDATE', 'Update');
+define('_AM_XQUIZ_UNINSTALL', 'Uninstall');
 define('_AM_XQUIZ_GOTOMODULE', 'Go To Module');
 define('_AM_XQUIZ_HOME', 'Home');
 define('_AM_XQUIZ_MODADMIN', 'Moderate');

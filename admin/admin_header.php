@@ -64,7 +64,7 @@ function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
 			&nbsp;&nbsp;<a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod="
             .$xoopsModule ->getVar('mid')."&amp;&confcat_id=1\"><span>"._AM_XQUIZ_PREFERENCE."</span></a> | 
 			<a href=\"../../system/admin.php?fct=modulesadmin&op=update&module=xquiz
-			&amp;&confcat_id=1\"><span>"._AM_XQUIZ_UPDATE."</span></a> | <a href='../../xquiz/'>"._AM_XQUIZ_GOTOMODULE."</a> </td><td style='text-align: right;'><strong>"._AM_XQUIZ_MODULENAME."</strong> : "._AM_XQUIZ_HOME."</td>";
+			&amp;&confcat_id=1\"><span>"._AM_XQUIZ_UPDATE."</span></a> | <a href=\"../../system/admin.php?fct=modulesadmin&op=uninstall&module=xquiz\">"._AM_XQUIZ_UNINSTALL."</a> | <a href='../../xquiz/'>"._AM_XQUIZ_GOTOMODULE."</a> </td><td style='text-align: right;'><strong>"._AM_XQUIZ_MODULENAME."</strong> : "._AM_XQUIZ_HOME."</td>";
     echo "</tr></table>";
     echo "</div>";
 
