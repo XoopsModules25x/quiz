@@ -24,7 +24,7 @@
 		<div class="col">
 			<div class="card" style="width:100%">
 					<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$category.cid}>">
-						<img class="card-img-top" src="<{$xoops_url}>/modules/xquiz/assets/images/category/<{$category.imgurl}>" style="width:100%;">
+						<img class="card-img-top" src="<{$xoops_url}>/uploads/xquiz/category/<{$category.imgurl}>" style="width:100%;">
 					</a>
 			<div class="card-body">
 					<h4 class="card-title"><a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$category.cid}>"><{$category.title}></a></h4>

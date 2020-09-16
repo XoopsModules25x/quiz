@@ -33,7 +33,7 @@
 			<tr class="<{cycle values="even,odd"}>">
 				<td>
 					<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$category.cid}>">
-						<img src="<{$xoops_url}>/modules/xquiz/assets/images/category/<{$category.imgurl}>">
+						<img src="<{$xoops_url}>/uploads/xquiz/category/<{$category.imgurl}>">
 					</a>
 				</td>
 				<td>

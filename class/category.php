@@ -539,12 +539,12 @@ function CategoryForm($op = "add", $eId = 0)
     
     
     
-    $uploadirectory='/modules/' . $xoopsModule->dirname().'/assets/images/category';
+    $uploadirectory='/uploads/' . $xoopsModule->dirname().'/category';
     $imgtray = new XoopsFormElementTray(_AM_CATEGORYIMG, '<br />');
 
-    $imgpath=sprintf(_AM_IMGNAEXLOC, 'modules/' . $xoopsModule -> dirname() . '/assets/images/category/');
+    $imgpath=sprintf(_AM_IMGNAEXLOC, 'uploads/' . $xoopsModule -> dirname() . '/category/');
     $imageselect= new XoopsFormSelect($imgpath, 'topic_imgurl', $topicimage);
-    $topics_array = XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH . '/modules/xquiz/assets/images/category/');
+    $topics_array = XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH . '/uploads/xquiz/category/');
     foreach ($topics_array as $image) {
         $imageselect->addOption("$image", $image);
     }
@@ -552,7 +552,7 @@ function CategoryForm($op = "add", $eId = 0)
     $imgtray->addElement($imageselect, false);
     $imgtray -> addElement(new XoopsFormLabel('', "<br /><img src='" . XOOPS_URL . "/" . $uploadirectory . "/" . $topicimage . "' name='image3' id='image3' alt='' />"));
 
-    $uploadfolder=sprintf(_AM_UPLOAD_WARNING, XOOPS_URL . '/modules/' . $xoopsModule -> dirname().'/assets/images/category');
+    $uploadfolder=sprintf(_AM_UPLOAD_WARNING, XOOPS_URL . '/uploads/' . $xoopsModule -> dirname().'/category');
     $fileseltray= new XoopsFormElementTray('', '<br />');
     $fileseltray->addElement(new XoopsFormFile(_AM_CATEGORY_PICTURE, 'attachedfile', $maxuploadsize), false);
     $fileseltray->addElement(new XoopsFormLabel($uploadfolder), false);

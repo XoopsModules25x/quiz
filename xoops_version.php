@@ -20,10 +20,16 @@
  * Version : $Id:
  * ****************************************************************************
  */
+ $moduleDirName = basename(__DIR__);
+ $moduleDirNameUpper = mb_strtoupper($moduleDirName);
+ 
  $modversion['name'] = "xQuiz";
- $modversion['version'] = "2.0 Pre-alpha";
+ $modversion['version'] = "2.0 Pre-alpha"; 
+ $modversion['status_version'] = "2.00";
+ $modversion['status'] = "Pre-alpha";
+ $modversion['module_status'] = "Pre-alpha";
  $modversion['description'] = "A quiz module to generate multi-option quizzes";
- $modversion['author'] = "Mojtaba Jamali, Mamba, LioMJ";
+ $modversion['author'] = "Mojtaba Jamali, Michael Beck, Lio MJ";
  $modversion['credits'] = "XOOPS, Mojtaba Jamali (jamali.mojtaba@gmail.com)";
  $modversion['help'] = "help.php";
  $modversion['license'] = "GNU General Public License (GPL) see LICENSE";
@@ -31,10 +37,10 @@
  $modversion['iconsmall'] = "assets/images/icon_small.png";
  $modversion['iconbig'] = "assets/images/icon_big.png";
  $modversion['image'] = "assets/images/xquiz_logo.png";
- $modversion['dirname'] = "xquiz";
- $modversion['modname'] = 'xquiz';
- $modversion['status_version'] = "2.00";
- $modversion['status'] = "Pre-alpha";
+ $modversion['dirname'] = $moduleDirName;
+ $modversion['modname'] = $moduleDirName;
+ // Modules scripts
+ $modversion['onInstall'] = "include/oninstall.php";
  // Admin
  $modversion['hasAdmin'] = 1;
  $modversion['adminindex'] = "admin/index.php";
@@ -53,6 +59,8 @@ $modversion['tables'][1] = "xquiz_categories";
 $modversion['tables'][2] = "xquiz_score";
 $modversion['tables'][3] = "xquiz_questions";
 $modversion['tables'][4] = "xquiz_answers";
+$modversion['tables'][5] = "question";
+$modversion['tables'][6] = "question_user";
 
 // Templates
 $modversion['templates'][1]['file'] = 'xquiz_index.tpl';
