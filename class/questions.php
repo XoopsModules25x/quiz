@@ -301,7 +301,7 @@ class questions
         }
         ob_start();
         $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/Add_Ans.png \" title=" . _XQUIZ_ADD_ANSWER . ">";
-        echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/xquiz/js/table.js'></script>
+        echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/xquiz/assets/js/table.js'></script>
 			<table width='100%' cellspacing='1' cellpadding='3' border='0' id='tblQuiz' >
 				<thead>
 					<tr>
@@ -454,7 +454,7 @@ class questions
                 }
         }
         ob_start();
-        echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/xquiz/js/table.js'></script>
+        echo "<script type='text/javascript' src='" . XOOPS_URL . "/modules/xquiz/assets/js/table.js'></script>
 			<table width='100%' cellspacing='1' cellpadding='3' border='0' id='tblQuiz' >
 				<thead>
 					<tr>

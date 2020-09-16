@@ -73,8 +73,8 @@ function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
     echo "<li id='".$tblCol[0]."'><a href=\"index.php\"><span>"._XQUIZ_INDEX."</span></a></li>";
     echo "<li id='".$tblCol[5]."'><a href=\"index.php?op=Category\"><span>"._XQUIZ_CATEGORIES."</span></a></li>";
     echo "<li id='".$tblCol[1]."'><a href=\"index.php?op=Quiz\"><span>"._XQUIZ_QUIZS."</span></a></li>";
-    //echo "<li id='".$tblCol[2]."'><a href=\"index.php?op=Quest\"><span>"._XQUIZ_QUESTIONS."</span></a></li>";
-    echo "<li id='".$tblCol[6]."'><a href=\"index.php?op=Question\"><span>"._XQUIZ_QUESTIONS."</span></a></li>";
+    echo "<li id='".$tblCol[2]."'><a href=\"index.php?op=Quest\"><span>"._XQUIZ_QUESTIONS." 1</span></a></li>";
+    echo "<li id='".$tblCol[6]."'><a href=\"index.php?op=Question\"><span>"._XQUIZ_QUESTIONS." 2</span></a></li>";
     echo "<li id='".$tblCol[3]."'><a href=\"index.php?op=Statistics\"><span>"._XQUIZ_STATISTICS."</span></a></li>";  
 	echo "<li id='".$tblCol[4]."'><a href=\"index.php?op=Permission\"><span>"._XQUIZ_PERMISSIONS."</span></a></li>";
     echo "<li id='".$tblCol[7]."'><a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod="

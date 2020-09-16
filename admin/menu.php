@@ -32,11 +32,11 @@ $adminmenu[2]['link'] = 'admin/index.php?op=Permission';
 $adminmenu[3]['title'] = _AM_XQUIZ_QUIZS;
 $adminmenu[3]['link'] = 'admin/index.php?op=Quiz';
 
-//$adminmenu[4]['title'] = _AM_XQUIZ_QUESTIONS;
-//$adminmenu[4]['link'] = 'admin/index.php?op=Quest';
+$adminmenu[4]['title'] = _AM_XQUIZ_QUESTIONS . " 1";
+$adminmenu[4]['link'] = 'admin/index.php?op=Quest';
 
-$adminmenu[4]['title'] = _AM_XQUIZ_QUESTIONS;
-$adminmenu[4]['link'] = 'admin/index.php?op=Question';
+$adminmenu[5]['title'] = _AM_XQUIZ_QUESTIONS . " 2";
+$adminmenu[5]['link'] = 'admin/index.php?op=Question';
 
-$adminmenu[5]['title'] = _AM_XQUIZ_STATISTICS;
-$adminmenu[5]['link'] = 'admin/index.php?op=Statistics';
+$adminmenu[6]['title'] = _AM_XQUIZ_STATISTICS;
+$adminmenu[6]['link'] = 'admin/index.php?op=Statistics';
