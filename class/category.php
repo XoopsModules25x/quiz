@@ -542,7 +542,7 @@ function CategoryForm($op = "add", $eId = 0)
     $uploadirectory='/uploads/' . $xoopsModule->dirname().'/category';
     $imgtray = new XoopsFormElementTray(_AM_CATEGORYIMG, '<br />');
 
-    $imgpath=sprintf(_AM_IMGNAEXLOC, 'uploads/' . $xoopsModule -> dirname() . '/category/');
+    $imgpath=sprintf(_AM_XQUIZ_UPLOADEDIMG, 'uploads/' . $xoopsModule -> dirname() . '/category/');
     $imageselect= new XoopsFormSelect($imgpath, 'topic_imgurl', $topicimage);
     $topics_array = XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH . '/uploads/xquiz/category/');
     foreach ($topics_array as $image) {
