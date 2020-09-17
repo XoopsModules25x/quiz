@@ -430,11 +430,11 @@ function showCategories($start, $limit)
         $class = ('even' == $class) ? 'odd' : 'even';
         $temp = $temp."
 			<tr class='".$class."'>
-				<td>
+				<td>&nbsp;
 				"
                 .$goImage.
                 "
-					<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\">".$key['title']."</a>
+					<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\"><img src=\"".XOOPS_URL."/uploads/xquiz/category/".$key['imgurl']."\" width='60px' height='60px' align='left' style='padding:5px'></a>&nbsp;<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\">".$key['title']."</a><br>&nbsp;<small>".$key['description']."</small>
 				</td>
 				<td>
 				"
@@ -539,7 +539,7 @@ function CategoryForm($op = "add", $eId = 0)
     
     
     
-    $uploadirectory='/uploads/' . $xoopsModule->dirname().'/category';
+    $uploadirectory='uploads/' . $xoopsModule->dirname().'/category';
     $imgtray = new XoopsFormElementTray(_AM_CATEGORYIMG, '<br />');
 
     $imgpath=sprintf(_AM_XQUIZ_UPLOADEDIMG, 'uploads/' . $xoopsModule -> dirname() . '/category/');
