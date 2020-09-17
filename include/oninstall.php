@@ -25,16 +25,22 @@ function xoops_module_install_xquiz()
 
         chmod($dir, 0777);
     }
-
+    $currentemptyfile = XOOPS_ROOT_PATH . '/uploads/index.html';
+    $destinationemptyfile = XOOPS_ROOT_PATH . '/uploads/xquiz/index.html';
+    copy($currentemptyfile, $destinationemptyfile);
+	
+	
     $dir = XOOPS_ROOT_PATH . '/uploads/xquiz/image';
-
-
 
     if (!is_dir($dir)) {
         mkdir($dir, 0777);
 
         chmod($dir, 0777);
     }
+	
+	$currentemptyfile = XOOPS_ROOT_PATH . '/uploads/index.html';
+    $destinationemptyfile = XOOPS_ROOT_PATH . '/uploads/xquiz/image/index.html';
+    copy($currentemptyfile, $destinationemptyfile);
 	
 	$dir = XOOPS_ROOT_PATH . '/uploads/xquiz/category';
 
@@ -44,4 +50,12 @@ function xoops_module_install_xquiz()
 
         chmod($dir, 0777);
     }
+	
+	$currentemptyfile = XOOPS_ROOT_PATH . '/uploads/index.html';
+    $destinationemptyfile = XOOPS_ROOT_PATH . '/uploads/xquiz/category/index.html';
+    copy($currentemptyfile, $destinationemptyfile);
+	$currentblankimage = XOOPS_ROOT_PATH . '/modules/xquiz/assets/images/blank.png';
+    $destinationblankimage = XOOPS_ROOT_PATH . '/uploads/xquiz/category/blank.png';
+	copy($currentblankimage, $destinationblankimage);
+	
 }
