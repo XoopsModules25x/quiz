@@ -41,11 +41,11 @@ $adminmenu[5]['link'] = 'admin/index.php?op=Question';
 $adminmenu[6]['title'] = _AM_XQUIZ_STATISTICS;
 $adminmenu[6]['link'] = 'admin/index.php?op=Statistics';
 
-    $adminmenu[0]['icon'] = 'images/menus/tstate.png';
-    $adminmenu[1]['icon'] = 'images/menus/tcategories.png';
-    $adminmenu[2]['icon'] = 'images/menus/tpermmision.png';
-    $adminmenu[3]['icon'] = 'images/menus/tquizzes.png';
-    $adminmenu[4]['icon'] = 'images/menus/tquestions.png';
-    $adminmenu[5]['icon'] = 'images/menus/tquestions.png';
-	$adminmenu[6]['icon'] = 'images/menus/tstatistic.png';
+    $adminmenu[0]['icon'] = 'assets/images/menus/tstate.png';
+    $adminmenu[1]['icon'] = 'assets/images/menus/tcategories.png';
+    $adminmenu[2]['icon'] = 'assets/images/menus/tpermmision.png';
+    $adminmenu[3]['icon'] = 'assets/images/menus/tquizzes.png';
+    $adminmenu[4]['icon'] = 'assets/assets/images/menus/tquestions.png';
+    $adminmenu[5]['icon'] = 'assets/images/menus/tquestions.png';
+	$adminmenu[6]['icon'] = 'assets/images/menus/tstatistic.png';
 
