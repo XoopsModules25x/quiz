@@ -206,13 +206,13 @@ class questions
 							" . _QUEST_NUM . "
 						</th>
 						<th>
-							" . _QUEST_SCORE . "
+							" . _MD_XQUIZ_QUEST_SCORE . "
 						</th>
 						<th>
 							" . _XQUIZ_ANSWER_TYPE . "
 						</th>
 						<th>
-							" . _XQUIZ_ACTION . "
+							" . _AM_XQUIZ_ACTION . "
 						</th>
 					</tr>";
 
@@ -270,10 +270,10 @@ class questions
         $quest_list_array_v = Quiz::quiz_listQuizArray();
         $quiz_name          = new XoopsFormSelect(_XQUIZ_NAME, "quizId", $question_qid_v);
         $quiz_name->addOptionArray($quest_list_array_v);
-        $question_number = new XoopsFormText(_QUEST_NUMBER, "questionNumber", 15, 5, $question_number_v);
-        $question_score  = new XoopsFormText(_QUEST_SCORE, "questionScore", 15, 5);
+        $question_number = new XoopsFormText(_MD_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $question_number_v);
+        $question_score  = new XoopsFormText(_MD_XQUIZ_QUEST_SCORE, "questionScore", 15, 5);
         global $xoopsModuleConfig;
-        $options_tray = new XoopsFormElementTray(_QUEST_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_MD_XQUIZ_QUEST_DESC, '<br />');
         if (class_exists('XoopsFormEditor')) {
             $options ['name']   = 'questionDesc';
             $options ['value']  = $question_question_v;
@@ -284,20 +284,20 @@ class questions
             $contents_contents  = new XoopsFormEditor('', $xoopsModuleConfig ['use_wysiwyg'], $options);
             $options_tray->addElement($contents_contents);
         } else {
-            $contents_contents = new XoopsFormDhtmlTextArea(_QUEST_DESC, "questionDesc", $question_question_v);
+            $contents_contents = new XoopsFormDhtmlTextArea(_MD_XQUIZ_QUEST_DESC, "questionDesc", $question_question_v);
             $options_tray->addElement($contents_contents);
         }
         switch ($type) {
             case 'CM':
                 $cor_val = 'checkbox';
-                $thead   = "<th>" . _QUEST_ANSWER . "</th>";
+                $thead   = "<th>" . _MD_XQUIZ_QUEST_ANSWER . "</th>";
                 break;
             case 'FB':
                 $cor_val = 'blank';
                 break;
             default:
                 $cor_val = 'radio';
-                $thead   = "<th>" . _QUEST_ANSWER . "</th>";
+                $thead   = "<th>" . _MD_XQUIZ_QUEST_ANSWER . "</th>";
         }
         ob_start();
         $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/Add_Ans.png \" title=" . _XQUIZ_ADD_ANSWER . ">";
@@ -357,16 +357,16 @@ class questions
         ////////////////////temp
         $question_id = new XoopsFormHidden("questionId", $this->getId());
         ////////
-        $question_number = new XoopsFormText(_QUEST_NUMBER, "questionNumber", 15, 5, $this->getQnumber());
+        $question_number = new XoopsFormText(_MD_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $this->getQnumber());
 
         $submit_button = new XoopsFormButton("", "editQstSubmit", _XQUIZ_SUBMIT, "submit");
 
         $quest_list_array_v = Quiz::quiz_listQuizArray();
         $quiz_name          = new XoopsFormSelect(_XQUIZ_NAME, "quizId", $this->getQid());
         $quiz_name->addOptionArray($quest_list_array_v);
-        $question_score = new XoopsFormText(_QUEST_SCORE, "questionScore", 15, 5, $this->getScore());
+        $question_score = new XoopsFormText(_MD_XQUIZ_QUEST_SCORE, "questionScore", 15, 5, $this->getScore());
         global $xoopsModuleConfig;
-        $options_tray = new XoopsFormElementTray(_QUEST_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_MD_XQUIZ_QUEST_DESC, '<br />');
         if (class_exists('XoopsFormEditor')) {
             $options ['name']   = 'questionDesc';
             $options ['value']  = $this->getQuestion();
@@ -377,7 +377,7 @@ class questions
             $contents_contents  = new XoopsFormEditor('', $xoopsModuleConfig ['use_wysiwyg'], $options);
             $options_tray->addElement($contents_contents);
         } else {
-            $contents_contents = new XoopsFormDhtmlTextArea(_QUEST_DESC, "questionDesc", $this->getQuestion());
+            $contents_contents = new XoopsFormDhtmlTextArea(_MD_XQUIZ_QUEST_DESC, "questionDesc", $this->getQuestion());
             $options_tray->addElement($contents_contents);
         }
         $strAdd   = "";
@@ -386,7 +386,7 @@ class questions
         switch ($this->type) {
             case 'CM':
                 $cor_val = 'checkbox';
-                $thead   = "<th>" . _QUEST_ANSWER . "</th>";
+                $thead   = "<th>" . _MD_XQUIZ_QUEST_ANSWER . "</th>";
                 $i       = 1;
                 foreach ($this->answers as $answer) {
                     $check = '';
@@ -430,7 +430,7 @@ class questions
                 break;
             default:
                 $cor_val = 'radio';
-                $thead   = "<th>" . _QUEST_ANSWER . "</th>";
+                $thead   = "<th>" . _MD_XQUIZ_QUEST_ANSWER . "</th>";
                 $i       = 1;
                 foreach ($this->answers as $answer) {
                     $check = '';

@@ -51,7 +51,7 @@ class Quiz
     public function set_id($id)
     {
         if (!is_numeric($id)) {
-            throw new Exception('id '._QUEST_NUMBER_ERROR);
+            throw new Exception('id '._MD_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->id = $id;
     }
@@ -235,7 +235,7 @@ class Quiz
     public function set_weight($weight)
     {
         if (!is_numeric($weight)) {
-            throw new Exception('weight '._QUEST_NUMBER_ERROR);
+            throw new Exception('weight '._MD_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->weight = $weight;
     }
@@ -261,7 +261,7 @@ class Quiz
     public function set_cid($cid)
     {
         if (!is_numeric($cid)) {
-            throw new Exception('cid '._QUEST_NUMBER_ERROR);
+            throw new Exception('cid '._MD_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->categoryId = $cid;
     }
@@ -503,7 +503,7 @@ class Quiz
 							"._XQUIZ_WEIGHT."
 						</td>
 						<td>
-							"._XQUIZ_ACTION."
+							"._AM_XQUIZ_ACTION."
 						</td>
 					</tr>";
                  
@@ -590,7 +590,7 @@ class Quiz
     public static function confirmForm($id)
     {
         $delQuiz_form = new XoopsThemeForm(
-        _XQUIZ_DELQUIZFORM,
+        _AM_XQUIZ_DELQUIZFORM,
         "delquizfrom",
                     XOOPS_URL.'/modules/xquiz/admin/backend.php',
         'post',

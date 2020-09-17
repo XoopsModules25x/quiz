@@ -185,7 +185,7 @@
 <table align="center" cellspacing="0" class="outer">
 	<tr>
 		<td>
-		<{$smarty.const._QUEST_EMPTY}>
+		<{$smarty.const._MD_XQUIZ_QUEST_EMPTY}>
 		</td>
 	</tr>
 </table>
@@ -262,13 +262,13 @@
 		</tr>
 		<tr>
 			<th>
-				<{$smarty.const._QUEST_SCORE}>
+				<{$smarty.const._MD_XQUIZ_QUEST_SCORE}>
 			</th>
 			<th>
-				<{$smarty.const._USER_ANSWER}>
+				<{$smarty.const._MD_XQUIZ_USER_ANSWER}>
 			</th>
 			<th>
-				<{$smarty.const._QUEST_ANSWER}>
+				<{$smarty.const._MD_XQUIZ_QUEST_ANSWER}>
 			</th>
 			<th>
 				<{$smarty.const._XQUIZ_STATUS}>

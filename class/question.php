@@ -40,7 +40,7 @@ class Question
     public function set_id($id)
     {
         if (!is_numeric($id)) {
-            throw new Exception('id '._QUEST_NUMBER_ERROR);
+            throw new Exception('id '._MD_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->id = $id;
     }
@@ -56,7 +56,7 @@ class Question
     public function set_qid($id)
     {
         if (!is_numeric($id)) {
-            throw new Exception('qid '._QUEST_NUMBER_ERROR);
+            throw new Exception('qid '._MD_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->qid = $id;
     }
@@ -85,7 +85,7 @@ class Question
     public function set_qnumber($qnumber)
     {
         if (!is_numeric($qnumber)) {
-            throw new Exception(_QUEST_NUMBER_ERROR);
+            throw new Exception(_MD_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->qnumber = $qnumber;
     }
@@ -166,7 +166,7 @@ class Question
     public function set_score($score)
     {
         if (!is_numeric($score)) {
-            throw new Exception(_QUEST_NUMBER_ERROR);
+            throw new Exception(_MD_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->score = $score;
     }
@@ -242,13 +242,13 @@ class Question
 							"._QUEST_NUM."
 						</th>
 						<th>
-							"._QUEST_SCORE."
+							"._MD_XQUIZ_QUEST_SCORE."
 						</th>
 						<th>
 							"._QUEST_CORRECT."
 						</th>
 						<th>
-							"._XQUIZ_ACTION."
+							"._AM_XQUIZ_ACTION."
 						</th>
 					</tr>";
                  
@@ -370,7 +370,7 @@ class Question
             
             $question_id = new XoopsFormHidden("questionId", $question_id_v);
             $addQuest_form->addElement($question_id);
-            $question_number = new XoopsFormText(_QUEST_NUMBER, "questionNumber", 5, 3, $question_qnumber_v);
+            $question_number = new XoopsFormText(_MD_XQUIZ_QUEST_NUMBER, "questionNumber", 5, 3, $question_qnumber_v);
             $addQuest_form->addElement($question_number);
             
             $submit_button = new XoopsFormButton("", "editQuestSubmit", _XQUIZ_SUBMIT, "submit");
@@ -380,10 +380,10 @@ class Question
             $question_question_v = '';
             $question_qnumber_v = '';
             $question_score_v = '';
-            $question_ans1_v = _QUEST_ANS1;
-            $question_ans2_v = _QUEST_ANS2;
-            $question_ans3_v = _QUEST_ANS3;
-            $question_ans4_v = _QUEST_ANS4;
+            $question_ans1_v = _MD_XQUIZ_QUEST_ANS1;
+            $question_ans2_v = _MD_XQUIZ_QUEST_ANS2;
+            $question_ans3_v = _MD_XQUIZ_QUEST_ANS3;
+            $question_ans4_v = _MD_XQUIZ_QUEST_ANS4;
             $question_answer_v = '';
             
             $submit_button = new XoopsFormButton("", "addQuestSubmit", _XQUIZ_SUBMIT, "submit");
@@ -393,11 +393,11 @@ class Question
         $quiz_name = new XoopsFormSelect(_XQUIZ_NAME, "quizId", $question_qid_v);
         $quiz_name->addOptionArray($quest_list_array_v);//$option = array(id=>'name');
         
-        $question_score = new XoopsFormText(_QUEST_SCORE, "questionScore", 15, 5, $question_score_v);
-        //$question_description = new XoopsFormDhtmlTextArea(_QUEST_DESC, "questionDesc", $question_question_v);
+        $question_score = new XoopsFormText(_MD_XQUIZ_QUEST_SCORE, "questionScore", 15, 5, $question_score_v);
+        //$question_description = new XoopsFormDhtmlTextArea(_MD_XQUIZ_QUEST_DESC, "questionDesc", $question_question_v);
         
         global $xoopsModuleConfig;
-        $options_tray = new XoopsFormElementTray(_QUEST_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_MD_XQUIZ_QUEST_DESC, '<br />');
         if (class_exists('XoopsFormEditor')) {
             $options['name'] = 'questionDesc';
             $options['value'] = $question_question_v;
@@ -408,19 +408,19 @@ class Question
             $contents_contents = new XoopsFormEditor('', $xoopsModuleConfig['use_wysiwyg'], $options, $nohtml = false, $onfailure = 'textarea');
             $options_tray->addElement($contents_contents);
         } else {
-            $contents_contents = new XoopsFormDhtmlTextArea(_QUEST_DESC, "questionDesc", $question_question_v);
+            $contents_contents = new XoopsFormDhtmlTextArea(_MD_XQUIZ_QUEST_DESC, "questionDesc", $question_question_v);
             $options_tray->addElement($contents_contents);
         }
         
         
         
-        $question_ans1 = new XoopsFormText(_QUEST_ANS1, "questionAns1", 50, 100, $question_ans1_v);
-        $question_ans2 = new XoopsFormText(_QUEST_ANS2, "questionAns2", 50, 100, $question_ans2_v);
-        $question_ans3 = new XoopsFormText(_QUEST_ANS3, "questionAns3", 50, 100, $question_ans3_v);
-        $question_ans4 = new XoopsFormText(_QUEST_ANS4, "questionAns4", 50, 100, $question_ans4_v);
+        $question_ans1 = new XoopsFormText(_MD_XQUIZ_QUEST_ANS1, "questionAns1", 50, 100, $question_ans1_v);
+        $question_ans2 = new XoopsFormText(_MD_XQUIZ_QUEST_ANS2, "questionAns2", 50, 100, $question_ans2_v);
+        $question_ans3 = new XoopsFormText(_MD_XQUIZ_QUEST_ANS3, "questionAns3", 50, 100, $question_ans3_v);
+        $question_ans4 = new XoopsFormText(_MD_XQUIZ_QUEST_ANS4, "questionAns4", 50, 100, $question_ans4_v);
         
-        $question_answer = new XoopsFormRadio(_QUEST_ANSWER, "questionAnswer", $question_answer_v, " | ");
-        $temp = [1 =>_QUEST_ANS1, 2 =>_QUEST_ANS2, 3 =>_QUEST_ANS3, 4 =>_QUEST_ANS4];
+        $question_answer = new XoopsFormRadio(_MD_XQUIZ_QUEST_ANSWER, "questionAnswer", $question_answer_v, " | ");
+        $temp = [1 =>_MD_XQUIZ_QUEST_ANS1, 2 =>_MD_XQUIZ_QUEST_ANS2, 3 =>_MD_XQUIZ_QUEST_ANS3, 4 =>_MD_XQUIZ_QUEST_ANS4];
         $question_answer->addOptionArray($temp);//$temp = array(value=>'name');
         //$question_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
         

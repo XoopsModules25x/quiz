@@ -47,7 +47,7 @@ try {
     $start = 0;
     if (isset($_GET ['start'])) {
         if (! is_numeric($_GET ['start'])) {
-            throw new Exception(_QUEST_SECURITY_ERROR);
+            throw new Exception(_MD_XQUIZ_QUEST_SECURITY_ERROR);
         }
         $start = $_GET ['start'];
     }
@@ -95,10 +95,10 @@ try {
                  if (empty ( $listQuestion ))
                     throw new Exception ( _XQUIZ_NO_QUESTION );
                     $q = 0;
-                    $listQuest_form = new XoopsThemeForm ( _QUEST_LISTQESTFORM, "listquestfrom", $_SERVER ['PHP_SELF'], 'post', true );
+                    $listQuest_form = new XoopsThemeForm ( _MD_XQUIZ_QUEST_LISTQESTFORM, "listquestfrom", $_SERVER ['PHP_SELF'], 'post', true );
                     $quizId = new XoopsFormHidden ( 'quizId', $id );
                     foreach ( $listQuestion as $key ) {
-                    $question_answers [$q] = new XoopsFormRadio ( $key ['qnumber'] . "-" . $ts->previewTarea ( $key ['question'], 1, 1, 1, 1, 1 ) . "" . _QUEST_SCORE . " = " . $key ['score'], $key ['qnumber'], null, "<hr/>" );
+                    $question_answers [$q] = new XoopsFormRadio ( $key ['qnumber'] . "-" . $ts->previewTarea ( $key ['question'], 1, 1, 1, 1, 1 ) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], $key ['qnumber'], null, "<hr/>" );
                     $question_answers [$q]->addOption ( 1, $key ['ans1'] );
                     $question_answers [$q]->addOption ( 2, $key ['ans2'] );
                     $question_answers [$q]->addOption ( 3, $key ['ans3'] );
@@ -107,7 +107,7 @@ try {
                     $q ++;
                     }
                     $quiz_token = new XoopsFormHidden ( "XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken () );
-                    $submit_button = new XoopsFormButton ( "", "submit", _QUEST_SUBMIT, "submit" );
+                    $submit_button = new XoopsFormButton ( "", "submit", _MD_XQUIZ_QUEST_SUBMIT, "submit" );
                     $listQuest_form->addElement ( $submit_button, true );
                     $listQuest_form->addElement ( $quizId, true );
                     $listQuest_form->addElement ( $quiz_token, true );
@@ -118,26 +118,26 @@ try {
                     throw new Exception(_XQUIZ_NO_QUESTION);
                 }
                 $q = 0;
-                $listQuest_form = new XoopsThemeForm(_QUEST_LISTQESTFORM, "listquestfrom", $_SERVER ['PHP_SELF'], 'post', true);
+                $listQuest_form = new XoopsThemeForm(_MD_XQUIZ_QUEST_LISTQESTFORM, "listquestfrom", $_SERVER ['PHP_SELF'], 'post', true);
                 $quizId = new XoopsFormHidden('quizId', $id);
                 foreach ($listQuestions as $key) {
                     switch ($key ['question_type']) {
                         case 'MC':
-                            $question_answers [$q] = new XoopsFormRadio($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _QUEST_SCORE . " = " . $key ['score'], "questAns[$q]", null, "<hr/>");
+                            $question_answers [$q] = new XoopsFormRadio($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], "questAns[$q]", null, "<hr/>");
                             foreach ($key ['answer'] as $ans) {
                                 $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']);
                             }
                             break;
 
                         case 'CM':
-                            $question_answers [$q] = new XoopsFormCheckBox($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _QUEST_SCORE . " = " . $key ['score'], "questAns[$q]", null, "<hr/>");
+                            $question_answers [$q] = new XoopsFormCheckBox($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], "questAns[$q]", null, "<hr/>");
                             foreach ($key ['answer'] as $ans) {
                                 $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']);
                             }
                             break;
 
                         case 'FB':
-                            $question_answers [$q] = new XoopsFormElementTray($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _QUEST_SCORE . " = " . $key ['score'], "<hr/>", "questAns[$q]");
+                            $question_answers [$q] = new XoopsFormElementTray($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], "<hr/>", "questAns[$q]");
                             $ansBox = [];
                             $tmp = 0;
                             foreach ($key ['answer'] as $ans) {
@@ -155,7 +155,7 @@ try {
                     $q ++;
                 }
                 //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
-                $submit_button = new XoopsFormButton("", "submit", _QUEST_SUBMIT, "submit");
+                $submit_button = new XoopsFormButton("", "submit", _MD_XQUIZ_QUEST_SUBMIT, "submit");
                 $listQuest_form->addElement($submit_button, true);
                 $listQuest_form->addElement($quizId, true);
                 //$listQuest_form->addElement($quiz_token, true);
@@ -294,7 +294,7 @@ try {
     if (isset($_POST ['submit'])) {
 
         //if (! $GLOBALS ['xoopsSecurity']->check ())
-        //throw new Exception ( _QUEST_SECURITY_ERROR );
+        //throw new Exception ( _MD_XQUIZ_QUEST_SECURITY_ERROR );
 
         if (empty($xoopsUser)) {
             throw new Exception(_XQUIZ_REGISTER_QUIZ);
@@ -350,7 +350,7 @@ try {
             $questObj = new questions();
             $questObj->retriveQuestion($id);
             if ($type != $questObj->getType()) {
-                throw new Exception(_QUEST_SECURITY_ERROR);
+                throw new Exception(_MD_XQUIZ_QUEST_SECURITY_ERROR);
             }
 
             /*echo "<pre>";
@@ -436,7 +436,7 @@ try {
         }
 
         /*if (! $GLOBALS ['xoopsSecurity']->check ())
-            throw new Exception ( _QUEST_SECURITY_ERROR );
+            throw new Exception ( _MD_XQUIZ_QUEST_SECURITY_ERROR );
 
             if (empty ( $xoopsUser ))
             throw new Exception ( _XQUIZ_REGISTER_QUIZ );

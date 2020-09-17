@@ -163,7 +163,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
                  XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;"._USER_ANSWER_DETAIL."</h4><br/>
+				 </a>&nbsp;"._MD_XQUIZ_USER_ANSWER_DETAIL."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
@@ -183,10 +183,10 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 							"._QUEST_CORRECT."
 						</th>
 						<th>
-							"._QUEST_SCORE."
+							"._MD_XQUIZ_QUEST_SCORE."
 						</th>
 						<th>
-							"._USER_ANSWER."
+							"._MD_XQUIZ_USER_ANSWER."
 						</th>
 						<th>
 							"._XQUIZ_STATUS."

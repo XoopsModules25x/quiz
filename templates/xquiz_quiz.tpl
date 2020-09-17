@@ -23,10 +23,10 @@
 	<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 		<tr>
 			<th width='20%'>
-			<{$smarty.const._CATEGORY_IMAGE}>
+			<{$smarty.const._MD_XQUIZ_CATEGORY_IMAGE}>
 			</th>
 			<th>
-				<{$smarty.const._CATEGORY_TITLE}>
+				<{$smarty.const._MD_XQUIZ_CATEGORY_TITLE}>
 			</th>
 		</tr>
 		<{foreach item=category from=$listCategory}>
@@ -217,7 +217,7 @@
 <table align="center" cellspacing="0" class="outer">
 	<tr>
 		<td>
-		<{$smarty.const._QUEST_EMPTY}>
+		<{$smarty.const._MD_XQUIZ_QUEST_EMPTY}>
 		</td>
 	</tr>
 </table>
@@ -294,13 +294,13 @@
 		</tr>
 		<tr>
 			<th>
-				<{$smarty.const._QUEST_SCORE}>
+				<{$smarty.const._MD_XQUIZ_QUEST_SCORE}>
 			</th>
 			<th>
-				<{$smarty.const._USER_ANSWER}>
+				<{$smarty.const._MD_XQUIZ_USER_ANSWER}>
 			</th>
 			<th>
-				<{$smarty.const._QUEST_ANSWER}>
+				<{$smarty.const._MD_XQUIZ_QUEST_ANSWER}>
 			</th>
 			<th>
 				<{$smarty.const._XQUIZ_STATUS}>

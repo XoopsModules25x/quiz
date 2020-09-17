@@ -411,13 +411,13 @@ function showCategories($start, $limit)
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'>
 						<th>
-							"._CATEGORY_TITLE."
+							"._AM_XQUIZ_CATEGORY_TITLE."
 						</th>
 						<th>
-							"._CATEGORY_WEIGHT."
+							"._AM_XQUIZ_CATEGORY_WEIGHT."
 						</th>
 						<th>
-							"._XQUIZ_ACTION."
+							"._AM_XQUIZ_ACTION."
 						</th>
 					</tr>";
                  
@@ -510,15 +510,15 @@ function CategoryForm($op = "add", $eId = 0)
         $submit_button = new XoopsFormButton("", "addCateSubmit", _XQUIZ_SUBMIT, "submit");
     }
             
-    $category_title = new XoopsFormText(_CATEGORY_TITLE, "cateTitle", 50, 100, $category_title_v);
+    $category_title = new XoopsFormText(_AM_XQUIZ_CATEGORY_TITLE, "cateTitle", 50, 100, $category_title_v);
     ob_start();
     $xt->makeMySelBox("title", "cid", $category_parent_id, 1, 'cateParent');
-    $category_parent = new XoopsFormLabel(_CATEGORY_PARENT, ob_get_contents());
+    $category_parent = new XoopsFormLabel(_AM_XQUIZ_CATEGORY_PARENT, ob_get_contents());
     ob_end_clean();
-    //$category_description = new XoopsFormDhtmlTextArea(_CATEGORY_DESC, "cateDesc", $category_desc_v);
+    //$category_description = new XoopsFormDhtmlTextArea(_AM_XQUIZ_CATEGORY_DESC, "cateDesc", $category_desc_v);
     
     
-    $options_tray = new XoopsFormElementTray(_CATEGORY_DESC, '<br />');
+    $options_tray = new XoopsFormElementTray(_AM_XQUIZ_CATEGORY_DESC, '<br />');
     if (class_exists('XoopsFormEditor')) {
         $options['name'] = 'cateDesc';
         $options['value'] = $category_desc_v;
@@ -534,7 +534,7 @@ function CategoryForm($op = "add", $eId = 0)
     }
     
     
-    $category_weight = new XoopsFormText(_CATEGORY_WEIGHT, "cateWeight", 5, 3, $category_weight_v);
+    $category_weight = new XoopsFormText(_AM_XQUIZ_CATEGORY_WEIGHT, "cateWeight", 5, 3, $category_weight_v);
    // $category_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
     
     

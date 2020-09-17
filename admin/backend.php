@@ -55,7 +55,7 @@ $maxuploadsize = $xoopsModuleConfig ['maxuploadsize'];
 
 try {
     if (! $GLOBALS ['xoopsSecurity']->check()) {
-        throw new Exception($GLOBALS ['xoopsSecurity']->getErrors() . _QUEST_SECURITY_ERROR);
+        throw new Exception($GLOBALS ['xoopsSecurity']->getErrors() . _MD_XQUIZ_QUEST_SECURITY_ERROR);
     }
     
     switch ($action) {
@@ -252,7 +252,7 @@ try {
                     $gperm_handler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
-            throw new Exception(_ADD_CATEGORY . "||?op=Category");
+            throw new Exception(_AM_XQUIZ_ADD_CATEGORY . "||?op=Category");
             break;
         
         case 'editCategory':
@@ -280,7 +280,7 @@ try {
             if (isset($_POST ['cateId']) && is_numeric($_POST ['cateId'])) {
                 $cid = $_POST ['cateId'];
             } else {
-                throw new Exception(_QUEST_SECURITY_ERROR . "||?op=Category");
+                throw new Exception(_MD_XQUIZ_QUEST_SECURITY_ERROR . "||?op=Category");
             }
             if (isset($_POST ['xoops_upload_file'])) {
                 $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
@@ -311,7 +311,7 @@ try {
                     $gperm_handler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
-            throw new Exception(_EDIT_CATEGORY . "||?op=Category");
+            throw new Exception(_AM_XQUIZ_EDIT_CATEGORY . "||?op=Category");
             break;
         
         case 'delCategory':
@@ -323,7 +323,7 @@ try {
                 $cid = $_POST ['categoryId'];
             }
             Category::deleteCategory($cid);
-            throw new Exception(_DELETE_CATEGORY . "||?op=Category");
+            throw new Exception(_AM_XQUIZ_DELETE_CATEGORY . "||?op=Category");
             break;
         
         case 'addQst':
