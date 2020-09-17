@@ -305,7 +305,7 @@ try {
         $user = $xoopsUser->getVar("uid");
         $userQuizScore = findUserScore($user, $quizId);
         if ($userQuizScore) {
-            throw new Exception(_XQUIZ_DUBLICATE_QUIZ);
+            throw new Exception(_MD_XQUIZ_DUPLICATE_QUIZ);
         }
 
         $listQuestion = questions::listQuestLoader($quizId);
@@ -446,11 +446,11 @@ try {
             $user = $xoopsUser->getVar ( "uid" );
             $userQuizScore = findUserScore ( $user, $quizId );
             if ($userQuizScore)
-            throw new Exception ( _XQUIZ_DUBLICATE_QUIZ );
+            throw new Exception ( _MD_XQUIZ_DUPLICATE_QUIZ );
 
             $listQuestion = Question::listQuestLoader ( $quizId );
             $userScore = 0;
-            $query = "INSERT INTO " . $xoopsDB->prefix ( 'question_user' ) . "
+            $query = "INSERT INTO " . $xoopsDB->prefix ( 'xquiz_useranswers' ) . "
             (questId ,quizId ,userId ,userAns) VALUES ";
             $delim = '';
             foreach ( $listQuestion as $key ) {

@@ -312,7 +312,7 @@ class Quiz
             throw new Exception(_QUEST_DATABASE);
         }
             
-        $query = "DELETE FROM ".$xoopsDB->prefix("question")." WHERE  
+        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_questionsx")." WHERE  
 					  qid = '$this->id' ";
         if (!$res) {
             throw new Exception(_QUEST_DATABASE);

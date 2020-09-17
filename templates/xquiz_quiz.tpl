@@ -246,7 +246,7 @@
 			<{$smarty.const._XQUIZ_SCORE}>
 		</th>
 		<th>
-			<{$smarty.const._XQUIZ_DITAIL}>
+			<{$smarty.const._MD_XQUIZ_DETAIL}>
 		</th>
 	</tr>
 	<{foreach item=quizProfile from=$quizProfile}>

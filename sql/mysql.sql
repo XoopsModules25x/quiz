@@ -1,4 +1,26 @@
-CREATE TABLE question (
+CREATE TABLE xquiz_categories (
+  cid int(11) unsigned NOT NULL auto_increment,
+  pid int(11) unsigned NOT NULL default '0',
+  title varchar(100) NOT NULL default '',
+  imgurl varchar(255) NOT NULL default '',
+  description text NOT NULL,
+  weight int(11) NOT NULL default '0',
+  PRIMARY KEY  (cid),
+  KEY pid (pid)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+CREATE TABLE xquiz_quizzes (
+  id int(10) unsigned NOT NULL auto_increment,
+  name varchar(45) character set utf8 collate utf8_bin NOT NULL,
+  cid int(10) unsigned NOT NULL,
+  description text character set utf8 collate utf8_bin,
+  bdate datetime NOT NULL,
+  edate datetime NOT NULL,
+  weight int(11) default '0',
+  PRIMARY KEY  (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+CREATE TABLE xquiz_questionsx (
   id int(10) unsigned NOT NULL auto_increment,
   qid int(10) unsigned NOT NULL,
   question varchar(200) character set utf8 collate utf8_bin NOT NULL,
@@ -12,7 +34,7 @@ CREATE TABLE question (
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE question_user (
+CREATE TABLE xquiz_useranswers (
   questId int(10) NOT NULL,
   quizId int(10) NOT NULL,
   userId int(11) NOT NULL,
@@ -20,16 +42,7 @@ CREATE TABLE question_user (
   PRIMARY KEY  (questId,quizId,userId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE xquiz_quizzes (
-  id int(10) unsigned NOT NULL auto_increment,
-  name varchar(45) character set utf8 collate utf8_bin NOT NULL,
-  cid int(10) unsigned NOT NULL,
-  description text character set utf8 collate utf8_bin,
-  bdate datetime NOT NULL,
-  edate datetime NOT NULL,
-  weight int(11) default '0',
-  PRIMARY KEY  (id)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE xquiz_score (
   id int(10) unsigned NOT NULL,
@@ -39,16 +52,7 @@ CREATE TABLE xquiz_score (
   PRIMARY KEY  (id,userid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE xquiz_categories (
-  cid int(11) unsigned NOT NULL auto_increment,
-  pid int(11) unsigned NOT NULL default '0',
-  title varchar(100) NOT NULL default '',
-  imgurl varchar(255) NOT NULL default '',
-  description text NOT NULL,
-  weight int(11) NOT NULL default '0',
-  PRIMARY KEY  (cid),
-  KEY pid (pid)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE xquiz_questions (
   question_id int(10) unsigned NOT NULL auto_increment,

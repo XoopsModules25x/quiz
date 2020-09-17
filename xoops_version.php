@@ -59,8 +59,8 @@ $modversion['tables'][1] = "xquiz_categories";
 $modversion['tables'][2] = "xquiz_score";
 $modversion['tables'][3] = "xquiz_questions";
 $modversion['tables'][4] = "xquiz_answers";
-$modversion['tables'][5] = "question";
-$modversion['tables'][6] = "question_user";
+$modversion['tables'][5] = "xquiz_questionsx";
+$modversion['tables'][6] = "xquiz_useranswers";
 
 // Templates
 $modversion['templates'][1]['file'] = 'xquiz_index.tpl';
@@ -122,8 +122,8 @@ $modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' =
  //MAX Filesize Upload in kilo bytes
  $i++;
 $modversion['config'][$i]['name'] = 'maxuploadsize';
-$modversion['config'][$i]['title'] = '_MI_UPLOADFILESIZE';
-$modversion['config'][$i]['description'] = '_MI_UPLOADFILESIZE_DESC';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_UPLOADFILESIZE';
+$modversion['config'][$i]['description'] = '_MI_XQUIZ_UPLOADFILESIZE_DESC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1048576;
