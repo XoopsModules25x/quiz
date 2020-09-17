@@ -34,13 +34,13 @@ try {
     $action = (isset($_GET ['act'])) ? $_GET ['act'] : '';
     if (isset($_GET ['q'])) {
         if (! is_numeric($_GET ['q'])) {
-            throw new Exception(_XQUIZ_NUMBER_ERROR);
+            throw new Exception(_MD_XQUIZ_NUMBER_ERROR);
         }
         $id = $_GET ['q'];
     }
     if (isset($_GET ['qi'])) {
         if (! is_numeric($_GET ['qi'])) {
-            throw new Exception(_XQUIZ_NUMBER_ERROR);
+            throw new Exception(_MD_XQUIZ_NUMBER_ERROR);
         }
         $pdid = $_GET ['qi'];
     }
@@ -57,16 +57,16 @@ try {
         case 'v':
             if (isset($id)) {
                 if (! Quiz::quiz_checkExistQuiz($id)) {
-                    throw new Exception(_XQUIZ_NOT_EXIST);
+                    throw new Exception(_MD_XQUIZ_NOT_EXIST);
                 }
                 if (! Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_XQUIZ_NOT_ACTIVE);
+                    throw new Exception(_MD_XQUIZ_NOT_ACTIVE);
                 }
                 if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_XQUIZ_EXPIRE);
+                    throw new Exception(_MD_XQUIZ_EXPIRE);
                 }
                 if (empty($xoopsUser)) {
-                    throw new Exception(_XQUIZ_REGISTER_QUIZ);
+                    throw new Exception(_MD_XQUIZ_REGISTER_QUIZ);
                 }
 
                 $perm_name = 'quiz_view';
@@ -78,7 +78,7 @@ try {
                 }
                 $gperm_handler = & xoops_gethandler('groupperm');
                 if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
-                    throw new Exception(_XQUIZ_PERMISSION);
+                    throw new Exception(_MD_XQUIZ_PERMISSION);
                 }
                 $ts = & MyTextSanitizer::getInstance();
                 $xoopsTpl->assign('showQuiz', 1);
@@ -93,7 +93,7 @@ try {
                 /*
                  $listQuestion = Question::listQuestLoader ( $id );
                  if (empty ( $listQuestion ))
-                    throw new Exception ( _XQUIZ_NO_QUESTION );
+                    throw new Exception ( _MD_XQUIZ_NO_QUESTION );
                     $q = 0;
                     $listQuest_form = new XoopsThemeForm ( _MD_XQUIZ_QUEST_LISTQESTFORM, "listquestfrom", $_SERVER ['PHP_SELF'], 'post', true );
                     $quizId = new XoopsFormHidden ( 'quizId', $id );
@@ -115,7 +115,7 @@ try {
                 //////////////////////////////////////////////////////////////
                 $listQuestions = questions::listQuestLoader($id);
                 if (empty($listQuestions)) {
-                    throw new Exception(_XQUIZ_NO_QUESTION);
+                    throw new Exception(_MD_XQUIZ_NO_QUESTION);
                 }
                 $q = 0;
                 $listQuest_form = new XoopsThemeForm(_MD_XQUIZ_QUEST_LISTQESTFORM, "listquestfrom", $_SERVER ['PHP_SELF'], 'post', true);
@@ -175,18 +175,18 @@ try {
             }
             $gperm_handler = & xoops_gethandler('groupperm');
             if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
-                throw new Exception(_XQUIZ_PERMISSION);
+                throw new Exception(_MD_XQUIZ_PERMISSION);
             }
 
             if (! Quiz::quiz_checkExistQuiz($id)) {
-                throw new Exception(_XQUIZ_NOT_EXIST);
+                throw new Exception(_MD_XQUIZ_NOT_EXIST);
             }
             if (empty($xoopsUser) && (! $xoopsModuleConfig ['seeStat'])) {
-                throw new Exception(_XQUIZ_REGISTER_STAT);
+                throw new Exception(_MD_XQUIZ_REGISTER_STAT);
             }
 
             if (Quiz::quiz_checkExpireQuiz($id)) {
-                throw new Exception(_XQUIZ_NOT_EXPIRE);
+                throw new Exception(_MD_XQUIZ_NOT_EXPIRE);
             }
 
             $perm_name = 'quiz_view';
@@ -198,7 +198,7 @@ try {
             }
             $gperm_handler = & xoops_gethandler('groupperm');
             if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
-                throw new Exception(_XQUIZ_PERMISSION);
+                throw new Exception(_MD_XQUIZ_PERMISSION);
             }
 
             $xoopsTpl->assign('showQuiz', 2);
@@ -236,7 +236,7 @@ try {
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 'p':
             if (empty($xoopsUser)) {
-                throw new Exception(_XQUIZ_USER_PROFILE);
+                throw new Exception(_MD_XQUIZ_USER_PROFILE);
             }
             $user = $xoopsUser->getVar("uid");
 
@@ -262,7 +262,7 @@ try {
                 $cid = $_GET ['cid'];
             }
             if ((! Category::checkExistCategory($cid)) && 0 != $cid) {
-                throw new Exception(_XQUIZ_NOT_EXIST);
+                throw new Exception(_MD_XQUIZ_NOT_EXIST);
             }
             $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
 
@@ -297,7 +297,7 @@ try {
         //throw new Exception ( _MD_XQUIZ_QUEST_SECURITY_ERROR );
 
         if (empty($xoopsUser)) {
-            throw new Exception(_XQUIZ_REGISTER_QUIZ);
+            throw new Exception(_MD_XQUIZ_REGISTER_QUIZ);
         }
 
         $myts = myTextSanitizer::getInstance();
@@ -426,20 +426,20 @@ try {
              (id ,userid ,score ,date) VALUES('$quizId','$user','$sumScore','$date')";
              $res = $xoopsDB->query ( $query );
              if (! $res)
-             throw new Exception ( _XQUIZ_DATABASE );
+             throw new Exception ( _MD_XQUIZ_DATABASE );
              if ($xoopsModuleConfig ['mailScore'])
              sendEmail ( $user, $sumScore, $quizId );
              $quizScore = '';
              if ($xoopsModuleConfig ['seeScore'])
-             $quizScore = "<br/>" . _XQUIZ_FINAL_SCORE . " = " . $sumScore;
-             throw new Exception ( _XQUIZ_ADD_SCORE . $quizScore );*/
+             $quizScore = "<br/>" . _MD_XQUIZ_FINAL_SCORE . " = " . $sumScore;
+             throw new Exception ( _MD_XQUIZ_ADD_SCORE . $quizScore );*/
         }
 
         /*if (! $GLOBALS ['xoopsSecurity']->check ())
             throw new Exception ( _MD_XQUIZ_QUEST_SECURITY_ERROR );
 
             if (empty ( $xoopsUser ))
-            throw new Exception ( _XQUIZ_REGISTER_QUIZ );
+            throw new Exception ( _MD_XQUIZ_REGISTER_QUIZ );
 
             $myts = myTextSanitizer::getInstance ();
             $quizId = $myts->addslashes ( $_POST ['quizId'] );
@@ -466,20 +466,20 @@ try {
             }
             $res = $xoopsDB->query ( $query );
             if (! $res)
-            throw new Exception ( _XQUIZ_DATABASE );
+            throw new Exception ( _MD_XQUIZ_DATABASE );
 
             $date = date ( DATE_ATOM );
             $query = "INSERT INTO " . $xoopsDB->prefix ( 'xquiz_score' ) . "
             (id ,userid ,score ,date) VALUES('$quizId','$user','$userScore','$date')";
             $res = $xoopsDB->query ( $query );
             if (! $res)
-            throw new Exception ( _XQUIZ_DATABASE );
+            throw new Exception ( _MD_XQUIZ_DATABASE );
             if ($xoopsModuleConfig ['mailScore'])
             sendEmail ( $user, $userScore, $quizId );
             $quizScore = '';
             if ($xoopsModuleConfig ['seeScore'])
-            $quizScore = "<br/>" . _XQUIZ_FINAL_SCORE . " = " . $userScore;
-            throw new Exception ( _XQUIZ_ADD_SCORE . $quizScore );
+            $quizScore = "<br/>" . _MD_XQUIZ_FINAL_SCORE . " = " . $userScore;
+            throw new Exception ( _MD_XQUIZ_ADD_SCORE . $quizScore );
             */
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -80,7 +80,7 @@ try {
             $objQuiz->set_cid($categoryId);
             
             $objQuiz->addQuiz();
-            throw new Exception(_XQUIZ_ADD . "||?op=Quiz");
+            throw new Exception(_AM_XQUIZ_ADD . "||?op=Quiz");
             break;
         
         case 'editQuiz':
@@ -106,29 +106,29 @@ try {
             $objQuiz->set_cid($categoryId);
             
             $objQuiz->editQuiz();
-            throw new Exception(_XQUIZ_EDIT . "||?op=Quiz");
+            throw new Exception(_AM_XQUIZ_EDIT . "||?op=Quiz");
             break;
         
         case 'delQuiz':
             $id = $_POST ['quizId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_XQUIZ_RETURN);
+                throw new Exception(_AM_XQUIZ_RETURN);
             }
             $objQuiz = new Quiz();
             $objQuiz->set_id($id);
             $objQuiz->deleteQuiz();
-            throw new Exception(_XQUIZ_DELETE . "||?op=Quiz");
+            throw new Exception(_AM_XQUIZ_DELETE . "||?op=Quiz");
             break;
         
         case 'addQuest':
             $qid = $myts->addslashes($_POST ['quizId']);
             
             if (! Quiz::quiz_checkExpireQuiz($qid)) {
-                throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
+                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
             }
             if (Quiz::quiz_checkActiveQuiz($qid)) {
-                throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
+                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
             }
             $question = $_POST ['questionDesc'];
             $score = $_POST ['questionScore'];
@@ -151,16 +151,16 @@ try {
             $objQuestion->set_answer($answer);
             
             $objQuestion->addQuestion();
-            throw new Exception(_QUEST_ADD . "||?op=Quest");
+            throw new Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Quest");
             break;
         
         case 'editQuest':
             if (isset($id)) {
                 if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
+                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
                 }
                 if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
+                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
                 }
             }
             $id = $_POST ['questionId'];
@@ -187,19 +187,19 @@ try {
             $objQuestion->set_answer($answer);
             
             $objQuestion->editQuestion();
-            throw new Exception(_QUEST_EDIT . "||?op=Quest");
+            throw new Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Quest");
             break;
         
         case 'delQuest':
             $id = $_POST ['questId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_XQUIZ_RETURN . "||?op=Quest");
+                throw new Exception(_AM_XQUIZ_RETURN . "||?op=Quest");
             }
             $objQuest = new Question();
             $objQuest->set_id($id);
             $objQuest->deleteQuestion();
-            throw new Exception(_QUEST_DELETE . "||?op=Quest");
+            throw new Exception(_AM_XQUIZ_QUEST_DELETE . "||?op=Quest");
             break;
         
         case 'addCategory':
@@ -237,7 +237,7 @@ try {
                         if ($uploader->upload()) {
                             $imgurl = basename($destname);
                         } else {
-                            throw new Exception(_AM_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
+                            throw new Exception(_AM_XQUIZ_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
                         }
                     } else {
                         throw new Exception($uploader->getErrors() . "||?op=Category");
@@ -296,7 +296,7 @@ try {
                         if ($uploader->upload()) {
                             $imgurl = basename($destname);
                         } else {
-                            throw new Exception(_AM_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
+                            throw new Exception(_AM_XQUIZ_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
                         }
                     } else {
                         throw new Exception($uploader->getErrors() . "||?op=Category");
@@ -317,7 +317,7 @@ try {
         case 'delCategory':
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_XQUIZ_RETURN . "||?op=Category");
+                throw new Exception(_AM_XQUIZ_RETURN . "||?op=Category");
             }
             if (isset($_POST ['categoryId']) && is_numeric($_POST ['categoryId'])) {
                 $cid = $_POST ['categoryId'];
@@ -330,10 +330,10 @@ try {
             $qid = $myts->addslashes($_POST ['quizId']);
             
             if (! Quiz::quiz_checkExpireQuiz($qid)) {
-                throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
+                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
             }
             if (Quiz::quiz_checkActiveQuiz($qid)) {
-                throw new Exception(_QUEST_ADD_RULE . "||?op=Quest");
+                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
             }
             $question = $_POST ['questionDesc'];
             $score = $_POST ['questionScore'];
@@ -348,15 +348,15 @@ try {
             $obj->setType($type);
             $obj->addQuestion($_POST ['answers'], $_POST ['corrects']);
             
-            throw new Exception(_QUEST_ADD . "||?op=Question");
+            throw new Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Question");
             break;
         case 'editQst':
             if (isset($id)) {
                 if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Question");
+                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question");
                 }
                 if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_QUEST_ADD_RULE . "||?op=Question");
+                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question");
                 }
             }
             $id = $_POST ['questionId'];
@@ -375,19 +375,19 @@ try {
             $questionObj->setType($qtype);
             $questionObj->editQuestion($_POST ['answers'], $_POST ['corrects']);
             
-            throw new Exception(_QUEST_EDIT . "||?op=Question");
+            throw new Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Question");
             break;
             
         case 'delQst':
             $id = $_POST ['questId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
-                throw new Exception(_XQUIZ_RETURN . "||?op=Question");
+                throw new Exception(_AM_XQUIZ_RETURN . "||?op=Question");
             }
             $objQuest = new questions();
             $objQuest->setId($id);
             $objQuest->deleteQuestion();
-            throw new Exception(_QUEST_DELETE . "||?op=Question");
+            throw new Exception(_AM_XQUIZ_QUEST_DELETE . "||?op=Question");
             break;
         
         default:

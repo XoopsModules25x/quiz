@@ -3,7 +3,7 @@
   <tr>
   <td valign="top" width="40%">
 	<div class="CPbigTitle">
-		<strong><{$smarty.const._XQUIZ_INDEX}></strong>
+		<strong><{$smarty.const._AM_XQUIZ_INDEX}></strong>
 	</div>
 	<br />
 	<br />
@@ -13,17 +13,17 @@
   	<td valign="top" width="60%">
   	<div class="ddd">
 	<br />
-	<div class="hometitle" ><{$smarty.const._XQUIZ_NOTIFY}></div>
+	<div class="hometitle" ><{$smarty.const._AM_XQUIZ_NOTIFY}></div>
 	<div class="textbody" >
 		<br/>
-		<{$smarty.const._AM_INDEX_ADD_QUEST}><br/><br/>
-		<{$smarty.const._AM_INDEX_USER_EX}><br/><br/>
-		<{$smarty.const._AM_INDEX_USER_QUIZ}><br/><br/>
+		<{$smarty.const._AM_XQUIZ_INDEX_ADD_QUEST}><br/><br/>
+		<{$smarty.const._AM_XQUIZ_INDEX_USER_EX}><br/><br/>
+		<{$smarty.const._AM_XQUIZ_INDEX_USER_QUIZ}><br/><br/>
 	</div>
 	<br/>
 	<br/>
 	
-	<div class="hometitle" ><{$smarty.const._XQUIZ_VERSION_TITLE}></div>
+	<div class="hometitle" ><{$smarty.const._AM_XQUIZ_VERSION_TITLE}></div>
 		<div class="textbody" >
 		<{$quiz_version}><br/>
 	</div>

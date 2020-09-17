@@ -11,7 +11,7 @@
 	<h5>
 		<a href="<{$xoops_url}>/modules/xquiz/index.php?cid=<{$Parent}>">
 			<img src="<{$xoops_url}>/modules/xquiz/assets/images/back.png">
-			<{$smarty.const._XQUIZ_BACK}>
+			<{$smarty.const._MD_XQUIZ_BACK}>
 		</a>
 	</h5>
 	<{/if}>-->
@@ -52,10 +52,10 @@
 		<tr>
 			
 			<th>
-				<{$smarty.const._XQUIZ_NAME}>
+				<{$smarty.const._AM_XQUIZ_NAME}>
 			</th>
 			<th>
-				<{$smarty.const._XQUIZ_STATUS}>
+				<{$smarty.const._AM_XQUIZ_STATUS}>
 			</th>
 		</tr>
 		<{foreach item=quiz from=$listQuiz}>
@@ -65,21 +65,21 @@
 				<td>
 					<{$quiz.name}> <br>
 					<small>
-					<strong><{$smarty.const._XQUIZ_BDATE}>: </strong>	<{$quiz.bdate}><br>
-					<strong><{$smarty.const._XQUIZ_EDATE}>: </strong><{$quiz.edate}><br>
-					<strong><{$smarty.const._XQUIZ_QUEST_NUM}>: </strong><{$quiz.totalquestion}><br>
+					<strong><{$smarty.const._AM_XQUIZ_BDATE}>: </strong>	<{$quiz.bdate}><br>
+					<strong><{$smarty.const._AM_XQUIZ_EDATE}>: </strong><{$quiz.edate}><br>
+					<strong><{$smarty.const._AM_XQUIZ_AM_QUEST_NUM}>: </strong><{$quiz.totalquestion}><br>
 					</small>
 				</td>
 				<td>
 					<{if $quiz.active==1}>
 						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=v&q=<{$quiz.id}>">
 						<img src="<{$xoops_url}>/modules/xquiz/assets/images/on.png">
-						<{$smarty.const._XQUIZ_GO}>
+						<{$smarty.const._MD_XQUIZ_GO}>
 						</a>
 					<{else}>
 						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=s&q=<{$quiz.id}>">
 						<img src="<{$xoops_url}>/modules/xquiz/assets/images/off.png">
-						<{$smarty.const._XQUIZ_VIEW_STAT}>
+						<{$smarty.const._MD_XQUIZ_VIEW_STAT}>
 						</a>
 					<{/if}>	
 				</td>
@@ -103,16 +103,16 @@
 		<td>
 		</td>
 		<td>
-			<{$smarty.const._XQUIZ_USER}>
+			<{$smarty.const._AM_XQUIZ_USER}>
 		</td>
 		<td>
-			<{$smarty.const._XQUIZ_USER_NAME}>
+			<{$smarty.const._AM_XQUIZ_USER_NAME}>
 		</td>
 		<td>
-			<{$smarty.const._XQUIZ_SCORE}>
+			<{$smarty.const._AM_XQUIZ_SCORE}>
 		</td>
 		<td>
-			<{$smarty.const._XQUIZ_DATE}>
+			<{$smarty.const._AM_XQUIZ_DATE}>
 		</td>
 	</tr>
 	<{foreach item=quizStat from=$quizStat}>
@@ -205,13 +205,13 @@
 <table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 	<tr>
 		<th>
-			<{$smarty.const._XQUIZ_NAME}>
+			<{$smarty.const._AM_XQUIZ_NAME}>
 		</th>
 		<th>
-			<{$smarty.const._XQUIZ_DATE}>
+			<{$smarty.const._AM_XQUIZ_DATE}>
 		</th>
 		<th>
-			<{$smarty.const._XQUIZ_SCORE}>
+			<{$smarty.const._AM_XQUIZ_SCORE}>
 		</th>
 		<th>
 			<{$smarty.const._MD_XQUIZ_DETAIL}>
@@ -247,7 +247,7 @@
 <br/>
 	<a href="<{$xoops_url}>/modules/xquiz/index.php?act=p">
 		<img src="<{$xoops_url}>/modules/xquiz/assets/images/back.png">
-		<{$smarty.const._XQUIZ_BACK}>
+		<{$smarty.const._MD_XQUIZ_BACK}>
 	</a>
 </h5>
 
@@ -271,7 +271,7 @@
 				<{$smarty.const._MD_XQUIZ_QUEST_ANSWER}>
 			</th>
 			<th>
-				<{$smarty.const._XQUIZ_STATUS}>
+				<{$smarty.const._AM_XQUIZ_STATUS}>
 			</th>
 		</tr>
 		<tr class="<{cycle values="even,odd"}>">

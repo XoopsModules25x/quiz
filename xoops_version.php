@@ -76,7 +76,7 @@ $modversion['hasSearch'] = 1;
  //number of quiz per page in admin page
  $i=1;
 $modversion['config'][$i]['name'] = 'quizList';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_LIST_NUM';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_LIST_NUM';
 $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
@@ -85,7 +85,7 @@ $modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' =
 //number of question per page in admin page
 $i++;
 $modversion['config'][$i]['name'] = 'questionList';
-$modversion['config'][$i]['title'] = '_AM_QUEST_LIST_NUM';
+$modversion['config'][$i]['title'] = '_MI_QUEST_LIST_NUM';
 $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
@@ -94,7 +94,7 @@ $modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' =
 //number of question per page in user page
 $i++;
 $modversion['config'][$i]['name'] = 'userList';
-$modversion['config'][$i]['title'] = '_AM_QUEST_USER_LIST_NUM';
+$modversion['config'][$i]['title'] = '_MI_QUEST_USER_LIST_NUM';
 $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
@@ -103,7 +103,7 @@ $modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' =
 //number of quiz per page in user page
 $i++;
 $modversion['config'][$i]['name'] = 'quizUserList';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_USER_LIST_NUM';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_USER_LIST_NUM';
 $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
@@ -113,7 +113,7 @@ $modversion['config'][$i]['options'] = ['5' => 5, '10' => 10, '15' => 15, '20' =
  //number of category per page in admin page
  $i++;
 $modversion['config'][$i]['name'] = 'categoryList';
-$modversion['config'][$i]['title'] = '_AM_CATEGORY_LIST_NUM';
+$modversion['config'][$i]['title'] = '_MI_CATEGORY_LIST_NUM';
 $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
@@ -130,8 +130,8 @@ $modversion['config'][$i]['default'] = 1048576;
 //Format of the date to use in the module, if you don't specify anything then the default date's format will be used
 $i++;
 $modversion['config'][$i]['name'] = 'dateformat';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_DATEFORMAT';
-$modversion['config'][$i]['description'] = '_AM_XQUIZ_DATEFORMAT_DESC';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_DATEFORMAT';
+$modversion['config'][$i]['description'] = '_MI_XQUIZ_DATEFORMAT_DESC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = "j F Y g:i a";
@@ -139,15 +139,15 @@ $modversion['config'][$i]['default'] = "j F Y g:i a";
 //user can see quiz score after quiz
 $i++;
 $modversion['config'][$i]['name'] = 'seeScore';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_SEE_SCORE';
-$modversion['config'][$i]['description'] = '_AM_XQUIZ_SEE_SCORE_DESC';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_SEE_SCORE';
+$modversion['config'][$i]['description'] = '_MI_XQUIZ_SEE_SCORE_DESC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
 //just user can see quiz statistics
 $i++;
 $modversion['config'][$i]['name'] = 'seeStat';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_SEE_STAT';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_SEE_STAT';
 $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
@@ -155,23 +155,23 @@ $modversion['config'][$i]['default'] = 1;
 //mail user score after quiz take part
 $i++;
 $modversion['config'][$i]['name'] = 'mailScore';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_MAIL_SCORE';
-$modversion['config'][$i]['description'] = '_AM_XQUIZ_MAIL_SCORE_DESC';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_MAIL_SCORE';
+$modversion['config'][$i]['description'] = '_MI_XQUIZ_MAIL_SCORE_DESC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
 //user can see score in profile befor quiz end date
 $i++;
 $modversion['config'][$i]['name'] = 'seeScoreProfile';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_PROFILE_SCORE';
-$modversion['config'][$i]['description'] = '_AM_XQUIZ_PROFILE_SCORE_DESC';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_PROFILE_SCORE';
+$modversion['config'][$i]['description'] = '_MI_XQUIZ_PROFILE_SCORE_DESC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
 //user can select wysiwyg editor
 $i++;
 $modversion['config'][$i]['name'] = 'use_wysiwyg';
-$modversion['config'][$i]['title'] = '_AM_XQUIZ_EDITORS';
+$modversion['config'][$i]['title'] = '_MI_XQUIZ_EDITORS';
 $modversion['config'][$i]['description'] = '';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'text';

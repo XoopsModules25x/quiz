@@ -51,7 +51,7 @@ class Quiz
     public function set_id($id)
     {
         if (!is_numeric($id)) {
-            throw new Exception('id '._MD_XQUIZ_QUEST_NUMBER_ERROR);
+            throw new Exception('id '._MD_XQUIZ_AM_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->id = $id;
     }
@@ -63,7 +63,7 @@ class Quiz
     public function get_id()
     {
         if (!isset($this->id)) {
-            throw new Exception('id '._QUEST_SET_ERROR);
+            throw new Exception('id '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->id;
     }
@@ -86,7 +86,7 @@ class Quiz
     public function get_name()
     {
         if (!isset($this->name)) {
-            throw new Exception('name '._QUEST_SET_ERROR);
+            throw new Exception('name '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->name;
     }
@@ -109,7 +109,7 @@ class Quiz
     public function get_description()
     {
         if (!isset($this->description)) {
-            throw new Exception('description '._QUEST_SET_ERROR);
+            throw new Exception('description '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->description;
     }
@@ -132,7 +132,7 @@ class Quiz
     public function get_btime()
     {
         if (!isset($this->btime)) {
-            throw new Exception('btime '._QUEST_SET_ERROR);
+            throw new Exception('btime '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->btime;
     }
@@ -155,7 +155,7 @@ class Quiz
     public function get_etime()
     {
         if (!isset($this->etime)) {
-            throw new Exception('etime '._QUEST_SET_ERROR);
+            throw new Exception('etime '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->etime;
     }
@@ -169,12 +169,12 @@ class Quiz
     public function set_bdate($bdate)
     {
         if (preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $bdate)) {
-            throw new Exception(_QUEST_VALID_BDATE);
+            throw new Exception(_AM_XQUIZ_QUEST_VALID_BDATE);
         }
             
         if ((isset($this->edate)) &&
             (strtotime($this->edate)+$this->etime <= strtotime($bdate)+$this->btime)) {
-            throw new Exception(_QUEST_EDATE);
+            throw new Exception(_AM_XQUIZ_QUEST_EDATE);
         }
             
         $t = strtotime($this->myts->addslashes($bdate)) + $this->btime;
@@ -188,7 +188,7 @@ class Quiz
     public function get_bdate()
     {
         if (!isset($this->bdate)) {
-            throw new Exception('bdate '._QUEST_SET_ERROR);
+            throw new Exception('bdate '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->bdate;
     }
@@ -202,12 +202,12 @@ class Quiz
     public function set_edate($edate)
     {
         if (preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $edate)) {
-            throw new Exception(_QUEST_VALID_EDATE);
+            throw new Exception(_AM_XQUIZ_QUEST_VALID_EDATE);
         }
             
         if ((isset($this->bdate)) &&
             (strtotime($this->bdate)+$this->btime >= strtotime($edate)+$this->etime)) {
-            throw new Exception(_QUEST_BDATE);
+            throw new Exception(_AM_XQUIZ_QUEST_BDATE);
         }
 
         $t = strtotime($this->myts->addslashes($edate)) + $this->etime;
@@ -221,7 +221,7 @@ class Quiz
     public function get_edate()
     {
         if (!isset($this->edate)) {
-            throw new Exception('edate '._QUEST_SET_ERROR);
+            throw new Exception('edate '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->edate;
     }
@@ -235,7 +235,7 @@ class Quiz
     public function set_weight($weight)
     {
         if (!is_numeric($weight)) {
-            throw new Exception('weight '._MD_XQUIZ_QUEST_NUMBER_ERROR);
+            throw new Exception('weight '._MD_XQUIZ_AM_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->weight = $weight;
     }
@@ -247,7 +247,7 @@ class Quiz
     public function get_weight()
     {
         if (!isset($this->weight)) {
-            throw new Exception('weight '._QUEST_SET_ERROR);
+            throw new Exception('weight '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->weight;
     }
@@ -261,7 +261,7 @@ class Quiz
     public function set_cid($cid)
     {
         if (!is_numeric($cid)) {
-            throw new Exception('cid '._MD_XQUIZ_QUEST_NUMBER_ERROR);
+            throw new Exception('cid '._MD_XQUIZ_AM_XQUIZ_QUEST_NUMBER_ERROR);
         }
         $this->categoryId = $cid;
     }
@@ -273,7 +273,7 @@ class Quiz
     public function get_cid()
     {
         if (!isset($this->categoryId)) {
-            throw new Exception('cid '._QUEST_SET_ERROR);
+            throw new Exception('cid '._AM_XQUIZ_QUEST_SET_ERROR);
         }
         return $this->categoryId;
     }
@@ -291,7 +291,7 @@ class Quiz
         $res = $xoopsDB->query($query);
         
         if (!$res) {
-            throw new Exception(_QUEST_DATABASE);
+            throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
     }
     
@@ -309,13 +309,13 @@ class Quiz
         xoops_comment_delete($xoopsModule->getVar('mid'), $this->id);
         
         if (!$res) {
-            throw new Exception(_QUEST_DATABASE);
+            throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
             
         $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_questionsx")." WHERE  
 					  qid = '$this->id' ";
         if (!$res) {
-            throw new Exception(_QUEST_DATABASE);
+            throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
     }
     
@@ -337,7 +337,7 @@ class Quiz
         $res = $xoopsDB->query($query);
         
         if (!$res) {
-            throw new Exception(_QUEST_DATABASE);
+            throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
     }
     
@@ -368,7 +368,7 @@ class Quiz
         //check for category existance
         $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         if (!$xt->getChildTreeArray(0)) {
-            throw new Exception(_XQUIZ_NO_CATEGORY);
+            throw new Exception(_AM_XQUIZ_NO_CATEGORY);
         }
         $addQuiz_form = new XoopsThemeForm(
             _AM_XQUIZ_NEW,
@@ -389,7 +389,7 @@ class Quiz
             $quiz_weight_v = $quiz['weight'];
             $quiz_id = new XoopsFormHidden("quizId", $quiz_id_v);
             $addQuiz_form->addElement($quiz_id);
-            $submit_button = new XoopsFormButton("", "editQuizSubmit", _XQUIZ_SUBMIT, "submit");
+            $submit_button = new XoopsFormButton("", "editQuizSubmit", _AM_XQUIZ_SUBMIT, "submit");
         } elseif ("add" == $op) {
             $quiz_name_v = "";
             $quiz_category_id = 0;
@@ -399,19 +399,19 @@ class Quiz
 			//$quiz_edate_v = time();
             $quiz_edate_v = time()+(3600*24*16);
             $quiz_weight_v = 0;
-            $submit_button = new XoopsFormButton("", "addQuizSubmit", _XQUIZ_SUBMIT, "submit");
+            $submit_button = new XoopsFormButton("", "addQuizSubmit", _AM_XQUIZ_SUBMIT, "submit");
         }
-        $quiz_name = new XoopsFormText(_XQUIZ_NAME, "quizName", 50, 100, $quiz_name_v);
+        $quiz_name = new XoopsFormText(_AM_XQUIZ_NAME, "quizName", 50, 100, $quiz_name_v);
         ob_start();
         $xt->makeMySelBox("title", "cid ASC", $quiz_category_id, 0, 'quizCategory');
-        $quiz_category = new XoopsFormLabel(_XQUIZ_CATEGORY, ob_get_contents());
+        $quiz_category = new XoopsFormLabel(_AM_XQUIZ_CATEGORY, ob_get_contents());
         ob_end_clean();
-        $quiz_begin_date = new XoopsFormDateTime(_XQUIZ_BDATE, "quizBDate", 15, $quiz_bdate_v);
-        $quiz_end_date = new XoopsFormDateTime(_XQUIZ_EDATE, "quizEDate", 15, $quiz_edate_v);
-        $quiz_weight = new XoopsFormText(_XQUIZ_WEIGHT, "quizWeight", 5, 3, $quiz_weight_v);
+        $quiz_begin_date = new XoopsFormDateTime(_AM_XQUIZ_BDATE, "quizBDate", 15, $quiz_bdate_v);
+        $quiz_end_date = new XoopsFormDateTime(_AM_XQUIZ_EDATE, "quizEDate", 15, $quiz_edate_v);
+        $quiz_weight = new XoopsFormText(_AM_XQUIZ_WEIGHT, "quizWeight", 5, 3, $quiz_weight_v);
         //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
     
-        $options_tray = new XoopsFormElementTray(_XQUIZ_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_AM_XQUIZ_DESC, '<br />');
         if (class_exists('XoopsFormEditor')) {
             $options['name'] = 'quizDesc';
             $options['value'] = $quiz_desc_v;
@@ -459,7 +459,7 @@ class Quiz
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
                  XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;"._XQUIZ_QUIZS."</h4><br/>
+				 </a>&nbsp;"._AM_XQUIZ_QUIZS."</h4><br/>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
@@ -468,16 +468,16 @@ class Quiz
 							<input type='hidden' name='op' value='Quiz'>
 							<input type='hidden' name='act' value='add'>
 							<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/new.png \" >
-							<input type='submit' value='"._AM_NEW_QUIZ."'>
+							<input type='submit' value='"._AM_XQUIZ_NEW_QUIZ."'>
 							</form>
 							</td>
 							<td>
 							<form method='get' action='index.php'\">
 								<input type='hidden' name='op' value='Quiz'>
-								<lable>"._XQUIZ_CATEGORY_SELECT."
+								<lable>"._AM_XQUIZ_CATEGORY_SELECT."
 				 				$select
 								</lable>
-								<input type='submit' value='"._AM_QUEST_GO."'>
+								<input type='submit' value='"._AM_XQUIZ_QUEST_GO."'>
 							</form>
 							</td>
 						</tr>
@@ -485,22 +485,22 @@ class Quiz
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'>
 						<td>
-							"._XQUIZ_NAME."
+							"._AM_XQUIZ_NAME."
 						</td>
 						<td>
-							"._XQUIZ_CATEGORY."
+							"._AM_XQUIZ_CATEGORY."
 						</td>
 						<td>
-							"._XQUIZ_QUEST_NUM."
+							"._AM_XQUIZ_AM_QUEST_NUM."
 						</td>
 						<td>
-							"._XQUIZ_BDATE."
+							"._AM_XQUIZ_BDATE."
 						</td>
 						<td>
-							"._XQUIZ_EDATE."
+							"._AM_XQUIZ_EDATE."
 						</td>
 						<td>
-							"._XQUIZ_WEIGHT."
+							"._AM_XQUIZ_WEIGHT."
 						</td>
 						<td>
 							"._AM_XQUIZ_ACTION."
@@ -510,11 +510,11 @@ class Quiz
         $class = 'even';
         $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/on.png \" >";
         $offImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/off.png \" >";
-        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._XQUIZ_DEL." alt='' >";
-        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._XQUIZ_EDIT." alt='' >";
-        $statImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/stat.gif \" title="._XQUIZ_STAT." alt='' >";
-        $addImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/add.png \" title="._XQUIZ_QUEST_ADD." alt='' >";
-        $exportImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/export.png \" title="._XQUIZ_CSV_EXPORT." alt='' >";
+        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._AM_XQUIZ_DEL." alt='' >";
+        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._AM_XQUIZ_EDIT." alt='' >";
+        $statImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/stat.gif \" title="._AM_XQUIZ_STAT." alt='' >";
+        $addImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/add.png \" title="._AM_XQUIZ_QUEST_ADD." alt='' >";
+        $exportImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/export.png \" title="._AM_XQUIZ_CSV_EXPORT." alt='' >";
         
         foreach ($listQuiz as $key) {
             $status = ($key['status']) ? $onImage:$offImage;
@@ -597,8 +597,8 @@ class Quiz
         true
     );
         $quiz_id = new XoopsFormHidden("quizId", $id);
-        $quiz_confirm = new XoopsFormRadioYN(_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
-        $submit_button = new XoopsFormButton("", "delQuizSubmit", _XQUIZ_SUBMIT, "submit");
+        $quiz_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
+        $submit_button = new XoopsFormButton("", "delQuizSubmit", _AM_XQUIZ_SUBMIT, "submit");
         //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
     
         $delQuiz_form->addElement($quiz_id);

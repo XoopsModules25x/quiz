@@ -5,10 +5,24 @@ define('_MI_XQUIZ_QUESTIONS', 'Questions');
 define('_MI_XQUIZ_STATISTICS', 'Statistics');
 define('_MI_XQUIZ_INDEX', 'Home');
 define('_MI_XQUIZ_SEE_SCORE', 'Users are able to see score after quiz take part');
-define('_MI_XQUIZ_PERMISSIONS', 'Permissions');
+define('_MI_MD_XQUIZ_PERMISSIONS', 'Permissions');
 define('_MI_XQUIZ_CATEGORY', 'Category');
 define('_MI_XQUIZ_CATEGORY_TITLE', 'Title');
-
+define('_MI_XQUIZ_MODADMIN', 'Moderate section');
+define('_MI_XQUIZ_LIST_NUM', 'Maximum number of quizzes shown in the moderate section per page ');
+define('_MI_QUEST_LIST_NUM', 'Maximum number of questions shown in the moderate section per page ');
+define('_MI_CATEGORY_LIST_NUM', 'Maximum number of categories shown in the moderate section per page ');
+define('_MI_QUEST_USER_LIST_NUM', 'Maximum number of users shown in the stats management section per page');
+define('_MI_XQUIZ_USER_LIST_NUM', 'Maximum number of questions shown in the user section per page');
+define('_MI_XQUIZ_SEE_STAT', 'Quest users can see the results and stats of quiz');
+define('_MI_XQUIZ_PROFILE_SCORE', 'Users are able to see score after quiz take part in profile');
+define('_MI_XQUIZ_PROFILE_SCORE_DESC', 'With this option chosen each user can see his results after quiz take part in profile,
+		otherwize results are shown at the end of each quiz');
+define('_MI_XQUIZ_DATEFORMAT', "Date's format");
+define('_MI_XQUIZ_DATEFORMAT_DESC', "Please refer to the Php documentation (http://php.net/manual/en/function.date.php) for more information on how to select the format. Note, if you don't type anything then the default date's format will be used");
+define('_MI_XQUIZ_MAIL_SCORE', 'User score email for user.');
+define('_MI_XQUIZ_MAIL_SCORE_DESC', 'With this option chosen user score email for user after tries quiz.');
+define('_MI_XQUIZ_EDITORS', 'default editor');
 define('_MI_XQUIZ_UPLOADFILESIZE', 'MAX File-size Upload (KB) 1048576 = 1 Meg');
 define('_MI_XQUIZ_GLOBAL_NOTIFY', 'Global');
 define('_MI_XQUIZ_GLOBAL_NOTIFYDSC', 'Global QUIZ notification options.');
