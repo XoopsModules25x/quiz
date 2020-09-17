@@ -168,7 +168,7 @@ class Quiz
      */
     public function set_bdate($bdate)
     {
-        if (!preg_match("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $bdate)) {
+        if (preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $bdate)) {
             throw new Exception(_QUEST_VALID_BDATE);
         }
             
@@ -201,7 +201,7 @@ class Quiz
      */
     public function set_edate($edate)
     {
-        if (!ereg("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $edate)) {
+        if (preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $edate)) {
             throw new Exception(_QUEST_VALID_EDATE);
         }
             
@@ -395,6 +395,8 @@ class Quiz
             $quiz_category_id = 0;
             $quiz_desc_v = "";
             $quiz_bdate_v = time()+(3600*24*2);
+			//$quiz_bdate_v = time();
+			//$quiz_edate_v = time();
             $quiz_edate_v = time()+(3600*24*16);
             $quiz_weight_v = 0;
             $submit_button = new XoopsFormButton("", "addQuizSubmit", _XQUIZ_SUBMIT, "submit");
