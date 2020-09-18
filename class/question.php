@@ -536,6 +536,7 @@ class Question
             true
         );
         $quest_id = new XoopsFormHidden("questId", $id);
+		$quiz_id = new XoopsFormHidden("quizId", $qid);
         $quest_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
         $submit_button = new XoopsFormButton("", "delQuestSubmit", _AM_XQUIZ_SUBMIT, "submit");
         //$quest_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());

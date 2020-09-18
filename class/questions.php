@@ -699,6 +699,7 @@ class questions
     {
         $delQuest_form = new XoopsThemeForm(_AM_XQUIZ_DELQUESTFORM, "delqstfrom", XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true);
         $quest_id      = new XoopsFormHidden("questId", $id);
+		$quiz_id       = new XoopsFormHidden("quizId", $qid);
         $quest_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
         $submit_button = new XoopsFormButton("", "delQstSubmit", _AM_XQUIZ_SUBMIT, "submit");
         //$quest_token   = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
