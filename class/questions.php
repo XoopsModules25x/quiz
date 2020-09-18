@@ -279,7 +279,7 @@ class questions
         $quest_list_array_v = Quiz::quiz_listQuizArray();
         $quiz_name          = new XoopsFormSelect(_AM_XQUIZ_NAME, "quizId", $question_qid_v);
         $quiz_name->addOptionArray($quest_list_array_v);
-        $question_number = new XoopsFormText(_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $question_number_v);
+        $question_number = new XoopsFormText(_AM_XQUIZ_QUEST_TOTAL, "questionNumber", 15, 5, $question_number_v);
         $question_score  = new XoopsFormText(_AM_XQUIZ_QUEST_SCORE, "questionScore", 15, 5);
         global $xoopsModuleConfig;
         $options_tray = new XoopsFormElementTray(_AM_XQUIZ_QUEST_DESC, '<br />');
@@ -367,7 +367,7 @@ class questions
         ////////////////////temp
         $question_id = new XoopsFormHidden("questionId", $this->getId());
         ////////
-        $question_number = new XoopsFormText(_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $this->getQnumber());
+        $question_number = new XoopsFormText(_AM_XQUIZ_QUEST_TOTAL, "questionNumber", 15, 5, $this->getQnumber());
 
         $submit_button = new XoopsFormButton("", "editQstSubmit", _AM_XQUIZ_SUBMIT, "submit");
 
@@ -523,7 +523,7 @@ class questions
 							<td>
 							<form method='get' action='index.php' onchange=\"MM_jumpMenu('parent',this,0)\">
 								<input type='hidden' name='op' value='Question'>
-								<lable>" . _AM_XQUIZ_QUIZS_SELECT . "
+								<label>" . _AM_XQUIZ_QUIZS_SELECT . "
 									<select name='Id'>";
         foreach ($list as $key) {
             echo "<option value='" . $key ['id'] . "'>" . $key ['name'] . "</option>";
@@ -538,7 +538,7 @@ class questions
 							<form method='get' action='index.php'>
 							<input type='hidden' name='op' value='Question'>
 							<input type='hidden' name='act' value='add'>
-							<lable>" . _AM_XQUIZ_QUIZS_SELECT . "
+							<label>" . _AM_XQUIZ_QUIZS_SELECT . "
 									<select name='Id'>";
         foreach ($list as $key) {
             echo "<option value='" . $key ['id'] . "'>" . $key ['name'] . "</option>";
@@ -546,7 +546,7 @@ class questions
 
         echo "						</select>
 							</lable>
-							<lable>" . _AM_XQUIZ_ANSWER_TYPE . "
+							<label>" . _AM_XQUIZ_ANSWER_TYPE . "
 									<select name='type'>";
         foreach (self::$qTypes as $key => $value) {
             echo "<option value='$key'>$value</option>";

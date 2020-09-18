@@ -108,7 +108,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 							<form method='get' action='index.php'\">
 								<input type='hidden' name='op' value='Statistics'>
 								
-								<lable>"._AM_XQUIZ_QUIZS_SELECT."
+								<label>"._AM_XQUIZ_QUIZS_SELECT."
 									<select name='Id'>";
         foreach ($list as $key) {
             echo "<option value='".$key['id']."'>".$key['name']."</option>";
@@ -117,7 +117,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
             
         echo "						</select>
 								</lable>
-								<lable>
+								<label>
 								"._AM_XQUIZ_CSV_EXPORT."
 								</lable>
 								<input type='checkbox' name='exp'>

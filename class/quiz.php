@@ -462,21 +462,20 @@ class Quiz
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
                  XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
 				 </a>&nbsp;"._AM_XQUIZ_QUIZS."</h4><br/>
-					<div id='newsub' style='text-align: center;'>
+					<div id='newsub' style='text-align:left;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
 							<td>
 							<form method='get' action='index.php'>
 							<input type='hidden' name='op' value='Quiz'>
 							<input type='hidden' name='act' value='add'>
-							<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/new.png \" >
 							<input type='submit' value='"._AM_XQUIZ_NEW_QUIZ."'>
 							</form>
 							</td>
 							<td>
 							<form method='get' action='index.php'\">
 								<input type='hidden' name='op' value='Quiz'>
-								<lable>"._AM_XQUIZ_CATEGORY_SELECT."
+								<label>"._AM_XQUIZ_CATEGORY_SELECT."
 				 				$select
 								</lable>
 								<input type='submit' value='"._AM_XQUIZ_QUEST_GO."'>
@@ -485,29 +484,29 @@ class Quiz
 						</tr>
 					</table>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
-					<tr class='bg3'>
-						<td>
+					<tr class='bg3'><thead>
+						<th>
 							"._AM_XQUIZ_NAME."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_CATEGORY."
-						</td>
-						<td>
-							"._AM_XQUIZ_AM_QUEST_NUM."
-						</td>
-						<td>
+						</th>
+						<th>
+							"._AM_XQUIZ_QUESTIONS."
+						</th>
+						<th>
 							"._AM_XQUIZ_BDATE."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_EDATE."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_WEIGHT."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_ACTION."
-						</td>
-					</tr>";
+						</th>
+					</tr></thead>";
                  
         $class = 'even';
         $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/on.png \" >";
@@ -523,8 +522,8 @@ class Quiz
             $active = ($key['active']) ? $onImage:$offImage;
             //$statEdit = (!$key['active']) ? $statImage:$editImage;
             $questLink = ((!$key['status'])&&($key['active']))?
-                    "<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=add&Id="
-                        .$key['id']."\">".$addImage." ".$key['question']."
+                    "<a class='btn btn-primary btn-xs' href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=add&Id="
+                        .$key['id']."\">"._AM_XQUIZ_QUEST_NEW." ".$addImage." ".$key['question']."
 					</a>":$key['question'];
             $category = Category::retriveCategory($key['cid']);
             $quizCategory = "<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid="
