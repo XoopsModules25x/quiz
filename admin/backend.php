@@ -330,10 +330,10 @@ try {
             $qid = $myts->addslashes($_POST ['quizId']);
             
             if (! Quiz::quiz_checkExpireQuiz($qid)) {
-                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
+                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
             }
             if (Quiz::quiz_checkActiveQuiz($qid)) {
-                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
+                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
             }
             $question = $_POST ['questionDesc'];
             $score = $_POST ['questionScore'];
@@ -353,10 +353,10 @@ try {
         case 'editQst':
             if (isset($id)) {
                 if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question");
+                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question&Id=$qid");
                 }
                 if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question");
+                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question&Id=$qid");
                 }
             }
             $id = $_POST ['questionId'];
@@ -375,7 +375,7 @@ try {
             $questionObj->setType($qtype);
             $questionObj->editQuestion($_POST ['answers'], $_POST ['corrects']);
             
-            throw new Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Question");
+            throw new Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Question&Id=$qid");
             break;
             
         case 'delQst':
