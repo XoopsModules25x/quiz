@@ -183,10 +183,10 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 							"._AM_XQUIZ_QUEST_CORRECT."
 						</th>
 						<th>
-							"._MD_XQUIZ_QUEST_SCORE."
+							"._AM_XQUIZ_QUEST_SCORE."
 						</th>
 						<th>
-							"._MD_XQUIZ_USER_ANSWER."
+							"._AM_XQUIZ_USER_ANSWER."
 						</th>
 						<th>
 							"._AM_XQUIZ_STATUS."

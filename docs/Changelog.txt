@@ -1,5 +1,7 @@
 == Version 2.0 Pre Alpha  ==
 
+Update Deprecated class xoopsmodule (liomj)
+Update Language Files (liomj)
 Rename database tables (liomj)
 Move Images folder to assets (liomj)
 Change Html to tpl template (liomj)

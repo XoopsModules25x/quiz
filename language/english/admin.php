@@ -38,6 +38,7 @@ define('_AM_XQUIZ_EDIT_CATEGORY', 'Category edited successfully.');
 define('_AM_XQUIZ_DELETE_CATEGORY', 'Category deleted successfully.');
 define('_AM_XQUIZ_ACTION', 'Action');
 define('_AM_XQUIZ_QUEST_NEW', 'Create new question');
+define('_AM_QUEST_NUMBER', 'Questions number');
 define('_AM_XQUIZ_QUEST_GO', 'Preview');
 define('_AM_XQUIZ_QUESTION_GO', 'View questions');
 define('_AM_XQUIZ_INDEX_ADD_QUEST', 'You can only add questions to a quiz that has not yet been started.');
@@ -54,6 +55,7 @@ define('_AM_XQUIZ_VIEWFORM', 'View Permissions');
 define('_AM_XQUIZ_UPLOAD_ERROR', 'Error in file uploading!');
 define('_AM_XQUIZ_QUEST_SET_ERROR', 'Error in execution order');
 define('_AM_XQUIZ_QUEST_DATABASE', 'Database connection error');
+define('_am_XQUIZ_QUEST_NUMBER_ERROR', 'Submitted data error');
 define('_AM_XQUIZ_QUEST_EXIST', 'A question with such title already exists in the database');
 define('_AM_XQUIZ_QUEST_VALID_BDATE', 'Beginning date is not valid');
 define('_AM_XQUIZ_QUEST_BDATE', 'Beginning date must be before the ending date');
@@ -114,7 +116,12 @@ define('_AM_XQUIZ_ANSWER_TYPE_MC', 'Multi Choice');
 define('_AM_XQUIZ_ANSWER_TYPE_CM', 'Choose One or More');
 define('_AM_XQUIZ_ANSWER_TYPE_FB', 'Fill in the Blank(s)');
 define('_AM_XQUIZ_ANSWER_TYPE', 'Answer Type');
-
-
-
-
+define('_AM_XQUIZ_QUEST_NUMBER', 'Questions number');
+define('_AM_XQUIZ_QUEST_ANS1', 'Option 1');
+define('_AM_XQUIZ_QUEST_ANS2', 'Option 2');
+define('_AM_XQUIZ_QUEST_ANS3', 'Option 3');
+define('_AM_XQUIZ_QUEST_ANS4', 'Option 4');
+define('_AM_XQUIZ_AM_XQUIZ_QUEST_NUMBER', 'Qustion`s number');
+define('_AM_XQUIZ_QUEST_ANSWER','Correct Answer');
+define('_AM_XQUIZ_QUEST_DESC', 'Questions text');
+define('_AM_XQUIZ_QUEST_SCORE', 'Questions score');

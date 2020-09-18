@@ -22,7 +22,7 @@
  */
 include("../../../mainfile.php");
 include '../../../include/cp_header.php';
-include_once XOOPS_ROOT_PATH."/class/xoopsmodule.php";
+include_once XOOPS_ROOT_PATH."/kernel/module.php";
 include_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 include_once XOOPS_ROOT_PATH.'/modules/xquiz/include/functions.php';
 include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/question.php';

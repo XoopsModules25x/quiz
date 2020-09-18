@@ -206,7 +206,7 @@ class questions
 							" . _AM_XQUIZ_QUEST_NUM . "
 						</th>
 						<th>
-							" . _MD_XQUIZ_QUEST_SCORE . "
+							" . _AM_XQUIZ_QUEST_SCORE . "
 						</th>
 						<th>
 							" . _AM_XQUIZ_ANSWER_TYPE . "
@@ -270,10 +270,10 @@ class questions
         $quest_list_array_v = Quiz::quiz_listQuizArray();
         $quiz_name          = new XoopsFormSelect(_AM_XQUIZ_NAME, "quizId", $question_qid_v);
         $quiz_name->addOptionArray($quest_list_array_v);
-        $question_number = new XoopsFormText(_MD_XQUIZ_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $question_number_v);
-        $question_score  = new XoopsFormText(_MD_XQUIZ_QUEST_SCORE, "questionScore", 15, 5);
+        $question_number = new XoopsFormText(_AM_XQUIZ_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $question_number_v);
+        $question_score  = new XoopsFormText(_AM_XQUIZ_QUEST_SCORE, "questionScore", 15, 5);
         global $xoopsModuleConfig;
-        $options_tray = new XoopsFormElementTray(_MD_XQUIZ_QUEST_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_AM_XQUIZ_QUEST_DESC, '<br />');
         if (class_exists('XoopsFormEditor')) {
             $options ['name']   = 'questionDesc';
             $options ['value']  = $question_question_v;
@@ -357,16 +357,16 @@ class questions
         ////////////////////temp
         $question_id = new XoopsFormHidden("questionId", $this->getId());
         ////////
-        $question_number = new XoopsFormText(_MD_XQUIZ_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $this->getQnumber());
+        $question_number = new XoopsFormText(_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $this->getQnumber());
 
         $submit_button = new XoopsFormButton("", "editQstSubmit", _AM_XQUIZ_SUBMIT, "submit");
 
         $quest_list_array_v = Quiz::quiz_listQuizArray();
         $quiz_name          = new XoopsFormSelect(_AM_XQUIZ_NAME, "quizId", $this->getQid());
         $quiz_name->addOptionArray($quest_list_array_v);
-        $question_score = new XoopsFormText(_MD_XQUIZ_QUEST_SCORE, "questionScore", 15, 5, $this->getScore());
+        $question_score = new XoopsFormText(_AM_XQUIZ_QUEST_SCORE, "questionScore", 15, 5, $this->getScore());
         global $xoopsModuleConfig;
-        $options_tray = new XoopsFormElementTray(_MD_XQUIZ_QUEST_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_AM_XQUIZ_QUEST_DESC, '<br />');
         if (class_exists('XoopsFormEditor')) {
             $options ['name']   = 'questionDesc';
             $options ['value']  = $this->getQuestion();

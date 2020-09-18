@@ -434,7 +434,7 @@ function showCategories($start, $limit)
 				"
                 .$goImage.
                 "
-					<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\"><img src=\"".XOOPS_URL."/uploads/xquiz/category/".$key['imgurl']."\" width='60px' height='60px' align='left' style='padding:5px'></a>&nbsp;<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\">".$key['title']."</a><br>&nbsp;<small>".$key['description']."</small>
+					<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\"><img src=\"".XOOPS_URL."/uploads/xquiz/category/".$key['imgurl']."\" width='40px' height='40px' align='left' style='padding:5px'></a>&nbsp;<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\">".$key['title']."</a><br>&nbsp;<small>".$key['description']."</small>
 				</td>
 				<td>
 				"
