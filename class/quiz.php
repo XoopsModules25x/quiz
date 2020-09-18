@@ -476,7 +476,7 @@ class Quiz
 							<td>
 							<form method='get' action='index.php'\">
 								<input type='hidden' name='op' value='Quiz'>
-								<lable>"._AM_XQUIZ_CATEGORY_SELECT."
+								<label>"._AM_XQUIZ_CATEGORY_SELECT."
 				 				$select
 								</lable>
 								<input type='submit' value='"._AM_XQUIZ_QUEST_GO."'>
@@ -485,29 +485,29 @@ class Quiz
 						</tr>
 					</table>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
-					<tr class='bg3'>
-						<td>
+					<tr class='bg3'><thead>
+						<th>
 							"._AM_XQUIZ_NAME."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_CATEGORY."
-						</td>
-						<td>
-							"._AM_XQUIZ_AM_QUEST_NUM."
-						</td>
-						<td>
+						</th>
+						<th>
+							"._AM_XQUIZ_QUEST_NUM."
+						</th>
+						<th>
 							"._AM_XQUIZ_BDATE."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_EDATE."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_WEIGHT."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_ACTION."
-						</td>
-					</tr>";
+						</th>
+					</tr></thead>";
                  
         $class = 'even';
         $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/on.png \" >";
