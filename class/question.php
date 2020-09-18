@@ -306,7 +306,7 @@ class Question
 							<td>
 							<form method='get' action='index.php' onchange=\"MM_jumpMenu('parent',this,0)\">
 								<input type='hidden' name='op' value='Quest'>
-								<lable>"._AM_XQUIZ_QUIZS_SELECT."
+								<label>"._AM_XQUIZ_QUIZS_SELECT."
 									<select name='Id'>";
         foreach ($list as $key) {
             echo "<option value='".$key['id']."'>".$key['name']."</option>";
@@ -322,7 +322,7 @@ class Question
 							<form method='get' action='index.php'>
 							<input type='hidden' name='op' value='Quest'>
 							<input type='hidden' name='act' value='add'>
-							<lable>"._AM_XQUIZ_QUIZS_SELECT."
+							<label>"._AM_XQUIZ_QUIZS_SELECT."
 									<select name='Id'>";
         foreach ($list as $key) {
             echo "<option value='".$key['id']."'>".$key['name']."</option>";
@@ -370,7 +370,7 @@ class Question
             
             $question_id = new XoopsFormHidden("questionId", $question_id_v);
             $addQuest_form->addElement($question_id);
-            $question_number = new XoopsFormText(_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 5, 3, $question_qnumber_v);
+            $question_number = new XoopsFormText(_AM_XQUIZ_QUEST_TOTAL, "questionNumber", 5, 3, $question_qnumber_v);
             $addQuest_form->addElement($question_number);
             
             $submit_button = new XoopsFormButton("", "editQuestSubmit", _AM_XQUIZ_SUBMIT, "submit");
