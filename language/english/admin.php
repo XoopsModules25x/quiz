@@ -67,7 +67,7 @@ define('_AM_XQUIZ_QUEST_SECURITY_ERROR', 'Error in submitted data,please try aga
 define('_AM_XQUIZ_QUEST_EDIT', 'Question edited successfully.');
 define('_AM_XQUIZ_QUEST_DELETE', 'Question deleted successfully');
 define('_AM_XQUIZ_QUEST_NAME', 'Question');
-define('_AM_XQUIZ_QUEST_NUM', 'Question`s number');
+define('_AM_XQUIZ_QUEST_NUM', 'Questions number');
 define('_AM_XQUIZ_QUEST_CORRECT', 'Correct option');
 define('_AM_XQUIZ_NAME', 'Quiz title');
 define('_AM_XQUIZ_DESC', 'Quiz details');
@@ -121,7 +121,7 @@ define('_AM_XQUIZ_QUEST_ANS1', 'Option 1');
 define('_AM_XQUIZ_QUEST_ANS2', 'Option 2');
 define('_AM_XQUIZ_QUEST_ANS3', 'Option 3');
 define('_AM_XQUIZ_QUEST_ANS4', 'Option 4');
-define('_AM_XQUIZ_QUEST_NUMBER', 'Question`s number');
+define('_AM_XQUIZ_QUEST_NUMBER', 'Question number');
 define('_AM_XQUIZ_QUEST_ANSWER','Correct Answer');
 define('_AM_XQUIZ_QUEST_DESC', 'Questions text');
 define('_AM_XQUIZ_QUEST_SCORE', 'Questions score');

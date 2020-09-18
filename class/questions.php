@@ -204,12 +204,15 @@ class questions
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'>
-						<th>
+					    <th>
 							" . _AM_XQUIZ_QUEST_NUM . "
 						</th>
 						<th>
-							" . _AM_XQUIZ_QUEST_SCORE . "
+							"._AM_XQUIZ_QUEST_NAME."
 						</th>
+						<th>
+							" . _AM_XQUIZ_QUEST_SCORE . "
+						</th>					
 						<th>
 							" . _AM_XQUIZ_ANSWER_TYPE . "
 						</th>
@@ -222,23 +225,27 @@ class questions
 
         $delImage  = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/delete.gif \" title=" . _AM_XQUIZ_DEL . " alt='' >";
         $editImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/edit.gif \" title=" . _AM_XQUIZ_EDIT . " alt='' >";
-        //$ts = & MyTextSanitizer::getInstance ();
+        $ts = & MyTextSanitizer::getInstance ();
         foreach ($listQuestion as $key) {
             $class = ('even' == $class) ? 'odd' : 'even';
 
             $temp = $temp . "
 			<tr class='" . $class . "'>
-				<td>
+			    <td>
 					" . $key ['qnumber'] . "
+				</td>
+				<td>
+					".$ts->previewTarea($key['question'], 1, 1, 1, 1, 1)."
 				</td>
 				<td>
 				" . $key ['score'] . "
 				</td>
+				
 				<td>
 				" . self::$qTypes [$key ['type']] . "
 				</td>
 				<td>
-				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Question&act=del&Id=" . $key ['id'] . "\">
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Question&act=del&Id=" . $key ['id'] . "&qId=" . $key ['qid'] . "\">
 				" . $delImage . "
 				</a>
 				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Question&act=edit&Id=" . $key ['id'] . "&qId=" . $key ['qid'] . "\">

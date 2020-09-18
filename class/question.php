@@ -235,17 +235,17 @@ class Question
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'>
+					    <th>
+							"._AM_XQUIZ_QUEST_NUM."
+						</th>
 						<th>
 							"._AM_XQUIZ_QUEST_NAME."
 						</th>
 						<th>
-							"._AM_XQUIZ_QUEST_NUM."
+							"._AM_XQUIZ_QUEST_CORRECT."
 						</th>
 						<th>
 							"._AM_XQUIZ_QUEST_SCORE."
-						</th>
-						<th>
-							"._AM_XQUIZ_QUEST_CORRECT."
 						</th>
 						<th>
 							"._AM_XQUIZ_ACTION."
@@ -262,20 +262,20 @@ class Question
             
             $temp = $temp."
 			<tr class='".$class."'>
-				<td>
-					".$ts->previewTarea($key['question'], 1, 1, 1, 1, 1)."
-				</td>
-				<td>
+			    <td>
 					".$key['qnumber']."
 				</td>
 				<td>
-				".$key['score']."
+					".$ts->previewTarea($key['question'], 1, 1, 1, 1, 1)."
 				</td>
 				<td>
 				".$key['answer']."
 				</td>
 				<td>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=del&Id=".$key['id']."\">
+				".$key['score']."
+				</td>
+				<td>
+				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=del&Id=".$key['id']."&qId=".$key['qid']."\">
 				".
                 $delImage
                 ."
