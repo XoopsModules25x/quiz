@@ -1,5 +1,7 @@
 == Version 2.0 Pre Alpha  ==
 
+
+Add and Update Language definitions (liomj)
 Add oninstall script (liomj)
 Update admin menu (liomj)
 Replaced Deprecated ereg (liomj)
