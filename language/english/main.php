@@ -32,7 +32,7 @@ define('_MD_XQUIZ_NAME', 'Quiz name');
 define('_MD_XQUIZ_DESC', 'Quiz details');
 define('_MD_XQUIZ_BDATE', 'Date of beginning');
 define('_MD_XQUIZ_EDATE', 'Date of ending');
-define('_MD_XQUIZ_WEIGHT', 'Quiz priority');
+define('_MD_XQUIZ_WEIGHT', 'Quiz Order');
 define('_MD_XQUIZ_SUBMIT', 'Submit');
 define('_MD_XQUIZ_ADDQUIZFORM', 'New quiz form');
 define('_MD_XQUIZ_UNAME', 'User');

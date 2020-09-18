@@ -485,29 +485,29 @@ class Quiz
 						</tr>
 					</table>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
-					<tr class='bg3'>
-						<td>
+					<tr class='bg3'><thead>
+						<th>
 							"._AM_XQUIZ_NAME."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_CATEGORY."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_AM_QUEST_NUM."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_BDATE."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_EDATE."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_WEIGHT."
-						</td>
-						<td>
+						</th>
+						<th>
 							"._AM_XQUIZ_ACTION."
-						</td>
-					</tr>";
+						</th>
+					</tr></thead>";
                  
         $class = 'even';
         $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/on.png \" >";
