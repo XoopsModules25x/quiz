@@ -151,16 +151,16 @@ try {
             $objQuestion->set_answer($answer);
             
             $objQuestion->addQuestion();
-            throw new Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Quest");
+            throw new Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Quest&Id=$qid");
             break;
         
         case 'editQuest':
             if (isset($id)) {
                 if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
+                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
                 }
                 if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
+                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
                 }
             }
             $id = $_POST ['questionId'];
@@ -187,10 +187,11 @@ try {
             $objQuestion->set_answer($answer);
             
             $objQuestion->editQuestion();
-            throw new Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Quest");
+            throw new Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Quest&Id=$qid");
             break;
         
         case 'delQuest':
+		
             $id = $_POST ['questId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
