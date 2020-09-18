@@ -380,10 +380,10 @@ class Question
             $question_question_v = '';
             $question_qnumber_v = '';
             $question_score_v = '';
-            //$question_ans1_v = _AM_XQUIZ_QUEST_ANS1;
-            //$question_ans2_v = _AM_XQUIZ_QUEST_ANS2;
-            //$question_ans3_v = _AM_XQUIZ_QUEST_ANS3;
-            //$question_ans4_v = _AM_XQUIZ_QUEST_ANS4;
+			$question_ans1_v = '';
+            $question_ans2_v = '';
+            $question_ans3_v = '';
+            $question_ans4_v = '';
             $question_answer_v = '';
             
             $submit_button = new XoopsFormButton("", "addQuestSubmit", _AM_XQUIZ_SUBMIT, "submit");
