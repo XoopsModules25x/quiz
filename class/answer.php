@@ -106,7 +106,7 @@ class answer
         }
     }
     /*
-     * TODO - delete qustion's answers
+     * TODO - delete question's answers
      * @param $questionId
      * @return Boolean
      */

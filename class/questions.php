@@ -290,14 +290,14 @@ class questions
         switch ($type) {
             case 'CM':
                 $cor_val = 'checkbox';
-                $thead   = "<th>" . _MD_XQUIZ_QUEST_ANSWER . "</th>";
+                $thead   = "<th>" . _AM_XQUIZ_QUEST_ANSWER . "</th>";
                 break;
             case 'FB':
                 $cor_val = 'blank';
                 break;
             default:
                 $cor_val = 'radio';
-                $thead   = "<th>" . _MD_XQUIZ_QUEST_ANSWER . "</th>";
+                $thead   = "<th>" . _AM_XQUIZ_QUEST_ANSWER . "</th>";
         }
         ob_start();
         $addImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/Add_Ans.png \" title=" . _AM_XQUIZ_ADD_ANSWER . ">";

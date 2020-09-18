@@ -121,7 +121,7 @@ define('_AM_XQUIZ_QUEST_ANS1', 'Option 1');
 define('_AM_XQUIZ_QUEST_ANS2', 'Option 2');
 define('_AM_XQUIZ_QUEST_ANS3', 'Option 3');
 define('_AM_XQUIZ_QUEST_ANS4', 'Option 4');
-define('_AM_XQUIZ_AM_XQUIZ_QUEST_NUMBER', 'Qustion`s number');
+define('_AM_XQUIZ_AM_XQUIZ_QUEST_NUMBER', 'Question`s number');
 define('_AM_XQUIZ_QUEST_ANSWER','Correct Answer');
 define('_AM_XQUIZ_QUEST_DESC', 'Questions text');
 define('_AM_XQUIZ_QUEST_SCORE', 'Questions score');
