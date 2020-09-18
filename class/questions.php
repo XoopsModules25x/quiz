@@ -109,7 +109,8 @@ class questions
      */
     public function setQuestion($question)
     {
-        $this->question = mysqli_real_escape_string($question);
+        //$this->question = $xoopsDB->escape($question);
+		$this->question = $question;
     }
 
     /**
@@ -125,7 +126,8 @@ class questions
      */
     public function setType($type)
     {
-        $this->type = mysqli_real_escape_string($type);
+        //$this->type = $xoopsDB->escape($type);
+		$this->type = $type;
     }
 
     public function __construct()
@@ -270,7 +272,7 @@ class questions
         $quest_list_array_v = Quiz::quiz_listQuizArray();
         $quiz_name          = new XoopsFormSelect(_AM_XQUIZ_NAME, "quizId", $question_qid_v);
         $quiz_name->addOptionArray($quest_list_array_v);
-        $question_number = new XoopsFormText(_AM_XQUIZ_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $question_number_v);
+        $question_number = new XoopsFormText(_AM_XQUIZ_QUEST_NUMBER, "questionNumber", 15, 5, $question_number_v);
         $question_score  = new XoopsFormText(_AM_XQUIZ_QUEST_SCORE, "questionScore", 15, 5);
         global $xoopsModuleConfig;
         $options_tray = new XoopsFormElementTray(_AM_XQUIZ_QUEST_DESC, '<br />');
@@ -329,11 +331,12 @@ class questions
 
         $addQuest_form->addElement($quiz_name, true);
         $addQuest_form->addElement($question_number, true);
-        $addQuest_form->addElement($question_score, true);
+        
         $addQuest_form->addElement($options_tray);
         $addQuest_form->addElement($ansFormTable);
         //$addQuest_form->addElement($question_token, true);
         $addQuest_form->addElement($question_type, true);
+		$addQuest_form->addElement($question_score, true);
         $addQuest_form->addElement($submit_button, true);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
@@ -386,7 +389,7 @@ class questions
         switch ($this->type) {
             case 'CM':
                 $cor_val = 'checkbox';
-                $thead   = "<th>" . _MD_XQUIZ_QUEST_ANSWER . "</th>";
+                $thead   = "<th>" . _AM_XQUIZ_QUEST_ANSWER . "</th>";
                 $i       = 1;
                 foreach ($this->answers as $answer) {
                     $check = '';
@@ -430,7 +433,7 @@ class questions
                 break;
             default:
                 $cor_val = 'radio';
-                $thead   = "<th>" . _MD_XQUIZ_QUEST_ANSWER . "</th>";
+                $thead   = "<th>" . _AM_XQUIZ_QUEST_ANSWER . "</th>";
                 $i       = 1;
                 foreach ($this->answers as $answer) {
                     $check = '';

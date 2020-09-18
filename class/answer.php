@@ -55,7 +55,8 @@ class answer
      */
     public function setAnswer($answer)
     {
-        $this->answer = mysqli_real_escape_string($answer);
+        //$this->answer = $xoopsDB->escape($answer);
+		$this->answer = $answer;
     }
     
     /**
@@ -94,8 +95,11 @@ class answer
      */
     public function addAnswer()
     {
+		if ($this->is_correct==''){
+			$this->is_correct='0';
+		}
         global $xoopsDB;
-        $query = "Insert into " . $xoopsDB->prefix("xquiz_answers") . "(question_id ,is_correct ,answer)
+        $query = "INSERT into " . $xoopsDB->prefix("xquiz_answers") . "(question_id ,is_correct ,answer)
 				VALUES ('$this->questId', '$this->is_correct', '$this->answer');";
         $res = $xoopsDB->query($query);
         
@@ -113,7 +117,7 @@ class answer
     public static function deleteAnswers($questionId)
     {
         global $xoopsDB;
-        $questionId = mysqli_real_escape_string($questionId);
+        $questionId = $xoopsDB->escape($questionId);
         $query = "DELETE FROM " . $xoopsDB->prefix("xquiz_answers") . " WHERE  
 					  question_id = '$questionId' ";
         $res = $xoopsDB->query($query);

@@ -49,13 +49,13 @@ if (isset($_POST ['addQuizSubmit'])) {
     $action = 'delCategory';
 }
 
-$myts = & MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 
 $maxuploadsize = $xoopsModuleConfig ['maxuploadsize'];
 
 try {
     if (! $GLOBALS ['xoopsSecurity']->check()) {
-        throw new Exception($GLOBALS ['xoopsSecurity']->getErrors() . _MD_XQUIZ_QUEST_SECURITY_ERROR);
+        throw new Exception($GLOBALS ['xoopsSecurity']->getErrors() . _AM_XQUIZ_QUEST_SECURITY_ERROR);
     }
     
     switch ($action) {
@@ -191,7 +191,6 @@ try {
             break;
         
         case 'delQuest':
-		
             $id = $_POST ['questId'];
             $confirm = $_POST ['delConfirm'];
             if (! $confirm) {
@@ -281,7 +280,7 @@ try {
             if (isset($_POST ['cateId']) && is_numeric($_POST ['cateId'])) {
                 $cid = $_POST ['cateId'];
             } else {
-                throw new Exception(_MD_XQUIZ_QUEST_SECURITY_ERROR . "||?op=Category");
+                throw new Exception(_AM_XQUIZ_QUEST_SECURITY_ERROR . "||?op=Category");
             }
             if (isset($_POST ['xoops_upload_file'])) {
                 $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
@@ -349,7 +348,7 @@ try {
             $obj->setType($type);
             $obj->addQuestion($_POST ['answers'], $_POST ['corrects']);
             
-            throw new Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Question");
+            throw new Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Question&Id=$qid");
             break;
         case 'editQst':
             if (isset($id)) {

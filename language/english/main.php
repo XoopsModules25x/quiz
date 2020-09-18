@@ -16,17 +16,12 @@ define('_MD_XQUIZ_QUEST_DUPLICATE_ERROR', 'A question with such title has been s
 define('_MD_XQUIZ_QUEST_ANSWER', 'Correct answer');
 define('_MD_XQUIZ_AM_XQUIZ_QUEST_ADDQESTFORM', 'New questions form');
 define('_MD_XQUIZ_QUEST_LISTQESTFORM', 'Questions list');
-//define('_MD_XQUIZ_QUEST_ANSWERS', 'Options');
 define('_MD_XQUIZ_QUEST_EMPTY', 'No questions have been provided for this section.');
 define('_MD_XQUIZ_PREFERENCES', 'Features');
 define('_MD_XQUIZ_UPDATE', 'Update');
 define('_MD_XQUIZ_QUEST_ANSWER','Correct Answer');
 define('_MD_XQUIZ_QUEST_NUMBER_ERROR', 'Submitted data error');
-//define('_MD_XQUIZ_QUEST_SECURITY_ERROR', 'Error in submitted data,please try again');
-//define('_MD_XQUIZ_USER_ANSWER', 'user answer');
 define('_MD_XQUIZ_USER_ANSWER_DETAIL', 'user answer details');
-//define('_MD_XQUIZ_QUEST_ANSWER', 'Correct?');
-//define('_MD_XQUIZ_CATEGORY_TITLE', 'Title');
 define('_MD_XQUIZ_NEXT', 'Next');
 define('_MD_XQUIZ_PREV', 'Previous');
 define('_MD_XQUIZ_USER', 'User');

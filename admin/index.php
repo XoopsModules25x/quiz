@@ -381,7 +381,6 @@ try {
             echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/xquiz/templates/admin/xquiz_admin_index.tpl');
             break;
 			
-			$mysql_version = substr(trim(mysql_get_server_info()), 0, 3);
     }
 } catch (Exception $e) {
     redirect_header('index.php', 3, $e->getMessage());
