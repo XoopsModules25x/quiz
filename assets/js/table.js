@@ -3,7 +3,8 @@ var RADIO_NAME = 'corrects'; // this is being set via script
 var TABLE_NAME = 'tblQuiz'; // this should be named in the HTML
 var ROW_BASE = 1; // first number (for display)
 var hasLoaded = false;
-var DELETE_IMAGE = '/modules/xquiz/assets/images/delete.png';
+var DELETE_IMAGE = 'images/delete.png';
+
 
 window.onload=xquiz_fillInRows;
 
@@ -88,7 +89,8 @@ function xquiz_addRowToTable(num,op)
 		txtInp.setAttribute('type', 'text');
 		txtInp.setAttribute('name', INPUT_NAME_PREFIX + '[' + iteration + ']');
 		txtInp.setAttribute('size', '40');
-		txtInp.setAttribute('value', iteration); // iteration included for debug purposes
+		//txtInp.setAttribute('value', iteration); // iteration included for debug purposes
+		txtInp.setAttribute('value', ''); 
 		cell1.appendChild(txtInp);
 		i++;
 		

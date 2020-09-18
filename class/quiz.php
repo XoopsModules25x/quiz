@@ -168,6 +168,7 @@ class Quiz
      */
     public function set_bdate($bdate)
     {
+		//if (!preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $bdate)) {
         if (preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $bdate)) {
             throw new Exception(_AM_XQUIZ_QUEST_VALID_BDATE);
         }
@@ -201,6 +202,7 @@ class Quiz
      */
     public function set_edate($edate)
     {
+		//if (!preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $edate)) {
         if (preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $edate)) {
             throw new Exception(_AM_XQUIZ_QUEST_VALID_EDATE);
         }
