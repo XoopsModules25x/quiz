@@ -659,8 +659,7 @@ class Quiz
             $listQuiz[$q]['totalquestion'] = $xoopsDB->getRowsNum($totalquestion);
             
             $today = strtotime(date("Y-m-d"));
-			
-			
+
 			//Show all quiz
 			$listQuiz[$q]['status'] = true;
             if (strtotime($myrow['bdate']) <= $today) {
@@ -686,7 +685,6 @@ class Quiz
             } else {
                 $listQuiz[$q]['viewstat'] = false;
             }
-			
 			
             $q++;
         }

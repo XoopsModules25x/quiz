@@ -82,7 +82,6 @@
 				<td>
 					<{if $quiz.active==1}>	
 						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=v&q=<{$quiz.id}>">
-				
 						<{$smarty.const._MD_XQUIZ_ANSWERQUIZ}>
 						</a>
 					<{else}>
