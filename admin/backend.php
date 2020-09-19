@@ -248,7 +248,7 @@ try {
             }
             $newCid = Category::addCategory($title, $pid, $description, $imgurl, $weight);
             // Permissions
-            $gperm_handler = &xoops_gethandler('groupperm');
+            $gperm_handler = xoops_gethandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
                 foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
                     $gperm_handler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
@@ -307,7 +307,7 @@ try {
             }
             Category::editCategory($cid, $title, $pid, $description, $imgurl, $weight);
             // Permissions
-            $gperm_handler = &xoops_gethandler('groupperm');
+            $gperm_handler = xoops_gethandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
                 foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
                     $gperm_handler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));

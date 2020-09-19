@@ -478,9 +478,9 @@ function CategoryForm($op = "add", $eId = 0)
     );
     $addCategory_form->setExtra('enctype="multipart/form-data"');
     // Permissions
-    $member_handler = & xoops_gethandler('member');
-    $group_list = &$member_handler->getGroupList();
-    $gperm_handler = &xoops_gethandler('groupperm');
+    $member_handler = xoops_gethandler('member');
+    $group_list = $member_handler->getGroupList();
+    $gperm_handler = xoops_gethandler('groupperm');
     $full_list = array_keys($group_list);
     ////////////////
     if ("edit" == $op) {

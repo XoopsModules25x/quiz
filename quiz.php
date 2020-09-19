@@ -76,7 +76,7 @@ try {
                 } else {
                     $groups = XOOPS_GROUP_ANONYMOUS;
                 }
-                $gperm_handler = & xoops_gethandler('groupperm');
+                $gperm_handler = xoops_gethandler('groupperm');
                 if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                     throw new Exception(_MD_XQUIZ_PERMISSION);
                 }
@@ -173,7 +173,7 @@ try {
             } else {
                 $groups = XOOPS_GROUP_ANONYMOUS;
             }
-            $gperm_handler = & xoops_gethandler('groupperm');
+            $gperm_handler = xoops_gethandler('groupperm');
             if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                 throw new Exception(_MD_XQUIZ_PERMISSION);
             }
@@ -196,7 +196,7 @@ try {
             } else {
                 $groups = XOOPS_GROUP_ANONYMOUS;
             }
-            $gperm_handler = & xoops_gethandler('groupperm');
+            $gperm_handler = xoops_gethandler('groupperm');
             if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                 throw new Exception(_MD_XQUIZ_PERMISSION);
             }
@@ -220,7 +220,7 @@ try {
                 $listQuiz [$q] ['id'] = $myrow ['id'];
                 $listQuiz [$q] ['userid'] = $myrow ['userid'];
 
-                $thisUser = & $member_handler->getUser($myrow ['userid']);
+                $thisUser = $member_handler->getUser($myrow ['userid']);
 
                 $listQuiz [$q] ['uname'] = $thisUser->getVar('uname');
                 $listQuiz [$q] ['name'] = $thisUser->getVar('name');

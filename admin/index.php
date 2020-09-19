@@ -155,7 +155,7 @@ try {
                 while ($myrow = $xoopsDB->fetchArray($query)) {
                     $listQuiz [$q] ['id'] = $myrow ['id'];
                     $listQuiz [$q] ['userid'] = $myrow ['userid'];
-                    $thisUser = & $member_handler->getUser($myrow ['userid']);
+                    $thisUser = $member_handler->getUser($myrow ['userid']);
                     $listQuiz [$q] ['uname'] = $thisUser->getVar('uname');
                     $listQuiz [$q] ['name'] = $thisUser->getVar('name');
                     $listQuiz [$q] ['score'] = $myrow ['score'];
@@ -170,7 +170,7 @@ try {
                     while ($myrow = $xoopsDB->fetchArray($query)) {
                         $exportQuiz [$q] ['id'] = $myrow ['id'];
                         $exportQuiz [$q] ['userid'] = $myrow ['userid'];
-                        $thisUser = & $member_handler->getUser($myrow ['userid']);
+                        $thisUser = $member_handler->getUser($myrow ['userid']);
                         $exportQuiz [$q] ['uname'] = $thisUser->getVar('uname');
                         $exportQuiz [$q] ['name'] = $thisUser->getVar('name');
                         $exportQuiz [$q] ['score'] = $myrow ['score'];

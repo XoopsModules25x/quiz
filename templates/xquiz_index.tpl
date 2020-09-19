@@ -45,17 +45,17 @@
 
 	<{if $quizNum != 0}>
 	<br/>
-	<h4><{$smarty.const._AM_XQUIZ_QUIZS}></h4>
+	<h4><{$smarty.const._MD_XQUIZ_QUIZS}></h4>
 	
 	<br/>
 	<table width='100%' class="table table-striped">
 		<tr>
 			
 			<th>
-				<{$smarty.const._AM_XQUIZ_NAME}>
+				<{$smarty.const._MD_XQUIZ_NAME}>
 			</th>
 			<th>
-				<{$smarty.const._AM_XQUIZ_STATUS}>
+				<{$smarty.const._MD_XQUIZ_STATUS}>
 			</th>
 		</tr>
 		<{foreach item=quiz from=$listQuiz}>
@@ -65,9 +65,9 @@
 				<td>
 					<{$quiz.name}> <br>
 					<small>
-					<strong><{$smarty.const._AM_XQUIZ_BDATE}>: </strong>	<{$quiz.bdate}><br>
-					<strong><{$smarty.const._AM_XQUIZ_EDATE}>: </strong><{$quiz.edate}><br>
-					<strong><{$smarty.const._AM_XQUIZ_AM_QUEST_NUM}>: </strong><{$quiz.totalquestion}><br>
+					<strong><{$smarty.const._MD_XQUIZ_BDATE}>: </strong>	<{$quiz.bdate}><br>
+					<strong><{$smarty.const._MD_XQUIZ_EDATE}>: </strong><{$quiz.edate}><br>
+					<strong><{$smarty.const._MD_XQUIZ_QUEST_TOTAL}>: </strong><{$quiz.totalquestion}><br>
 					</small>
 				</td>
 				<td>
@@ -103,16 +103,16 @@
 		<td>
 		</td>
 		<td>
-			<{$smarty.const._AM_XQUIZ_USER}>
+			<{$smarty.const._MD_XQUIZ_USER}>
 		</td>
 		<td>
-			<{$smarty.const._AM_XQUIZ_USER_NAME}>
+			<{$smarty.const._MD_XQUIZ_USER_NAME}>
 		</td>
 		<td>
-			<{$smarty.const._AM_XQUIZ_SCORE}>
+			<{$smarty.const._MD_XQUIZ_SCORE}>
 		</td>
 		<td>
-			<{$smarty.const._AM_XQUIZ_DATE}>
+			<{$smarty.const._MD_XQUIZ_DATE}>
 		</td>
 	</tr>
 	<{foreach item=quizStat from=$quizStat}>
@@ -205,13 +205,13 @@
 <table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 	<tr>
 		<th>
-			<{$smarty.const._AM_XQUIZ_NAME}>
+			<{$smarty.const._MD_XQUIZ_NAME}>
 		</th>
 		<th>
-			<{$smarty.const._AM_XQUIZ_DATE}>
+			<{$smarty.const._MD_XQUIZ_DATE}>
 		</th>
 		<th>
-			<{$smarty.const._AM_XQUIZ_SCORE}>
+			<{$smarty.const._MD_XQUIZ_SCORE}>
 		</th>
 		<th>
 			<{$smarty.const._MD_XQUIZ_DETAIL}>
@@ -271,7 +271,7 @@
 				<{$smarty.const._MD_XQUIZ_QUEST_ANSWER}>
 			</th>
 			<th>
-				<{$smarty.const._AM_XQUIZ_STATUS}>
+				<{$smarty.const._MD_XQUIZ_STATUS}>
 			</th>
 		</tr>
 		<tr class="<{cycle values="even,odd"}>">
@@ -298,4 +298,6 @@
 <br/>
 
 <{/if}>
+
+<br/>
 <{include file='db:system_notification_select.html'}>
