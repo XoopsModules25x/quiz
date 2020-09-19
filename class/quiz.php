@@ -314,7 +314,7 @@ class Quiz
             throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
             
-        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_questionsx")." WHERE  
+        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_quizquestion")." WHERE  
 					  qid = '$this->id' ";
         if (!$res) {
             throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
@@ -646,22 +646,34 @@ class Quiz
             $listQuiz[$q]['edate'] = formatTimestamp(strtotime($myrow['edate']), $dateformat);
             $listQuiz[$q]['weight'] = $myrow['weight'];
 			global $xoopsDB;
-			$cid=$myrow['cid'];
-			$totalquestion = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_questions').' WHERE quiz_id = '.$cid.'');
+			$id=$myrow['id'];
+			$totalquestion = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_questions').' WHERE quiz_id = '.$id.'');
             $listQuiz[$q]['totalquestion'] = $xoopsDB->getRowsNum($totalquestion);
             
             $today = strtotime(date("Y-m-d"));
+			
+			
+			//Show all quiz
+			$listQuiz[$q]['status'] = true;
             if (strtotime($myrow['bdate']) <= $today) {
-                $listQuiz[$q]['status'] = true;
+                //$listQuiz[$q]['status'] = true;
             } else {
-                $listQuiz[$q]['status'] = false;
+                //$listQuiz[$q]['status'] = false;
             }
-            
-            if (strtotime($myrow['edate']) >= $today) {
+           
+			if (strtotime($myrow['bdate']) >= $today AND strtotime($myrow['edate']) >= $today) {
                 $listQuiz[$q]['active'] = true;
             } else {
                 $listQuiz[$q]['active'] = false;
             }
+			
+            if (strtotime($myrow['edate']) <= $today) {
+                $listQuiz[$q]['viewstat'] = true;
+            } else {
+                $listQuiz[$q]['viewstat'] = false;
+            }
+			
+			
             $q++;
         }
         return $listQuiz;

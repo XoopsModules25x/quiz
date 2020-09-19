@@ -57,6 +57,9 @@
 			<th>
 				<{$smarty.const._MD_XQUIZ_STATUS}>
 			</th>
+			<th>
+				<{$smarty.const._MD_XQUIZ_ACTION}>
+			</th>
 		</tr>
 		<{foreach item=quiz from=$listQuiz}>
 			<{if $quiz.status==1}>
@@ -65,24 +68,35 @@
 				<td>
 					<{$quiz.name}> <br>
 					<small>
-					<strong><{$smarty.const._MD_XQUIZ_BDATE}>: </strong>	<{$quiz.bdate}><br>
-					<strong><{$smarty.const._MD_XQUIZ_EDATE}>: </strong><{$quiz.edate}><br>
+					<strong><{$smarty.const._MD_XQUIZ_STARTDATE}>: </strong>	<{$quiz.bdate}><br>
+					<strong><{$smarty.const._MD_XQUIZ_ENDDATE}>: </strong><{$quiz.edate}><br>
 					<strong><{$smarty.const._MD_XQUIZ_QUEST_TOTAL}>: </strong><{$quiz.totalquestion}><br>
 					</small>
 				</td>
 				<td>
 					<{if $quiz.active==1}>
+							<img src="<{$xoops_url}>/modules/xquiz/assets/images/on.png">&nbsp;<{$smarty.const._MD_XQUIZ_RUNNING}>
+					<{else}>
+					<img src="<{$xoops_url}>/modules/xquiz/assets/images/off.png">&nbsp;<{$smarty.const._MD_XQUIZ_EXPIRED}><{/if}>
+				</td>
+				<td>
+					<{if $quiz.active==1}>	
 						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=v&q=<{$quiz.id}>">
-						<img src="<{$xoops_url}>/modules/xquiz/assets/images/on.png">
+				
 						<{$smarty.const._MD_XQUIZ_GO}>
 						</a>
 					<{else}>
+				
+					<{/if}>
+					<{if $quiz.viewstat==1}>
 						<a href="<{$xoops_url}>/modules/xquiz/index.php?act=s&q=<{$quiz.id}>">
-						<img src="<{$xoops_url}>/modules/xquiz/assets/images/off.png">
+						
 						<{$smarty.const._MD_XQUIZ_VIEW_STAT}>
 						</a>
+					
 					<{/if}>	
 				</td>
+
 			</tr>
 			<{/if}>
 		<{/foreach}>

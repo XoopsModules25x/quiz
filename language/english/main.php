@@ -61,3 +61,8 @@ define("_MD_XQUIZ_EMAIL_DESC", "Dear %s, this is a message transfered from your 
 define('_MD_XQUIZ_EMAIL_MESSAGE', 'Email message');
 define('_MD_XQUIZ_SCORE_PROFILE', 'More details in your quiz profile');
 define('_MD_XQUIZ_EMAIL_SUBJECT', 'Quiz result');
+define('_MD_XQUIZ_ACTION', 'Action');
+define('_MD_XQUIZ_RUNNING', 'Running');
+define('_MD_XQUIZ_EXPIRED', 'Expired');
+define('_MD_XQUIZ_STARTDATE', 'Start Date');
+define('_MD_XQUIZ_ENDDATE', 'End Date');
