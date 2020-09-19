@@ -32,13 +32,13 @@ $adminmenu[2]['title'] = _MI_XQUIZ_QUIZS;
 $adminmenu[2]['link'] = 'admin/index.php?op=Quiz';
 $adminmenu[2]['icon'] = 'assets/images/menus/tquizzes.png';
 
-$adminmenu[3]['title'] = _MI_XQUIZ_QUESTIONS . " 1";
-$adminmenu[3]['link'] = 'admin/index.php?op=Quest';
-$adminmenu[3]['icon'] = 'assets/images/menus/tquestions.png';
+//$adminmenu[3]['title'] = _MI_XQUIZ_QUESTIONS . "";
+//$adminmenu[3]['link'] = 'admin/index.php?op=Quest';
+//$adminmenu[3]['icon'] = 'assets/images/menus/tquestions.png';
 
-$adminmenu[4]['title'] = _MI_XQUIZ_QUESTIONS . " 2";
+$adminmenu[4]['title'] = _MI_XQUIZ_QUESTIONS . "";
 $adminmenu[4]['link'] = 'admin/index.php?op=Question';
-$adminmenu[4]['icon'] = 'assets/assets/images/menus/tquestions.png';
+$adminmenu[4]['icon'] = 'assets/images/menus/tquestions.png';
 
 $adminmenu[5]['title'] = _MI_XQUIZ_STATISTICS;
 $adminmenu[5]['link'] = 'admin/index.php?op=Statistics';

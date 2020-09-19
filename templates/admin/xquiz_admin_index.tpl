@@ -16,9 +16,7 @@
 	<div class="hometitle" ><{$smarty.const._AM_XQUIZ_NOTIFY}></div>
 	<div class="textbody" >
 		<br/>
-		<{$smarty.const._AM_XQUIZ_INDEX_ADD_QUEST}><br/><br/>
-		<{$smarty.const._AM_XQUIZ_INDEX_USER_EX}><br/><br/>
-		<{$smarty.const._AM_XQUIZ_INDEX_USER_QUIZ}><br/><br/>
+		<{$smarty.const._AM_XQUIZ_INDEX_ADD_QUEST}>
 	</div>
 	<br/>
 	<br/>

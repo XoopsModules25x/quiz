@@ -183,7 +183,7 @@ class Question
     public static function question_numQuestionLoader($qId)
     {
         global $xoopsDB;
-        $result = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_questionsx')." WHERE qid = $qId");
+        $result = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_quizquestion')." WHERE qid = $qId");
         return $xoopsDB->getRowsNum($result);
     }
     #endregion
@@ -194,7 +194,7 @@ class Question
         global $xoopsDB;
         $listQuiz = [];
         $q=1;
-        $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_questionsx').
+        $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizquestion').
         ' WHERE qid = '.$qid.' LIMIT '.$eu.' , '.$limit);
         while ($myrow = $xoopsDB->fetchArray($query)) {
             $listQuiz[$q]['id'] = $myrow['id'];
@@ -216,7 +216,7 @@ class Question
     public static function retriveQuestion($eId)
     {
         global $xoopsDB;
-        $query =$xoopsDB->query("SELECT * FROM ". $xoopsDB->prefix('xquiz_questionsx') ." WHERE id = '$eId'");
+        $query =$xoopsDB->query("SELECT * FROM ". $xoopsDB->prefix('xquiz_quizquestion') ." WHERE id = '$eId'");
         $myrow = $xoopsDB->fetchArray($query);
         return $myrow;
     }
@@ -449,7 +449,7 @@ class Question
     public function checkExistQuestion()
     {
         global $xoopsDB;
-        $query = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("xquiz_questionsx")."
+        $query = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("xquiz_quizquestion")."
 		 WHERE qid = '$this->qid' AND question LIKE '$this->question'");
         $res = $xoopsDB->getRowsNum($query);
         if ($res > 0) {
@@ -467,7 +467,7 @@ class Question
         }
 
         global $xoopsDB;
-        $query = "Insert into ".$xoopsDB->prefix("xquiz_questionsx")."
+        $query = "Insert into ".$xoopsDB->prefix("xquiz_quizquestion")."
 				(id,qid,question,qnumber,score,ans1,ans2,ans3,ans4,answer)
 				VALUES (NULL , '$this->qid', '$this->question','$this->qnumber',
 				'$this->score', '$this->ans1', '$this->ans2', '$this->ans3',
@@ -485,7 +485,7 @@ class Question
     public function deleteQuestion()
     {
         global $xoopsDB;
-        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_questionsx")." WHERE  
+        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_quizquestion")." WHERE  
 					  id = '$this->id' ";
         $res = $xoopsDB->query($query);
         
@@ -498,7 +498,7 @@ class Question
     public function editQuestion()
     {
         global $xoopsDB;
-        $query = "UPDATE ".$xoopsDB->prefix("xquiz_questionsx")." SET 
+        $query = "UPDATE ".$xoopsDB->prefix("xquiz_quizquestion")." SET 
 					  qid = '$this->qid'
 					 ,question = '$this->question'
 					 ,qnumber = '$this->qnumber'
@@ -520,7 +520,7 @@ class Question
     public static function questionNumber($quizId)
     {
         global $xoopsDB;
-        $query = $xoopsDB->query("SELECT COUNT(qid) AS CID FROM ".$xoopsDB->prefix("xquiz_questionsx")." WHERE qid = '$quizId'");
+        $query = $xoopsDB->query("SELECT COUNT(qid) AS CID FROM ".$xoopsDB->prefix("xquiz_quizquestion")." WHERE qid = '$quizId'");
         $myrow = $xoopsDB->fetchArray($query);
         return  $myrow['CID'];
     }
@@ -560,7 +560,7 @@ class Question
         global $xoopsDB;
         $listQuest = [];
         $q=1;
-        $query = $xoopsDB->query(" SELECT * FROM " . $xoopsDB->prefix('xquiz_questionsx')." WHERE qid = '$qId' ORDER BY 'qnumber' ASC");
+        $query = $xoopsDB->query(" SELECT * FROM " . $xoopsDB->prefix('xquiz_quizquestion')." WHERE qid = '$qId' ORDER BY 'qnumber' ASC");
         while ($myrow = $xoopsDB->fetchArray($query)) {
             $listQuest[$q]['id'] = $myrow['id'];
             $listQuest[$q]['qid'] = $myrow['qid'];

@@ -135,7 +135,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         global $xoopsDB;
         $list = [];
         $query = "SELECT * FROM ". $xoopsDB->prefix('xquiz_useranswers') ." 
-			NATURAL JOIN ". $xoopsDB->prefix('xquiz_questionsx') ." 
+			NATURAL JOIN ". $xoopsDB->prefix('xquiz_quizquestion') ." 
 			WHERE userId = $uid AND quizId=$quizId AND questId=id";
         $query =$xoopsDB->query($query);
         $q = 0;

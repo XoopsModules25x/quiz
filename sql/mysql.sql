@@ -20,20 +20,6 @@ CREATE TABLE xquiz_quizzes (
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE xquiz_questionsx (
-  id int(10) unsigned NOT NULL auto_increment,
-  qid int(10) unsigned NOT NULL,
-  question varchar(200) character set utf8 collate utf8_bin NOT NULL,
-  qnumber int(10) unsigned NOT NULL ,
-  score int(10) unsigned NOT NULL ,
-  ans1 varchar(200) character set utf8 collate utf8_bin default NULL,
-  ans2 varchar(200) character set utf8 collate utf8_bin default NULL,
-  ans3 varchar(200) character set utf8 collate utf8_bin default NULL,
-  ans4 varchar(200) character set utf8 collate utf8_bin default NULL,
-  answer enum('1','2','3','4') NOT NULL,
-  PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE xquiz_useranswers (
   questId int(10) NOT NULL,
   quizId int(10) NOT NULL,
@@ -42,8 +28,6 @@ CREATE TABLE xquiz_useranswers (
   PRIMARY KEY  (questId,quizId,userId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-
 CREATE TABLE xquiz_score (
   id int(10) unsigned NOT NULL,
   userid int(11) unsigned NOT NULL,
@@ -51,8 +35,6 @@ CREATE TABLE xquiz_score (
   date datetime NOT NULL,
   PRIMARY KEY  (id,userid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 CREATE TABLE xquiz_questions (
   question_id int(10) unsigned NOT NULL auto_increment,
@@ -73,3 +55,18 @@ CREATE TABLE xquiz_answers (
   PRIMARY KEY  (answer_id),
   KEY question_id (question_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+--CREATE TABLE xquiz_quizquestion (
+--  id int(10) unsigned NOT NULL auto_increment,
+--  qid int(10) unsigned NOT NULL,
+--  question varchar(200) character set utf8 collate utf8_bin NOT NULL,
+--  qnumber int(10) unsigned NOT NULL ,
+--  score int(10) unsigned NOT NULL ,
+--  ans1 varchar(200) character set utf8 collate utf8_bin default NULL,
+--  ans2 varchar(200) character set utf8 collate utf8_bin default NULL,
+--  ans3 varchar(200) character set utf8 collate utf8_bin default NULL,
+--  ans4 varchar(200) character set utf8 collate utf8_bin default NULL,
+--  answer enum('1','2','3','4') NOT NULL,
+-- PRIMARY KEY  (id)
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8; 

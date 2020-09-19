@@ -314,7 +314,7 @@ class Quiz
             throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
             
-        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_questionsx")." WHERE  
+        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_quizquestion")." WHERE  
 					  qid = '$this->id' ";
         if (!$res) {
             throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
@@ -495,10 +495,13 @@ class Quiz
 							"._AM_XQUIZ_QUESTIONS."
 						</th>
 						<th>
-							"._AM_XQUIZ_BDATE."
+							"._AM_XQUIZ_STARTDATE."
 						</th>
 						<th>
-							"._AM_XQUIZ_EDATE."
+							"._AM_XQUIZ_ENDDATE."
+						</th>
+						<th>
+							"._AM_XQUIZ_STATUS."
 						</th>
 						<th>
 							"._AM_XQUIZ_WEIGHT."
@@ -521,8 +524,9 @@ class Quiz
             $status = ($key['status']) ? $onImage:$offImage;
             $active = ($key['active']) ? $onImage:$offImage;
             //$statEdit = (!$key['active']) ? $statImage:$editImage;
-            $questLink = ((!$key['status'])&&($key['active']))?
-                    "<a class='btn btn-primary btn-xs' href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=add&Id="
+			//$questLink = ((!$key['status'])&&($key['active']))?
+            $questLink = (($key['active']))?
+                    "<a class='btn btn-primary btn-xs' href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Question&act=add&Id="
                         .$key['id']."\">"._AM_XQUIZ_QUEST_NEW." ".$addImage." ".$key['question']."
 					</a>":$key['question'];
             $category = Category::retriveCategory($key['cid']);
@@ -552,6 +556,10 @@ class Quiz
 				"
                 .$active . "  "
                 .$key['edate']."
+				</td>
+				<td>
+				"
+                .$key['activequiz']."
 				</td>
 				<td>
 				"
@@ -646,22 +654,40 @@ class Quiz
             $listQuiz[$q]['edate'] = formatTimestamp(strtotime($myrow['edate']), $dateformat);
             $listQuiz[$q]['weight'] = $myrow['weight'];
 			global $xoopsDB;
-			$cid=$myrow['cid'];
-			$totalquestion = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_questions').' WHERE quiz_id = '.$cid.'');
+			$id=$myrow['id'];
+			$totalquestion = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_questions').' WHERE quiz_id = '.$id.'');
             $listQuiz[$q]['totalquestion'] = $xoopsDB->getRowsNum($totalquestion);
             
             $today = strtotime(date("Y-m-d"));
+			
+			
+			//Show all quiz
+			$listQuiz[$q]['status'] = true;
             if (strtotime($myrow['bdate']) <= $today) {
-                $listQuiz[$q]['status'] = true;
+                //$listQuiz[$q]['status'] = true;
             } else {
-                $listQuiz[$q]['status'] = false;
+                //$listQuiz[$q]['status'] = false;
             }
-            
-            if (strtotime($myrow['edate']) >= $today) {
+           
+		   
+		   //Quiz Running or Expired ?
+			if (strtotime($myrow['bdate']) >= $today OR strtotime($myrow['edate']) >= $today) {
                 $listQuiz[$q]['active'] = true;
+				$listQuiz[$q]['activequiz'] = _AM_XQUIZ_RUNNING;
             } else {
                 $listQuiz[$q]['active'] = false;
+				$listQuiz[$q]['activequiz'] = _AM_XQUIZ_EXPIRED;
             }
+				
+			
+			// Quiz Ended ?
+            if (strtotime($myrow['edate']) <= $today) {
+                $listQuiz[$q]['viewstat'] = true;
+            } else {
+                $listQuiz[$q]['viewstat'] = false;
+            }
+			
+			
             $q++;
         }
         return $listQuiz;
