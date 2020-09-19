@@ -652,7 +652,6 @@ class Quiz
             
             $today = strtotime(date("Y-m-d"));
 			
-			
 			//Show all quiz
 			$listQuiz[$q]['status'] = true;
             if (strtotime($myrow['bdate']) <= $today) {
