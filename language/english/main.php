@@ -70,3 +70,5 @@ define('_MD_XQUIZ_UPCOMING', 'Upcoming');
 define('_MD_XQUIZ_STARTDATE', 'Start Date');
 define('_MD_XQUIZ_ENDDATE', 'End Date');
 define('_MD_XQUIZ_ANSWERQUIZ', 'Answer Quiz');
+define('_MD_XQUIZ_TAKEQUIZ', 'Take Quiz');
+define('_MD_XQUIZ_DATETAKEN', 'Date Taken');

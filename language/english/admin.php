@@ -128,3 +128,5 @@ define('_AM_XQUIZ_RUNNING', 'Running');
 define('_AM_XQUIZ_EXPIRED', 'Expired');
 define('_AM_XQUIZ_STARTDATE', 'Start Date');
 define('_AM_XQUIZ_ENDDATE', 'End Date');
+define('_AM_XQUIZ_TAKEQUIZ', 'Take Quiz');
+define('_AM_XQUIZ_DATETAKEN', 'Date Taken');

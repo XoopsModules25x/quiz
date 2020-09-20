@@ -20,22 +20,6 @@ CREATE TABLE xquiz_quizzes (
   PRIMARY KEY  (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE xquiz_useranswers (
-  questId int(10) NOT NULL,
-  quizId int(10) NOT NULL,
-  userId int(11) NOT NULL,
-  userAns enum('1','2','3','4') NOT NULL,
-  PRIMARY KEY  (questId,quizId,userId)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE xquiz_score (
-  id int(10) unsigned NOT NULL,
-  userid int(11) unsigned NOT NULL,
-  score int(11) NOT NULL,
-  date datetime NOT NULL,
-  PRIMARY KEY  (id,userid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE xquiz_questions (
   question_id int(10) unsigned NOT NULL auto_increment,
   quiz_id int(10) unsigned NOT NULL,
@@ -56,6 +40,22 @@ CREATE TABLE xquiz_answers (
   KEY question_id (question_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE xquiz_score (
+ id int(10) unsigned NOT NULL,
+ userid int(11) unsigned NOT NULL,
+ quizId int(10) NOT NULL,
+ score int(11) NOT NULL,
+ date datetime NOT NULL,
+ PRIMARY KEY  (id,userid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE xquiz_useranswers (
+  questId int(10) NOT NULL,
+  quizId int(10) NOT NULL,
+  userId int(11) NOT NULL,
+  userAns enum('1','2','3','4') NOT NULL,
+  PRIMARY KEY  (questId,quizId,userId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --CREATE TABLE xquiz_quizquestion (
 --  id int(10) unsigned NOT NULL auto_increment,
@@ -70,3 +70,4 @@ CREATE TABLE xquiz_answers (
 --  answer enum('1','2','3','4') NOT NULL,
 -- PRIMARY KEY  (id)
 --) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+
