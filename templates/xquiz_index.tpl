@@ -2,7 +2,7 @@
                     <a href="index.php" title="<{$module_name}>">
                         <{$smarty.const._MD_XQUIZ_MODULENAME}>
 						 &nbsp;&raquo;&nbsp;
-						<{$smarty.const._MD_XQUIZ_CATEGORIES}>
+						<!--<{$smarty.const._MD_XQUIZ_CATEGORIES}>-->
                     </a>
         </div>
 
@@ -176,7 +176,8 @@
 		</div>
 
 		 <{$listquestfrom.javascript}> 
-		<form name="<{$listquestfrom.name}>" action="<{$listquestfrom.action}>" method="<{$listquestfrom.method}>" <{$listquestfrom.extra}>>
+		<form name="<{$listquestfrom.name}>" action="<{$listquestfrom.action}>" method="<{$listquestfrom.method}>" 
+		<{$listquestfrom.extra}>>
 		<br>
   		<table class="table table-striped outer" cellspacing="1" align="center">
 		    <!-- start of form elements loop -->

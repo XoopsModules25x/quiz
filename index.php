@@ -125,7 +125,7 @@ try {
                         case 'MC':
                             $question_answers [$q] = new XoopsFormRadio("<b>" . $key ['qnumber'] . ".&nbsp" . $ts->previewTarea($key ['question'] . "</b>", 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score']  . " " . _MD_XQUIZ_QUEST_MARKS . "</span>", "questAns[$q]", null, "");
                             foreach ($key ['answer'] as $ans) {
-                                $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']. "<br />");
+                                $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']. "");
                             }
                             break;
 
