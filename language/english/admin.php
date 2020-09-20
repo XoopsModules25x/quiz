@@ -123,7 +123,6 @@ define('_AM_XQUIZ_QUEST_ANS4', 'Option 4');
 define('_AM_XQUIZ_QUEST_ANSWER','Correct Answer');
 define('_AM_XQUIZ_QUEST_DESC', 'Questions text');
 define('_AM_XQUIZ_QUEST_SCORE', 'Questions score');
-define('_AM_XQUIZ_STATUS', 'Status');
 define('_AM_XQUIZ_UPCOMING', 'Upcoming');
 define('_AM_XQUIZ_RUNNING', 'Running');
 define('_AM_XQUIZ_EXPIRED', 'Expired');

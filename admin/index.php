@@ -271,12 +271,12 @@ try {
             break;
         
         case 'Permission':
-            $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
+            $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
             if (! $xt->getChildTreeArray(0)) {
                 throw new Exception(_AM_XQUIZ_NO_CATEGORY);
             }
             QuizzadminMenu(4, _AM_MD_XQUIZ_PERMISSIONS);
-            Category::category_permissionForm();
+            QuizCategory::category_permissionForm();
             break;
         
         case 'Category':

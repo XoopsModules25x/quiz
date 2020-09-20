@@ -261,10 +261,10 @@ try {
             if (isset($_GET ['cid']) && is_numeric($_GET ['cid'])) {
                 $cid = $_GET ['cid'];
             }
-            if ((! Category::checkExistCategory($cid)) && 0 != $cid) {
+            if ((! QuizCategory::checkExistCategory($cid)) && 0 != $cid) {
                 throw new Exception(_MD_XQUIZ_NOT_EXIST);
             }
-            $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
+            $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
 
             $parentId = - 1;
             if ($cid > 0) {

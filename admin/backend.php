@@ -246,7 +246,7 @@ try {
                     }
                 }
             }
-            $newCid = Category::addCategory($title, $pid, $description, $imgurl, $weight);
+            $newCid = QuizCategory::addCategory($title, $pid, $description, $imgurl, $weight);
             // Permissions
             $gperm_handler = xoops_gethandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
@@ -305,7 +305,7 @@ try {
                     }
                 }
             }
-            Category::editCategory($cid, $title, $pid, $description, $imgurl, $weight);
+            QuizCategory::editCategory($cid, $title, $pid, $description, $imgurl, $weight);
             // Permissions
             $gperm_handler = xoops_gethandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
@@ -324,7 +324,7 @@ try {
             if (isset($_POST ['categoryId']) && is_numeric($_POST ['categoryId'])) {
                 $cid = $_POST ['categoryId'];
             }
-            Category::deleteCategory($cid);
+            QuizCategory::deleteCategory($cid);
             throw new Exception(_AM_XQUIZ_DELETE_CATEGORY . "||?op=Category");
             break;
         

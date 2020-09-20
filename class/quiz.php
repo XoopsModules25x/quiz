@@ -256,7 +256,7 @@ class Quiz
     #endregion
     #region set and get $id
     /**
-     * set Category of quiz
+     * set QuizCategory of quiz
      *
      * @param int $cid
      */
@@ -368,7 +368,7 @@ class Quiz
     {
         global $xoopsDB,$xoopsModuleConfig;
         //check for category existance
-        $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
+        $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         if (!$xt->getChildTreeArray(0)) {
             throw new Exception(_AM_XQUIZ_NO_CATEGORY);
         }
@@ -449,7 +449,7 @@ class Quiz
     public static function showQuizs($start, $limit, $categoryId = -1)
     {
         global $xoopsDB;
-        $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
+        $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         ob_start();
         $xt->makeMySelBox("title", "cid", 0, 1, 'Id', '', 1);
         $select = ob_get_contents();
@@ -529,7 +529,7 @@ class Quiz
                     "<a class='btn btn-primary btn-xs' href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Question&act=add&Id="
                         .$key['id']."\">"._AM_XQUIZ_QUEST_NEW." ".$addImage." ".$key['question']."
 					</a>":$key['question'];
-            $category = Category::retriveCategory($key['cid']);
+            $category = QuizCategory::retriveCategory($key['cid']);
             $quizCategory = "<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid="
                         .$category['cid']."\">".$category['title']."</a>";
                                     
@@ -746,7 +746,7 @@ class Quiz
         $query = $xoopsDB->query(' SELECT name,cid,description FROM '
              . $xoopsDB->prefix('xquiz_quizzes').' WHERE id = '.$id);
         $myrow = $xoopsDB->fetchArray($query) ;
-        $category = Category::retriveCategory($myrow['cid']);
+        $category = QuizCategory::retriveCategory($myrow['cid']);
         $arr = [
             'name'  => $myrow['name'], 'description' => $myrow['description']
             , 'cid' =>$myrow['cid'], 'category' =>$category['title']
