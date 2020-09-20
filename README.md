@@ -2,10 +2,8 @@
 
 **xQuiz** is a simple module to conduct quizzes using XOOPS .
 
-**XOOPS Module Archive:** Module in this archive are older modules for XOOPS CMS, and therefore some of them might not work with the latest XOOPS and PHP versions. 
+Fork this module and if you have any improvements and fixes, please share them back with us. 
 
-However, please fork them and if you have any improvements and fixes, please share them back with us. 
-
-Visit us on http://xoops.org
+Visit us on https://xoops.org
 
 The upcoming XOOPS CMS version is being crafted at: https://github.com/XOOPS

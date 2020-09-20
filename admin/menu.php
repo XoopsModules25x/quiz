@@ -11,41 +11,48 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	The XOOPS Project http://sourceforge.net/projects/xoops/ 
+ * @copyright   	XOOPS Project (https://xoops.org)
  * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
  * @package         xquiz
  * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$ 
+ * @version      	$Id$
  *
  * Version : $Id:
  * ****************************************************************************
  */
-$adminmenu[0]['title'] = _AM_QUIZ_INDEX;
+$adminmenu[0]['title'] = _MI_XQUIZ_INDEX;
 $adminmenu[0]['link'] = 'admin/index.php';
+$adminmenu[0]['icon'] = 'assets/images/menus/tstate.png';
+ 
+$adminmenu[1]['title'] = _MI_XQUIZ_CATEGORY;
+$adminmenu[1]['link'] = 'admin/index.php?op=Category';
+$adminmenu[1]['icon'] = 'assets/images/menus/tcategories.png';
+ 
+$adminmenu[2]['title'] = _MI_XQUIZ_QUIZS;
+$adminmenu[2]['link'] = 'admin/index.php?op=Quiz';
+$adminmenu[2]['icon'] = 'assets/images/menus/tquizzes.png';
 
-$adminmenu[1]['title'] = _AM_QUIZ_CATEGORY;
-$adminmenu[1]['link'] = 'admin/index.php?op=Cate';
+//$adminmenu[3]['title'] = _MI_XQUIZ_QUESTIONS . "";
+//$adminmenu[3]['link'] = 'admin/index.php?op=Quest';
+//$adminmenu[3]['icon'] = 'assets/images/menus/tquestions.png';
 
-$adminmenu[2]['title'] = _AM_QUIZ_PERMISSIONS;
-$adminmenu[2]['link'] = 'admin/index.php?op=Perm';
+$adminmenu[4]['title'] = _MI_XQUIZ_QUESTIONS . "";
+$adminmenu[4]['link'] = 'admin/index.php?op=Question';
+$adminmenu[4]['icon'] = 'assets/images/menus/tquestions.png';
 
-$adminmenu[3]['title'] = _AM_QUIZ_QUIZS;
-$adminmenu[3]['link'] = 'admin/index.php?op=Quiz';
+$adminmenu[5]['title'] = _MI_XQUIZ_STATISTICS;
+$adminmenu[5]['link'] = 'admin/index.php?op=Statistics';
+$adminmenu[5]['icon'] = 'assets/images/menus/tstatistic.png';
+   
+$adminmenu[6]['title'] = _MI_MD_XQUIZ_PERMISSIONS;
+$adminmenu[6]['link'] = 'admin/index.php?op=Permission';
+$adminmenu[6]['icon'] = 'assets/images/menus/tpermmision.png';
+  
 
-$adminmenu[4]['title'] = _AM_QUIZ_QUESTIONS;
-$adminmenu[4]['link'] = 'admin/index.php?op=Quest';
+   
+  
+    
+    
+    
+	
 
-$adminmenu[5]['title'] = _AM_QUIZ_STATISTICS;
-$adminmenu[5]['link'] = 'admin/index.php?op=Stat';
-
-$adminmenu[5]['title'] = _AM_QUIZ_QUESTIONS;
-$adminmenu[5]['link'] = 'admin/index.php?op=Qst';
-
-	$adminmenu[0]['icon'] = 'images/menus/tstate.png';
-	$adminmenu[1]['icon'] = 'images/menus/tcategories.png';
-	$adminmenu[2]['icon'] = 'images/menus/tpermmision.png';
-	$adminmenu[3]['icon'] = 'images/menus/tquizzes.png';
-	$adminmenu[4]['icon'] = 'images/menus/tquestions.png';
-	$adminmenu[5]['icon'] = 'images/menus/tstatistic.png';
-	$adminmenu[6]['icon'] = 'images/menus/tquestions.png';
-?>

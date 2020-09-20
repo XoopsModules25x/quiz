@@ -16,7 +16,7 @@
 	{ 
 		float:right; 
 		width:100%; 
-		background: #e7e7e7 url("../images/bg.gif") repeat-x right bottom; 
+		background: #e7e7e7 url("../assets/images/bg.gif") repeat-x right bottom; 
 		font-size:93%; 
 		line-height:normal; 
 		border-left: 1px solid #b7ae88; 
@@ -42,7 +42,7 @@
 	#buttonbar a 
 	{ 
 		float:right; 
-		background:url("../images/left_both.gif") no-repeat left top; 
+		background:url("../assets/images/left_both.gif") no-repeat left top; 
 		margin:0; 
 		padding:0 0 0 9px; 
 		border-bottom:1px solid #b7ae88; 
@@ -52,7 +52,7 @@
 	{ 
 		float:right; 
 		display:block; 
-		background:url("../images/right_both.gif") no-repeat right top; 
+		background:url("../assets/images/right_both.gif") no-repeat right top; 
 		padding:5px 15px 4px 6px; 
 		font-weight:bold; 
 		color:#765; 
