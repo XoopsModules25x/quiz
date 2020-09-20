@@ -48,6 +48,7 @@
 	<h4><{$smarty.const._MD_XQUIZ_QUIZS}></h4>
 	
 	<br/>
+	<{$smarty.now|date_format:"%A, %B %e, %Y %I:%M %p"}>
 	<table width='100%' class="table table-striped">
 		<tr>
 			
@@ -174,10 +175,10 @@
 			<{$quizDescription}>
 		</div>
 
-		<{$listquestfrom.javascript}>
+		 <{$listquestfrom.javascript}> 
 		<form name="<{$listquestfrom.name}>" action="<{$listquestfrom.action}>" method="<{$listquestfrom.method}>" <{$listquestfrom.extra}>>
 		<br>
-  		<table class="outer" cellspacing="1" align="center">
+  		<table class="table table-striped outer" cellspacing="1" align="center">
 		    <!-- start of form elements loop -->
     		<{foreach item=element from=$listquestfrom.elements}>
       			<{if $element.hidden != true}>

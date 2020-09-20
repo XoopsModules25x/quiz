@@ -60,7 +60,7 @@ try {
                     throw new Exception(_MD_XQUIZ_NOT_EXIST);
                 }
                 if (! Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_MD_XQUIZ_NOT_ACTIVE);
+                    throw new Exception(_MD_XQUIZ_NOT_STARTED);
                 }
                 if (! Quiz::quiz_checkExpireQuiz($id)) {
                     throw new Exception(_MD_XQUIZ_EXPIRE);
@@ -80,7 +80,7 @@ try {
                 if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                     throw new Exception(_MD_XQUIZ_PERMISSION);
                 }
-                $ts = & MyTextSanitizer::getInstance();
+                $ts = MyTextSanitizer::getInstance();
                 $xoopsTpl->assign('showQuiz', 1);
 
                 $qname = Quiz::quiz_quizName($id);
@@ -123,21 +123,21 @@ try {
                 foreach ($listQuestions as $key) {
                     switch ($key ['question_type']) {
                         case 'MC':
-                            $question_answers [$q] = new XoopsFormRadio($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], "questAns[$q]", null, "<hr/>");
+                            $question_answers [$q] = new XoopsFormRadio("<b>" . $key ['qnumber'] . ".&nbsp" . $ts->previewTarea($key ['question'] . "</b>", 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score']  . " " . _MD_XQUIZ_QUEST_MARKS . "</span>", "questAns[$q]", null, "");
                             foreach ($key ['answer'] as $ans) {
-                                $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']);
+                                $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']. "<br />");
                             }
                             break;
 
                         case 'CM':
-                            $question_answers [$q] = new XoopsFormCheckBox($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], "questAns[$q]", null, "<hr/>");
+                            $question_answers [$q] = new XoopsFormCheckBox("<b>" . $key ['qnumber'] . ".&nbsp;" . $ts->previewTarea($key ['question'] . "</b>", 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score']  . " " . _MD_XQUIZ_QUEST_MARKS . "</span>", "questAns[$q]", null, "");
                             foreach ($key ['answer'] as $ans) {
                                 $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']);
                             }
                             break;
 
                         case 'FB':
-                            $question_answers [$q] = new XoopsFormElementTray($key ['qnumber'] . "-" . $ts->previewTarea($key ['question'], 1, 1, 1, 1, 1) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], "<hr/>", "questAns[$q]");
+                            $question_answers [$q] = new XoopsFormElementTray("<b>" . $key ['qnumber'] . ".&nbsp;" . $ts->previewTarea($key ['question'] . "</b>", 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score']  . " " . _MD_XQUIZ_QUEST_MARKS . "</span>", "", "questAns[$q]");
                             $ansBox = [];
                             $tmp = 0;
                             foreach ($key ['answer'] as $ans) {

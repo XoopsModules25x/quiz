@@ -60,7 +60,7 @@ try {
                     throw new Exception(_MD_XQUIZ_NOT_EXIST);
                 }
                 if (! Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_MD_XQUIZ_NOT_ACTIVE);
+                    throw new Exception(_MD_XQUIZ_NOT_STARTED);
                 }
                 if (! Quiz::quiz_checkExpireQuiz($id)) {
                     throw new Exception(_MD_XQUIZ_EXPIRE);
@@ -80,7 +80,7 @@ try {
                 if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                     throw new Exception(_MD_XQUIZ_PERMISSION);
                 }
-                $ts = & MyTextSanitizer::getInstance();
+                $ts = MyTextSanitizer::getInstance();
                 $xoopsTpl->assign('showQuiz', 1);
 
                 $qname = Quiz::quiz_quizName($id);

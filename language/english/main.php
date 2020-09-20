@@ -9,7 +9,8 @@ define('_MD_XQUIZ_QUEST_SECURITY_ERROR', 'Error in submitted data,please try aga
 define('_MD_XQUIZ_USER_ANSWER', 'User ansewer');
 define("_MD_XQUIZ_AC_COPYRIGHT", "M-Jamali");
 define('_MD_XQUIZ_QUEST_TOTAL', 'Total Question');
-define('_MD_XQUIZ_QUEST_SCORE', 'Questions score');
+define('_MD_XQUIZ_QUEST_SCORE', 'Score');
+define('_MD_XQUIZ_QUEST_MARKS', 'marks');
 define('_MD_XQUIZ_QUEST_DESC', 'Questions text');
 define('_MD_XQUIZ_QUEST_SUBMIT', 'Submit');
 define('_MD_XQUIZ_QUEST_DUPLICATE_ERROR', 'A question with such title has been selected before,please select another title.');
@@ -50,6 +51,7 @@ define('_MD_XQUIZ_VIEW_STAT', 'View statistics');
 define('_MD_XQUIZ_NOT_EXIST', 'No quiz is registered in this name.');
 define('_MD_XQUIZ_CATEGORY_NOT_EXIST', 'No category is registered in this name.');
 define('_MD_XQUIZ_NOT_ACTIVE', 'This quiz has not yet been activated.');
+define('_MD_XQUIZ_NOT_STARTED', 'This quiz has not started yet.');
 define('_MD_XQUIZ_EXPIRE', 'Answering period to this question has been ended.');
 define('_MD_XQUIZ_NO_QUESTION', 'There are no questions for this quiz.');
 define('_MD_XQUIZ_NOT_EXPIRE', 'Answering to this quiz has not yet been started.');
