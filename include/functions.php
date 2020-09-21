@@ -201,27 +201,27 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         foreach ($list as $key) {
             $correct = ($key['answer'] == $key['userAns'])? $validImage:$invalidImage ;
             $class = ('even' == $class) ? 'odd' : 'even';
-            $temp = $temp."
-			<tr class='".$class."'>
+            $temp .= "
+			<tr class='" . $class . "'>
 				<td>
-				".$key['qnumber']."-".$ts->previewTarea($key['question'], 1, 1, 1, 1, 1)."
+				" . $key['qnumber'] . "-" . $ts->previewTarea($key['question'], 1, 1, 1, 1, 1) . "
 				</td>
 				<td>
-				".$key['answer']."
+				" . $key['answer'] . "
 				</td>
 				<td>
-				".$key['score']."
+				" . $key['score'] . "
 				</td>
 				<td>
-				".$key['userAns']."
+				" . $key['userAns'] . "
 				</td>
 				<td>
-				".$correct."
+				" . $correct . "
 				</td>
 				</tr>";
         }
         
-        $temp = $temp."</table></div>";
+        $temp .= "</table></div>";
         echo $temp;
     }
     

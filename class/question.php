@@ -260,36 +260,32 @@ class Question
         foreach ($listQuestion as $key) {
             $class = ('even' == $class) ? 'odd' : 'even';
             
-            $temp = $temp."
-			<tr class='".$class."'>
+            $temp .= "
+			<tr class='" . $class . "'>
 			    <td>
-					".$key['qnumber']."
+					" . $key['qnumber'] . "
 				</td>
 				<td>
-					".$ts->previewTarea($key['question'], 1, 1, 1, 1, 1)."
+					" . $ts->previewTarea($key['question'], 1, 1, 1, 1, 1) . "
 				</td>
 				<td>
-				".$key['answer']."
+				" . $key['answer'] . "
 				</td>
 				<td>
-				".$key['score']."
+				" . $key['score'] . "
 				</td>
 				<td>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=del&Id=".$key['id']."&qId=".$key['qid']."\">
-				".
-                $delImage
-                ."
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Quest&act=del&Id=" . $key['id'] . "&qId=" . $key['qid'] . "\">
+				" . $delImage . "
 				</a>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quest&act=edit&Id=".$key['id']."&qId=".$key['qid']."\">
-				".
-                $editImage
-                ."
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Quest&act=edit&Id=" . $key['id'] . "&qId=" . $key['qid'] . "\">
+				" . $editImage . "
 				</a>
 				</td>
 				</tr>";
         }
         
-        $temp = $temp."</table></div>";
+        $temp .= "</table></div>";
         echo $temp;
         $nav  = new XoopsPageNav($nume, $limit, $start, 'start', "op=Quest&Id=$qid");
         echo "<div align='center'>".$nav->renderImageNav().'</div><br />';

@@ -241,7 +241,7 @@ try {
                 foreach ($listQuiz as $key) {
                     $class = ('even' == $class) ? 'odd' : 'even';
                     
-                    $temp = $temp . "
+                    $temp .= "
 						<tr class='" . $class . "'>
 							<td>
 								<a href=\"" . XOOPS_URL . "/userinfo.php?uid=" . $key ['userid'] . "\">" . $key ['uname'] . "</a>
@@ -260,7 +260,7 @@ try {
 							</td>
 						</tr>";
                 }
-                $temp = $temp . "</table></div>";
+                $temp .= "</table></div>";
                 echo $temp;
                 
                 $nav = new XoopsPageNav($nume, $limitUser, $start, 'start', "op=Statistics&Id=$id");

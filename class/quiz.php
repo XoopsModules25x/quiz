@@ -559,62 +559,47 @@ class Quiz
                                     
             $class = ('even' == $class) ? 'odd' : 'even';
             
-            $temp = $temp."
-			<tr class='".$class."'>
+            $temp .= "
+			<tr class='" . $class . "'>
 				<td>
-					<a href=\"".XOOPS_URL."/modules/xquiz/index.php?act=v&q=".$key['id']."\">".$key['name']."</a>
+					<a href=\"" . XOOPS_URL . "/modules/xquiz/index.php?act=v&q=" . $key['id'] . "\">" . $key['name'] . "</a>
 				</td>
 				<td>
-					".$quizCategory."
+					" . $quizCategory . "
 				</td>
 				<td>
-					".$questLink."
+					" . $questLink . "
 				</td>
 				<td>
-				"
-                .$status . "  "
-                .$key['bdate'].
-                "
+				" . $status . "  " . $key['bdate'] . "
 				</td>
 				<td>
-				"
-                .$active . "  "
-                .$key['edate']."
+				" . $active . "  " . $key['edate'] . "
 				</td>
 				<td>
-				"
-                .$key['activequiz']."
+				" . $key['activequiz'] . "
 				</td>
 				<td>
-				"
-                .$key['weight']."
+				" . $key['weight'] . "
 				</td>
 				<td>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quiz&act=del&Id=".$key['id']."\">
-				".
-                $delImage
-                ."
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Quiz&act=del&Id=" . $key['id'] . "\">
+				" . $delImage . "
 				</a>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Quiz&act=edit&Id=".$key['id']."\">
-				".
-                $editImage
-                ."
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Quiz&act=edit&Id=" . $key['id'] . "\">
+				" . $editImage . "
 				</a>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Statistics&Id=".$key['id']."\">
-				".
-                $statImage
-                ."
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Statistics&Id=" . $key['id'] . "\">
+				" . $statImage . "
 				</a>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Statistics&Id=".$key['id']."&exp=on\">
-				".
-                $exportImage
-                ."
+				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Statistics&Id=" . $key['id'] . "&exp=on\">
+				" . $exportImage . "
 				</a>
 				</td>
 				</tr>";
         }
         
-        $temp = $temp."</table></div>";
+        $temp .= "</table></div>";
         echo $temp;
         $nav  = new XoopsPageNav($nume, $limit, $start, 'start', "op=Quiz");
         echo "<div align='center'>".$nav->renderImageNav().'</div><br />';

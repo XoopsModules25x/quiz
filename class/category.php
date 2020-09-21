@@ -428,34 +428,60 @@ function showCategories($start, $limit)
         
     foreach ($listCategory as $key) {
         $class = ('even' == $class) ? 'odd' : 'even';
-        $temp = $temp."
-			<tr class='".$class."'>
+        $temp .= "
+			<tr class='"
+                 . $class
+                 . "'>
 				<td>&nbsp;
 				"
-                .$goImage.
-                "
-					<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\"><img src=\"".XOOPS_URL."/uploads/xquiz/category/".$key['imgurl']."\" width='40px' height='40px' align='left' style='padding:5px'></a>&nbsp;<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid=".$key['cid']."\">".$key['title']."</a><br>&nbsp;<small>".$key['description']."</small>
+                 . $goImage
+                 . "
+					<a href=\""
+                 . XOOPS_URL
+                 . "/modules/xquiz/index.php?cid="
+                 . $key['cid']
+                 . "\"><img src=\""
+                 . XOOPS_URL
+                 . "/uploads/xquiz/category/"
+                 . $key['imgurl']
+                 . "\" width='40px' height='40px' align='left' style='padding:5px'></a>&nbsp;<a href=\""
+                 . XOOPS_URL
+                 . "/modules/xquiz/index.php?cid="
+                 . $key['cid']
+                 . "\">"
+                 . $key['title']
+                 . "</a><br>&nbsp;<small>"
+                 . $key['description']
+                 . "</small>
 				</td>
 				<td>
 				"
-                .$key['weight'].
-                "
+                 . $key['weight']
+                 . "
 				</td>
 				<td>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Category&act=del&Id=".$key['cid']."\">
-				".
-                $delImage
-                ."
+				<a href=\""
+                 . XOOPS_URL
+                 . "/modules/xquiz/admin/index.php?op=Category&act=del&Id="
+                 . $key['cid']
+                 . "\">
+				"
+                 . $delImage
+                 . "
 				</a>
-				<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Category&act=edit&Id=".$key['cid']."\">
-				".
-                $editImage
-                ."
+				<a href=\""
+                 . XOOPS_URL
+                 . "/modules/xquiz/admin/index.php?op=Category&act=edit&Id="
+                 . $key['cid']
+                 . "\">
+				"
+                 . $editImage
+                 . "
 				</td>
 				</tr>";
     }
         
-    $temp = $temp."</table></div>";
+    $temp .= "</table></div>";
     echo $temp;
         
     $nav  = new XoopsPageNav($nume, $limit, $start, 'start', 'op=Category');

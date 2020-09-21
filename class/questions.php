@@ -228,13 +228,13 @@ class questions
         foreach ($listQuestion as $key) {
             $class = ('even' == $class) ? 'odd' : 'even';
 
-            $temp = $temp . "
+            $temp .= "
 			<tr class='" . $class . "'>
 			    <td>
 					" . $key ['qnumber'] . "
 				</td>
 				<td>
-					".$ts->previewTarea($key['question'], 1, 1, 1, 1, 1)."
+					" . $ts->previewTarea($key['question'], 1, 1, 1, 1, 1) . "
 				</td>
 				<td>
 				" . $key ['score'] . "
@@ -254,7 +254,7 @@ class questions
 				</tr>";
         }
 
-        $temp = $temp . "</table></div>";
+        $temp .= "</table></div>";
         echo $temp;
         $nav = new XoopsPageNav($nume, $limit, $start, 'start', "op=Question&Id=$qid");
         echo "<div align='center'>" . $nav->renderImageNav() . '</div><br />';
