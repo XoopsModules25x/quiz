@@ -17,7 +17,7 @@ class Answer
     private $answer;
 
     /**
-     * @return Integer
+     * @return int
      */
     public function getAid()
     {
@@ -25,7 +25,7 @@ class Answer
     }
 
     /**
-     * @return String
+     * @return string
      */
     public function getAnswer()
     {
@@ -33,7 +33,7 @@ class Answer
     }
 
     /**
-     * @return Boolean
+     * @return bool
      */
     public function getIs_correct()
     {
@@ -41,7 +41,7 @@ class Answer
     }
 
     /**
-     * @return Integer
+     * @return int
      */
     public function getQuestId()
     {
@@ -49,7 +49,7 @@ class Answer
     }
 
     /**
-     * @param String $aid
+     * @param string $aid
      */
     public function setAid($aid)
     {
@@ -57,7 +57,7 @@ class Answer
     }
 
     /**
-     * @param String $answer
+     * @param string $answer
      */
     public function setAnswer($answer)
     {
@@ -66,7 +66,7 @@ class Answer
     }
 
     /**
-     * @param Boolean $is_correct
+     * @param bool $is_correct
      */
     public function setIs_correct($is_correct)
     {
@@ -74,7 +74,7 @@ class Answer
     }
 
     /**
-     * @param Integer $questId
+     * @param int $questId
      */
     public function setQuestId($questId)
     {
@@ -121,7 +121,7 @@ class Answer
     /*
      * TODO - delete question's answers
      * @param $questionId
-     * @return Boolean
+     * @return bool
      */
     /**
      * @param $questionId

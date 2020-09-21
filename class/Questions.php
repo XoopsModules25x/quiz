@@ -32,7 +32,7 @@ class Questions
     }
 
     /**
-     * @return Integer
+     * @return int
      */
     public function getId()
     {
@@ -40,7 +40,7 @@ class Questions
     }
 
     /**
-     * @return Integer
+     * @return int
      */
     public function getQid()
     {
@@ -48,7 +48,7 @@ class Questions
     }
 
     /**
-     * @return Integer
+     * @return int
      */
     public function getQnumber()
     {
@@ -56,7 +56,7 @@ class Questions
     }
 
     /**
-     * @return String
+     * @return string
      */
     public function getQuestion()
     {
@@ -64,7 +64,7 @@ class Questions
     }
 
     /**
-     * @return Integer
+     * @return int
      */
     public function getScore()
     {
@@ -72,7 +72,7 @@ class Questions
     }
 
     /**
-     * @return String
+     * @return string
      */
     public function getType()
     {
@@ -86,7 +86,7 @@ class Questions
     }
 
     /**
-     * @param Integer $id
+     * @param int $id
      */
     public function setId($id)
     {
@@ -94,7 +94,7 @@ class Questions
     }
 
     /**
-     * @param Integer $qid
+     * @param int $qid
      */
     public function setQid($qid)
     {
@@ -102,7 +102,7 @@ class Questions
     }
 
     /**
-     * @param Integer $qnumber
+     * @param int $qnumber
      */
     public function setQnumber($qnumber)
     {
@@ -110,7 +110,7 @@ class Questions
     }
 
     /**
-     * @param String $question
+     * @param string $question
      */
     public function setQuestion($question)
     {
@@ -119,7 +119,7 @@ class Questions
     }
 
     /**
-     * @param Integer $score
+     * @param int $score
      */
     public function setScore($score)
     {
@@ -127,7 +127,7 @@ class Questions
     }
 
     /**
-     * @param String $type
+     * @param string $type
      */
     public function setType($type)
     {
@@ -151,9 +151,9 @@ class Questions
 
     /*
      * List question from database
-     * @param Integer $eu
-     * @param Integer $qid
-     * @param Integer $limit
+     * @param int $eu
+     * @param int $qid
+     * @param int $limit
      * @return array
      * @TODO List questions from database for specific quiz
      */
@@ -183,8 +183,8 @@ class Questions
 
     /*
      * Number of all question
-     * @param Integer $qid
-     * @return Integer
+     * @param int $qid
+     * @return int
      * @TODO Number of questions in database
      */
     /**
@@ -200,9 +200,9 @@ class Questions
 
     /*
      * show questions list
-     * @param Integer $start
-     * @param Integer $qid
-     * @param Integer $limit
+     * @param int $start
+     * @param int $qid
+     * @param int $limit
      * @return array
      * @TODO show questions list
      */
@@ -284,7 +284,7 @@ class Questions
      * @TODO add question form
      * @para Integer $quizId
      * @para String $type
-     * @return String
+     * @return string
      */
     /**
      * @param        $qId
@@ -379,7 +379,7 @@ class Questions
     /*
      * @TODO edit question form
      * @para Integer $questId
-     * @return String
+     * @return string
      */
     /**
      * @param $questId
@@ -535,7 +535,7 @@ class Questions
 
     /*
      * show form for select quiz to show questions
-     * @return String
+     * @return string
      */
     public static function showQuizSelectForm()
     {
@@ -646,7 +646,7 @@ class Questions
 
     /*
      * @TODO retrieve question from database with question Id and set to object attribute
-     * @param Integer $questionId
+     * @param int $questionId
      * @return void
      */
     /**
@@ -733,7 +733,7 @@ class Questions
 
     /*
      * @TODO Show delete confirm form
-     * @param Integer $id
+     * @param int $id
      * @return void
      */
     /**
@@ -763,7 +763,7 @@ class Questions
 
     /*
      * @TODO List Questions of specefic quiz
-     * @param Integer $quizId
+     * @param int $quizId
      * @return array $listQuestions
      */
     /**
