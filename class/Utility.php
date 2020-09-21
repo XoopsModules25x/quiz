@@ -454,12 +454,12 @@ class Utility extends Common\SysUtility
         if ('edit' == $op) {
             $category           = $xt->getCategory($eId);
             $category_id_v      = $eId;
-            $category_title_v   = htmlspecialchars($category[0]['title']);
-            $category_desc_v    = htmlspecialchars($category[0]['description']);
+            $category_title_v   = htmlspecialchars($category[0]['title'], ENT_QUOTES | ENT_HTML5);
+            $category_desc_v    = htmlspecialchars($category[0]['description'], ENT_QUOTES | ENT_HTML5);
             $parent             = $xt->getAllParentId($category_id_v);
             $category_parent_id = (!empty($parent)) ? $parent[0] : 0;
             $category_weight_v  = $category[0]['weight'];
-            $topicimage         = htmlspecialchars($category[0]['imgurl']);
+            $topicimage         = htmlspecialchars($category[0]['imgurl'], ENT_QUOTES | ENT_HTML5);
 
             $groups_ids                    = $grouppermHandler->getGroupIds('quiz_view', $category_id_v, $xoopsModule->getVar('mid'));
             $groups_ids                    = array_values($groups_ids);
