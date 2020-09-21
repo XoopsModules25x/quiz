@@ -353,8 +353,7 @@ class Questions
 				</tbody>
 			</table>';
 
-        $ansFormTable = new \XoopsFormLabel(_AM_XQUIZ_ANSWERS_LABEL, ob_get_contents());
-        ob_end_clean();
+        $ansFormTable = new \XoopsFormLabel(_AM_XQUIZ_ANSWERS_LABEL, ob_get_clean());
 
         $question_type = new \XoopsFormHidden('type', $type);
         //$question_token = new \XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
@@ -511,8 +510,7 @@ class Questions
 				</tbody>
 			</table>";
 
-        $ansFormTable = new \XoopsFormLabel(_AM_XQUIZ_ANSWERS_LABEL, ob_get_contents());
-        ob_end_clean();
+        $ansFormTable = new \XoopsFormLabel(_AM_XQUIZ_ANSWERS_LABEL, ob_get_clean());
 
         $question_type = new \XoopsFormHidden('type', $this->getType());
         //$question_token = new \XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());

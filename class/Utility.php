@@ -481,8 +481,7 @@ class Utility extends Common\SysUtility
         $category_title = new \XoopsFormText(_AM_XQUIZ_CATEGORY_TITLE, 'cateTitle', 50, 100, $category_title_v);
         ob_start();
         $xt->makeMySelBox('title', 'cid', $category_parent_id, 1, 'cateParent');
-        $category_parent = new \XoopsFormLabel(_AM_XQUIZ_CATEGORY_PARENT, ob_get_contents());
-        ob_end_clean();
+        $category_parent = new \XoopsFormLabel(_AM_XQUIZ_CATEGORY_PARENT, ob_get_clean());
         //$category_description = new \XoopsFormDhtmlTextArea(_AM_XQUIZ_CATEGORY_DESC, "cateDesc", $category_desc_v);
 
         $options_tray = new \XoopsFormElementTray(_AM_XQUIZ_CATEGORY_DESC, '<br>');

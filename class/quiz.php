@@ -451,8 +451,7 @@ class Quiz
         $quiz_name = new \XoopsFormText(_AM_XQUIZ_NAME, 'quizName', 50, 100, $quiz_name_v);
         ob_start();
         $xt->makeMySelBox('title', 'cid ASC', $quiz_category_id, 0, 'quizCategory');
-        $quiz_category = new \XoopsFormLabel(_AM_XQUIZ_CATEGORY, ob_get_contents());
-        ob_end_clean();
+        $quiz_category = new \XoopsFormLabel(_AM_XQUIZ_CATEGORY, ob_get_clean());
         $quiz_begin_date = new \XoopsFormDateTime(_AM_XQUIZ_BDATE, 'quizBDate', 15, $quiz_bdate_v);
         $quiz_end_date   = new \XoopsFormDateTime(_AM_XQUIZ_EDATE, 'quizEDate', 15, $quiz_edate_v);
         $quiz_weight     = new \XoopsFormText(_AM_XQUIZ_WEIGHT, 'quizWeight', 5, 3, $quiz_weight_v);
@@ -501,8 +500,7 @@ class Quiz
         $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         ob_start();
         $xt->makeMySelBox('title', 'cid', 0, 1, 'Id', '', 1);
-        $select = ob_get_contents();
-        ob_end_clean();
+        $select = ob_get_clean();
 
         $nume = self::quiz_numQuizLoader();
 
