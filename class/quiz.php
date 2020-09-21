@@ -27,6 +27,10 @@ namespace XoopsModules\Xquiz;
 require_once dirname(__DIR__) . '/include/common.php';
 require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 
+/**
+ * Class Quiz
+ * @package XoopsModules\Xquiz
+ */
 class Quiz
 {
     private $id;
@@ -376,6 +380,9 @@ class Quiz
         }
     }
 
+    /**
+     * @return bool
+     */
     public function checkExistQuiz()
     {
         global $xoopsDB;
@@ -389,6 +396,10 @@ class Quiz
         }
     }
 
+    /**
+     * @param $qId
+     * @return array|false
+     */
     public static function retrieveQuiz($qId)
     {
         global $xoopsDB;
@@ -397,6 +408,11 @@ class Quiz
         return $myrow;
     }
 
+    /**
+     * @param string $op
+     * @param int    $eId
+     * @throws \Exception
+     */
     public static function QuizForm($op = 'add', $eId = 0)
     {
         global $xoopsDB, $xoopsModuleConfig;
@@ -474,6 +490,11 @@ class Quiz
         echo '</div>';
     }
 
+    /**
+     * @param     $start
+     * @param     $limit
+     * @param int $categoryId
+     */
     public static function showQuizs($start, $limit, $categoryId = -1)
     {
         global $xoopsDB;
@@ -605,6 +626,9 @@ class Quiz
         echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
     }
 
+    /**
+     * @param $id
+     */
     public static function confirmForm($id)
     {
         $delQuiz_form  = new \XoopsThemeForm(
@@ -628,6 +652,9 @@ class Quiz
         echo '</div>';
     }
 
+    /**
+     * @return int
+     */
     public static function quiz_numQuizLoader()
     {
         global $xoopsDB;
@@ -635,6 +662,12 @@ class Quiz
         return $xoopsDB->getRowsNum($result);
     }
 
+    /**
+     * @param     $eu
+     * @param     $limit
+     * @param int $categoryId
+     * @return array
+     */
     public static function quiz_listQuizLoader($eu, $limit, $categoryId = -1)
     {
         global $xoopsDB, $xoopsModuleConfig;
@@ -692,6 +725,9 @@ class Quiz
         return $listQuiz;
     }
 
+    /**
+     * @return array
+     */
     public static function allQuizs()
     {
         global $xoopsDB;
@@ -706,6 +742,9 @@ class Quiz
         return $listQuiz;
     }
 
+    /**
+     * @return array
+     */
     public static function quiz_listQuizArray()
     {
         global $xoopsDB;
@@ -717,6 +756,10 @@ class Quiz
         return $listQuiz;
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public static function quiz_checkActiveQuiz($id)
     {
         global $xoopsDB;
@@ -730,6 +773,10 @@ class Quiz
         }
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public static function quiz_checkExpireQuiz($id)
     {
         global $xoopsDB;
@@ -743,6 +790,10 @@ class Quiz
         }
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public static function quiz_quizName($id)
     {
         global $xoopsDB;
@@ -760,6 +811,10 @@ class Quiz
         return $arr;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public static function quizCategory($id)
     {
         global $xoopsDB;
@@ -768,6 +823,10 @@ class Quiz
         return $myrow['cid'];
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public static function quiz_checkExistQuiz($id)
     {
         global $xoopsDB;

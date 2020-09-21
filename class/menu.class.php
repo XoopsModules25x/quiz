@@ -57,6 +57,15 @@ class QuizMenu
     public  $TextAlign          = 'center';
     private $_items             = [];
 
+    /**
+     * @param        $id
+     * @param string $link
+     * @param string $icon
+     * @param string $name
+     * @param string $extra
+     * @param string $alt
+     * @return bool
+     */
     public function addItem($id, $link = '', $icon = '', $name = '', $extra = '', $alt = '')
     {
         if (isset($this->_items[$id])) {
@@ -71,6 +80,11 @@ class QuizMenu
         return true;
     }
 
+    /**
+     * @param $id
+     * @param $link
+     * @return bool
+     */
     public function setLink($id, $link)
     {
         if (isset($this->_items[$id])) {
@@ -81,6 +95,11 @@ class QuizMenu
         }
     }
 
+    /**
+     * @param $id
+     * @param $icon
+     * @return bool
+     */
     public function setIcon($id, $icon)
     {
         if (isset($this->_items[$id])) {
@@ -91,6 +110,11 @@ class QuizMenu
         }
     }
 
+    /**
+     * @param $id
+     * @param $name
+     * @return bool
+     */
     public function setName($id, $name)
     {
         if (isset($this->_items[$id])) {
@@ -101,6 +125,11 @@ class QuizMenu
         }
     }
 
+    /**
+     * @param $id
+     * @param $extra
+     * @return bool
+     */
     public function setExtra($id, $extra)
     {
         if (isset($this->_items[$id])) {
@@ -111,6 +140,11 @@ class QuizMenu
         }
     }
 
+    /**
+     * @param $id
+     * @param $alt
+     * @return bool
+     */
     public function setAlt($id, $alt)
     {
         if (isset($this->_items[$id])) {
@@ -121,6 +155,10 @@ class QuizMenu
         }
     }
 
+    /**
+     * @param bool $ws
+     * @return string
+     */
     public function getCSS($ws = true)
     {
         if ($ws) {
@@ -208,6 +246,9 @@ class QuizMenu
         return $csscode;
     }
 
+    /**
+     * @return string
+     */
     public function render()
     {
         $ret = "<div class='rmmenuicon'>";

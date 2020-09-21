@@ -38,6 +38,10 @@ use XoopsModules\Xquiz\{
     Question
 };
 
+/**
+ * Class Files
+ * @package XoopsModules\Xquiz
+ */
 class Files
 {
     public $db;
@@ -50,6 +54,10 @@ class Files
     public $downloadname;
     public $counter;
 
+    /**
+     * Files constructor.
+     * @param int $fileid
+     */
     public function __construct($fileid = -1)
     {
         $this->db           = \XoopsDatabaseFactory::getDatabaseConnection();
@@ -67,6 +75,12 @@ class Files
         }
     }
 
+    /**
+     * @param       $folder
+     * @param       $filename
+     * @param false $trimname
+     * @return string
+     */
     public function createUploadName($folder, $filename, $trimname = false)
     {
         $workingfolder = $folder;
@@ -81,7 +95,7 @@ class Files
             $ipbits = explode('.', $_SERVER['REMOTE_ADDR']);
             [$usec, $sec] = explode(' ', microtime());
 
-            $usec = ($usec * 65536);
+            $usec *= 65536;
             $sec  = ((integer)$sec) & 0xFFFF;
 
             if ($trimname) {
@@ -96,6 +110,10 @@ class Files
         return $uid . $ext;
     }
 
+    /**
+     * @param string $filename
+     * @return string
+     */
     public function giveMimetype($filename = '')
     {
         $cmimetype   = new Mimetype();
@@ -108,6 +126,10 @@ class Files
         }
     }
 
+    /**
+     * @param $storyid
+     * @return array
+     */
     public function getAllbyStory($storyid)
     {
         $ret    = [];
@@ -119,6 +141,9 @@ class Files
         return $ret;
     }
 
+    /**
+     * @param $id
+     */
     public function getFile($id)
     {
         $sql   = 'SELECT * FROM ' . $this->table . ' WHERE fileid=' . (int)$id;
@@ -126,6 +151,9 @@ class Files
         $this->makeFile($array);
     }
 
+    /**
+     * @param $array
+     */
     public function makeFile($array)
     {
         foreach ($array as $key => $value) {
@@ -133,6 +161,9 @@ class Files
         }
     }
 
+    /**
+     * @return bool
+     */
     public function store()
     {
         $myts         = \MyTextSanitizer::getInstance();
@@ -156,6 +187,10 @@ class Files
         return true;
     }
 
+    /**
+     * @param string $workdir
+     * @return bool
+     */
     public function delete($workdir = XOOPS_UPLOAD_PATH)
     {
         $sql = 'DELETE FROM ' . $this->table . ' WHERE fileid=' . $this->getFileid();
@@ -168,6 +203,9 @@ class Files
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function updateCounter()
     {
         $sql = 'UPDATE ' . $this->table . ' SET counter=counter+1 WHERE fileid=' . $this->getFileid();
@@ -180,21 +218,33 @@ class Files
     // ****************************************************************************************************************
     // All the Sets
     // ****************************************************************************************************************
+    /**
+     * @param $filename
+     */
     public function setFileRealName($filename)
     {
         $this->filerealname = $filename;
     }
 
+    /**
+     * @param $id
+     */
     public function setStoryid($id)
     {
         $this->storyid = (int)$id;
     }
 
+    /**
+     * @param $value
+     */
     public function setMimetype($value)
     {
         $this->mimetype = $value;
     }
 
+    /**
+     * @param $value
+     */
     public function setDownloadname($value)
     {
         $this->downloadname = $value;
@@ -203,26 +253,42 @@ class Files
     // ****************************************************************************************************************
     // All the Gets
     // ****************************************************************************************************************
+    /**
+     * @return int
+     */
     public function getFileid()
     {
         return (int)$this->fileid;
     }
 
+    /**
+     * @return int
+     */
     public function getStoryid()
     {
         return (int)$this->storyid;
     }
 
+    /**
+     * @return int
+     */
     public function getCounter()
     {
         return (int)$this->counter;
     }
 
+    /**
+     * @return int
+     */
     public function getDate()
     {
         return (int)$this->date;
     }
 
+    /**
+     * @param string $format
+     * @return string
+     */
     public function getFileRealName($format = 'S')
     {
         $myts = \MyTextSanitizer::getInstance();
@@ -247,6 +313,10 @@ class Files
         return $filerealname;
     }
 
+    /**
+     * @param string $format
+     * @return string
+     */
     public function getMimetype($format = 'S')
     {
         $myts = \MyTextSanitizer::getInstance();
@@ -271,6 +341,10 @@ class Files
         return $filemimetype;
     }
 
+    /**
+     * @param string $format
+     * @return string
+     */
     public function getDownloadname($format = 'S')
     {
         $myts = \MyTextSanitizer::getInstance();
@@ -296,6 +370,11 @@ class Files
     }
 
     // Deprecated
+
+    /**
+     * @param $storyid
+     * @return mixed
+     */
     public function getCountbyStory($storyid)
     {
         $sql    = 'SELECT count(fileid) as cnt FROM ' . $this->table . ' WHERE storyid=' . (int)$storyid . '';
@@ -304,6 +383,10 @@ class Files
         return $myrow['cnt'];
     }
 
+    /**
+     * @param $stories
+     * @return array
+     */
     public function getCountbyStories($stories)
     {
         $ret = [];

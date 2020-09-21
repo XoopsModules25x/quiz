@@ -26,6 +26,10 @@ namespace XoopsModules\Xquiz;
 require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 
+/**
+ * Class Category
+ * @package XoopsModules\Xquiz
+ */
 class Category extends \XoopsTree
 {
     /** @var string table with parent-child structure */
@@ -186,6 +190,12 @@ class Category extends \XoopsTree
         return $parray;
     }
 
+    /**
+     * @param     $eu
+     * @param     $limit
+     * @param int $order
+     * @return array
+     */
     public function getList($eu, $limit, $order = 0)
     {
         $listCategory = [];
@@ -209,6 +219,9 @@ class Category extends \XoopsTree
         return $listCategory;
     }
 
+    /**
+     * @return int
+     */
     public function getNumberList()
     {
         $query = ' SELECT * FROM ' . $this->table;
@@ -217,6 +230,10 @@ class Category extends \XoopsTree
         return count($myrow);;
     }
 
+    /**
+     * @param $cid
+     * @return array
+     */
     public function getCategory($cid)
     {
         $sel_id = (int)$cid;
@@ -233,6 +250,10 @@ class Category extends \XoopsTree
         return $arr;
     }
 
+    /**
+     * @param $sel_id
+     * @return mixed
+     */
     public function categoryPid($sel_id)
     {
         global $xoopsDB;
@@ -243,6 +264,11 @@ class Category extends \XoopsTree
     }
 
     #region retrieve Category from database
+
+    /**
+     * @param $eId
+     * @return array|false
+     */
     public static function retrieveCategory($eId)
     {
         global $xoopsDB;
@@ -252,6 +278,13 @@ class Category extends \XoopsTree
     }
     #endregion
     #region retrieve permited category from database
+    /**
+     * @param int    $sel_id
+     * @param string $order
+     * @param array  $parray
+     * @param string $r_prefix
+     * @return array|mixed
+     */
     public function getPermChildArray($sel_id = 0, $order = '', $parray = [], $r_prefix = '')
     {
         global $xoopsUser, $module_id;
@@ -287,6 +320,15 @@ class Category extends \XoopsTree
 
     #endregion
 
+    /**
+     * @param $title
+     * @param $pid
+     * @param $desc
+     * @param $imgurl
+     * @param $weight
+     * @return int
+     * @throws \Exception
+     */
     public static function addCategory($title, $pid, $desc, $imgurl, $weight)
     {
         global $xoopsDB;
@@ -301,6 +343,15 @@ class Category extends \XoopsTree
         return $xoopsDB->getInsertId();
     }
 
+    /**
+     * @param $cid
+     * @param $title
+     * @param $pid
+     * @param $desc
+     * @param $imgurl
+     * @param $weight
+     * @throws \Exception
+     */
     public static function editCategory($cid, $title, $pid, $desc, $imgurl, $weight)
     {
         global $xoopsDB;
@@ -319,6 +370,10 @@ class Category extends \XoopsTree
         }
     }
 
+    /**
+     * @param $id
+     * @throws \Exception
+     */
     public static function deleteCategory($id)
     {
         global $xoopsDB;
@@ -373,6 +428,10 @@ class Category extends \XoopsTree
         echo $form->render();
     }
 
+    /**
+     * @param $cid
+     * @return bool
+     */
     public static function checkExistCategory($cid)
     {
         global $xoopsDB;

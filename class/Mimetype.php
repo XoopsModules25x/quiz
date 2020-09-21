@@ -73,8 +73,16 @@ if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
 }
 
+/**
+ * Class Mimetype
+ * @package XoopsModules\Xquiz
+ */
 class Mimetype
 {
+    /**
+     * @param $filename
+     * @return string
+     */
     public function getType($filename)
     {
         // get base name of the filename provided by user
@@ -90,6 +98,10 @@ class Mimetype
         return $this->privFindType($filename);
     }
 
+    /**
+     * @param $ext
+     * @return string
+     */
     public function privFindType($ext)
     {
         // create mimetypes array
@@ -99,6 +111,9 @@ class Mimetype
         return $mimetypes[$ext] ?? 'unknown';
     }
 
+    /**
+     * @return string[]
+     */
     public function privBuildMimeArray()
     {
         return [

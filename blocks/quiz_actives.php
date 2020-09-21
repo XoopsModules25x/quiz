@@ -27,6 +27,11 @@ use XoopsModules\Xquiz\{
     Quiz,
     Question
 };
+
+/**
+ * @param $options
+ * @return array
+ */
 function quiz_listActiveQuizs($options)
 {
     $block = [];
@@ -34,6 +39,10 @@ function quiz_listActiveQuizs($options)
     return $block;
 }
 
+/**
+ * @param $options
+ * @return string
+ */
 function quiz_listActiveQuizs_edit($options)
 {
     $form = _MB_XQUIZ_OPTION . ": <input type='text' size='9' name='options[0]' value='$options[0]'>";

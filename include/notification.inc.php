@@ -25,6 +25,11 @@ if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
 }
 
+/**
+ * @param $category
+ * @param $item_id
+ * @return null
+ */
 function quiz_notify_iteminfo($category, $item_id)
 {
     if ('global' == $category) {

@@ -4,6 +4,10 @@ namespace XoopsModules\Xquiz;
 
 require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 
+/**
+ * Class Questions
+ * @package XoopsModules\Xquiz
+ */
 class Questions
 {
     /**
@@ -153,6 +157,12 @@ class Questions
      * @return array
      * @TODO List questions from database for specific quiz
      */
+    /**
+     * @param $eu
+     * @param $limit
+     * @param $qid
+     * @return array
+     */
     public static function questions_list($eu, $limit, $qid)
     {
         global $xoopsDB;
@@ -177,6 +187,10 @@ class Questions
      * @return Integer
      * @TODO Number of questions in database
      */
+    /**
+     * @param $qId
+     * @return int
+     */
     public static function questions_numOfQuestions($qId)
     {
         global $xoopsDB;
@@ -191,6 +205,11 @@ class Questions
      * @param Integer $limit
      * @return array
      * @TODO show questions list
+     */
+    /**
+     * @param $start
+     * @param $limit
+     * @param $qid
      */
     public static function showQuestions($start, $limit, $qid)
     {
@@ -266,6 +285,10 @@ class Questions
      * @para Integer $quizId
      * @para String $type
      * @return String
+     */
+    /**
+     * @param        $qId
+     * @param string $type
      */
     public static function QuestAddForm($qId, $type = 'MC')
     {
@@ -358,6 +381,9 @@ class Questions
      * @TODO edit question form
      * @para Integer $questId
      * @return String
+     */
+    /**
+     * @param $questId
      */
     public function QuestEditForm($questId)
     {
@@ -570,6 +596,11 @@ class Questions
  * @return void
  *
  */
+    /**
+     * @param $ans
+     * @param $is_cor
+     * @throws \Exception
+     */
     public function addQuestion($ans, $is_cor)
     {
         global $xoopsDB;
@@ -603,6 +634,10 @@ class Questions
      * @param integer @quizid
      * @return $integer number of question
      */
+    /**
+     * @param $quizId
+     * @return mixed
+     */
     public static function questionNumber($quizId)
     {
         global $xoopsDB;
@@ -615,6 +650,9 @@ class Questions
      * @TODO retrieve question from database with question Id and set to object attribute
      * @param Integer $questionId
      * @return void
+     */
+    /**
+     * @param $questId
      */
     public function retrieveQuestion($questId)
     {
@@ -644,6 +682,11 @@ class Questions
      * @param array $answers
      * @param array $corrects
      * @return void
+     */
+    /**
+     * @param $ans
+     * @param $is_cor
+     * @throws \Exception
      */
     public function editQuestion($ans, $is_cor)
     {
@@ -695,6 +738,9 @@ class Questions
      * @param Integer $id
      * @return void
      */
+    /**
+     * @param $id
+     */
     public static function confirmForm($id)
     {
         $delQuest_form = new \XoopsThemeForm(_AM_XQUIZ_DELQUESTFORM, 'delqstfrom', XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true);
@@ -721,6 +767,10 @@ class Questions
      * @TODO List Questions of specefic quiz
      * @param Integer $quizId
      * @return array $listQuestions
+     */
+    /**
+     * @param $qId
+     * @return array
      */
     public static function listQuestLoader($qId)
     {

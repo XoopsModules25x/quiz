@@ -31,7 +31,11 @@ use XoopsModules\Xquiz\Constants;
 class Utility extends Common\SysUtility
 {
     //--------------- Custom module methods -----------------------------
-
+    /**
+     * @param $userId
+     * @param $id
+     * @return bool
+     */
     public static function findUserScore($userId, $id)
     {
         global $xoopsDB;
@@ -48,6 +52,11 @@ class Utility extends Common\SysUtility
     }
 
 //    region load number of user score per id from database
+
+    /**
+     * @param $qId
+     * @return int
+     */
     public static function numUserScore($qId)
     {
         global $xoopsDB;
@@ -57,6 +66,10 @@ class Utility extends Common\SysUtility
 
 //    endregion
 
+    /**
+     * @param string $tablename
+     * @param string $iconname
+     */
     public static function collapsableBar($tablename = '', $iconname = '')
     {
         ?>
@@ -138,6 +151,11 @@ class Utility extends Common\SysUtility
 
 //    endregion
 //    endregion
+    /**
+     * @param $quizId
+     * @param $uid
+     * @return array
+     */
     public static function userQuestLoader($quizId, $uid)
     {
         global $xoopsDB;
@@ -159,6 +177,10 @@ class Utility extends Common\SysUtility
         return $list;
     }
 
+    /**
+     * @param $quizId
+     * @param $uid
+     */
     public static function showUserQuest($quizId, $uid)
     {
         global $memberHandler;
@@ -233,6 +255,10 @@ class Utility extends Common\SysUtility
         echo $temp;
     }
 
+    /**
+     * @param $uid
+     * @return array
+     */
     public static function userQuizzes($uid)
     {
         global $xoopsDB, $xoopsModuleConfig;
@@ -297,6 +323,11 @@ class Utility extends Common\SysUtility
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @param $start
+     * @param $limit
+     */
     public static function showCategories($start, $limit)
     {
         global $xoopsDB;
@@ -400,6 +431,10 @@ class Utility extends Common\SysUtility
         echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
     }
 
+    /**
+     * @param string $op
+     * @param int    $eId
+     */
     public static function CategoryForm($op = 'add', $eId = 0)
     {
         global $xoopsDB, $xoopsModule, $xoopsModuleConfig;
@@ -509,6 +544,10 @@ class Utility extends Common\SysUtility
     }
 
     #region create confirm form for delete question
+
+    /**
+     * @param $id
+     */
     public static function confirmForm($id)
     {
         $delCategory_form = new \XoopsThemeForm(

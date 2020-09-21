@@ -2,6 +2,10 @@
 
 namespace XoopsModules\Xquiz;
 
+/**
+ * Class Answer
+ * @package XoopsModules\Xquiz
+ */
 class Answer
 {
     /**
@@ -94,6 +98,9 @@ class Answer
      * TODO - add new answer to database
      * @Return Boolean $res
      */
+    /**
+     * @return bool
+     */
     public function addAnswer()
     {
         if ('' == $this->is_correct) {
@@ -115,6 +122,10 @@ class Answer
      * TODO - delete question's answers
      * @param $questionId
      * @return Boolean
+     */
+    /**
+     * @param $questionId
+     * @return bool
      */
     public static function deleteAnswers($questionId)
     {

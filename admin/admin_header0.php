@@ -48,6 +48,10 @@ $moduleHandler = xoops_getHandler('module');
 $module        = $moduleHandler->getByDirname('xquiz');
 $configHandler = xoops_getHandler('config');
 $moduleConfig  = $configHandler->getConfigsByCat(0, $module->getVar('mid'));
+/**
+ * @param int    $currentoption
+ * @param string $breadcrumb
+ */
 function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
 {
     /* Nice button styles */

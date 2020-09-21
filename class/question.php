@@ -26,6 +26,10 @@ namespace XoopsModules\Xquiz;
 
 require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 
+/**
+ * Class Question
+ * @package XoopsModules\Xquiz
+ */
 class Question
 {
     private $id;
@@ -45,6 +49,11 @@ class Question
     }
 
     #region set and get $id
+
+    /**
+     * @param $id
+     * @throws \Exception
+     */
     public function set_id($id)
     {
         if (!is_numeric($id)) {
@@ -62,6 +71,10 @@ class Question
     }
     #endregion
     #region set and get $qid
+    /**
+     * @param $id
+     * @throws \Exception
+     */
     public function set_qid($id)
     {
         if (!is_numeric($id)) {
@@ -79,6 +92,9 @@ class Question
     }
     #endregion
     #region set and get $question
+    /**
+     * @param $question
+     */
     public function set_question($question)
     {
         $this->question = $this->myts->addSlashes($question);
@@ -93,6 +109,10 @@ class Question
     }
     #endregion
     #region set and get $qnumber
+    /**
+     * @param $qnumber
+     * @throws \Exception
+     */
     public function set_qnumber($qnumber)
     {
         if (!is_numeric($qnumber)) {
@@ -110,6 +130,9 @@ class Question
     }
     #endregion
     #region set and get $ans1
+    /**
+     * @param $ans1
+     */
     public function set_ans1($ans1)
     {
         $this->ans1 = $this->myts->addSlashes($ans1);
@@ -124,6 +147,9 @@ class Question
     }
     #endregion
     #region set and get $ans2
+    /**
+     * @param $ans2
+     */
     public function set_ans2($ans2)
     {
         $this->ans2 = $this->myts->addSlashes($ans2);
@@ -138,6 +164,9 @@ class Question
     }
     #endregion
     #region set and get $ans3
+    /**
+     * @param $ans3
+     */
     public function set_ans3($ans3)
     {
         $this->ans3 = $this->myts->addSlashes($ans3);
@@ -152,6 +181,9 @@ class Question
     }
     #endregion
     #region set and get $ans4
+    /**
+     * @param $ans4
+     */
     public function set_ans4($ans4)
     {
         $this->ans4 = $this->myts->addSlashes($ans4);
@@ -166,6 +198,9 @@ class Question
     }
     #endregion
     #region set and get $answer
+    /**
+     * @param $answer
+     */
     public function set_answer($answer)
     {
         $this->answer = $this->myts->addSlashes($answer);
@@ -180,6 +215,10 @@ class Question
     }
     #endregion
     #region set and get $score
+    /**
+     * @param $score
+     * @throws \Exception
+     */
     public function set_score($score)
     {
         if (!is_numeric($score)) {
@@ -198,6 +237,10 @@ class Question
     #endregion
 
     #region load number of question from database
+    /**
+     * @param $qId
+     * @return int
+     */
     public static function question_numQuestionLoader($qId)
     {
         global $xoopsDB;
@@ -207,6 +250,12 @@ class Question
     #endregion
 
     #region load questions from database
+    /**
+     * @param $eu
+     * @param $limit
+     * @param $qid
+     * @return array
+     */
     public static function question_listQuestionLoader($eu, $limit, $qid)
     {
         global $xoopsDB;
@@ -232,6 +281,10 @@ class Question
     }
     #endregion
     #region retrieve question from database
+    /**
+     * @param $eId
+     * @return array|false
+     */
     public static function retrieveQuestion($eId)
     {
         global $xoopsDB;
@@ -242,6 +295,11 @@ class Question
     #endregion
 
     #region List question and show in breaking page
+    /**
+     * @param $start
+     * @param $limit
+     * @param $qid
+     */
     public static function showQuestions($start, $limit, $qid)
     {
         $nume = self::question_numQuestionLoader($qid);
@@ -352,6 +410,11 @@ class Question
     }
     #endregion
     #region show question add & edit form
+    /**
+     * @param        $qId
+     * @param string $op
+     * @param int    $eId
+     */
     public static function QuestForm($qId, $op = 'add', $eId = 0)
     {
         $addQuest_form = new \XoopsThemeForm(
@@ -453,6 +516,9 @@ class Question
     }
     #endregion
     #region check exist question in database
+    /**
+     * @return bool
+     */
     public function checkExistQuestion()
     {
         global $xoopsDB;
@@ -526,6 +592,10 @@ class Question
     }
     #endregion
     #region number of question
+    /**
+     * @param $quizId
+     * @return mixed
+     */
     public static function questionNumber($quizId)
     {
         global $xoopsDB;
@@ -535,6 +605,9 @@ class Question
     }
     #endregion
     #region create confirm form for delete question
+    /**
+     * @param $id
+     */
     public static function confirmForm($id)
     {
         $delQuest_form = new \XoopsThemeForm(
@@ -560,6 +633,11 @@ class Question
     }
 
     #end region
+
+    /**
+     * @param $qId
+     * @return array
+     */
     public static function listQuestLoader($qId)
     {
         global $xoopsDB;
