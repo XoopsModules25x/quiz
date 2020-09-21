@@ -24,7 +24,7 @@ require('../../mainfile.php');
 $xoopsOption['template_main'] = 'xquiz_index.tpl';
 require(XOOPS_ROOT_PATH . '/header.php');
 include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . "/class/xoopsformloader.php";
+include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 include_once XOOPS_ROOT_PATH . '/modules/xquiz/include/functions.php';
 include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
 include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
@@ -118,30 +118,38 @@ try {
                     throw new Exception(_MD_XQUIZ_NO_QUESTION);
                 }
                 $q = 0;
-                $listQuest_form = new XoopsThemeForm(_MD_XQUIZ_QUEST_LISTQESTFORM, "listquestfrom", $_SERVER ['PHP_SELF'], 'post', true);
+                $listQuest_form = new XoopsThemeForm(_MD_XQUIZ_QUEST_LISTQESTFORM, 'listquestfrom', $_SERVER ['PHP_SELF'], 'post', true);
                 $quizId = new XoopsFormHidden('quizId', $id);
                 foreach ($listQuestions as $key) {
                     switch ($key ['question_type']) {
                         case 'MC':
-                            $question_answers [$q] = new XoopsFormRadio("<b>" . $key ['qnumber'] . ".&nbsp" . $ts->previewTarea($key ['question'] . "</b>", 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score']  . " " . _MD_XQUIZ_QUEST_MARKS . "</span>", "questAns[$q]", null, "");
+                            $question_answers [$q] = new XoopsFormRadio(
+                                '<b>' . $key ['qnumber'] . '.&nbsp' . $ts->previewTarea($key ['question'] . '</b>', 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score'] . ' ' . _MD_XQUIZ_QUEST_MARKS . '</span>', "questAns[$q]", null,
+                                ''
+                            );
                             foreach ($key ['answer'] as $ans) {
-                                $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']. "");
+                                $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer'] . '');
                             }
                             break;
 
                         case 'CM':
-                            $question_answers [$q] = new XoopsFormCheckBox("<b>" . $key ['qnumber'] . ".&nbsp;" . $ts->previewTarea($key ['question'] . "</b>", 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score']  . " " . _MD_XQUIZ_QUEST_MARKS . "</span>", "questAns[$q]", null, "");
+                            $question_answers [$q] = new XoopsFormCheckBox(
+                                '<b>' . $key ['qnumber'] . '.&nbsp;' . $ts->previewTarea($key ['question'] . '</b>', 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score'] . ' ' . _MD_XQUIZ_QUEST_MARKS . '</span>', "questAns[$q]", null,
+                                ''
+                            );
                             foreach ($key ['answer'] as $ans) {
                                 $question_answers [$q]->addOption($ans ['answer_id'], $ans ['answer']);
                             }
                             break;
 
                         case 'FB':
-                            $question_answers [$q] = new XoopsFormElementTray("<b>" . $key ['qnumber'] . ".&nbsp;" . $ts->previewTarea($key ['question'] . "</b>", 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score']  . " " . _MD_XQUIZ_QUEST_MARKS . "</span>", "", "questAns[$q]");
+                            $question_answers [$q] = new XoopsFormElementTray(
+                                '<b>' . $key ['qnumber'] . '.&nbsp;' . $ts->previewTarea($key ['question'] . '</b>', 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score'] . ' ' . _MD_XQUIZ_QUEST_MARKS . '</span>',
+                                '', "questAns[$q]");
                             $ansBox = [];
                             $tmp = 0;
                             foreach ($key ['answer'] as $ans) {
-                                $ansBox [$tmp] = new XoopsFormText($ans ['answer'], "questAns[$q][".$ans ['answer_id']."]", 15, 30);
+                                $ansBox [$tmp] = new XoopsFormText($ans ['answer'], "questAns[$q][".$ans ['answer_id'] . ']', 15, 30);
                                 $question_answers [$q]->addElement($ansBox [$tmp]);
                                 $tmp ++;
                             }
@@ -155,7 +163,7 @@ try {
                     $q ++;
                 }
                 //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
-                $submit_button = new XoopsFormButton("", "submit", _MD_XQUIZ_QUEST_SUBMIT, "submit");
+                $submit_button = new XoopsFormButton('', 'submit', _MD_XQUIZ_QUEST_SUBMIT, 'submit');
                 $listQuest_form->addElement($submit_button, true);
                 $listQuest_form->addElement($quizId, true);
                 //$listQuest_form->addElement($quiz_token, true);
@@ -238,7 +246,7 @@ try {
             if (empty($xoopsUser)) {
                 throw new Exception(_MD_XQUIZ_USER_PROFILE);
             }
-            $user = $xoopsUser->getVar("uid");
+            $user = $xoopsUser->getVar('uid');
 
             if (isset($pdid)) {
                 $list = userQuestLoader($pdid, $user);
@@ -302,7 +310,7 @@ try {
 
         $myts = MyTextSanitizer::getInstance();
         $quizId = $myts->addSlashes($_POST ['quizId']);
-        $user = $xoopsUser->getVar("uid");
+        $user = $xoopsUser->getVar('uid');
         $userQuizScore = findUserScore($user, $quizId);
         if ($userQuizScore) {
             throw new Exception(_MD_XQUIZ_DUPLICATE_QUIZ);
@@ -312,9 +320,9 @@ try {
         $userScore = 0;
 
         
-        echo "Post1<pre>";
+        echo 'Post1<pre>';
         print_r($_POST);
-        echo "</pre>//////////////////////////////////";
+        echo '</pre>//////////////////////////////////';
         
         
         
@@ -333,13 +341,13 @@ try {
         }
 
         $postAns = array_map(null, $_POST['questId'], $_POST['questType'], $_POST['questAns']);
-        echo "Post2<pre>";
+        echo 'Post2<pre>';
         print_r($_POST);
-        echo "</pre>//////////////////////////////////";
+        echo '</pre>//////////////////////////////////';
             
-        echo "<pre>";
+        echo '<pre>';
         print_r($postAns);
-        echo "</pre>";
+        echo '</pre>';
 
         $sumScore = 0;
         foreach ($postAns as $key) {

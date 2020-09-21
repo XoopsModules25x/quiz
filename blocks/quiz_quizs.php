@@ -31,6 +31,6 @@ function quiz_listQuizs($options)
 function quiz_listQuizs_edit($options)
 {
     $form = _MB_XQUIZ_OPTION.": <input type='text' size='9' name='options[0]' value='$options[0]' />";
-    $form .= "";
+    $form .= '';
     return $form;
 }

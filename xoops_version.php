@@ -23,44 +23,44 @@
  $moduleDirName = basename(__DIR__);
  $moduleDirNameUpper = mb_strtoupper($moduleDirName);
  
- $modversion['name'] = "xQuiz";
- $modversion['version'] = "2.0 Pre-alpha"; 
- $modversion['status_version'] = "2.00";
- $modversion['status'] = "Pre-alpha";
- $modversion['module_status'] = "Pre-alpha";
- $modversion['description'] = "A quiz module to generate multi-option quizzes";
- $modversion['author'] = "Mojtaba Jamali, Michael Beck, Lio MJ";
- $modversion['credits'] = "XOOPS, Mojtaba Jamali (jamali.mojtaba@gmail.com)";
- $modversion['help'] = "help.php";
- $modversion['license'] = "GNU General Public License (GPL) see LICENSE";
+ $modversion['name'] = 'xQuiz';
+ $modversion['version'] = '2.0 Pre-alpha';
+ $modversion['status_version'] = '2.00';
+ $modversion['status'] = 'Pre-alpha';
+ $modversion['module_status'] = 'Pre-alpha';
+ $modversion['description'] = 'A quiz module to generate multi-option quizzes';
+ $modversion['author'] = 'Mojtaba Jamali, Michael Beck, Lio MJ';
+ $modversion['credits'] = 'XOOPS, Mojtaba Jamali (jamali.mojtaba@gmail.com)';
+ $modversion['help'] = 'help.php';
+ $modversion['license'] = 'GNU General Public License (GPL) see LICENSE';
  $modversion['official'] = 0;
- $modversion['iconsmall'] = "assets/images/icon_small.png";
- $modversion['iconbig'] = "assets/images/icon_big.png";
- $modversion['image'] = "assets/images/xquiz_logo.png";
+ $modversion['iconsmall'] = 'assets/images/icon_small.png';
+ $modversion['iconbig'] = 'assets/images/icon_big.png';
+ $modversion['image'] = 'assets/images/xquiz_logo.png';
  $modversion['dirname'] = $moduleDirName;
  $modversion['modname'] = $moduleDirName;
  // Modules scripts
- $modversion['onInstall'] = "include/oninstall.php";
+ $modversion['onInstall'] = 'include/oninstall.php';
  // Admin
  $modversion['hasAdmin'] = 1;
- $modversion['adminindex'] = "admin/index.php";
- $modversion['adminmenu'] = "admin/menu.php";
+ $modversion['adminindex'] = 'admin/index.php';
+ $modversion['adminmenu'] = 'admin/menu.php';
  // Menu
  $modversion['hasMain'] = 1;
  global $xoopsUser;
  if (!empty($xoopsUser)) {
      $modversion['sub'][1]['name'] = _MI_XQUIZ_PROFILE;
-     $modversion['sub'][1]['url'] = "index.php?act=p";
+     $modversion['sub'][1]['url'] = 'index.php?act=p';
  }
  
-$modversion['sqlfile']['mysql'] = "sql/mysql.sql";
-$modversion['tables'][0] = "xquiz_quizzes";
-$modversion['tables'][1] = "xquiz_categories";
-$modversion['tables'][2] = "xquiz_score";
-$modversion['tables'][3] = "xquiz_questions";
-$modversion['tables'][4] = "xquiz_answers";
-$modversion['tables'][5] = "xquiz_quizquestion";
-$modversion['tables'][6] = "xquiz_useranswers";
+$modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
+$modversion['tables'][0] = 'xquiz_quizzes';
+$modversion['tables'][1] = 'xquiz_categories';
+$modversion['tables'][2] = 'xquiz_score';
+$modversion['tables'][3] = 'xquiz_questions';
+$modversion['tables'][4] = 'xquiz_answers';
+$modversion['tables'][5] = 'xquiz_quizquestion';
+$modversion['tables'][6] = 'xquiz_useranswers';
 
 // Templates
 $modversion['templates'][1]['file'] = 'xquiz_index.tpl';
@@ -68,8 +68,8 @@ $modversion['templates'][1]['description'] = '';
 
 //Search
 $modversion['hasSearch'] = 1;
- $modversion['search']['file'] = "include/search.inc.php";
- $modversion['search']['func'] = "quiz_search";
+ $modversion['search']['file'] = 'include/search.inc.php';
+ $modversion['search']['func'] = 'quiz_search';
 
  /* Select the number of news items to display on top page
  */
@@ -134,7 +134,7 @@ $modversion['config'][$i]['title'] = '_MI_XQUIZ_DATEFORMAT';
 $modversion['config'][$i]['description'] = '_MI_XQUIZ_DATEFORMAT_DESC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = "j F Y g:i a";
+$modversion['config'][$i]['default'] = 'j F Y g:i a';
 
 //user can see quiz score after quiz
 $i++;
@@ -184,20 +184,20 @@ $modversion['config'][$i]['options'] = [
 ////////////////////////////////////////////////////////////
 // Blocks
 //recent quiz
-$modversion['blocks'][1]['file'] = "quiz_quizs.php";
+$modversion['blocks'][1]['file'] = 'quiz_quizs.php';
 $modversion['blocks'][1]['name'] = _MI_XQUIZ_LATESTQUIZ;
 $modversion['blocks'][1]['description'] = _MI_XQUIZ_LATESTQUIZ;
-$modversion['blocks'][1]['show_func'] = "quiz_listQuizs";
+$modversion['blocks'][1]['show_func'] = 'quiz_listQuizs';
 $modversion['blocks'][1]['template'] = 'xquiz_block_quizs.tpl';
-$modversion['blocks'][1]['edit_func'] = "quiz_listQuizs_edit";
+$modversion['blocks'][1]['edit_func'] = 'quiz_listQuizs_edit';
 $modversion['blocks'][1]['options'] = '5';
 //recent active quiz
-$modversion['blocks'][2]['file'] = "quiz_actives.php";
+$modversion['blocks'][2]['file'] = 'quiz_actives.php';
 $modversion['blocks'][2]['name'] = _MI_XQUIZ_LATESTQUIZ_ACTIVE;
 $modversion['blocks'][2]['description'] = _MI_XQUIZ_LATESTQUIZ_ACTIVE;
-$modversion['blocks'][2]['show_func'] = "quiz_listActiveQuizs";
+$modversion['blocks'][2]['show_func'] = 'quiz_listActiveQuizs';
 $modversion['blocks'][2]['template'] = 'xquiz_block_actives.tpl';
-$modversion['blocks'][2]['edit_func'] = "quiz_listActiveQuizs_edit";
+$modversion['blocks'][2]['edit_func'] = 'quiz_listActiveQuizs_edit';
 $modversion['blocks'][2]['options'] = '5';
 
 // Notification

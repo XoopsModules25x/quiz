@@ -36,7 +36,7 @@ $adminmenu[2]['icon'] = 'assets/images/menus/tquizzes.png';
 //$adminmenu[3]['link'] = 'admin/index.php?op=Quest';
 //$adminmenu[3]['icon'] = 'assets/images/menus/tquestions.png';
 
-$adminmenu[4]['title'] = _MI_XQUIZ_QUESTIONS . "";
+$adminmenu[4]['title'] = _MI_XQUIZ_QUESTIONS . '';
 $adminmenu[4]['link'] = 'admin/index.php?op=Question';
 $adminmenu[4]['icon'] = 'assets/images/menus/tquestions.png';
 

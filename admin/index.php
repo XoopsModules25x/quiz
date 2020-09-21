@@ -29,21 +29,21 @@ try {
     
     if (isset($_GET ['Id'])) {
         if (! is_numeric($_GET ['Id'])) {
-            throw new Exception("id must be a number.");
+            throw new Exception('id must be a number.');
         }
         $id = $_GET ['Id'];
     }
     
     if (isset($_GET ['qId'])) {
         if (! is_numeric($_GET ['qId'])) {
-            throw new Exception("qid must be a number.");
+            throw new Exception('qid must be a number.');
         }
         $qid = $_GET ['qId'];
     }
     
     if (isset($_GET ['start'])) {
         if (! is_numeric($_GET ['start'])) {
-            throw new Exception("start must be a number.");
+            throw new Exception('start must be a number.');
         }
         $start = $_GET ['start'];
     } else {
@@ -186,7 +186,7 @@ try {
                     }
                     #region for csv utf-8 language support
                     $msg = html_entity_decode($msg, ENT_NOQUOTES, 'utf-8');
-                    $msg = chr(255) . chr(254) . iconv("UTF-8", "UTF-16LE", $msg);
+                    $msg = chr(255) . chr(254) . iconv('UTF-8', 'UTF-16LE', $msg);
                     #end region
                     fwrite($fp, $msg) or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Statistics', 3, '_AM_XQUIZ_OPEN_CSV_ERR');
                     ;
@@ -219,24 +219,24 @@ try {
 						<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='bg3'>
 							<th>
-								" . _AM_XQUIZ_USER . "
+								" . _AM_XQUIZ_USER . '
 							</th>
 							<th>
-								" . _AM_XQUIZ_USER_NAME . "
+								' . _AM_XQUIZ_USER_NAME . '
 							</th>
 							<th>
-								" . _AM_XQUIZ_SCORE . "
+								' . _AM_XQUIZ_SCORE . '
 							</th>
 							<th>
-								" . _AM_XQUIZ_DATE . "
+								' . _AM_XQUIZ_DATE . '
 							</th>
 							<th>
-								" . _AM_XQUIZ_DESC . "
+								' . _AM_XQUIZ_DESC . '
 							</th>
-						</tr>";
+						</tr>';
                 
                 $class = 'even';
-                $detImage = "<img src= \"" . XOOPS_URL . "/modules/xquiz/assets/images/detail.gif \" >";
+                $detImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/detail.gif " >';
                 
                 foreach ($listQuiz as $key) {
                     $class = ('even' == $class) ? 'odd' : 'even';
@@ -244,23 +244,23 @@ try {
                     $temp .= "
 						<tr class='" . $class . "'>
 							<td>
-								<a href=\"" . XOOPS_URL . "/userinfo.php?uid=" . $key ['userid'] . "\">" . $key ['uname'] . "</a>
+								<a href=\"" . XOOPS_URL . '/userinfo.php?uid=' . $key ['userid'] . '">' . $key ['uname'] . '</a>
 							</td>
 							<td>
-								" . $key ['name'] . "
+								' . $key ['name'] . '
 							</td>
 							<td>
-							" . $key ['score'] . "
+							' . $key ['score'] . '
 							</td>
 							<td>
-							" . $key ['date'] . "
+							' . $key ['date'] . '
 							</td>
 							<td>
-							<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Statistics&Id=" . $key ['id'] . "&uid=" . $key ['userid'] . "\">" . $detImage . "</a>
+							<a href="' . XOOPS_URL . '/modules/xquiz/admin/index.php?op=Statistics&Id=' . $key ['id'] . '&uid=' . $key ['userid'] . '">' . $detImage . '</a>
 							</td>
-						</tr>";
+						</tr>';
                 }
-                $temp .= "</table></div>";
+                $temp .= '</table></div>';
                 echo $temp;
                 
                 $nav = new XoopsPageNav($nume, $limitUser, $start, 'start', "op=Statistics&Id=$id");

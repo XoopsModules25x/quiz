@@ -30,8 +30,9 @@ include_once XOOPS_ROOT_PATH.'/modules/xquiz/class/question.php';
 function findUserScore($userId, $id)
 {
     global $xoopsDB;
-    $query =$xoopsDB->query("SELECT * FROM ". $xoopsDB->prefix('xquiz_score')
-        ." WHERE id = $id AND userid = '$userId'");
+    $query =$xoopsDB->query(
+        'SELECT * FROM ' . $xoopsDB->prefix('xquiz_score')
+        . " WHERE id = $id AND userid = '$userId'");
         
     $res = $xoopsDB->getRowsNum($query);
     if ($res > 0) {
@@ -46,7 +47,7 @@ function findUserScore($userId, $id)
     function numUserScore($qId)
     {
         global $xoopsDB;
-        $result = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('xquiz_score')." WHERE id = $qId");
+        $result = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . " WHERE id = $qId");
         return $xoopsDB->getRowsNum($result);
     }
     #endregion
@@ -111,17 +112,17 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 								<label>"._AM_XQUIZ_QUIZS_SELECT."
 									<select name='Id'>";
         foreach ($list as $key) {
-            echo "<option value='".$key['id']."'>".$key['name']."</option>";
+            echo "<option value='".$key['id']."'>".$key['name'] . '</option>';
         }
 
             
-        echo "						</select>
+        echo '						</select>
 								</lable>
 								<label>
-								"._AM_XQUIZ_CSV_EXPORT."
+								' . _AM_XQUIZ_CSV_EXPORT . "
 								</lable>
 								<input type='checkbox' name='exp'>
-								<input type='submit' value='"._AM_XQUIZ_QUEST_GO."'>
+								<input type='submit' value='" . _AM_XQUIZ_QUEST_GO . "'>
 							</form>
 							</td>
 							
@@ -134,8 +135,8 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
     {
         global $xoopsDB;
         $list = [];
-        $query = "SELECT * FROM ". $xoopsDB->prefix('xquiz_useranswers') ." 
-			NATURAL JOIN ". $xoopsDB->prefix('xquiz_quizquestion') ." 
+        $query = 'SELECT * FROM ' . $xoopsDB->prefix('xquiz_useranswers') . ' 
+			NATURAL JOIN ' . $xoopsDB->prefix('xquiz_quizquestion') . " 
 			WHERE userId = $uid AND quizId=$quizId AND questId=id";
         $query =$xoopsDB->query($query);
         $q = 0;
@@ -157,8 +158,8 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         
         $quiz = Quiz::retriveQuiz($quizId);
         $thisUser =$member_handler->getUser($uid);
-        $userImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/user.png \" alt='' >";
-        $quizImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/quizz.png \" alt='' >";
+        $userImage = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/user.png \" alt='' >";
+        $quizImage = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/quizz.png \" alt='' >";
 
         quiz_collapsableBar('newsub', 'topnewsubicon');
         $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" .
@@ -168,8 +169,8 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
 							<td>
-							<a href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Statistics&Id=".$quiz['id']."\">".$quizImage.$quiz['name']."</a>
-							<a href='".XOOPS_URL."/userinfo.php?uid=".$uid."'>".$userImage.$thisUser->getVar('uname')."</a>
+							<a href=\"".XOOPS_URL . '/modules/xquiz/admin/index.php?op=Statistics&Id=' . $quiz['id'] . '">' . $quizImage . $quiz['name'] . "</a>
+							<a href='".XOOPS_URL . '/userinfo.php?uid=' . $uid . "'>" . $userImage . $thisUser->getVar('uname') . "</a>
 							</td>
 						</tr>
 					</table>
@@ -177,26 +178,26 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 					<table width='100%' cellspacing='1' cellpadding='1' border='0' class='outer'>
 					<tr class='bg3'>
 						<th>
-							"._AM_XQUIZ_QUEST_NAME."
+							"._AM_XQUIZ_QUEST_NAME . '
 						</th>
 						<th>
-							"._AM_XQUIZ_QUEST_CORRECT."
+							' . _AM_XQUIZ_QUEST_CORRECT . '
 						</th>
 						<th>
-							"._AM_XQUIZ_QUEST_SCORE."
+							' . _AM_XQUIZ_QUEST_SCORE . '
 						</th>
 						<th>
-							"._AM_XQUIZ_USER_ANSWER."
+							' . _AM_XQUIZ_USER_ANSWER . '
 						</th>
 						<th>
-							"._AM_XQUIZ_STATUS."
+							' . _AM_XQUIZ_STATUS . '
 						</th>
-					</tr>";
+					</tr>';
                  
         $class = 'even';
-        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._AM_XQUIZ_DEL." alt='' >";
-        $validImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/valid.png \" alt='' >";
-        $invalidImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/invalid.png \" alt='' >";
+        $delImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
+        $validImage = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/valid.png \" alt='' >";
+        $invalidImage = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/invalid.png \" alt='' >";
         $ts = MyTextSanitizer::getInstance();
         foreach ($list as $key) {
             $correct = ($key['answer'] == $key['userAns'])? $validImage:$invalidImage ;
@@ -216,12 +217,12 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
 				" . $key['userAns'] . "
 				</td>
 				<td>
-				" . $correct . "
+				" . $correct . '
 				</td>
-				</tr>";
+				</tr>';
         }
         
-        $temp .= "</table></div>";
+        $temp .= '</table></div>';
         echo $temp;
     }
     
@@ -230,8 +231,8 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         global $xoopsDB,$xoopsModuleConfig;
         $dateformat = $xoopsModuleConfig['dateformat'];
         $list = [];
-        $query = "SELECT * FROM ". $xoopsDB->prefix('xquiz_score') ." 
-			NATURAL JOIN ". $xoopsDB->prefix('xquiz_quizzes') ." 
+        $query = 'SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' 
+			NATURAL JOIN ' . $xoopsDB->prefix('xquiz_quizzes') . " 
 			WHERE userid = $uid";
         $query =$xoopsDB->query($query);
         $q = 0;
@@ -242,7 +243,7 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
             $list[$q]['date'] = formatTimestamp(strtotime($myrow['date']), $dateformat);
             $list[$q]['edate'] = formatTimestamp(strtotime($myrow['edate']), $dateformat);
             
-            $today = strtotime(date("Y-m-d"));
+            $today = strtotime(date('Y-m-d'));
             if (strtotime($myrow['edate']) >= $today) {
                 $list[$q]['active'] = true;
             } else {
@@ -266,20 +267,20 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
         $dateformat = $xoopsModuleConfig['dateformat'];
         
         if (!is_object($user)) {
-            $user =& $GLOBALS["xoopsUser"];
+            $user =& $GLOBALS['xoopsUser'];
         }
-        $msg = sprintf(_MD_XQUIZ_EMAIL_DESC, $user->getVar("uname"));
+        $msg = sprintf(_MD_XQUIZ_EMAIL_DESC, $user->getVar('uname'));
         $msg .= "\n\n";
         $msg .= formatTimestamp(time(), $dateformat);
         $msg .= "\n";
         $msg .= _MD_XQUIZ_EMAIL_MESSAGE . ":\n";
-        $msg .= _MD_XQUIZ_FINAL_SCORE." = ".$score."\n";
-        $msg .=  _MD_XQUIZ_SCORE_PROFILE. ": ". XOOPS_URL . "/modules/xquiz/index.php?act=p&q=".$qid."\n";
-        $msg .= $xoopsConfig['sitename'] . ": ". XOOPS_URL . "\n";
+        $msg .= _MD_XQUIZ_FINAL_SCORE . ' = ' . $score . "\n";
+        $msg .= _MD_XQUIZ_SCORE_PROFILE . ': ' . XOOPS_URL . '/modules/xquiz/index.php?act=p&q=' . $qid . "\n";
+        $msg .= $xoopsConfig['sitename'] . ': ' . XOOPS_URL . "\n";
         $system_mailer = (defined('ICMS_VERSION_NAME') && ICMS_VERSION_NAME)?getMailer():xoops_getMailer();
         $xoopsMailer =&$system_mailer;
         $xoopsMailer->useMail();
-        $xoopsMailer->setToEmails($user->getVar("email"));
+        $xoopsMailer->setToEmails($user->getVar('email'));
         $xoopsMailer->setFromEmail($xoopsConfig['adminmail']);
         $xoopsMailer->setFromName($xoopsConfig['sitename']);
         $xoopsMailer->setSubject(_MD_XQUIZ_EMAIL_SUBJECT);

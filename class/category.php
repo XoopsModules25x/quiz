@@ -20,7 +20,7 @@
  * Version : $Id:
  * ****************************************************************************
  */
-include_once XOOPS_ROOT_PATH."/class/xoopstree.php";
+include_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 
 class QuizCategory extends XoopsTree
 {
@@ -95,18 +95,18 @@ class QuizCategory extends XoopsTree
      * @param string $onchange  Action to take when the selection is changed
      * @param int    $se
      */
-    public function makeMySelBox($title, $order='', $preset_id=0, $none=0, $sel_name='', $onchange="", $se=0)
+    public function makeMySelBox($title, $order='', $preset_id=0, $none=0, $sel_name='', $onchange= '', $se=0)
     {
-        if ("" == $sel_name) {
+        if ('' == $sel_name) {
             $sel_name = $this->id;
         }
         echo "<select name='".$sel_name."'";
-        if ("" != $onchange) {
+        if ('' != $onchange) {
             echo " onchange='".$onchange."'";
         }
         echo ">\n";
-        $sql = "SELECT ".$this->id.", ".$title." FROM ".$this->table." WHERE ".$this->pid."='0'";
-        if ("" != $order) {
+        $sql = 'SELECT ' . $this->id . ', ' . $title . ' FROM ' . $this->table . ' WHERE ' . $this->pid . "='0'";
+        if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
@@ -115,21 +115,21 @@ class QuizCategory extends XoopsTree
             echo "<option value='$val'>----------</option>\n";
         }
         while (list($catid, $name) = $this->db->fetchRow($result)) {
-            $sel = "";
+            $sel = '';
             if ($catid == $preset_id) {
                 $sel = " selected='selected'";
             }
             echo "<option value='$catid'$sel>$name</option>\n";
-            $sel = "";
+            $sel = '';
             $arr = $this->getChildTreeArray($catid, $order);
             foreach ($arr as $option) {
-                $option['prefix'] = str_replace(".", "--", $option['prefix']);
-                $catpath = $option['prefix']."&nbsp;".$option[$title];
+                $option['prefix'] = str_replace('.', '--', $option['prefix']);
+                $catpath = $option['prefix'] . '&nbsp;' . $option[$title];
                 if ($option[$this->id] == $preset_id) {
                     $sel = " selected='selected'";
                 }
                 echo "<option value='".$option[$this->id]."'$sel>$catpath</option>\n";
-                $sel = "";
+                $sel = '';
             }
         }
         echo "</select>\n";
@@ -223,7 +223,7 @@ class QuizCategory extends XoopsTree
     {
         $sel_id = intval($cid);
         $arr = [];
-        $sql = "SELECT * FROM ".$this->table." WHERE ".$this->id."=".$sel_id."";
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->id . '=' . $sel_id . '';
         $result = $this->db->query($sql);
         $count = $this->db->getRowsNum($result);
         if (0 == $count) {
@@ -238,7 +238,7 @@ class QuizCategory extends XoopsTree
     public function categoryPid($sel_id)
     {
         global $xoopsDB;
-        $sql = "SELECT pid FROM ".$this->table." WHERE ".$this->id."=".$sel_id."";
+        $sql = 'SELECT pid FROM ' . $this->table . ' WHERE ' . $this->id . '=' . $sel_id . '';
         $result = $this->db->query($sql);
         $myrow = $xoopsDB->fetchArray($result) ;
         return $myrow['pid'];
@@ -247,7 +247,7 @@ class QuizCategory extends XoopsTree
     public static function retriveCategory($eId)
     {
         global $xoopsDB;
-        $query =$xoopsDB->query("SELECT cid,title FROM ". $xoopsDB->prefix('xquiz_categories') ." WHERE cid = '$eId'");
+        $query =$xoopsDB->query('SELECT cid,title FROM ' . $xoopsDB->prefix('xquiz_categories') . " WHERE cid = '$eId'");
         $myrow = $xoopsDB->fetchArray($query);
         return $myrow;
     }
@@ -290,7 +290,7 @@ class QuizCategory extends XoopsTree
     public static function addCategory($title, $pid, $desc, $imgurl, $weight)
     {
         global $xoopsDB;
-        $query = "Insert into ".$xoopsDB->prefix("xquiz_categories")."(cid ,pid ,title ,description ,imgurl ,weight)
+        $query = 'Insert into ' . $xoopsDB->prefix('xquiz_categories') . "(cid ,pid ,title ,description ,imgurl ,weight)
 				VALUES (NULL , '$pid', '$title', '$desc', '$imgurl', '$weight');";
         $res = $xoopsDB->query($query);
         
@@ -304,7 +304,7 @@ class QuizCategory extends XoopsTree
     public static function editCategory($cid, $title, $pid, $desc, $imgurl, $weight)
     {
         global $xoopsDB;
-        $query = "UPDATE ".$xoopsDB->prefix("xquiz_categories")." SET 
+        $query = 'UPDATE ' . $xoopsDB->prefix('xquiz_categories') . " SET 
 					  pid = '$pid'
 					 ,title = '$title'
 					 ,description = '$desc'
@@ -326,7 +326,7 @@ class QuizCategory extends XoopsTree
 
         global $module_id;
         $perm_name = 'quiz_view';
-        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_categories")." WHERE  
+        $query = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_categories') . " WHERE  
 					  cid = '$id' ";
         $res = $xoopsDB->query($query);
         xoops_groupperm_deletebymoditem($module_id, $perm_name, $id);
@@ -334,7 +334,7 @@ class QuizCategory extends XoopsTree
             throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
         //delet quiz of category
-        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE  
+        $query = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_quizzes') . " WHERE  
 					  cid = '$id' ";
         $res = $xoopsDB->query($query);
         xoops_groupperm_deletebymoditem($module_id, $perm_name, $id);
@@ -345,7 +345,7 @@ class QuizCategory extends XoopsTree
         //Delete subcategories and subquizs
         foreach ($list as $cid) {
             $perm_name = 'quiz_view';
-            $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_categories")." WHERE  
+            $query = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_categories') . " WHERE  
 						cid = '$cid' ";
             $res = $xoopsDB->query($query);
             xoops_groupperm_deletebymoditem($module_id, $perm_name, $cid);
@@ -373,7 +373,7 @@ class QuizCategory extends XoopsTree
     public static function checkExistCategory($cid)
     {
         global $xoopsDB;
-        $query = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("xquiz_categories")." WHERE cid='$cid'");
+        $query = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('xquiz_categories') . " WHERE cid='$cid'");
         $res = $xoopsDB->getRowsNum($query);
 
         if ($res > 0) {
@@ -411,20 +411,20 @@ function showCategories($start, $limit)
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'>
 						<th>
-							"._AM_XQUIZ_CATEGORY_TITLE."
+							"._AM_XQUIZ_CATEGORY_TITLE . '
 						</th>
 						<th>
-							"._AM_XQUIZ_CATEGORY_WEIGHT."
+							' . _AM_XQUIZ_CATEGORY_WEIGHT . '
 						</th>
 						<th>
-							"._AM_XQUIZ_ACTION."
+							' . _AM_XQUIZ_ACTION . '
 						</th>
-					</tr>";
+					</tr>';
                  
     $class = 'even';
-    $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._AM_XQUIZ_DEL." alt='' >";
-    $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._AM_XQUIZ_EDIT." alt='' >";
-    $goImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/cat.gif \" title="._AM_XQUIZ_EDIT." alt='' >";
+    $delImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
+    $editImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
+    $goImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/cat.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
         
     foreach ($listCategory as $key) {
         $class = ('even' == $class) ? 'odd' : 'even';
@@ -476,12 +476,12 @@ function showCategories($start, $limit)
                  . "\">
 				"
                  . $editImage
-                 . "
+                 . '
 				</td>
-				</tr>";
+				</tr>';
     }
         
-    $temp .= "</table></div>";
+    $temp .= '</table></div>';
     echo $temp;
         
     $nav  = new XoopsPageNav($nume, $limit, $start, 'start', 'op=Category');
@@ -489,15 +489,14 @@ function showCategories($start, $limit)
 }
 
 
-function CategoryForm($op = "add", $eId = 0)
+function CategoryForm($op = 'add', $eId = 0)
 {
     global $xoopsDB,$xoopsModule,$xoopsModuleConfig;
     $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
     $myts = MyTextSanitizer::getInstance();
     $maxuploadsize = $xoopsModuleConfig['maxuploadsize'];
     $addCategory_form = new XoopsThemeForm(
-        _AM_XQUIZ_NEW_CATEGORY,
-        "addcategoyfrom",
+        _AM_XQUIZ_NEW_CATEGORY, 'addcategoyfrom',
                     XOOPS_URL.'/modules/xquiz/admin/backend.php',
         'post',
         true
@@ -509,7 +508,7 @@ function CategoryForm($op = "add", $eId = 0)
     $gperm_handler = xoops_getHandler('groupperm');
     $full_list = array_keys($group_list);
     ////////////////
-    if ("edit" == $op) {
+    if ('edit' == $op) {
         $category = $xt->getCategory($eId);
         $category_id_v = $eId;
         $category_title_v = $myts->htmlSpecialChars($category[0]['title']);
@@ -523,22 +522,22 @@ function CategoryForm($op = "add", $eId = 0)
         $groups_ids = array_values($groups_ids);
         $groups_quiz_can_view_checkbox = new XoopsFormCheckBox(_AM_XQUIZ_VIEWFORM, 'groups_quiz_can_view[]', $groups_ids);
         
-        $category_id = new XoopsFormHidden("cateId", $category_id_v);
+        $category_id = new XoopsFormHidden('cateId', $category_id_v);
         $addCategory_form->addElement($category_id);
-        $submit_button = new XoopsFormButton("", "editCateSubmit", _AM_XQUIZ_SUBMIT, "submit");
-    } elseif ("add" == $op) {
-        $category_title_v = "";
-        $category_desc_v = "";
+        $submit_button = new XoopsFormButton('', 'editCateSubmit', _AM_XQUIZ_SUBMIT, 'submit');
+    } elseif ('add' == $op) {
+        $category_title_v = '';
+        $category_desc_v = '';
         $category_parent_id = 0;
         $category_weight_v = 0;
         $topicimage='blank.png';
         $groups_quiz_can_view_checkbox = new XoopsFormCheckBox(_AM_XQUIZ_VIEWFORM, 'groups_quiz_can_view[]', $full_list);
-        $submit_button = new XoopsFormButton("", "addCateSubmit", _AM_XQUIZ_SUBMIT, "submit");
+        $submit_button = new XoopsFormButton('', 'addCateSubmit', _AM_XQUIZ_SUBMIT, 'submit');
     }
             
-    $category_title = new XoopsFormText(_AM_XQUIZ_CATEGORY_TITLE, "cateTitle", 50, 100, $category_title_v);
+    $category_title = new XoopsFormText(_AM_XQUIZ_CATEGORY_TITLE, 'cateTitle', 50, 100, $category_title_v);
     ob_start();
-    $xt->makeMySelBox("title", "cid", $category_parent_id, 1, 'cateParent');
+    $xt->makeMySelBox('title', 'cid', $category_parent_id, 1, 'cateParent');
     $category_parent = new XoopsFormLabel(_AM_XQUIZ_CATEGORY_PARENT, ob_get_contents());
     ob_end_clean();
     //$category_description = new XoopsFormDhtmlTextArea(_AM_XQUIZ_CATEGORY_DESC, "cateDesc", $category_desc_v);
@@ -560,7 +559,7 @@ function CategoryForm($op = "add", $eId = 0)
     }
     
     
-    $category_weight = new XoopsFormText(_AM_XQUIZ_CATEGORY_WEIGHT, "cateWeight", 5, 3, $category_weight_v);
+    $category_weight = new XoopsFormText(_AM_XQUIZ_CATEGORY_WEIGHT, 'cateWeight', 5, 3, $category_weight_v);
    // $category_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
     
     
@@ -574,9 +573,9 @@ function CategoryForm($op = "add", $eId = 0)
     foreach ($topics_array as $image) {
         $imageselect->addOption("$image", $image);
     }
-    $imageselect->setExtra("onchange='showImgSelected(\"image3\", \"topic_imgurl\", \"" . $uploadirectory . "\", \"\", \"" . XOOPS_URL . "\")'");
+    $imageselect->setExtra("onchange='showImgSelected(\"image3\", \"topic_imgurl\", \"" . $uploadirectory . '", "", "' . XOOPS_URL . "\")'");
     $imgtray->addElement($imageselect, false);
-    $imgtray -> addElement(new XoopsFormLabel('', "<br /><img src='" . XOOPS_URL . "/" . $uploadirectory . "/" . $topicimage . "' name='image3' id='image3' alt='' />"));
+    $imgtray -> addElement(new XoopsFormLabel('', "<br /><img src='" . XOOPS_URL . '/' . $uploadirectory . '/' . $topicimage . "' name='image3' id='image3' alt='' />"));
 
     $uploadfolder=sprintf(_AM_XQUIZ_UPLOAD_WARNING, XOOPS_URL . '/uploads/' . $xoopsModule -> dirname().'/category');
     $fileseltray= new XoopsFormElementTray('', '<br />');
@@ -603,21 +602,20 @@ function CategoryForm($op = "add", $eId = 0)
 		 	</a>&nbsp;"._AM_XQUIZ_CATEGORY_NEW."</h4><br/>
 				<div id='newquiz' style='text-align: center;'>";
     $addCategory_form->display();
-    echo "</div>";
+    echo '</div>';
 }
     #region create confirm form for delete question
     function confirmForm($id)
     {
         $delCategory_form = new XoopsThemeForm(
-            _AM_XQUIZ_DELCATEGORY_FORM,
-            "delcategoryfrom",
+            _AM_XQUIZ_DELCATEGORY_FORM, 'delcategoryfrom',
                         XOOPS_URL.'/modules/xquiz/admin/backend.php',
             'post',
             true
         );
-        $category_id = new XoopsFormHidden("categoryId", $id);
-        $category_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
-        $submit_button = new XoopsFormButton("", "delCateSubmit", _AM_XQUIZ_SUBMIT, "submit");
+        $category_id = new XoopsFormHidden('categoryId', $id);
+        $category_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, 'delConfirm', 0);
+        $submit_button = new XoopsFormButton('', 'delCateSubmit', _AM_XQUIZ_SUBMIT, 'submit');
         //$category_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
         
         $delCategory_form->addElement($category_id);
@@ -631,6 +629,6 @@ function CategoryForm($op = "add", $eId = 0)
 				 	</a>&nbsp;"._AM_XQUIZ_DELETE."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $delCategory_form->display();
-        echo "</div>";
+        echo '</div>';
     }
     #end region

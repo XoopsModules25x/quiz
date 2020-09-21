@@ -129,17 +129,17 @@ class QuizMenu
         $csscode .= "div.rmmenuicon{
 				margin: 3px;
 				font-family: $this->Font;
-				text-align: ".$this->TextAlign.";
+				text-align: ".$this->TextAlign . ';
 			}
 			div.rmmenuicon a { 
-				display: block; float: "._GLOBAL_LEFT.";
-				height: ".$this->Height."px !important;
-				height: ".$this->Height."px; 
-				width: ".$this->Width."px !important;
-				width: ".$this->Width."px; 
+				display: block; float: ' . _GLOBAL_LEFT . ';
+				height: ' . $this->Height . 'px !important;
+				height: ' . $this->Height . 'px; 
+				width: ' . $this->Width . 'px !important;
+				width: ' . $this->Width . 'px; 
 				vertical-align: middle; 
 				text-decoration : none;
-				border: ".$this->BorderWidth."px $this->BorderStyle $this->BorderColor;
+				border: ' . $this->BorderWidth . "px $this->BorderStyle $this->BorderColor;
 				padding: 2px 5px 1px 5px;
 				margin: 3px;
 				color: $this->FontColor;
@@ -219,7 +219,7 @@ class QuizMenu
             if ('' != $v['extra']) {
                 $ret .= "<span class='uno'>$v[extra]</span>";
             }
-            $ret .= "</a>";
+            $ret .= '</a>';
         }
         $ret .= "</div><div style='clear: both;'></div>";
         return $ret;

@@ -182,7 +182,7 @@ class Quiz
     public function set_bdate($bdate)
     {
 		//if (!preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $bdate)) {
-        if (preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $bdate)) {
+        if (preg_match('/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/', $bdate)) {
             throw new Exception(_AM_XQUIZ_QUEST_VALID_BDATE);
         }
             
@@ -192,7 +192,7 @@ class Quiz
         }
             
         $t = strtotime($this->myts->addSlashes($bdate)) + $this->btime;
-        $this->bdate = date("Y-m-d G:i:s", $t);
+        $this->bdate = date('Y-m-d G:i:s', $t);
     }
 
     /**
@@ -219,7 +219,7 @@ class Quiz
     public function set_edate($edate)
     {
 		//if (!preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $edate)) {
-        if (preg_match("/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/", $edate)) {
+        if (preg_match('/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/', $edate)) {
             throw new Exception(_AM_XQUIZ_QUEST_VALID_EDATE);
         }
             
@@ -229,7 +229,7 @@ class Quiz
         }
 
         $t = strtotime($this->myts->addSlashes($edate)) + $this->etime;
-        $this->edate = date("Y-m-d G:i:s", $t);
+        $this->edate = date('Y-m-d G:i:s', $t);
     }
 
     /**
@@ -312,7 +312,7 @@ class Quiz
     public function addQuiz()
     {
         global $xoopsDB;
-        $query = "Insert into ".$xoopsDB->prefix("xquiz_quizzes")."(id ,name ,description ,bdate ,edate ,weight ,cid)
+        $query = 'Insert into ' . $xoopsDB->prefix('xquiz_quizzes') . "(id ,name ,description ,bdate ,edate ,weight ,cid)
 				VALUES (NULL , '$this->name', '$this->description', '$this->bdate', '$this->edate', '$this->weight', '$this->categoryId');";
         $res = $xoopsDB->query($query);
         
@@ -329,7 +329,7 @@ class Quiz
     {
         global $xoopsDB;
 
-        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE  
+        $query = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_quizzes') . " WHERE  
 					  id = '$this->id' ";
         $res = $xoopsDB->query($query);
         xoops_comment_delete($xoopsModule->getVar('mid'), $this->id);
@@ -338,7 +338,7 @@ class Quiz
             throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
             
-        $query = "DELETE FROM ".$xoopsDB->prefix("xquiz_quizquestion")." WHERE  
+        $query = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_quizquestion') . " WHERE  
 					  qid = '$this->id' ";
         if (!$res) {
             throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
@@ -352,7 +352,7 @@ class Quiz
     public function editQuiz()
     {
         global $xoopsDB;
-        $query = "UPDATE ".$xoopsDB->prefix("xquiz_quizzes")." SET 
+        $query = 'UPDATE ' . $xoopsDB->prefix('xquiz_quizzes') . " SET 
 					  name = '$this->name'
 					 ,description = '$this->description'
 					 ,bdate = '$this->bdate'
@@ -370,7 +370,7 @@ class Quiz
     public function checkExistQuiz()
     {
         global $xoopsDB;
-        $query = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE name LIKE '$this->name'");
+        $query = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizzes') . " WHERE name LIKE '$this->name'");
         $res = $xoopsDB->getRowsNum($query);
 
         if ($res > 0) {
@@ -383,12 +383,12 @@ class Quiz
     public static function retriveQuiz($qId)
     {
         global $xoopsDB;
-        $query =$xoopsDB->query("SELECT * FROM ". $xoopsDB->prefix('xquiz_quizzes') ." WHERE id = '$qId'");
+        $query =$xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizzes') . " WHERE id = '$qId'");
         $myrow = $xoopsDB->fetchArray($query);
         return $myrow;
     }
     
-    public static function QuizForm($op = "add", $eId = 0)
+    public static function QuizForm($op = 'add', $eId = 0)
     {
         global $xoopsDB,$xoopsModuleConfig;
         //check for category existance
@@ -397,14 +397,13 @@ class Quiz
             throw new Exception(_AM_XQUIZ_NO_CATEGORY);
         }
         $addQuiz_form = new XoopsThemeForm(
-            _AM_XQUIZ_NEW,
-            "addquizfrom",
+            _AM_XQUIZ_NEW, 'addquizfrom',
                         XOOPS_URL.'/modules/xquiz/admin/backend.php',
             'post',
             true
         );
         
-        if ("edit" == $op) {
+        if ('edit' == $op) {
             $quiz = self::retriveQuiz($eId);
             $quiz_id_v = $quiz['id'];
             $quiz_name_v = $quiz['name'];
@@ -413,28 +412,28 @@ class Quiz
             $quiz_bdate_v = strtotime($quiz['bdate']);
             $quiz_edate_v = strtotime($quiz['edate']);
             $quiz_weight_v = $quiz['weight'];
-            $quiz_id = new XoopsFormHidden("quizId", $quiz_id_v);
+            $quiz_id = new XoopsFormHidden('quizId', $quiz_id_v);
             $addQuiz_form->addElement($quiz_id);
-            $submit_button = new XoopsFormButton("", "editQuizSubmit", _AM_XQUIZ_SUBMIT, "submit");
-        } elseif ("add" == $op) {
-            $quiz_name_v = "";
+            $submit_button = new XoopsFormButton('', 'editQuizSubmit', _AM_XQUIZ_SUBMIT, 'submit');
+        } elseif ('add' == $op) {
+            $quiz_name_v = '';
             $quiz_category_id = 0;
-            $quiz_desc_v = "";
+            $quiz_desc_v = '';
             $quiz_bdate_v = time()+(3600*24*2);
 			//$quiz_bdate_v = time();
 			//$quiz_edate_v = time();
             $quiz_edate_v = time()+(3600*24*16);
             $quiz_weight_v = 0;
-            $submit_button = new XoopsFormButton("", "addQuizSubmit", _AM_XQUIZ_SUBMIT, "submit");
+            $submit_button = new XoopsFormButton('', 'addQuizSubmit', _AM_XQUIZ_SUBMIT, 'submit');
         }
-        $quiz_name = new XoopsFormText(_AM_XQUIZ_NAME, "quizName", 50, 100, $quiz_name_v);
+        $quiz_name = new XoopsFormText(_AM_XQUIZ_NAME, 'quizName', 50, 100, $quiz_name_v);
         ob_start();
-        $xt->makeMySelBox("title", "cid ASC", $quiz_category_id, 0, 'quizCategory');
+        $xt->makeMySelBox('title', 'cid ASC', $quiz_category_id, 0, 'quizCategory');
         $quiz_category = new XoopsFormLabel(_AM_XQUIZ_CATEGORY, ob_get_contents());
         ob_end_clean();
-        $quiz_begin_date = new XoopsFormDateTime(_AM_XQUIZ_BDATE, "quizBDate", 15, $quiz_bdate_v);
-        $quiz_end_date = new XoopsFormDateTime(_AM_XQUIZ_EDATE, "quizEDate", 15, $quiz_edate_v);
-        $quiz_weight = new XoopsFormText(_AM_XQUIZ_WEIGHT, "quizWeight", 5, 3, $quiz_weight_v);
+        $quiz_begin_date = new XoopsFormDateTime(_AM_XQUIZ_BDATE, 'quizBDate', 15, $quiz_bdate_v);
+        $quiz_end_date = new XoopsFormDateTime(_AM_XQUIZ_EDATE, 'quizEDate', 15, $quiz_edate_v);
+        $quiz_weight = new XoopsFormText(_AM_XQUIZ_WEIGHT, 'quizWeight', 5, 3, $quiz_weight_v);
         //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
     
         $options_tray = new XoopsFormElementTray(_AM_XQUIZ_DESC, '<br />');
@@ -467,7 +466,7 @@ class Quiz
 				 	</a>&nbsp;"._AM_XQUIZ_NEW."</h4><br/>
 						<div id='newquiz' style='text-align: center;'>";
         $addQuiz_form->display();
-        echo "</div>";
+        echo '</div>';
     }
     
     public static function showQuizs($start, $limit, $categoryId = -1)
@@ -475,7 +474,7 @@ class Quiz
         global $xoopsDB;
         $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         ob_start();
-        $xt->makeMySelBox("title", "cid", 0, 1, 'Id', '', 1);
+        $xt->makeMySelBox('title', 'cid', 0, 1, 'Id', '', 1);
         $select = ob_get_contents();
         ob_end_clean();
         
@@ -510,39 +509,39 @@ class Quiz
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'><thead>
 						<th>
-							"._AM_XQUIZ_NAME."
+							"._AM_XQUIZ_NAME . '
 						</th>
 						<th>
-							"._AM_XQUIZ_CATEGORY."
+							' . _AM_XQUIZ_CATEGORY . '
 						</th>
 						<th>
-							"._AM_XQUIZ_QUESTIONS."
+							' . _AM_XQUIZ_QUESTIONS . '
 						</th>
 						<th>
-							"._AM_XQUIZ_STARTDATE."
+							' . _AM_XQUIZ_STARTDATE . '
 						</th>
 						<th>
-							"._AM_XQUIZ_ENDDATE."
+							' . _AM_XQUIZ_ENDDATE . '
 						</th>
 						<th>
-							"._AM_XQUIZ_STATUS."
+							' . _AM_XQUIZ_STATUS . '
 						</th>
 						<th>
-							"._AM_XQUIZ_WEIGHT."
+							' . _AM_XQUIZ_WEIGHT . '
 						</th>
 						<th>
-							"._AM_XQUIZ_ACTION."
+							' . _AM_XQUIZ_ACTION . '
 						</th>
-					</tr></thead>";
+					</tr></thead>';
                  
         $class = 'even';
-        $onImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/on.png \" >";
-        $offImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/off.png \" >";
-        $delImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/delete.gif \" title="._AM_XQUIZ_DEL." alt='' >";
-        $editImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/edit.gif \" title="._AM_XQUIZ_EDIT." alt='' >";
-        $statImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/stat.gif \" title="._AM_XQUIZ_STAT." alt='' >";
-        $addImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/add.png \" title="._AM_XQUIZ_QUEST_ADD." alt='' >";
-        $exportImage = "<img src= \"".XOOPS_URL."/modules/xquiz/assets/images/export.png \" title="._AM_XQUIZ_CSV_EXPORT." alt='' >";
+        $onImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/on.png " >';
+        $offImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/off.png " >';
+        $delImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
+        $editImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
+        $statImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/stat.gif " title=' . _AM_XQUIZ_STAT . " alt='' >";
+        $addImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/add.png " title=' . _AM_XQUIZ_QUEST_ADD . " alt='' >";
+        $exportImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/export.png " title=' . _AM_XQUIZ_CSV_EXPORT . " alt='' >";
         
         foreach ($listQuiz as $key) {
             $status = ($key['status']) ? $onImage:$offImage;
@@ -550,12 +549,12 @@ class Quiz
             //$statEdit = (!$key['active']) ? $statImage:$editImage;
 			//$questLink = ((!$key['status'])&&($key['active']))?
             $questLink = (($key['active']))?
-                    "<a class='btn btn-primary btn-xs' href=\"".XOOPS_URL."/modules/xquiz/admin/index.php?op=Question&act=add&Id="
-                        .$key['id']."\">"._AM_XQUIZ_QUEST_NEW." ".$addImage." ".$key['question']."
-					</a>":$key['question'];
+                    "<a class='btn btn-primary btn-xs' href=\"".XOOPS_URL . '/modules/xquiz/admin/index.php?op=Question&act=add&Id='
+                        .$key['id'] . '">' . _AM_XQUIZ_QUEST_NEW . ' ' . $addImage . ' ' . $key['question'] . '
+					</a>' : $key['question'];
             $category = QuizCategory::retriveCategory($key['cid']);
-            $quizCategory = "<a href=\"".XOOPS_URL."/modules/xquiz/index.php?cid="
-                        .$category['cid']."\">".$category['title']."</a>";
+            $quizCategory = '<a href="' . XOOPS_URL . '/modules/xquiz/index.php?cid='
+                            .$category['cid'] . '">' . $category['title'] . '</a>';
                                     
             $class = ('even' == $class) ? 'odd' : 'even';
             
@@ -593,30 +592,29 @@ class Quiz
 				" . $statImage . "
 				</a>
 				<a href=\"" . XOOPS_URL . "/modules/xquiz/admin/index.php?op=Statistics&Id=" . $key['id'] . "&exp=on\">
-				" . $exportImage . "
+				" . $exportImage . '
 				</a>
 				</td>
-				</tr>";
+				</tr>';
         }
         
-        $temp .= "</table></div>";
+        $temp .= '</table></div>';
         echo $temp;
-        $nav  = new XoopsPageNav($nume, $limit, $start, 'start', "op=Quiz");
+        $nav  = new XoopsPageNav($nume, $limit, $start, 'start', 'op=Quiz');
         echo "<div align='center'>".$nav->renderImageNav().'</div><br />';
     }
     
     public static function confirmForm($id)
     {
         $delQuiz_form = new XoopsThemeForm(
-        _AM_XQUIZ_DELQUIZFORM,
-        "delquizfrom",
+        _AM_XQUIZ_DELQUIZFORM, 'delquizfrom',
                     XOOPS_URL.'/modules/xquiz/admin/backend.php',
         'post',
         true
     );
-        $quiz_id = new XoopsFormHidden("quizId", $id);
-        $quiz_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, "delConfirm", 0);
-        $submit_button = new XoopsFormButton("", "delQuizSubmit", _AM_XQUIZ_SUBMIT, "submit");
+        $quiz_id = new XoopsFormHidden('quizId', $id);
+        $quiz_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, 'delConfirm', 0);
+        $submit_button = new XoopsFormButton('', 'delQuizSubmit', _AM_XQUIZ_SUBMIT, 'submit');
         //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
     
         $delQuiz_form->addElement($quiz_id);
@@ -630,13 +628,13 @@ class Quiz
 				 </a>&nbsp;".DELQUIZFORM."</h4><br/>
 					<div id='newquiz' style='text-align: center;'>";
         $delQuiz_form->display();
-        echo "</div>";
+        echo '</div>';
     }
     
     public static function quiz_numQuizLoader()
     {
         global $xoopsDB;
-        $result = $xoopsDB->query(" SELECT * FROM " . $xoopsDB->prefix('xquiz_quizzes'));
+        $result = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizzes'));
         return $xoopsDB->getRowsNum($result);
     }
 
@@ -667,7 +665,7 @@ class Quiz
 			$totalquestion = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_questions').' WHERE quiz_id = '.$id.'');
             $listQuiz[$q]['totalquestion'] = $xoopsDB->getRowsNum($totalquestion);
             
-            $today = strtotime(date("Y-m-d"));
+            $today = strtotime(date('Y-m-d'));
 
 			//Show all quiz
 			$listQuiz[$q]['status'] = true;
@@ -729,7 +727,7 @@ class Quiz
         global $xoopsDB;
         $query = $xoopsDB->query(' SELECT bdate FROM ' . $xoopsDB->prefix('xquiz_quizzes').' WHERE id = '.$id);
         $myrow = $xoopsDB->fetchArray($query) ;
-        $today = strtotime(date("Y-m-d"));
+        $today = strtotime(date('Y-m-d'));
         if (strtotime($myrow['bdate']) <= $today) {
             return true;
         } else {
@@ -742,7 +740,7 @@ class Quiz
         global $xoopsDB;
         $query = $xoopsDB->query(' SELECT edate FROM ' . $xoopsDB->prefix('xquiz_quizzes').' WHERE id = '.$id);
         $myrow = $xoopsDB->fetchArray($query) ;
-        $today = strtotime(date("Y-m-d"));
+        $today = strtotime(date('Y-m-d'));
         if (strtotime($myrow['edate']) >= $today) {
             return true;
         } else {
@@ -773,7 +771,7 @@ class Quiz
     public static function quiz_checkExistQuiz($id)
     {
         global $xoopsDB;
-        $query = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE id = '$id'");
+        $query = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizzes') . " WHERE id = '$id'");
         $res = $xoopsDB->getRowsNum($query);
         if ($res > 0) {
             return true;
