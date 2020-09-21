@@ -34,26 +34,26 @@ function quiz_search($queryarray, $andor, $limit, $offset, $userid)
     if (is_array($queryarray) && $count = count($queryarray)) {
         $sql .= " WHERE bdate < NOW() AND((name LIKE '$queryarray[0]' OR description LIKE
                '$queryarray[0]')";
-        for ($i=1;$i<$count;$i++) {
+        for ($i = 1; $i < $count; $i++) {
             $sql .= " $andor ";
             $sql .= "(name LIKE '$queryarray[$i]' OR description LIKE
                                '$queryarray[$i]')";
         }
         $sql .= ') ';
     }
-    $sql .= 'ORDER BY id DESC';
+    $sql   .= 'ORDER BY id DESC';
     $query = $xoopsDB->query('SELECT COUNT(*) FROM ' . $xoopsDB->prefix('xquiz_quizzes') . ' WHERE id>0');
     [$numrows] = $xoopsDB->fetchRow($query);
-       
+
     $result = $xoopsDB->query($sql, $limit, $offset);
-    $ret = [];
-    $i = 0;
+    $ret    = [];
+    $i      = 0;
     while ($myrow = $xoopsDB->fetchArray($result)) {
         $ret[$i]['image'] = 'assets/images/search.png';
-        $ret[$i]['link'] = 'index.php?act=v&q=' . ($myrow['id']);
+        $ret[$i]['link']  = 'index.php?act=v&q=' . ($myrow['id']);
         $ret[$i]['title'] = $myrow['name'];
-        $ret[$i]['time'] = $myrow['bdate'];
-        $ret[$i]['uid'] = '';
+        $ret[$i]['time']  = $myrow['bdate'];
+        $ret[$i]['uid']   = '';
         $i++;
     }
     return $ret;

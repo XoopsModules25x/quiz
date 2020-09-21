@@ -1,4 +1,5 @@
 <?php
+
 define('_AM_XQUIZ_MODULENAME', 'xQuiz');
 
 define('_AM_XQUIZ_QUIZS', 'Quizzes');
@@ -9,8 +10,11 @@ define('_AM_XQUIZ_SEE_SCORE', 'Users are able to see score after quiz take part'
 define('_AM_MD_XQUIZ_PERMISSIONS', 'Permissions');
 define('_AM_XQUIZ_CATEGORY', 'Category');
 define('_AM_XQUIZ_CATEGORY_TITLE', 'Title');
-define('_AM_XQUIZ_SEE_SCORE_DESC', 'By chosing this option each user can see his results after quiz take part,
-		otherwize results are shown at the end of each quiz');
+define(
+    '_AM_XQUIZ_SEE_SCORE_DESC',
+    'By chosing this option each user can see his results after quiz take part,
+		otherwize results are shown at the end of each quiz'
+);
 define('_AM_XQUIZ_ANONYMOUS', 'Only registered users can try the quizzes');
 define('_AM_XQUIZ_DATEFORMAT', "Date's format");
 define('_AM_XQUIZ_DATEFORMAT_DESC', "Please refer to the Php documentation (http://php.net/manual/en/function.date.php) for more information on how to select the format. Note, if you don't type anything then the default date's format will be used");
@@ -120,7 +124,7 @@ define('_AM_XQUIZ_QUEST_ANS1', 'Option 1');
 define('_AM_XQUIZ_QUEST_ANS2', 'Option 2');
 define('_AM_XQUIZ_QUEST_ANS3', 'Option 3');
 define('_AM_XQUIZ_QUEST_ANS4', 'Option 4');
-define('_AM_XQUIZ_QUEST_ANSWER','Correct Answer');
+define('_AM_XQUIZ_QUEST_ANSWER', 'Correct Answer');
 define('_AM_XQUIZ_QUEST_DESC', 'Questions text');
 define('_AM_XQUIZ_QUEST_SCORE', 'Questions score');
 define('_AM_XQUIZ_UPCOMING', 'Upcoming');

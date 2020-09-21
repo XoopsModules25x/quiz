@@ -1,4 +1,5 @@
 <?php
+
 define('_MD_XQUIZ_MODULENAME', 'Quiz');
 define('_MD_XQUIZ_CATEGORIES', 'Categories');
 define('_MD_XQUIZ_DETAIL', 'View details');

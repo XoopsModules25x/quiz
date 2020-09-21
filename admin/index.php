@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
@@ -11,11 +12,11 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org)
- * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
- * @package         xquiz
- * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$
+ * @copyright          XOOPS Project (https://xoops.org)
+ * @license            http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package            xquiz
+ * @author             Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version            $Id$
  *
  * Version : $Id:
  * ****************************************************************************
@@ -23,26 +24,26 @@
 include 'admin_header.php';
 xoops_cp_header();
 try {
-    $option = $_GET ['op'] ?? '';
-    $action = $_GET ['act'] ?? '';
+    $option     = $_GET ['op'] ?? '';
+    $action     = $_GET ['act'] ?? '';
     $answerType = (isset($_GET ['type'])) ? htmlentities(strtoupper($_GET ['type']), ENT_QUOTES | ENT_HTML5) : '';
-    
+
     if (isset($_GET ['Id'])) {
-        if (! is_numeric($_GET ['Id'])) {
+        if (!is_numeric($_GET ['Id'])) {
             throw new Exception('id must be a number.');
         }
         $id = $_GET ['Id'];
     }
-    
+
     if (isset($_GET ['qId'])) {
-        if (! is_numeric($_GET ['qId'])) {
+        if (!is_numeric($_GET ['qId'])) {
             throw new Exception('qid must be a number.');
         }
         $qid = $_GET ['qId'];
     }
-    
+
     if (isset($_GET ['start'])) {
-        if (! is_numeric($_GET ['start'])) {
+        if (!is_numeric($_GET ['start'])) {
             throw new Exception('start must be a number.');
         }
         $start = $_GET ['start'];
@@ -50,12 +51,12 @@ try {
         $start = 0;
     }
     global $xoopsModuleConfig;
-    $limitQuiz = $xoopsModuleConfig ['quizList']; // No of records to be shown per page.
-    $limitQuest = $xoopsModuleConfig ['questionList']; // No of records to be shown per page.
-    $limitUser = $xoopsModuleConfig ['userList']; // No of records to be shown per page.
+    $limitQuiz     = $xoopsModuleConfig ['quizList']; // No of records to be shown per page.
+    $limitQuest    = $xoopsModuleConfig ['questionList']; // No of records to be shown per page.
+    $limitUser     = $xoopsModuleConfig ['userList']; // No of records to be shown per page.
     $limitCategory = $xoopsModuleConfig ['categoryList'];
-    $dateformat = $xoopsModuleConfig ['dateformat'];
-    
+    $dateformat    = $xoopsModuleConfig ['dateformat'];
+
     switch ($option) {
         case 'Quiz':
             QuizzadminMenu(1, _AM_XQUIZ_QUIZS);
@@ -63,7 +64,7 @@ try {
                 case 'add':
                     Quiz::QuizForm('add');
                     break;
-                
+
                 case 'edit':
                     if (isset($_GET ['Id'])) {
                         Quiz::QuizForm('edit', $id);
@@ -71,7 +72,7 @@ try {
                         Quiz::showQuizs($start, $limitQuiz);
                     }
                     break;
-                
+
                 case 'del':
                     if (isset($_GET ['Id'])) {
                         Quiz::confirmForm($id);
@@ -79,16 +80,16 @@ try {
                         Quiz::showQuizs($start, $limitQuiz);
                     }
                     break;
-                
+
                 default:
-                    $cid = - 1;
+                    $cid = -1;
                     if (isset($_GET ['Id'])) {
                         $cid = $id;
                     }
                     Quiz::showQuizs($start, $limitQuiz, $cid);
             }
             break;
-        
+
         case 'Quest':
             if (0 == Quiz::quiz_numQuizLoader()) {
                 throw new Exception(_AM_XQUIZ_NO_QUIZ);
@@ -96,33 +97,33 @@ try {
             QuizzadminMenu(2, _AM_XQUIZ_QUIZS);
             switch ($action) {
                 case 'add':
-                    if (! Quiz::quiz_checkExpireQuiz($id)) {
+                    if (!Quiz::quiz_checkExpireQuiz($id)) {
                         throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE);
                     }
                     if (Quiz::quiz_checkActiveQuiz($id)) {
                         throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE);
                     }
-                    
+
                     Question::showQuizSelectForm();
                     if (isset($id)) {
                         Question::QuestForm($id);
                     }
                     break;
-                
+
                 case 'edit':
                     Question::showQuizSelectForm();
                     if ((isset($id)) && (isset($qid))) {
                         Question::QuestForm($qid, 'edit', $id);
                     }
                     break;
-                
+
                 case 'del':
                     Question::showQuizSelectForm();
                     if (isset($id)) {
                         Question::confirmForm($id);
                     }
                     break;
-                
+
                 default:
                     Question::showQuizSelectForm();
                     if (isset($id)) {
@@ -130,7 +131,7 @@ try {
                     }
             }
             break;
-        
+
         case 'Statistics':
             if (0 == Quiz::quiz_numQuizLoader()) {
                 throw new Exception(_AM_XQUIZ_NO_QUIZ);
@@ -146,36 +147,36 @@ try {
             /////////////////////////////////////////////////////////////////
             if (isset($id)) {
                 $qname = Quiz::quiz_quizName($id);
-                $nume = numUserScore($id);
+                $nume  = numUserScore($id);
                 ////////////////////////////////////////
                 $listQuiz = [];
-                $q = 1;
-                $eu = ($start - 0);
-                $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limitUser);
+                $q        = 1;
+                $eu       = ($start - 0);
+                $query    = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limitUser);
                 while ($myrow = $xoopsDB->fetchArray($query)) {
-                    $listQuiz [$q] ['id'] = $myrow ['id'];
+                    $listQuiz [$q] ['id']     = $myrow ['id'];
                     $listQuiz [$q] ['userid'] = $myrow ['userid'];
-                    $thisUser = $member_handler->getUser($myrow ['userid']);
-                    $listQuiz [$q] ['uname'] = $thisUser->getVar('uname');
-                    $listQuiz [$q] ['name'] = $thisUser->getVar('name');
-                    $listQuiz [$q] ['score'] = $myrow ['score'];
-                    $listQuiz [$q] ['date'] = formatTimestamp(strtotime($myrow ['date']), $dateformat);
-                    $q ++;
+                    $thisUser                 = $member_handler->getUser($myrow ['userid']);
+                    $listQuiz [$q] ['uname']  = $thisUser->getVar('uname');
+                    $listQuiz [$q] ['name']   = $thisUser->getVar('name');
+                    $listQuiz [$q] ['score']  = $myrow ['score'];
+                    $listQuiz [$q] ['date']   = formatTimestamp(strtotime($myrow ['date']), $dateformat);
+                    $q++;
                 }
                 ////////////////////////////////////////
                 if (isset($_GET ['exp']) && 'on' == $_GET ['exp']) {
                     $exportQuiz = [];
-                    $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id);
-                    $q = 1;
+                    $query      = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id);
+                    $q          = 1;
                     while ($myrow = $xoopsDB->fetchArray($query)) {
-                        $exportQuiz [$q] ['id'] = $myrow ['id'];
+                        $exportQuiz [$q] ['id']     = $myrow ['id'];
                         $exportQuiz [$q] ['userid'] = $myrow ['userid'];
-                        $thisUser = $member_handler->getUser($myrow ['userid']);
-                        $exportQuiz [$q] ['uname'] = $thisUser->getVar('uname');
-                        $exportQuiz [$q] ['name'] = $thisUser->getVar('name');
-                        $exportQuiz [$q] ['score'] = $myrow ['score'];
-                        $exportQuiz [$q] ['date'] = formatTimestamp(strtotime($myrow ['date']), $dateformat);
-                        $q ++;
+                        $thisUser                   = $member_handler->getUser($myrow ['userid']);
+                        $exportQuiz [$q] ['uname']  = $thisUser->getVar('uname');
+                        $exportQuiz [$q] ['name']   = $thisUser->getVar('name');
+                        $exportQuiz [$q] ['score']  = $myrow ['score'];
+                        $exportQuiz [$q] ['date']   = formatTimestamp(strtotime($myrow ['date']), $dateformat);
+                        $q++;
                     }
                     $fp = fopen('../../../uploads/quiz.csv', 'w+b') or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Statistics', 3, '_AM_XQUIZ_OPEN_CSV_ERR');
                     $msg = _AM_XQUIZ_USER . ',' . _AM_XQUIZ_USER_NAME . ',' . _AM_XQUIZ_DATE . ',' . _AM_XQUIZ_SCORE . '
@@ -188,8 +189,7 @@ try {
                     $msg = html_entity_decode($msg, ENT_NOQUOTES, 'utf-8');
                     $msg = chr(255) . chr(254) . iconv('UTF-8', 'UTF-16LE', $msg);
                     #end region
-                    fwrite($fp, $msg) or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Statistics', 3, '_AM_XQUIZ_OPEN_CSV_ERR');
-                    ;
+                    fwrite($fp, $msg) or redirect_header(XOOPS_URL . '/modules/xquiz/admin/index.php?op=Statistics', 3, '_AM_XQUIZ_OPEN_CSV_ERR');;
                     fclose($fp);
                     echo "
 						<div id='newsel' style='text-align: left;'>
@@ -234,13 +234,13 @@ try {
 								' . _AM_XQUIZ_DESC . '
 							</th>
 						</tr>';
-                
-                $class = 'even';
+
+                $class    = 'even';
                 $detImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/detail.gif " >';
-                
+
                 foreach ($listQuiz as $key) {
                     $class = ('even' == $class) ? 'odd' : 'even';
-                    
+
                     $temp .= "
 						<tr class='" . $class . "'>
 							<td>
@@ -262,30 +262,30 @@ try {
                 }
                 $temp .= '</table></div>';
                 echo $temp;
-                
+
                 $nav = new XoopsPageNav($nume, $limitUser, $start, 'start', "op=Statistics&Id=$id");
                 echo "<div align='left'>" . $nav->renderImageNav() . '</div><br />';
             }
-            
+
             //	///////////////////////////////////////////////////////////////
             break;
-        
+
         case 'Permission':
             $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
-            if (! $xt->getChildTreeArray(0)) {
+            if (!$xt->getChildTreeArray(0)) {
                 throw new Exception(_AM_XQUIZ_NO_CATEGORY);
             }
             QuizzadminMenu(4, _AM_MD_XQUIZ_PERMISSIONS);
             QuizCategory::category_permissionForm();
             break;
-        
+
         case 'Category':
             QuizzadminMenu(5, _AM_XQUIZ_CATEGORIES);
             switch ($action) {
                 case 'add':
                     CategoryForm('add');
                     break;
-                
+
                 case 'edit':
                     if (isset($_GET ['Id'])) {
                         CategoryForm('edit', $id);
@@ -293,7 +293,7 @@ try {
                         showCategories($start, $limitCategory);
                     }
                     break;
-                
+
                 case 'del':
                     if (isset($_GET ['Id'])) {
                         confirmForm($id);
@@ -301,15 +301,14 @@ try {
                         showCategories($start, $limitCategory);
                     }
                     break;
-                
+
                 default:
                     showCategories($start, $limitCategory);
             }
-            
+
             break;
-        
+
         //////////////////////////////////////////////////////////////////////////////
-        
 
         case 'Question':
             if (0 == Quiz::quiz_numQuizLoader()) {
@@ -318,19 +317,19 @@ try {
             QuizzadminMenu(6, _AM_XQUIZ_QUIZS);
             switch ($action) {
                 case 'add':
-                    if (! Quiz::quiz_checkExpireQuiz($id)) {
+                    if (!Quiz::quiz_checkExpireQuiz($id)) {
                         throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE);
                     }
                     if (Quiz::quiz_checkActiveQuiz($id)) {
                         throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE);
                     }
-                    
+
                     questions::showQuizSelectForm();
                     if (isset($id)) {
                         questions::QuestAddForm($id, $answerType);
                     }
                     break;
-                
+
                 case 'edit':
                     questions::showQuizSelectForm();
                     if (isset($id)) {
@@ -338,14 +337,14 @@ try {
                         $questionObj->QuestEditForm($id);
                     }
                     break;
-                
+
                 case 'del':
                     questions::showQuizSelectForm();
                     if (isset($id)) {
                         questions::confirmForm($id);
                     }
                     break;
-                
+
                 default:
                     questions::showQuizSelectForm();
                     if (isset($id)) {
@@ -353,9 +352,8 @@ try {
                     }
             }
             break;
-        
+
         //////////////////////////////////////////////////////////////////////////////////
-        
 
         default:
             QuizzadminMenu(0, _AM_XQUIZ_INDEX);
@@ -364,10 +362,10 @@ try {
             $menu->addItem('Quizzes', 'index.php?op=Quiz', '../assets/images/menus/quizzes.png', _AM_XQUIZ_QUIZS);
             $menu->addItem('Questions', 'index.php?op=Question', '../assets/images/menus/questions.png', _AM_XQUIZ_QUESTIONS);
             $menu->addItem('Statistics', 'index.php?op=Statistics', '../assets/images/menus/statistic.png', _AM_XQUIZ_STATISTICS);
-			$menu->addItem('Permissions', 'index.php?op=Permission', '../assets/images/menus/permmision.png', _AM_MD_XQUIZ_PERMISSIONS);
+            $menu->addItem('Permissions', 'index.php?op=Permission', '../assets/images/menus/permmision.png', _AM_MD_XQUIZ_PERMISSIONS);
             $menu->addItem('Preference', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid') . '&amp;&confcat_id=1', '../assets/images/menus/config.png', _AM_XQUIZ_PREFERENCE);
-            
-            if (! class_exists('XoopsTpl')) {
+
+            if (!class_exists('XoopsTpl')) {
                 include_once XOOPS_ROOT_PATH . '/class/template.php';
             }
             $tpl = $xoopsTpl ?? new XoopsTpl();
@@ -376,7 +374,6 @@ try {
             $tpl->assign('quiz_version', sprintf(_AM_XQUIZ_VERSION, $xoopsModule->getInfo('version') . '(' . $xoopsModule->getInfo('status') . ')', $xoopsModule->getInfo('name')));
             echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/xquiz/templates/admin/xquiz_admin_index.tpl');
             break;
-			
     }
 } catch (Exception $e) {
     redirect_header('index.php', 3, $e->getMessage());

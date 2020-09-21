@@ -1,9 +1,9 @@
 <?php
+
 include_once 'answer.php';
 
 class questions
 {
-
     /**
      *
      */
@@ -109,7 +109,7 @@ class questions
     public function setQuestion($question)
     {
         //$this->question = $xoopsDB->escape($question);
-		$this->question = $question;
+        $this->question = $question;
     }
 
     /**
@@ -126,7 +126,7 @@ class questions
     public function setType($type)
     {
         //$this->type = $xoopsDB->escape($type);
-		$this->type = $type;
+        $this->type = $type;
     }
 
     public function __construct()
@@ -140,7 +140,6 @@ class questions
      */
     public function __destruct()
     {
-
         //TODO - Insert your code here
     }
 
@@ -224,7 +223,7 @@ class questions
 
         $delImage  = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
         $editImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
-        $ts = \MyTextSanitizer::getInstance ();
+        $ts        = \MyTextSanitizer::getInstance();
         foreach ($listQuestion as $key) {
             $class = ('even' == $class) ? 'odd' : 'even';
 
@@ -332,17 +331,17 @@ class questions
         $ansFormTable = new XoopsFormLabel(_AM_XQUIZ_ANSWERS_LABEL, ob_get_contents());
         ob_end_clean();
 
-        $question_type  = new XoopsFormHidden('type', $type);
+        $question_type = new XoopsFormHidden('type', $type);
         //$question_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
 
         $addQuest_form->addElement($quiz_name, true);
         $addQuest_form->addElement($question_number, true);
-        
+
         $addQuest_form->addElement($options_tray);
         $addQuest_form->addElement($ansFormTable);
         //$addQuest_form->addElement($question_token, true);
         $addQuest_form->addElement($question_type, true);
-		$addQuest_form->addElement($question_score, true);
+        $addQuest_form->addElement($question_score, true);
         $addQuest_form->addElement($submit_button, true);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
@@ -487,7 +486,7 @@ class questions
         $ansFormTable = new XoopsFormLabel(_AM_XQUIZ_ANSWERS_LABEL, ob_get_contents());
         ob_end_clean();
 
-        $question_type  = new XoopsFormHidden('type', $this->getType());
+        $question_type = new XoopsFormHidden('type', $this->getType());
         //$question_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
 
         $editQuest_form->addElement($question_id);
@@ -698,7 +697,7 @@ class questions
     {
         $delQuest_form = new XoopsThemeForm(_AM_XQUIZ_DELQUESTFORM, 'delqstfrom', XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true);
         $quest_id      = new XoopsFormHidden('questId', $id);
-		$quiz_id       = new XoopsFormHidden('quizId', $qid);
+        $quiz_id       = new XoopsFormHidden('quizId', $qid);
         $quest_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, 'delConfirm', 0);
         $submit_button = new XoopsFormButton('', 'delQstSubmit', _AM_XQUIZ_SUBMIT, 'submit');
         //$quest_token   = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());

@@ -1,7 +1,7 @@
 <?php
+
 class answer
 {
-    
     /**
      *
      */
@@ -9,7 +9,7 @@ class answer
     private $questId;
     private $is_correct;
     private $answer;
-    
+
     /**
      * @return Integer
      */
@@ -17,7 +17,7 @@ class answer
     {
         return $this->aid;
     }
-    
+
     /**
      * @return String
      */
@@ -25,7 +25,7 @@ class answer
     {
         return $this->answer;
     }
-    
+
     /**
      * @return Boolean
      */
@@ -33,7 +33,7 @@ class answer
     {
         return $this->is_correct;
     }
-    
+
     /**
      * @return Integer
      */
@@ -41,7 +41,7 @@ class answer
     {
         return $this->questId;
     }
-    
+
     /**
      * @param String $aid
      */
@@ -49,16 +49,16 @@ class answer
     {
         $this->aid = (int)$aid;
     }
-    
+
     /**
      * @param String $answer
      */
     public function setAnswer($answer)
     {
         //$this->answer = $xoopsDB->escape($answer);
-		$this->answer = $answer;
+        $this->answer = $answer;
     }
-    
+
     /**
      * @param Boolean $is_correct
      */
@@ -66,7 +66,7 @@ class answer
     {
         $this->is_correct = (int)$is_correct;
     }
-    
+
     /**
      * @param Integer $questId
      */
@@ -74,41 +74,41 @@ class answer
     {
         $this->questId = (int)$questId;
     }
+
     public function __construct()
     {
-        
-    //TODO - Insert your code here
+        //TODO - Insert your code here
     }
-    
+
     /**
      *
      */
     public function __destruct()
     {
-        
-    //TODO - Insert your code here
+        //TODO - Insert your code here
     }
-    
+
     /*
      * TODO - add new answer to database
      * @Return Boolean $res
      */
     public function addAnswer()
     {
-		if ('' == $this->is_correct){
-			$this->is_correct='0';
-		}
+        if ('' == $this->is_correct) {
+            $this->is_correct = '0';
+        }
         global $xoopsDB;
         $query = 'INSERT into ' . $xoopsDB->prefix('xquiz_answers') . "(question_id ,is_correct ,answer)
 				VALUES ('$this->questId', '$this->is_correct', '$this->answer');";
-        $res = $xoopsDB->query($query);
-        
-        if (! $res) {
+        $res   = $xoopsDB->query($query);
+
+        if (!$res) {
             return false;
         } else {
             return true;
         }
     }
+
     /*
      * TODO - delete question's answers
      * @param $questionId
@@ -118,10 +118,10 @@ class answer
     {
         global $xoopsDB;
         $questionId = $xoopsDB->escape($questionId);
-        $query = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_answers') . " WHERE  
+        $query      = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_answers') . " WHERE  
 					  question_id = '$questionId' ";
-        $res = $xoopsDB->query($query);
-        if (! $res) {
+        $res        = $xoopsDB->query($query);
+        if (!$res) {
             return false;
         } else {
             return true;
