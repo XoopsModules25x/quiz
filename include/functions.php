@@ -205,19 +205,19 @@ function quiz_collapsableBar($tablename = '', $iconname = '')
             $temp .= "
 			<tr class='" . $class . "'>
 				<td>
-				" . $key['qnumber'] . "-" . $ts->previewTarea($key['question'], 1, 1, 1, 1, 1) . "
+				" . $key['qnumber'] . '-' . $ts->previewTarea($key['question'], 1, 1, 1, 1, 1) . '
 				</td>
 				<td>
-				" . $key['answer'] . "
+				' . $key['answer'] . '
 				</td>
 				<td>
-				" . $key['score'] . "
+				' . $key['score'] . '
 				</td>
 				<td>
-				" . $key['userAns'] . "
+				' . $key['userAns'] . '
 				</td>
 				<td>
-				" . $correct . '
+				' . $correct . '
 				</td>
 				</tr>';
         }

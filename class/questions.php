@@ -231,10 +231,10 @@ class questions
             $temp .= "
 			<tr class='" . $class . "'>
 			    <td>
-					" . $key ['qnumber'] . "
+					" . $key ['qnumber'] . '
 				</td>
 				<td>
-					" . $ts->previewTarea($key['question'], 1, 1, 1, 1, 1) . '
+					' . $ts->previewTarea($key['question'], 1, 1, 1, 1, 1) . '
 				</td>
 				<td>
 				' . $key ['score'] . '
