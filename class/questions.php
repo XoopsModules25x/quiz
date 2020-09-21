@@ -84,7 +84,7 @@ class questions
      */
     public function setId($id)
     {
-        $this->id = intval($id);
+        $this->id = (int)$id;
     }
 
     /**
@@ -92,7 +92,7 @@ class questions
      */
     public function setQid($qid)
     {
-        $this->qid = intval($qid);
+        $this->qid = (int)$qid;
     }
 
     /**
@@ -100,7 +100,7 @@ class questions
      */
     public function setQnumber($qnumber)
     {
-        $this->qnumber = intval($qnumber);
+        $this->qnumber = (int)$qnumber;
     }
 
     /**
@@ -117,7 +117,7 @@ class questions
      */
     public function setScore($score)
     {
-        $this->score = intval($score);
+        $this->score = (int)$score;
     }
 
     /**

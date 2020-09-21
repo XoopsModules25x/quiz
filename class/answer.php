@@ -47,7 +47,7 @@ class answer
      */
     public function setAid($aid)
     {
-        $this->aid = intval($aid);
+        $this->aid = (int)$aid;
     }
     
     /**
@@ -64,7 +64,7 @@ class answer
      */
     public function setIs_correct($is_correct)
     {
-        $this->is_correct = intval($is_correct);
+        $this->is_correct = (int)$is_correct;
     }
     
     /**
@@ -72,7 +72,7 @@ class answer
      */
     public function setQuestId($questId)
     {
-        $this->questId = intval($questId);
+        $this->questId = (int)$questId;
     }
     public function __construct()
     {

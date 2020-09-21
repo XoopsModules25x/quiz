@@ -55,7 +55,7 @@ class sFiles
         if (is_array($fileid)) {
             $this->makeFile($fileid);
         } elseif (-1 != $fileid) {
-            $this->getFile(intval($fileid));
+            $this->getFile((int)$fileid);
         }
     }
 
@@ -103,7 +103,7 @@ class sFiles
     public function getAllbyStory($storyid)
     {
         $ret = [];
-        $sql = 'SELECT * FROM ' . $this->table . ' WHERE storyid=' . intval($storyid);
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE storyid=' . (int)$storyid;
         $result = $this->db->query($sql);
         while ($myrow = $this->db->fetchArray($result)) {
             $ret[] = new sFiles($myrow);
@@ -113,7 +113,7 @@ class sFiles
 
     public function getFile($id)
     {
-        $sql = 'SELECT * FROM ' . $this->table . ' WHERE fileid=' . intval($id);
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE fileid=' . (int)$id;
         $array = $this->db->fetchArray($this->db->query($sql));
         $this->makeFile($array);
     }
@@ -132,11 +132,11 @@ class sFiles
         $downloadname = $myts->addSlashes($this->downloadname);
         $date = time();
         $mimetype = $myts->addSlashes($this->mimetype);
-        $counter = intval($this->counter);
-        $storyid = intval($this->storyid);
+        $counter = (int)$this->counter;
+        $storyid = (int)$this->storyid;
 
         if (!isset($this->fileid)) {
-            $newid        = intval($this->db->genId($this->table.'_fileid_seq'));
+            $newid        = (int)$this->db->genId($this->table . '_fileid_seq');
             $sql          = 'INSERT INTO ' . $this->table . ' (fileid, storyid, filerealname, date, mimetype, downloadname, counter) ' . 'VALUES (' . $newid . ',' . $storyid . ",'" . $fileRealName . "','" . $date . "','" . $mimetype . "','" . $downloadname . "'," . $counter . ')';
             $this->fileid =$newid;
         } else {
@@ -179,7 +179,7 @@ class sFiles
 
     public function setStoryid($id)
     {
-        $this->storyid=intval($id);
+        $this->storyid= (int)$id;
     }
 
     public function setMimetype($value)
@@ -197,22 +197,22 @@ class sFiles
     // ****************************************************************************************************************
     public function getFileid()
     {
-        return intval($this->fileid);
+        return (int)$this->fileid;
     }
 
     public function getStoryid()
     {
-        return intval($this->storyid);
+        return (int)$this->storyid;
     }
 
     public function getCounter()
     {
-        return intval($this->counter);
+        return (int)$this->counter;
     }
 
     public function getDate()
     {
-        return intval($this->date);
+        return (int)$this->date;
     }
 
     public function getFileRealName($format='S')
@@ -290,7 +290,7 @@ class sFiles
     // Deprecated
     public function getCountbyStory($storyid)
     {
-        $sql    = 'SELECT count(fileid) as cnt FROM ' . $this->table . ' WHERE storyid=' . intval($storyid) . '';
+        $sql    = 'SELECT count(fileid) as cnt FROM ' . $this->table . ' WHERE storyid=' . (int)$storyid . '';
         $result = $this->db->query($sql);
         $myrow = $this->db->fetchArray($result);
         return $myrow['cnt'];

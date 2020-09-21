@@ -71,7 +71,7 @@ class QuizCategory extends XoopsTree
      */
     public function getAllParentId($sel_id, $order='', $idarray = [])
     {
-        $sel_id = intval($sel_id);
+        $sel_id = (int)$sel_id;
         $sql = 'SELECT '.$this->pid.' FROM '.$this->table.' WHERE '.$this->id.'="'.$sel_id.'"';
         if ('' != $order) {
             $sql .= ' ORDER BY '.$order;
@@ -143,7 +143,7 @@ class QuizCategory extends XoopsTree
      */
     public function getAllChild($sel_id=0, $order='', $parray = [])
     {
-        $sel_id = intval($sel_id);
+        $sel_id = (int)$sel_id;
         $sql = 'SELECT * FROM '.$this->table.' WHERE '.$this->pid.'="'.$sel_id.'"';
         if ('' != $order) {
             $sql .= ' ORDER BY '.$order;
@@ -168,7 +168,7 @@ class QuizCategory extends XoopsTree
      */
     public function getChildTreeArray($sel_id=0, $order='', $parray = [], $r_prefix='')
     {
-        $sel_id = intval($sel_id);
+        $sel_id = (int)$sel_id;
         $sql = 'SELECT * FROM '.$this->table.' WHERE '.$this->pid.'="'.$sel_id.'"';
         if ('' != $order) {
             $sql .= ' ORDER BY '.$order;
@@ -221,7 +221,7 @@ class QuizCategory extends XoopsTree
     
     public function getCategory($cid)
     {
-        $sel_id = intval($cid);
+        $sel_id = (int)$cid;
         $arr = [];
         $sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->id . '=' . $sel_id . '';
         $result = $this->db->query($sql);
@@ -257,7 +257,7 @@ class QuizCategory extends XoopsTree
     {
         global $xoopsUser ,$module_id ;
         $myts = MyTextSanitizer::getInstance();
-        $sel_id = intval($sel_id);
+        $sel_id = (int)$sel_id;
         $sql = 'SELECT * FROM '.$this->table.' WHERE '.$this->pid.'="'.$sel_id.'"';
         if ('' != $order) {
             $sql .= ' ORDER BY '.$order;
@@ -571,7 +571,7 @@ function CategoryForm($op = 'add', $eId = 0)
     $imageselect= new XoopsFormSelect($imgpath, 'topic_imgurl', $topicimage);
     $topics_array = XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH . '/uploads/xquiz/category/');
     foreach ($topics_array as $image) {
-        $imageselect->addOption("$image", $image);
+        $imageselect->addOption((string)$image, $image);
     }
     $imageselect->setExtra("onchange='showImgSelected(\"image3\", \"topic_imgurl\", \"" . $uploadirectory . '", "", "' . XOOPS_URL . "\")'");
     $imgtray->addElement($imageselect, false);
