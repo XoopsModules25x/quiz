@@ -25,7 +25,7 @@ xoops_cp_header();
 try {
     $option = $_GET ['op'] ?? '';
     $action = $_GET ['act'] ?? '';
-    $answerType = (isset($_GET ['type'])) ? htmlentities(strtoupper($_GET ['type'])) : '';
+    $answerType = (isset($_GET ['type'])) ? htmlentities(strtoupper($_GET ['type']), ENT_QUOTES | ENT_HTML5) : '';
     
     if (isset($_GET ['Id'])) {
         if (! is_numeric($_GET ['Id'])) {
