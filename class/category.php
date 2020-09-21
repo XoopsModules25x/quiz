@@ -1,5 +1,7 @@
 <?php
 
+namespace XoopsModules\Xquiz;
+
 /**
  * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
@@ -22,8 +24,9 @@
  * ****************************************************************************
  */
 require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 
-class QuizCategory extends XoopsTree
+class Category extends \XoopsTree
 {
     /** @var string table with parent-child structure */
     public $table;
@@ -47,7 +50,7 @@ class QuizCategory extends XoopsTree
     public function __construct($table_name, $id_name, $pid_name)
     {
         //$this->db = XoopsDatabaseFactory::getDatabaseConnection();
-        $this->db    = XoopsDatabaseFactory::getDatabaseConnection();
+        $this->db    = \XoopsDatabaseFactory::getDatabaseConnection();
         $this->table = $table_name;
         $this->id    = $id_name;
         $this->pid   = $pid_name;
@@ -239,8 +242,8 @@ class QuizCategory extends XoopsTree
         return $myrow['pid'];
     }
 
-    #region retrive QuizCategory from database
-    public static function retriveCategory($eId)
+    #region retrieve Category from database
+    public static function retrieveCategory($eId)
     {
         global $xoopsDB;
         $query = $xoopsDB->query('SELECT cid,title FROM ' . $xoopsDB->prefix('xquiz_categories') . " WHERE cid = '$eId'");
@@ -248,11 +251,11 @@ class QuizCategory extends XoopsTree
         return $myrow;
     }
     #endregion
-    #region retrive permited category from database
+    #region retrieve permited category from database
     public function getPermChildArray($sel_id = 0, $order = '', $parray = [], $r_prefix = '')
     {
         global $xoopsUser, $module_id;
-        $myts   = MyTextSanitizer::getInstance();
+        $myts   = \MyTextSanitizer::getInstance();
         $sel_id = (int)$sel_id;
         $sql    = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '="' . $sel_id . '"';
         if ('' != $order) {
@@ -292,7 +295,7 @@ class QuizCategory extends XoopsTree
         $res   = $xoopsDB->query($query);
 
         if (!$res) {
-            throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
+            throw new \Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
 
         return $xoopsDB->getInsertId();
@@ -312,14 +315,14 @@ class QuizCategory extends XoopsTree
         $res = $xoopsDB->query($query);
 
         if (!$res) {
-            throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
+            throw new \Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
     }
 
     public static function deleteCategory($id)
     {
         global $xoopsDB;
-        $xt   = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
+        $xt   = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         $list = $xt->getAllChildId($id);
 
         global $module_id;
@@ -329,7 +332,7 @@ class QuizCategory extends XoopsTree
         $res       = $xoopsDB->query($query);
         xoops_groupperm_deletebymoditem($module_id, $perm_name, $id);
         if (!$res) {
-            throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
+            throw new \Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
         //delet quiz of category
         $query = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_quizzes') . " WHERE  
@@ -337,7 +340,7 @@ class QuizCategory extends XoopsTree
         $res   = $xoopsDB->query($query);
         xoops_groupperm_deletebymoditem($module_id, $perm_name, $id);
         if (!$res) {
-            throw new Exception(_AM_XQUIZ_QUEST_DATABASE);
+            throw new \Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
 
         //Delete subcategories and subquizs
@@ -354,15 +357,15 @@ class QuizCategory extends XoopsTree
     public static function category_permissionForm()
     {
         global $module_id, $xoopsDB;
-        $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
+        $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
         if (!$xt->getChildTreeArray(0)) {
-            throw new Exception(_AM_XQUIZ_NO_CATEGORY);
+            throw new \Exception(_AM_XQUIZ_NO_CATEGORY);
         }
         $listCategory  = $xt->getChildTreeArray(0, 'title');
         $title_of_form = _AM_XQUIZ_PERM_FORM_TITLE;
         $perm_name     = 'quiz_view';
         $perm_desc     = _AM_XQUIZ_PERM_FORM_DESC;
-        $form          = new XoopsGroupPermForm($title_of_form, $module_id, $perm_name, $perm_desc);
+        $form          = new \XoopsGroupPermForm($title_of_form, $module_id, $perm_name, $perm_desc);
 
         foreach ($listCategory as $key) {
             $form->addItem($key['cid'], $key['title'], $key['pid']);
@@ -384,239 +387,3 @@ class QuizCategory extends XoopsTree
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
-function showCategories($start, $limit)
-{
-    global $xoopsDB;
-    $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
-
-    $listCategory = $xt->getList($start, $limit, 'title');
-    //$nume = $xt->getNumberList();
-    $nume = count($listCategory);
-    quiz_collapsableBar('newsub', 'topnewsubicon');
-    $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
-				 </a>&nbsp;" . _AM_XQUIZ_CATEGORIES . "</h4><br>
-					<div id='newsub' style='text-align:left;'>
-					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
-						<tr class='odd'>
-							<td>
-							<form method='get' action='index.php'>
-							<input type='hidden' name='op' value='Category'>
-							<input type='hidden' name='act' value='add'>
-							<input type='submit' value='" . _AM_XQUIZ_NEW_CATEGORY . "'>
-							</form>
-							</td>
-						</tr>
-					</table>
-					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
-					<tr class='bg3'>
-						<th>
-							" . _AM_XQUIZ_CATEGORY_TITLE . '
-						</th>
-						<th>
-							' . _AM_XQUIZ_CATEGORY_WEIGHT . '
-						</th>
-						<th>
-							' . _AM_XQUIZ_ACTION . '
-						</th>
-					</tr>';
-
-    $class     = 'even';
-    $delImage  = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
-    $editImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
-    $goImage   = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/cat.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
-
-    foreach ($listCategory as $key) {
-        $class = ('even' == $class) ? 'odd' : 'even';
-        $temp  .= "
-			<tr class='"
-                  . $class
-                  . "'>
-				<td>&nbsp;
-				"
-                  . $goImage
-                  . '
-					<a href="'
-                  . XOOPS_URL
-                  . '/modules/xquiz/index.php?cid='
-                  . $key['cid']
-                  . '"><img src="'
-                  . XOOPS_URL
-                  . '/uploads/xquiz/category/'
-                  . $key['imgurl']
-                  . "\" width='40px' height='40px' align='left' style='padding:5px'></a>&nbsp;<a href=\""
-                  . XOOPS_URL
-                  . '/modules/xquiz/index.php?cid='
-                  . $key['cid']
-                  . '">'
-                  . $key['title']
-                  . '</a><br>&nbsp;<small>'
-                  . $key['description']
-                  . '</small>
-				</td>
-				<td>
-				'
-                  . $key['weight']
-                  . '
-				</td>
-				<td>
-				<a href="'
-                  . XOOPS_URL
-                  . '/modules/xquiz/admin/index.php?op=Category&act=del&Id='
-                  . $key['cid']
-                  . '">
-				'
-                  . $delImage
-                  . '
-				</a>
-				<a href="'
-                  . XOOPS_URL
-                  . '/modules/xquiz/admin/index.php?op=Category&act=edit&Id='
-                  . $key['cid']
-                  . '">
-				'
-                  . $editImage
-                  . '
-				</td>
-				</tr>';
-    }
-
-    $temp .= '</table></div>';
-    echo $temp;
-
-    $nav = new XoopsPageNav($nume, $limit, $start, 'start', 'op=Category');
-    echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
-}
-
-function CategoryForm($op = 'add', $eId = 0)
-{
-    global $xoopsDB, $xoopsModule, $xoopsModuleConfig;
-    $xt               = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
-    $myts             = MyTextSanitizer::getInstance();
-    $maxuploadsize    = $xoopsModuleConfig['maxuploadsize'];
-    $addCategory_form = new XoopsThemeForm(
-        _AM_XQUIZ_NEW_CATEGORY, 'addcategoyfrom', XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true
-    );
-    $addCategory_form->setExtra('enctype="multipart/form-data"');
-    // Permissions
-    $memberHandler = xoops_getHandler('member');
-    $group_list     = $memberHandler->getGroupList();
-    $grouppermHandler  = xoops_getHandler('groupperm');
-    $full_list      = array_keys($group_list);
-    ////////////////
-    if ('edit' == $op) {
-        $category           = $xt->getCategory($eId);
-        $category_id_v      = $eId;
-        $category_title_v   = htmlspecialchars($category[0]['title']);
-        $category_desc_v    = htmlspecialchars($category[0]['description']);
-        $parent             = $xt->getAllParentId($category_id_v);
-        $category_parent_id = (!empty($parent)) ? $parent[0] : 0;
-        $category_weight_v  = $category[0]['weight'];
-        $topicimage         = htmlspecialchars($category[0]['imgurl']);
-
-        $groups_ids                    = $grouppermHandler->getGroupIds('quiz_view', $category_id_v, $xoopsModule->getVar('mid'));
-        $groups_ids                    = array_values($groups_ids);
-        $groups_quiz_can_view_checkbox = new XoopsFormCheckBox(_AM_XQUIZ_VIEWFORM, 'groups_quiz_can_view[]', $groups_ids);
-
-        $category_id = new XoopsFormHidden('cateId', $category_id_v);
-        $addCategory_form->addElement($category_id);
-        $submit_button = new XoopsFormButton('', 'editCateSubmit', _AM_XQUIZ_SUBMIT, 'submit');
-    } elseif ('add' == $op) {
-        $category_title_v              = '';
-        $category_desc_v               = '';
-        $category_parent_id            = 0;
-        $category_weight_v             = 0;
-        $topicimage                    = 'blank.png';
-        $groups_quiz_can_view_checkbox = new XoopsFormCheckBox(_AM_XQUIZ_VIEWFORM, 'groups_quiz_can_view[]', $full_list);
-        $submit_button                 = new XoopsFormButton('', 'addCateSubmit', _AM_XQUIZ_SUBMIT, 'submit');
-    }
-
-    $category_title = new XoopsFormText(_AM_XQUIZ_CATEGORY_TITLE, 'cateTitle', 50, 100, $category_title_v);
-    ob_start();
-    $xt->makeMySelBox('title', 'cid', $category_parent_id, 1, 'cateParent');
-    $category_parent = new XoopsFormLabel(_AM_XQUIZ_CATEGORY_PARENT, ob_get_contents());
-    ob_end_clean();
-    //$category_description = new XoopsFormDhtmlTextArea(_AM_XQUIZ_CATEGORY_DESC, "cateDesc", $category_desc_v);
-
-    $options_tray = new XoopsFormElementTray(_AM_XQUIZ_CATEGORY_DESC, '<br>');
-    if (class_exists('XoopsFormEditor')) {
-        $options['name']   = 'cateDesc';
-        $options['value']  = $category_desc_v;
-        $options['rows']   = 25;
-        $options['cols']   = '100%';
-        $options['width']  = '100%';
-        $options['height'] = '600px';
-        $contents_contents = new XoopsFormEditor('', $xoopsModuleConfig['use_wysiwyg'], $options, $nohtml = false, $onfailure = 'textarea');
-        $options_tray->addElement($contents_contents);
-    } else {
-        $contents_contents = new XoopsFormDhtmlTextArea('', 'cateDesc', $category_desc_v);
-        $options_tray->addElement($contents_contents);
-    }
-
-    $category_weight = new XoopsFormText(_AM_XQUIZ_CATEGORY_WEIGHT, 'cateWeight', 5, 3, $category_weight_v);
-    // $category_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
-
-    $uploadirectory = 'uploads/' . $xoopsModule->dirname() . '/category';
-    $imgtray        = new XoopsFormElementTray(_AM_XQUIZ_CATEGORYIMG, '<br>');
-
-    $imgpath      = sprintf(_AM_XQUIZ_UPLOADEDIMG, 'uploads/' . $xoopsModule->dirname() . '/category/');
-    $imageselect  = new XoopsFormSelect($imgpath, 'topic_imgurl', $topicimage);
-    $topics_array = XoopsLists:: getImgListAsArray(XOOPS_ROOT_PATH . '/uploads/xquiz/category/');
-    foreach ($topics_array as $image) {
-        $imageselect->addOption((string)$image, $image);
-    }
-    $imageselect->setExtra("onchange='showImgSelected(\"image3\", \"topic_imgurl\", \"" . $uploadirectory . '", "", "' . XOOPS_URL . "\")'");
-    $imgtray->addElement($imageselect, false);
-    $imgtray->addElement(new XoopsFormLabel('', "<br><img src='" . XOOPS_URL . '/' . $uploadirectory . '/' . $topicimage . "' name='image3' id='image3' alt=''>"));
-
-    $uploadfolder = sprintf(_AM_XQUIZ_UPLOAD_WARNING, XOOPS_URL . '/uploads/' . $xoopsModule->dirname() . '/category');
-    $fileseltray  = new XoopsFormElementTray('', '<br>');
-    $fileseltray->addElement(new XoopsFormFile(_AM_XQUIZ_CATEGORY_PICTURE, 'attachedfile', $maxuploadsize), false);
-    $fileseltray->addElement(new XoopsFormLabel($uploadfolder), false);
-    $imgtray->addElement($fileseltray);
-
-    $button_tray = new XoopsFormElementTray('', '');
-    $button_tray->addElement($submit_button);
-
-    $addCategory_form->addElement($category_title, true);
-    $addCategory_form->addElement($category_parent, true);
-    $addCategory_form->addElement($options_tray);
-    $addCategory_form->addElement($imgtray);
-    $addCategory_form->addElement($category_weight, true);
-    $groups_quiz_can_view_checkbox->addOptionArray($group_list);
-    $addCategory_form->addElement($groups_quiz_can_view_checkbox);
-    //$addCategory_form->addElement($category_token, true);
-    $addCategory_form->addElement($button_tray);
-
-    quiz_collapsableBar('newquiz', 'topnewquiz');
-    echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
-		 	</a>&nbsp;" . _AM_XQUIZ_CATEGORY_NEW . "</h4><br>
-				<div id='newquiz' style='text-align: center;'>";
-    $addCategory_form->display();
-    echo '</div>';
-}
-
-#region create confirm form for delete question
-function confirmForm($id)
-{
-    $delCategory_form = new XoopsThemeForm(
-        _AM_XQUIZ_DELCATEGORY_FORM, 'delcategoryfrom', XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true
-    );
-    $category_id      = new XoopsFormHidden('categoryId', $id);
-    $category_confirm = new XoopsFormRadioYN(_AM_XQUIZ_DELETE_CAPTION, 'delConfirm', 0);
-    $submit_button    = new XoopsFormButton('', 'delCateSubmit', _AM_XQUIZ_SUBMIT, 'submit');
-    //$category_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
-
-    $delCategory_form->addElement($category_id);
-    //$delCategory_form->addElement($category_token, true);
-    $delCategory_form->addElement($category_confirm, true);
-    $delCategory_form->addElement($submit_button);
-
-    quiz_collapsableBar('newquiz', 'topnewquiz');
-    echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
-				 	</a>&nbsp;" . _AM_XQUIZ_DELETE . "</h4><br>
-						<div id='newquiz' style='text-align: center;'>";
-    $delCategory_form->display();
-    echo '</div>';
-}
-#end region

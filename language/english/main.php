@@ -11,7 +11,7 @@ define('_MD_XQUIZ_USER_ANSWER', 'User ansewer');
 define('_MD_XQUIZ_AC_COPYRIGHT', 'M-Jamali');
 define('_MD_XQUIZ_QUEST_TOTAL', 'Total Question');
 define('_MD_XQUIZ_QUEST_SCORE', 'Score');
-define('_MD_XQUIZ_QUEST_MARKS', 'marks');
+define('_MD_XQUIZ_QUEST_MARKS', 'point(s)');
 define('_MD_XQUIZ_QUEST_DESC', 'Questions text');
 define('_MD_XQUIZ_QUEST_SUBMIT', 'Submit');
 define('_MD_XQUIZ_QUEST_DUPLICATE_ERROR', 'A question with such title has been selected before,please select another title.');

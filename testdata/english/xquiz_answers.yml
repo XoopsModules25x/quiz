@@ -1,0 +1,70 @@
+-
+    answer_id: '15'
+    question_id: '1'
+    is_correct: '0'
+    answer: Berlin
+-
+    answer_id: '14'
+    question_id: '1'
+    is_correct: '1'
+    answer: Paris
+-
+    answer_id: '13'
+    question_id: '1'
+    is_correct: '0'
+    answer: London
+-
+    answer_id: '12'
+    question_id: '1'
+    is_correct: '0'
+    answer: Tokyo
+-
+    answer_id: '8'
+    question_id: '2'
+    is_correct: '0'
+    answer: Beijing
+-
+    answer_id: '9'
+    question_id: '2'
+    is_correct: '1'
+    answer: Tokyo
+-
+    answer_id: '10'
+    question_id: '2'
+    is_correct: '0'
+    answer: Paris
+-
+    answer_id: '11'
+    question_id: '2'
+    is_correct: '0'
+    answer: Singapore
+-
+    answer_id: '16'
+    question_id: '3'
+    is_correct: '0'
+    answer: 'Fill in the blanks'
+-
+    answer_id: '17'
+    question_id: '4'
+    is_correct: '0'
+    answer: English
+-
+    answer_id: '18'
+    question_id: '4'
+    is_correct: '1'
+    answer: French
+-
+    answer_id: '19'
+    question_id: '4'
+    is_correct: '1'
+    answer: German
+-
+    answer_id: '20'
+    question_id: '4'
+    is_correct: '0'
+    answer: Russian
+-
+    answer_id: '21'
+    question_id: '4'
+    is_correct: '1'
+    answer: Italian

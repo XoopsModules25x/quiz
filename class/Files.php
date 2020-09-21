@@ -1,4 +1,7 @@
 <?php
+
+namespace XoopsModules\Xquiz;
+
 // $Id: class.sfiles.php,v 1.10 2004/09/02 17:04:08 hthouzard Exp $
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -28,9 +31,14 @@ if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
 }
 
-require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.mimetype.php';
+use XoopsModules\Xquiz\{
+    Helper,
+    Mimetype,
+    Quiz,
+    Question
+};
 
-class sFiles
+class Files
 {
     public $db;
     public $table;
@@ -44,7 +52,7 @@ class sFiles
 
     public function __construct($fileid = -1)
     {
-        $this->db           = XoopsDatabaseFactory::getDatabaseConnection();
+        $this->db           = \XoopsDatabaseFactory::getDatabaseConnection();
         $this->table        = $this->db->prefix('stories_files');
         $this->storyid      = 0;
         $this->filerealname = '';
@@ -73,7 +81,7 @@ class sFiles
             $ipbits = explode('.', $_SERVER['REMOTE_ADDR']);
             [$usec, $sec] = explode(' ', microtime());
 
-            $usec = (integer)($usec * 65536);
+            $usec = ($usec * 65536);
             $sec  = ((integer)$sec) & 0xFFFF;
 
             if ($trimname) {
@@ -90,7 +98,7 @@ class sFiles
 
     public function giveMimetype($filename = '')
     {
-        $cmimetype   = new cmimetype();
+        $cmimetype   = new Mimetype();
         $workingfile = $this->downloadname;
         if ('' != xoops_trim($filename)) {
             $workingfile = $filename;
@@ -106,7 +114,7 @@ class sFiles
         $sql    = 'SELECT * FROM ' . $this->table . ' WHERE storyid=' . (int)$storyid;
         $result = $this->db->query($sql);
         while (false !== ($myrow = $this->db->fetchArray($result))) {
-            $ret[] = new sFiles($myrow);
+            $ret[] = new Files($myrow);
         }
         return $ret;
     }
@@ -127,7 +135,7 @@ class sFiles
 
     public function store()
     {
-        $myts         = MyTextSanitizer::getInstance();
+        $myts         = \MyTextSanitizer::getInstance();
         $fileRealName = $myts->addSlashes($this->filerealname);
         $downloadname = $myts->addSlashes($this->downloadname);
         $date         = time();
@@ -217,23 +225,23 @@ class sFiles
 
     public function getFileRealName($format = 'S')
     {
-        $myts = MyTextSanitizer::getInstance();
+        $myts = \MyTextSanitizer::getInstance();
         switch ($format) {
             case 'S':
             case 'Show':
-                $filerealname = htmlspecialchars($this->filerealname);
+                $filerealname = htmlspecialchars($this->filerealname, ENT_QUOTES | ENT_HTML5);
                 break;
             case 'E':
             case 'Edit':
-                $filerealname = htmlspecialchars($this->filerealname);
+                $filerealname = htmlspecialchars($this->filerealname, ENT_QUOTES | ENT_HTML5);
                 break;
             case 'P':
             case 'Preview':
-                $filerealname = htmlspecialchars($myts->stripSlashesGPC($this->filerealname));
+                $filerealname = htmlspecialchars($myts->stripSlashesGPC($this->filerealname), ENT_QUOTES | ENT_HTML5);
                 break;
             case 'F':
             case 'InForm':
-                $filerealname = htmlspecialchars($myts->stripSlashesGPC($this->filerealname));
+                $filerealname = htmlspecialchars($myts->stripSlashesGPC($this->filerealname), ENT_QUOTES | ENT_HTML5);
                 break;
         }
         return $filerealname;
@@ -241,23 +249,23 @@ class sFiles
 
     public function getMimetype($format = 'S')
     {
-        $myts = MyTextSanitizer::getInstance();
+        $myts = \MyTextSanitizer::getInstance();
         switch ($format) {
             case 'S':
             case 'Show':
-                $filemimetype = htmlspecialchars($this->mimetype);
+                $filemimetype = htmlspecialchars($this->mimetype, ENT_QUOTES | ENT_HTML5);
                 break;
             case 'E':
             case 'Edit':
-                $filemimetype = htmlspecialchars($this->mimetype);
+                $filemimetype = htmlspecialchars($this->mimetype, ENT_QUOTES | ENT_HTML5);
                 break;
             case 'P':
             case 'Preview':
-                $filemimetype = htmlspecialchars($myts->stripSlashesGPC($this->mimetype));
+                $filemimetype = htmlspecialchars($myts->stripSlashesGPC($this->mimetype), ENT_QUOTES | ENT_HTML5);
                 break;
             case 'F':
             case 'InForm':
-                $filemimetype = htmlspecialchars($myts->stripSlashesGPC($this->mimetype));
+                $filemimetype = htmlspecialchars($myts->stripSlashesGPC($this->mimetype), ENT_QUOTES | ENT_HTML5);
                 break;
         }
         return $filemimetype;
@@ -265,23 +273,23 @@ class sFiles
 
     public function getDownloadname($format = 'S')
     {
-        $myts = MyTextSanitizer::getInstance();
+        $myts = \MyTextSanitizer::getInstance();
         switch ($format) {
             case 'S':
             case 'Show':
-                $filedownname = htmlspecialchars($this->downloadname);
+                $filedownname = htmlspecialchars($this->downloadname, ENT_QUOTES | ENT_HTML5);
                 break;
             case 'E':
             case 'Edit':
-                $filedownname = htmlspecialchars($this->downloadname);
+                $filedownname = htmlspecialchars($this->downloadname, ENT_QUOTES | ENT_HTML5);
                 break;
             case 'P':
             case 'Preview':
-                $filedownname = htmlspecialchars($myts->stripSlashesGPC($this->downloadname));
+                $filedownname = htmlspecialchars($myts->stripSlashesGPC($this->downloadname), ENT_QUOTES | ENT_HTML5);
                 break;
             case 'F':
             case 'InForm':
-                $filedownname = htmlspecialchars($myts->stripSlashesGPC($this->downloadname));
+                $filedownname = htmlspecialchars($myts->stripSlashesGPC($this->downloadname), ENT_QUOTES | ENT_HTML5);
                 break;
         }
         return $filedownname;

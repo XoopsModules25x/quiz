@@ -1,4 +1,7 @@
 <?php
+
+namespace XoopsModules\Xquiz;
+
 /**
  * Copyright (C) 2002 Jason Sheets <jsheets@shadonet.com>.
  * All rights reserved.
@@ -70,7 +73,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
 }
 
-class cmimetype
+class Mimetype
 {
     public function getType($filename)
     {

@@ -134,3 +134,13 @@ define('_AM_XQUIZ_STARTDATE', 'Start Date');
 define('_AM_XQUIZ_ENDDATE', 'End Date');
 define('_AM_XQUIZ_TAKEQUIZ', 'Take Quiz');
 define('_AM_XQUIZ_DATETAKEN', 'Date Taken');
+
+//Index
+define('AM_QUIZ_STATISTICS', 'Quiz statistics');
+define('AM_QUIZ_THEREARE_QUESTION', "There are <span class='bold'>%s</span> Question in the database");
+define('AM_QUIZ_THEREARE_QUIZ', "There are <span class='bold'>%s</span> Quiz in the database");
+define('AM_QUIZ_THEREARE_CATEGORY', "There are <span class='bold'>%s</span> Category in the database");
+define('AM_QUIZ_THEREARE_USERS', "There are <span class='bold'>%s</span> Users in the database");
+define('AM_QUIZ_THEREARE_QUESTIONUSER', "There are <span class='bold'>%s</span> QuestionUser in the database");
+define('AM_QUIZ_THEREARE_QUESTIONS', "There are <span class='bold'>%s</span> Questions in the database");
+define('AM_QUIZ_THEREARE_ANSWERS', "There are <span class='bold'>%s</span> Answers in the database");

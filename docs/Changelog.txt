@@ -1,30 +1,30 @@
-== Version 2.0 Pre Alpha  ==
-
-
-Add and Update Language definitions (liomj)
-Add oninstall script (liomj)
-Update admin menu (liomj)
-Replaced Deprecated ereg (liomj)
-Replaced Deprecated class xoopsmodule (liomj)
-Update frontend and admin layout (liomj)
-Update Language Files (liomj)
-Update table.js (liomj)
-Fixed redirection afer add and edit (liomj)
-Rename database tables (liomj)
-Move Images folder to assets (liomj)
-Change Html to tpl template (liomj)
-Fixed question link in index template (liomj)
-Fixed Only variables should be assigned by reference (liomj)
-Fixed Call to a member function getVar() on bool (liomj)
-Fixed class path(liomj)
-Remove pass-by-reference instances (mamba)
+<h5>2.00 Alpha 1   [WORK IN PROGRESS - NOT RELEASED]</h5>  Dev: XOOPS 2.5.11, PHP 7.4.10, PHP 8.0 Beta 4
+<hr>
+- Add and Update Language definitions (liomj)
+- Add oninstall script (liomj)
+- Update admin menu (liomj)
+- Replaced Deprecated ereg (liomj)
+- Replaced Deprecated class xoopsmodule (liomj)
+- Update frontend and admin layout (liomj)
+- Update Language Files (liomj)
+- Update table.js (liomj)
+- Fixed redirection afer add and edit (liomj)
+- Rename database tables (liomj)
+- Move Images folder to assets (liomj)
+- Change Html to tpl template (liomj)
+- Fixed question link in index template (liomj)
+- Fixed Only variables should be assigned by reference (liomj)
+- Fixed Call to a member function getVar() on bool (liomj)
+- Fixed class path(liomj)
+- Remove pass-by-reference instances (mamba)
 
 
 == Version 1.0 Final ==
-Add date format manully in module setting
-Add export result of quizzes to csv file
-Fixed bug send email via getmailer function
-Fixed bug edit question with same description
+<h5>1.00 Final   </h5>
+- Add date format manully in module setting (Mojtaba Jamali)
+- Add export result of quizzes to csv file (Mojtaba Jamali)
+- Fixed bug send email via getmailer function (Mojtaba Jamali)
+- Fixed bug edit question with same description (Mojtaba Jamali)
 
-== Version 1.0 Beta ==
-First public release
+<h5>1.00 Beta    </h5>
+- First public release (Mojtaba Jamali)

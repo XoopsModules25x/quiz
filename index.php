@@ -1,5 +1,4 @@
 <?php
-
 /**
  * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
@@ -12,42 +11,54 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright          XOOPS Project (https://xoops.org)
- * @license            http://www.fsf.org/copyleft/gpl.html GNU public license
- * @package            xquiz
- * @author             Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version            $Id$
+ * @copyright   	XOOPS Project (https://xoops.org)
+ * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package         xquiz
+ * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version      	$Id$
  *
  * Version : $Id:
  * ****************************************************************************
  */
+
+use Xmf\Module\Admin;
+use XoopsModules\Xquiz\{
+    Category,
+    Helper,
+    Quiz,
+    Questions,
+    Utility
+};
+///** @var Quiz $quiz */
+/** @var Helper $helper */
+
 require dirname(__DIR__, 2) . '/mainfile.php';
 $GLOBALS['xoopsOption']['template_main'] = 'xquiz_index.tpl';
 require XOOPS_ROOT_PATH . '/header.php';
 require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-require_once XOOPS_ROOT_PATH . '/modules/xquiz/include/functions.php';
-require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
-require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
-require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/questions.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/include/common.php';
+//require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
+//require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
+//require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/Questions.php';
 
 try {
     $action = $_GET ['act'] ?? '';
     if (isset($_GET ['q'])) {
-        if (!is_numeric($_GET ['q'])) {
+        if (! is_numeric($_GET ['q'])) {
             throw new Exception(_MD_XQUIZ_NUMBER_ERROR);
         }
         $id = $_GET ['q'];
     }
     if (isset($_GET ['qi'])) {
-        if (!is_numeric($_GET ['qi'])) {
+        if (! is_numeric($_GET ['qi'])) {
             throw new Exception(_MD_XQUIZ_NUMBER_ERROR);
         }
         $pdid = $_GET ['qi'];
     }
     $start = 0;
     if (isset($_GET ['start'])) {
-        if (!is_numeric($_GET ['start'])) {
+        if (! is_numeric($_GET ['start'])) {
             throw new Exception(_MD_XQUIZ_QUEST_SECURITY_ERROR);
         }
         $start = $_GET ['start'];
@@ -57,13 +68,13 @@ try {
     switch ($action) {
         case 'v':
             if (isset($id)) {
-                if (!Quiz::quiz_checkExistQuiz($id)) {
+                if (! Quiz::quiz_checkExistQuiz($id)) {
                     throw new Exception(_MD_XQUIZ_NOT_EXIST);
                 }
-                if (!Quiz::quiz_checkActiveQuiz($id)) {
+                if (! Quiz::quiz_checkActiveQuiz($id)) {
                     throw new Exception(_MD_XQUIZ_NOT_STARTED);
                 }
-                if (!Quiz::quiz_checkExpireQuiz($id)) {
+                if (! Quiz::quiz_checkExpireQuiz($id)) {
                     throw new Exception(_MD_XQUIZ_EXPIRE);
                 }
                 if (empty($xoopsUser)) {
@@ -71,7 +82,7 @@ try {
                 }
 
                 $perm_name = 'quiz_view';
-                $cid       = Quiz::quiz_quizCategory($id);
+                $cid = Quiz::quizCategory($id);
                 if ($xoopsUser) {
                     $groups = $xoopsUser->getGroups();
                 } else {
@@ -88,8 +99,8 @@ try {
                 $xoopsTpl->assign('quizName', $qname ['name']);
                 $xoopsTpl->assign('quizDescription', $ts->previewTarea($qname ['description'], 1, 1, 1, 1, 1));
 
-                $xoopsTpl->assign('quizCategoryId', $qname ['cid']);
-                $xoopsTpl->assign('quizCategory', $qname ['category']);
+                $xoopsTpl->assign('CategoryId', $qname ['cid']);
+                $xoopsTpl->assign('Category', $qname ['category']);
                 /////////////////////////////////////////////////////////////
                 /*
                  $listQuestion = Question::listQuestLoader ( $id );
@@ -114,13 +125,13 @@ try {
                     $listQuest_form->addElement ( $quiz_token, true );
                     $listQuest_form->assign ( $xoopsTpl );*/
                 //////////////////////////////////////////////////////////////
-                $listQuestions = questions::listQuestLoader($id);
+                $listQuestions = Questions::listQuestLoader($id);
                 if (empty($listQuestions)) {
                     throw new Exception(_MD_XQUIZ_NO_QUESTION);
                 }
-                $q              = 0;
+                $q = 0;
                 $listQuest_form = new XoopsThemeForm(_MD_XQUIZ_QUEST_LISTQESTFORM, 'listquestfrom', $_SERVER ['PHP_SELF'], 'post', true);
-                $quizId         = new XoopsFormHidden('quizId', $id);
+                $quizId = new XoopsFormHidden('quizId', $id);
                 foreach ($listQuestions as $key) {
                     switch ($key ['question_type']) {
                         case 'MC':
@@ -145,21 +156,21 @@ try {
                             $question_answers [$q] = new XoopsFormElementTray(
                                 '<b>' . $key ['qnumber'] . '.&nbsp;' . $ts->previewTarea($key ['question'] . '</b>', 1, 1, 1, 1, 1) . "<span class='btn btn-primary btn-sm pull-right'>" . $key ['score'] . ' ' . _MD_XQUIZ_QUEST_MARKS . '</span>', '', "questAns[$q]"
                             );
-                            $ansBox                = [];
-                            $tmp                   = 0;
+                            $ansBox = [];
+                            $tmp = 0;
                             foreach ($key ['answer'] as $ans) {
                                 $ansBox [$tmp] = new XoopsFormText($ans ['answer'], "questAns[$q][" . $ans ['answer_id'] . ']', 15, 30);
                                 $question_answers [$q]->addElement($ansBox [$tmp]);
-                                $tmp++;
+                                $tmp ++;
                             }
                             break;
                     }
-                    $questId[$q]   = new XoopsFormHidden("questId[$q]", $key['question_id']);
+                    $questId[$q] = new XoopsFormHidden("questId[$q]", $key['question_id']);
                     $questType[$q] = new XoopsFormHidden("questType[$q]", $key['question_type']);
                     $listQuest_form->addElement($questId [$q], true);
                     $listQuest_form->addElement($questType [$q], true);
                     $listQuest_form->addElement($question_answers [$q], true);
-                    $q++;
+                    $q ++;
                 }
                 //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS ['xoopsSecurity']->createToken());
                 $submit_button = new XoopsFormButton('', 'submit', _MD_XQUIZ_QUEST_SUBMIT, 'submit');
@@ -167,13 +178,14 @@ try {
                 $listQuest_form->addElement($quizId, true);
                 //$listQuest_form->addElement($quiz_token, true);
                 $listQuest_form->assign($xoopsTpl);
+
                 /////////////////////////////////////////////////////////////////////////////////////////
             }
             break;
 
         case 's':
             $perm_name = 'quiz_view';
-            $cid       = Quiz::quiz_quizCategory($id);
+            $cid = Quiz::quiz_Category($id);
             if ($xoopsUser) {
                 $groups = $xoopsUser->getGroups();
             } else {
@@ -184,10 +196,10 @@ try {
                 throw new Exception(_MD_XQUIZ_PERMISSION);
             }
 
-            if (!Quiz::quiz_checkExistQuiz($id)) {
+            if (! Quiz::quiz_checkExistQuiz($id)) {
                 throw new Exception(_MD_XQUIZ_NOT_EXIST);
             }
-            if (empty($xoopsUser) && (!$xoopsModuleConfig ['seeStat'])) {
+            if (empty($xoopsUser) && (! $xoopsModuleConfig ['seeStat'])) {
                 throw new Exception(_MD_XQUIZ_REGISTER_STAT);
             }
 
@@ -196,7 +208,7 @@ try {
             }
 
             $perm_name = 'quiz_view';
-            $cid       = Quiz::quiz_quizCategory($id);
+            $cid = Quiz::quiz_Category($id);
             if ($xoopsUser) {
                 $groups = $xoopsUser->getGroups();
             } else {
@@ -211,35 +223,35 @@ try {
             $qname = Quiz::quiz_quizName($id);
             $xoopsTpl->assign('quizName', $qname ['name']);
             $xoopsTpl->assign('quizDescription', $qname ['description']);
-            $xoopsTpl->assign('quizCategoryId', $qname ['cid']);
-            $xoopsTpl->assign('quizCategory', $qname ['category']);
+            $xoopsTpl->assign('CategoryId', $qname ['cid']);
+            $xoopsTpl->assign('Category', $qname ['category']);
 
-            $eu   = ($start - 0);
-            $nume = numUserScore($id);
+            $eu = ($start - 0);
+            $nume = Utility::numUserScore($id);
             ////////////////////////////////////////
             $listQuiz = [];
             global $xoopsModuleConfig;
             $dateformat = $xoopsModuleConfig ['dateformat'];
-            $q          = 1;
-            $query      = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limit);
+            $q = 1;
+            $query = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limit);
             while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
-                $listQuiz [$q] ['id']     = $myrow ['id'];
+                $listQuiz [$q] ['id'] = $myrow ['id'];
                 $listQuiz [$q] ['userid'] = $myrow ['userid'];
 
                 $thisUser = $memberHandler->getUser($myrow ['userid']);
 
                 $listQuiz [$q] ['uname'] = $thisUser->getVar('uname');
-                $listQuiz [$q] ['name']  = $thisUser->getVar('name');
+                $listQuiz [$q] ['name'] = $thisUser->getVar('name');
                 $listQuiz [$q] ['score'] = $myrow ['score'];
-                $listQuiz [$q] ['date']  = formatTimestamp(strtotime($myrow ['date']), $dateformat);
-                $q++;
+                $listQuiz [$q] ['date'] = formatTimestamp(strtotime($myrow ['date']), $dateformat);
+                $q ++;
             }
             ////////////////////////////////////////
             $xoopsTpl->assign('quizStat', $listQuiz);
             $nav = new XoopsPageNav($nume, $limit, $start, 'start', "act=s&q=$id");
             echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
             break;
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 'p':
             if (empty($xoopsUser)) {
                 throw new Exception(_MD_XQUIZ_USER_PROFILE);
@@ -259,19 +271,20 @@ try {
                 $xoopsTpl->assign('quizProfileConfig', $xoopsModuleConfig ['seeScoreProfile']);
             }
             break;
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
         default:
             $cid = 0;
             if (isset($_GET ['cid']) && is_numeric($_GET ['cid'])) {
                 $cid = $_GET ['cid'];
             }
-            if ((!QuizCategory::checkExistCategory($cid)) && 0 != $cid) {
+            if ((! Category::checkExistCategory($cid)) && 0 != $cid) {
                 throw new Exception(_MD_XQUIZ_NOT_EXIST);
             }
-            $xt = new QuizCategory($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
+            $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
 
-            $parentId = -1;
+            $parentId = - 1;
             if ($cid > 0) {
                 $parentId = $xt->categoryPid($cid);
             }
@@ -287,7 +300,7 @@ try {
             $count = 0;
             foreach ($listQuiz as $key) {
                 if (1 == $key ['status']) {
-                    $count++;
+                    $count ++;
                 }
             }
             $nav = new XoopsPageNav($count, $limit, $start, 'start', "?cid=$cid");
@@ -297,6 +310,7 @@ try {
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if (isset($_POST ['submit'])) {
+
         //if (! $GLOBALS ['xoopsSecurity']->check ())
         //throw new Exception ( _MD_XQUIZ_QUEST_SECURITY_ERROR );
 
@@ -312,13 +326,13 @@ try {
             throw new Exception(_MD_XQUIZ_DUPLICATE_QUIZ);
         }
 
-        $listQuestion = questions::listQuestLoader($quizId);
-        $userScore    = 0;
+        $listQuestion = Questions::listQuestLoader($quizId);
+        $userScore = 0;
 
         echo 'Post1<pre>';
         print_r($_POST);
         echo '</pre>//////////////////////////////////';
-
+        
         $blankAns = array_keys($_POST['questType'], 'MC');
         foreach ($blankAns as $bKeys) {
             if (!isset($_POST['questAns'][$bKeys])) {
@@ -336,19 +350,19 @@ try {
         echo 'Post2<pre>';
         print_r($_POST);
         echo '</pre>//////////////////////////////////';
-
+            
         echo '<pre>';
         print_r($postAns);
         echo '</pre>';
 
         $sumScore = 0;
         foreach ($postAns as $key) {
-            $id   = $key[0];
+            $id = $key[0];
             $type = $key[1];
-            $ans  = $key[2];
+            $ans = $key[2];
 
-            $questObj = new questions();
-            $questObj->retriveQuestion($id);
+            $questObj = new Questions();
+            $questObj->retrieveQuestion($id);
             if ($type != $questObj->getType()) {
                 throw new Exception(_MD_XQUIZ_QUEST_SECURITY_ERROR);
             }
@@ -368,7 +382,7 @@ try {
                     }
                     $sumScore += $score;
                     break;
-                /////////////////////Check Multi choise answers///////////////
+                    /////////////////////Check Multi choise answers///////////////
                 /*case 'MC':
                     $score = 0;
                     foreach ($questObj->getAnswers() as $Corrects)
@@ -381,7 +395,7 @@ try {
                     }
                     $sumScore += $score;
                     break;*/
-                /////////////////////Check Choose one or more answers///////////////
+                    /////////////////////Check Choose one or more answers///////////////
                 /*case 'CM':
                     $score = $questObj->getScore();
                     //$corr = $questObj->getAnswers() ;
@@ -394,31 +408,31 @@ try {
 
                      }
                      */
-                /*
-                $cAns = array();
-                $j = 0;
-                foreach ($questObj->getAnswers() as $Corrects)
-                {
-                    if ( $Corrects->getIs_correct() == 1 )
+                    /*
+                    $cAns = array();
+                    $j = 0;
+                    foreach ($questObj->getAnswers() as $Corrects)
                     {
-                        $cAns[$j] = $Corrects->getAid();
-                        $j++;
+                        if ( $Corrects->getIs_correct() == 1 )
+                        {
+                            $cAns[$j] = $Corrects->getAid();
+                            $j++;
+                        }
                     }
-                }
-                if (is_array($ans))
-                {
-                    $res = array_diff($ans,$cAns);
-                }
+                    if (is_array($ans))
+                    {
+                        $res = array_diff($ans,$cAns);
+                    }
                 echo count($ans) ." And ".count($cAns)."|<br>";
-                echo "Ans Is <pre>";
-                print_r($ans);
+                    echo "Ans Is <pre>";
+                    print_r($ans);
                 echo "</pre><br>";
-                echo "cAns is:<pre>";
-                print_r($cAns);
-                echo "</pre>";
-                if((count($ans)== count($cAns)) && (empty($res)))
-                $sumScore += $score;
-                break;*/
+                    echo "cAns is:<pre>";
+                    print_r($cAns);
+                    echo "</pre>";
+                    if((count($ans)== count($cAns)) && (empty($res)))
+                    $sumScore += $score;
+                    break;*/
             }
             echo "<br>Sum of Score :$sumScore ";
             /*$date = date ( DATE_ATOM );
@@ -434,6 +448,7 @@ try {
              $quizScore = "<br>" . _MD_XQUIZ_FINAL_SCORE . " = " . $sumScore;
              throw new Exception ( _MD_XQUIZ_ADD_SCORE . $quizScore );*/
         }
+
         /*if (! $GLOBALS ['xoopsSecurity']->check ())
             throw new Exception ( _MD_XQUIZ_QUEST_SECURITY_ERROR );
 

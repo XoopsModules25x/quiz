@@ -1,6 +1,8 @@
 <?php
 
-class answer
+namespace XoopsModules\Xquiz;
+
+class Answer
 {
     /**
      *

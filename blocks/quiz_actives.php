@@ -21,8 +21,12 @@
  * Version : $Id:
  * ****************************************************************************
  */
-require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
-require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/question.php';
+use XoopsModules\Xquiz\{
+    Files,
+    Helper,
+    Quiz,
+    Question
+};
 function quiz_listActiveQuizs($options)
 {
     $block = [];
