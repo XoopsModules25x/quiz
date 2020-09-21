@@ -53,7 +53,7 @@ class QuizCategory extends XoopsTree
     }
 
     /** Returns an array of first child objects for a given id($sel_id)
-     * @param integer $sel_id
+     * @param int    $sel_id
      * @param string $order Sort field for the list
      * @return array $arr
      */
@@ -64,9 +64,9 @@ class QuizCategory extends XoopsTree
     
 
     /** Returns an array of ALL parent ids for a given id($sel_id)
-     * @param integer $sel_id
+     * @param int    $sel_id
      * @param string $order
-     * @param array $idarray
+     * @param array  $idarray
      * @return array $idarray
      */
     public function getAllParentId($sel_id, $order='', $idarray = [])
@@ -77,7 +77,7 @@ class QuizCategory extends XoopsTree
             $sql .= ' ORDER BY '.$order;
         }
         $result=$this->db->query($sql);
-        list($r_id) = $this->db->fetchRow($result);
+        [$r_id] = $this->db->fetchRow($result);
         if (0 == $r_id) {
             return $idarray;
         }
@@ -89,12 +89,12 @@ class QuizCategory extends XoopsTree
     
 
     /** Makes a nicely ordered selection box
-    * @param string $title Field containing the items to display in the list
-    * @param string $order Sort order of the options
-    * @param integer $preset_id is used to specify a preselected item
-    * @param integer $none set to 1 to add an option with value 0
-    * @param string $sel_name Name of the select element
-    * @param string $onchange	Action to take when the selection is changed
+    * @param string $title     Field containing the items to display in the list
+    * @param string $order     Sort order of the options
+    * @param int    $preset_id is used to specify a preselected item
+    * @param int    $none      set to 1 to add an option with value 0
+    * @param string $sel_name  Name of the select element
+    * @param string $onchange  Action to take when the selection is changed
     */
     public function makeMySelBox($title, $order='', $preset_id=0, $none=0, $sel_name='', $onchange="", $se=0)
     {
@@ -137,9 +137,9 @@ class QuizCategory extends XoopsTree
     }
   
     /**
-     * @param integer $sel_id
+     * @param int    $sel_id
      * @param string $order
-     * @param array $parray
+     * @param array  $parray
      * @return array $parray
      */
     public function getAllChild($sel_id=0, $order='', $parray = [])
@@ -161,9 +161,9 @@ class QuizCategory extends XoopsTree
         return $parray;
     }
     /**
-     * @param integer $sel_id
+     * @param int    $sel_id
      * @param string $order
-     * @param array $parray
+     * @param array  $parray
      * @param string $r_prefix
      * @return array $parray
      */
