@@ -31,7 +31,7 @@ include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
 include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/questions.php';
 
 try {
-    $action = (isset($_GET ['act'])) ? $_GET ['act'] : '';
+    $action = $_GET ['act'] ?? '';
     if (isset($_GET ['q'])) {
         if (! is_numeric($_GET ['q'])) {
             throw new Exception(_MD_XQUIZ_NUMBER_ERROR);

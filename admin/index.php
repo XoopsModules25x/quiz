@@ -23,8 +23,8 @@
 include 'admin_header.php';
 xoops_cp_header();
 try {
-    $option = (isset($_GET ['op'])) ? $_GET ['op'] : '';
-    $action = (isset($_GET ['act'])) ? $_GET ['act'] : '';
+    $option = $_GET ['op'] ?? '';
+    $action = $_GET ['act'] ?? '';
     $answerType = (isset($_GET ['type'])) ? htmlentities(strtoupper($_GET ['type'])) : '';
     
     if (isset($_GET ['Id'])) {
@@ -370,11 +370,7 @@ try {
             if (! class_exists('XoopsTpl')) {
                 include_once XOOPS_ROOT_PATH . '/class/template.php';
             }
-            if (isset($xoopsTpl)) {
-                $tpl = & $xoopsTpl;
-            } else {
-                $tpl = new XoopsTpl();
-            }
+            $tpl = $xoopsTpl ?? new XoopsTpl();
             $tpl->assign('menu_css', $menu->getCSS());
             $tpl->assign('menu', $menu->render());
             $tpl->assign('quiz_version', sprintf(_AM_XQUIZ_VERSION, $xoopsModule->getInfo('version') . '(' . $xoopsModule->getInfo('status') . ')', $xoopsModule->getInfo('name')));

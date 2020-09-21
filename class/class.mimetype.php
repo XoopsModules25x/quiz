@@ -93,12 +93,7 @@ class cmimetype
         $mimetypes = $this->privBuildMimeArray();
 
         // return mime type for extension
-        if (isset($mimetypes[$ext])) {
-            return $mimetypes[$ext];
-            // if the extension wasn't found return octet-stream
-        } else {
-            return 'unknown';
-        }
+        return $mimetypes[$ext] ?? 'unknown';
     }
 
     public function privBuildMimeArray()
