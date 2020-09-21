@@ -57,17 +57,17 @@ CREATE TABLE xquiz_useranswers (
   PRIMARY KEY  (questId,quizId,userId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---CREATE TABLE xquiz_quizquestion (
---  id int(10) unsigned NOT NULL auto_increment,
---  qid int(10) unsigned NOT NULL,
---  question varchar(200) character set utf8 collate utf8_bin NOT NULL,
---  qnumber int(10) unsigned NOT NULL ,
---  score int(10) unsigned NOT NULL ,
---  ans1 varchar(200) character set utf8 collate utf8_bin default NULL,
---  ans2 varchar(200) character set utf8 collate utf8_bin default NULL,
---  ans3 varchar(200) character set utf8 collate utf8_bin default NULL,
---  ans4 varchar(200) character set utf8 collate utf8_bin default NULL,
---  answer enum('1','2','3','4') NOT NULL,
--- PRIMARY KEY  (id)
---) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
+CREATE TABLE xquiz_quizquestion (
+  id int(10) unsigned NOT NULL auto_increment,
+  qid int(10) unsigned NOT NULL,
+  question varchar(200) character set utf8 collate utf8_bin NOT NULL,
+  qnumber int(10) unsigned NOT NULL ,
+  score int(10) unsigned NOT NULL ,
+  ans1 varchar(200) character set utf8 collate utf8_bin default NULL,
+  ans2 varchar(200) character set utf8 collate utf8_bin default NULL,
+  ans3 varchar(200) character set utf8 collate utf8_bin default NULL,
+  ans4 varchar(200) character set utf8 collate utf8_bin default NULL,
+  answer enum('1','2','3','4') NOT NULL,
+ PRIMARY KEY  (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
