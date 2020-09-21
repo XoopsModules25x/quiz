@@ -181,7 +181,7 @@ try {
             } else {
                 $groups = XOOPS_GROUP_ANONYMOUS;
             }
-            $gperm_handler = & xoops_getHandler('groupperm');
+            $gperm_handler = xoops_getHandler('groupperm');
             if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                 throw new Exception(_MD_XQUIZ_PERMISSION);
             }
