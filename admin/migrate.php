@@ -54,10 +54,8 @@ EOF;
 
 //XoopsLoad::load('migrate', 'newbb');
 
-/** @var Xquiz\Common\Configurator $configurator */
 $configurator = new Xquiz\Common\Configurator();
 
-/** @var \XoopsModules\Xquiz\Common\Migrate $migrator */
 $migrator = new Migrate($configurator);
 
 $op = Request::getCmd('op', 'show');
