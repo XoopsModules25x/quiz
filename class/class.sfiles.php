@@ -54,7 +54,7 @@ class sFiles
         $this->counter = 0;
         if (is_array($fileid)) {
             $this->makeFile($fileid);
-        } elseif ($fileid != -1) {
+        } elseif (-1 != $fileid) {
             $this->getFile(intval($fileid));
         }
     }

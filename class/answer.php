@@ -95,7 +95,7 @@ class answer
      */
     public function addAnswer()
     {
-		if ($this->is_correct==''){
+		if ('' == $this->is_correct){
 			$this->is_correct='0';
 		}
         global $xoopsDB;
