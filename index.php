@@ -76,7 +76,7 @@ try {
                 } else {
                     $groups = XOOPS_GROUP_ANONYMOUS;
                 }
-                $gperm_handler = xoops_gethandler('groupperm');
+                $gperm_handler = xoops_getHandler('groupperm');
                 if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                     throw new Exception(_MD_XQUIZ_PERMISSION);
                 }
@@ -173,7 +173,7 @@ try {
             } else {
                 $groups = XOOPS_GROUP_ANONYMOUS;
             }
-            $gperm_handler = & xoops_gethandler('groupperm');
+            $gperm_handler = & xoops_getHandler('groupperm');
             if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                 throw new Exception(_MD_XQUIZ_PERMISSION);
             }
@@ -196,7 +196,7 @@ try {
             } else {
                 $groups = XOOPS_GROUP_ANONYMOUS;
             }
-            $gperm_handler = xoops_gethandler('groupperm');
+            $gperm_handler = xoops_getHandler('groupperm');
             if (! $gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
                 throw new Exception(_MD_XQUIZ_PERMISSION);
             }
@@ -300,8 +300,8 @@ try {
             throw new Exception(_MD_XQUIZ_REGISTER_QUIZ);
         }
 
-        $myts = myTextSanitizer::getInstance();
-        $quizId = $myts->addslashes($_POST ['quizId']);
+        $myts = MyTextSanitizer::getInstance();
+        $quizId = $myts->addSlashes($_POST ['quizId']);
         $user = $xoopsUser->getVar("uid");
         $userQuizScore = findUserScore($user, $quizId);
         if ($userQuizScore) {

@@ -40,7 +40,7 @@ class Quiz
      */
     public function __construct()
     {
-        $this->myts = myTextSanitizer::getInstance();
+        $this->myts = MyTextSanitizer::getInstance();
     }
     #region set and get $id
     /**
@@ -76,7 +76,7 @@ class Quiz
      */
     public function set_name($name)
     {
-        $this->name = $this->myts->addslashes($name);
+        $this->name = $this->myts->addSlashes($name);
     }
     /**
      * get name class variable
@@ -99,7 +99,7 @@ class Quiz
      */
     public function set_description($description)
     {
-        $this->description = $this->myts->addslashes($description);
+        $this->description = $this->myts->addSlashes($description);
     }
     /**
      * get description of quiz
@@ -122,7 +122,7 @@ class Quiz
      */
     public function set_btime($btime)
     {
-        $this->btime = $this->myts->addslashes($btime);
+        $this->btime = $this->myts->addSlashes($btime);
     }
     /**
      * get quiz begin date
@@ -145,7 +145,7 @@ class Quiz
      */
     public function set_etime($etime)
     {
-        $this->etime = $this->myts->addslashes($etime);
+        $this->etime = $this->myts->addSlashes($etime);
     }
     /**
      * get end date of quiz
@@ -178,7 +178,7 @@ class Quiz
             throw new Exception(_AM_XQUIZ_QUEST_EDATE);
         }
             
-        $t = strtotime($this->myts->addslashes($bdate)) + $this->btime;
+        $t = strtotime($this->myts->addSlashes($bdate)) + $this->btime;
         $this->bdate = date("Y-m-d G:i:s", $t);
     }
     /**
@@ -212,7 +212,7 @@ class Quiz
             throw new Exception(_AM_XQUIZ_QUEST_BDATE);
         }
 
-        $t = strtotime($this->myts->addslashes($edate)) + $this->etime;
+        $t = strtotime($this->myts->addSlashes($edate)) + $this->etime;
         $this->edate = date("Y-m-d G:i:s", $t);
     }
     /**

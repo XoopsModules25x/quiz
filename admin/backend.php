@@ -122,7 +122,7 @@ try {
             break;
         
         case 'addQuest':
-            $qid = $myts->addslashes($_POST ['quizId']);
+            $qid = $myts->addSlashes($_POST ['quizId']);
             
             if (! Quiz::quiz_checkExpireQuiz($qid)) {
                 throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
@@ -248,7 +248,7 @@ try {
             }
             $newCid = QuizCategory::addCategory($title, $pid, $description, $imgurl, $weight);
             // Permissions
-            $gperm_handler = xoops_gethandler('groupperm');
+            $gperm_handler = xoops_getHandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
                 foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
                     $gperm_handler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
@@ -307,7 +307,7 @@ try {
             }
             QuizCategory::editCategory($cid, $title, $pid, $description, $imgurl, $weight);
             // Permissions
-            $gperm_handler = xoops_gethandler('groupperm');
+            $gperm_handler = xoops_getHandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
                 foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
                     $gperm_handler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));
@@ -329,7 +329,7 @@ try {
             break;
         
         case 'addQst':
-            $qid = $myts->addslashes($_POST ['quizId']);
+            $qid = $myts->addSlashes($_POST ['quizId']);
             
             if (! Quiz::quiz_checkExpireQuiz($qid)) {
                 throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");

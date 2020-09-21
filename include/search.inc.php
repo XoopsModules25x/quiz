@@ -36,7 +36,7 @@ function quiz_search($queryarray, $andor, $limit, $offset, $userid)
     }
     $sql .= "ORDER BY id DESC";
     $query = $xoopsDB->query("SELECT COUNT(*) FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE id>0");
-    list($numrows) = $xoopsDB->fetchrow($query);
+    list($numrows) = $xoopsDB->fetchRow($query);
        
     $result = $xoopsDB->query($sql, $limit, $offset);
     $ret = [];

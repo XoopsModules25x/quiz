@@ -34,7 +34,7 @@ class Question
     private $answer;
     public function __construct()
     {
-        $this->myts = myTextSanitizer::getInstance();
+        $this->myts = MyTextSanitizer::getInstance();
     }
     #region set and get $id
     public function set_id($id)
@@ -71,7 +71,7 @@ class Question
     #region set and get $question
     public function set_question($question)
     {
-        $this->question = $this->myts->addslashes($question);
+        $this->question = $this->myts->addSlashes($question);
     }
     public function get_question()
     {
@@ -100,7 +100,7 @@ class Question
     #region set and get $ans1
     public function set_ans1($ans1)
     {
-        $this->ans1 = $this->myts->addslashes($ans1);
+        $this->ans1 = $this->myts->addSlashes($ans1);
     }
     public function get_ans1()
     {
@@ -113,7 +113,7 @@ class Question
     #region set and get $ans2
     public function set_ans2($ans2)
     {
-        $this->ans2 = $this->myts->addslashes($ans2);
+        $this->ans2 = $this->myts->addSlashes($ans2);
     }
     public function get_ans2()
     {
@@ -126,7 +126,7 @@ class Question
     #region set and get $ans3
     public function set_ans3($ans3)
     {
-        $this->ans3 = $this->myts->addslashes($ans3);
+        $this->ans3 = $this->myts->addSlashes($ans3);
     }
     public function get_ans3()
     {
@@ -139,7 +139,7 @@ class Question
     #region set and get $ans4
     public function set_ans4($ans4)
     {
-        $this->ans4 = $this->myts->addslashes($ans4);
+        $this->ans4 = $this->myts->addSlashes($ans4);
     }
     public function get_ans4()
     {
@@ -152,7 +152,7 @@ class Question
     #region set and get $answer
     public function set_answer($answer)
     {
-        $this->answer = $this->myts->addslashes($answer);
+        $this->answer = $this->myts->addSlashes($answer);
     }
     public function get_answer()
     {

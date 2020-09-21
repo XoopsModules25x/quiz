@@ -274,7 +274,7 @@ class QuizCategory extends XoopsTree
         } else {
             $groups = XOOPS_GROUP_ANONYMOUS;
         }
-        $gperm_handler =xoops_gethandler('groupperm');
+        $gperm_handler =xoops_getHandler('groupperm');
                 
         while ($row = $this->db->fetchArray($result)) {
             $row['prefix'] = $r_prefix.'.';
@@ -479,9 +479,9 @@ function CategoryForm($op = "add", $eId = 0)
     );
     $addCategory_form->setExtra('enctype="multipart/form-data"');
     // Permissions
-    $member_handler = xoops_gethandler('member');
+    $member_handler = xoops_getHandler('member');
     $group_list = $member_handler->getGroupList();
-    $gperm_handler = xoops_gethandler('groupperm');
+    $gperm_handler = xoops_getHandler('groupperm');
     $full_list = array_keys($group_list);
     ////////////////
     if ("edit" == $op) {

@@ -44,9 +44,9 @@ if (is_object($xoopsUser)) {
 } else {
     redirect_header(XOOPS_URL."/", 1, _NOPERM);
 }
-    $module_handler = xoops_gethandler('module');
+    $module_handler = xoops_getHandler('module');
     $module =$module_handler->getByDirname("xquiz");
-    $config_handler = xoops_gethandler('config');
+    $config_handler = xoops_getHandler('config');
     $moduleConfig =$config_handler->getConfigsByCat(0, $module->getVar('mid'));
 function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
 {
