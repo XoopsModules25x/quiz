@@ -656,7 +656,7 @@ class Questions
 					 WHERE question_id = '$this->id' ";
         $res   = $xoopsDB->query($query);
 
-        answer::deleteAnswers($this->getId());
+        Answer::deleteAnswers($this->getId());
         for ($i = 1; $i <= count($ans); $i++) {
             $answerObj = new answer();
             $answerObj->setAnswer($ans [$i]);
@@ -684,7 +684,7 @@ class Questions
         $query = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_questions') . " WHERE  
 					  question_id = '$this->id' ";
         $res   = $xoopsDB->query($query);
-        answer::deleteAnswers($this->id);
+        Answer::deleteAnswers($this->id);
         if (!$res) {
             throw new \Exception(_AM_XQUIZ_QUEST_DATABASE);
         }

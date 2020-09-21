@@ -339,14 +339,14 @@ try {
                         throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE);
                     }
 
-                    questions::showQuizSelectForm();
+                    Questions::showQuizSelectForm();
                     if (isset($id)) {
-                        questions::QuestAddForm($id, $answerType);
+                        Questions::QuestAddForm($id, $answerType);
                     }
                     break;
 
                 case 'edit':
-                    questions::showQuizSelectForm();
+                    Questions::showQuizSelectForm();
                     if (isset($id)) {
                         $questionObj = new questions();
                         $questionObj->QuestEditForm($id);
@@ -354,16 +354,16 @@ try {
                     break;
 
                 case 'del':
-                    questions::showQuizSelectForm();
+                    Questions::showQuizSelectForm();
                     if (isset($id)) {
-                        questions::confirmForm($id);
+                        Questions::confirmForm($id);
                     }
                     break;
 
                 default:
-                    questions::showQuizSelectForm();
+                    Questions::showQuizSelectForm();
                     if (isset($id)) {
-                        questions::showQuestions($start, $limitQuest, $id);
+                        Questions::showQuestions($start, $limitQuest, $id);
                     }
             }
             break;
