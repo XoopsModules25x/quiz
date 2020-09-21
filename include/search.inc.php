@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
@@ -11,14 +12,20 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org)
- * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
- * @package         xquiz
- * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$
+ * @copyright          XOOPS Project (https://xoops.org)
+ * @license            http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package            xquiz
+ * @author             Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version            $Id$
  *
  * Version : $Id:
  * ****************************************************************************
+ * @param $queryarray
+ * @param $andor
+ * @param $limit
+ * @param $offset
+ * @param $userid
+ * @return array
  */
 function quiz_search($queryarray, $andor, $limit, $offset, $userid)
 {
@@ -36,7 +43,7 @@ function quiz_search($queryarray, $andor, $limit, $offset, $userid)
     }
     $sql .= "ORDER BY id DESC";
     $query = $xoopsDB->query("SELECT COUNT(*) FROM ".$xoopsDB->prefix("xquiz_quizzes")." WHERE id>0");
-    list($numrows) = $xoopsDB->fetchRow($query);
+    [$numrows] = $xoopsDB->fetchRow($query);
        
     $result = $xoopsDB->query($sql, $limit, $offset);
     $ret = [];

@@ -86,16 +86,15 @@ class QuizCategory extends XoopsTree
         return $idarray;
     }
 
-    
-
     /** Makes a nicely ordered selection box
-    * @param string $title     Field containing the items to display in the list
-    * @param string $order     Sort order of the options
-    * @param int    $preset_id is used to specify a preselected item
-    * @param int    $none      set to 1 to add an option with value 0
-    * @param string $sel_name  Name of the select element
-    * @param string $onchange  Action to take when the selection is changed
-    */
+     * @param string $title     Field containing the items to display in the list
+     * @param string $order     Sort order of the options
+     * @param int    $preset_id is used to specify a preselected item
+     * @param int    $none      set to 1 to add an option with value 0
+     * @param string $sel_name  Name of the select element
+     * @param string $onchange  Action to take when the selection is changed
+     * @param int    $se
+     */
     public function makeMySelBox($title, $order='', $preset_id=0, $none=0, $sel_name='', $onchange="", $se=0)
     {
         if ("" == $sel_name) {

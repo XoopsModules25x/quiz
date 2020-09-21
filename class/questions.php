@@ -18,7 +18,7 @@ class questions
     public static $qTypes = ['MC' => _AM_XQUIZ_ANSWER_TYPE_MC, 'CM' => _AM_XQUIZ_ANSWER_TYPE_CM, 'FB' => _AM_XQUIZ_ANSWER_TYPE_FB];
 
     /**
-     * @return String
+     * @return array
      */
     public function getAnswers()
     {
@@ -74,7 +74,6 @@ class questions
     }
 
     /**
-     * @param String $answers
      */
     public function setAnswers()
     {
