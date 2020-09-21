@@ -59,7 +59,7 @@ $modversion['tables'][1] = "xquiz_categories";
 $modversion['tables'][2] = "xquiz_score";
 $modversion['tables'][3] = "xquiz_questions";
 $modversion['tables'][4] = "xquiz_answers";
-//$modversion['tables'][5] = "xquiz_quizquestion";
+$modversion['tables'][5] = "xquiz_quizquestion";
 $modversion['tables'][6] = "xquiz_useranswers";
 
 // Templates
