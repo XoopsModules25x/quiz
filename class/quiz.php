@@ -43,10 +43,12 @@ class Quiz
         $this->myts = MyTextSanitizer::getInstance();
     }
     #region set and get $id
+
     /**
      * set id class variable
      *
      * @param int $id
+     * @throws \Exception
      */
     public function set_id($id)
     {
@@ -55,10 +57,12 @@ class Quiz
         }
         $this->id = $id;
     }
+
     /**
      * get id class variable
      *
      * @return quizId
+     * @throws \Exception
      */
     public function get_id()
     {
@@ -78,10 +82,12 @@ class Quiz
     {
         $this->name = $this->myts->addSlashes($name);
     }
+
     /**
      * get name class variable
      *
      * @return quizName
+     * @throws \Exception
      */
     public function get_name()
     {
@@ -101,10 +107,12 @@ class Quiz
     {
         $this->description = $this->myts->addSlashes($description);
     }
+
     /**
      * get description of quiz
      *
      * @return quiz description
+     * @throws \Exception
      */
     public function get_description()
     {
@@ -124,10 +132,12 @@ class Quiz
     {
         $this->btime = $this->myts->addSlashes($btime);
     }
+
     /**
      * get quiz begin date
      *
      * @return $this->btime
+     * @throws \Exception
      */
     public function get_btime()
     {
@@ -147,10 +157,12 @@ class Quiz
     {
         $this->etime = $this->myts->addSlashes($etime);
     }
+
     /**
      * get end date of quiz
      *
      * @return $this->etime
+     * @throws \Exception
      */
     public function get_etime()
     {
@@ -165,6 +177,7 @@ class Quiz
      * set begin date of quiz
      *
      * @param string $bdate
+     * @throws \Exception
      */
     public function set_bdate($bdate)
     {
@@ -181,10 +194,12 @@ class Quiz
         $t = strtotime($this->myts->addSlashes($bdate)) + $this->btime;
         $this->bdate = date("Y-m-d G:i:s", $t);
     }
+
     /**
      * get quiz begin date
      *
      * @return $this->bdate
+     * @throws \Exception
      */
     public function get_bdate()
     {
@@ -199,6 +214,7 @@ class Quiz
      * set end date of quiz
      *
      * @param string $edate
+     * @throws \Exception
      */
     public function set_edate($edate)
     {
@@ -215,10 +231,12 @@ class Quiz
         $t = strtotime($this->myts->addSlashes($edate)) + $this->etime;
         $this->edate = date("Y-m-d G:i:s", $t);
     }
+
     /**
      * get end date of quiz
      *
      * @return $this->edate
+     * @throws \Exception
      */
     public function get_edate()
     {
@@ -233,6 +251,7 @@ class Quiz
      * set weight of quiz
      *
      * @param int $weight
+     * @throws \Exception
      */
     public function set_weight($weight)
     {
@@ -241,10 +260,12 @@ class Quiz
         }
         $this->weight = $weight;
     }
+
     /**
      * get weight of quiz
      *
      * @return $this->weight
+     * @throws \Exception
      */
     public function get_weight()
     {
@@ -259,6 +280,7 @@ class Quiz
      * set QuizCategory of quiz
      *
      * @param int $cid
+     * @throws \Exception
      */
     public function set_cid($cid)
     {
@@ -267,10 +289,12 @@ class Quiz
         }
         $this->categoryId = $cid;
     }
+
     /**
      * get category of quiz
      *
      * @return cid
+     * @throws \Exception
      */
     public function get_cid()
     {
