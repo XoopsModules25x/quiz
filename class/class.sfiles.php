@@ -42,7 +42,7 @@ class sFiles
     public $downloadname;
     public $counter;
 
-    public function sFiles($fileid=-1)
+    public function __construct($fileid=-1)
     {
         $this->db = XoopsDatabaseFactory::getDatabaseConnection();
         $this->table = $this->db->prefix("stories_files");

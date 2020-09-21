@@ -43,7 +43,7 @@ class QuizCategory extends XoopsTree
     * @param string $id_name Name of the unique id field in the table
     * @param $pid_name Name of the parent id field in the table
     */
-    public function QuizCategory($table_name, $id_name, $pid_name)
+    public function __construct($table_name, $id_name, $pid_name)
     {
         //$this->db = Database::getInstance();
 		$this->db = XoopsDatabaseFactory::getDatabaseConnection();
