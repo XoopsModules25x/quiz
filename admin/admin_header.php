@@ -21,19 +21,19 @@
  * Version : $Id:
  * ****************************************************************************
  */
-include('../../../mainfile.php');
-include '../../../include/cp_header.php';
-include_once XOOPS_ROOT_PATH . '/kernel/module.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/include/functions.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/question.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/questions.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/menu.class.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
-include_once XOOPS_ROOT_PATH . '/class/uploader.php';
-include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+require dirname(__DIR__, 3) . '/mainfile.php';
+require dirname(__DIR__, 3) . '/include/cp_header.php';
+require_once XOOPS_ROOT_PATH . '/kernel/module.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/include/functions.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/question.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/questions.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/menu.class.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
+require_once XOOPS_ROOT_PATH . '/class/uploader.php';
+require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 
 $module_id = $xoopsModule->getVar('mid');
 if (is_object($xoopsUser)) {
@@ -44,14 +44,14 @@ if (is_object($xoopsUser)) {
 } else {
     redirect_header(XOOPS_URL . '/', 1, _NOPERM);
 }
-$module_handler = xoops_getHandler('module');
-$module         = $module_handler->getByDirname('xquiz');
-$config_handler = xoops_getHandler('config');
-$moduleConfig   = $config_handler->getConfigsByCat(0, $module->getVar('mid'));
+$moduleHandler = xoops_getHandler('module');
+$module         = $moduleHandler->getByDirname('xquiz');
+$configHandler = xoops_getHandler('config');
+$moduleConfig   = $configHandler->getConfigsByCat(0, $module->getVar('mid'));
 function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
 {
     /* Nice button styles */
-    include 'style' . ((defined('_ADM_USE_RTL') && _ADM_USE_RTL) ? '_rtl' : '') . '.css';
+    require __DIR__ . '/style' . ((defined('_ADM_USE_RTL') && _ADM_USE_RTL) ? '_rtl' : '') . '.css';
     global $xoopsDB, $xoopsModule, $xoopsConfig, $xoopsModuleConfig;
     $tblCol    = [];
     $tblCol[0] = $tblCol[1] = $tblCol[2] = $tblCol[3] = $tblCol[4] = $tblCol[5] = $tblCol[6] = $tblCol[7] = '';
@@ -93,5 +93,5 @@ function QuizzadminMenu($currentoption = 0, $breadcrumb = '')
     echo "<li id='" . $tblCol[7] . "'><a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=" . $xoopsModule->getVar('mid') . '&amp;&confcat_id=1"><span>' . _AM_XQUIZ_PREFERENCE . '</span></a></li>';
 
     echo '</ul></div>';
-    echo "<br style='clear:both;' />";
+    echo "<br style='clear:both;'>";
 }

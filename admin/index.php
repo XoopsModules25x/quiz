@@ -21,7 +21,7 @@
  * Version : $Id:
  * ****************************************************************************
  */
-include 'admin_header.php';
+require __DIR__ . '/admin_header.php';
 xoops_cp_header();
 try {
     $option     = $_GET ['op'] ?? '';
@@ -153,10 +153,10 @@ try {
                 $q        = 1;
                 $eu       = ($start - 0);
                 $query    = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limitUser);
-                while ($myrow = $xoopsDB->fetchArray($query)) {
+                while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
                     $listQuiz [$q] ['id']     = $myrow ['id'];
                     $listQuiz [$q] ['userid'] = $myrow ['userid'];
-                    $thisUser                 = $member_handler->getUser($myrow ['userid']);
+                    $thisUser                 = $memberHandler->getUser($myrow ['userid']);
                     $listQuiz [$q] ['uname']  = $thisUser->getVar('uname');
                     $listQuiz [$q] ['name']   = $thisUser->getVar('name');
                     $listQuiz [$q] ['score']  = $myrow ['score'];
@@ -168,10 +168,10 @@ try {
                     $exportQuiz = [];
                     $query      = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id);
                     $q          = 1;
-                    while ($myrow = $xoopsDB->fetchArray($query)) {
+                    while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
                         $exportQuiz [$q] ['id']     = $myrow ['id'];
                         $exportQuiz [$q] ['userid'] = $myrow ['userid'];
-                        $thisUser                   = $member_handler->getUser($myrow ['userid']);
+                        $thisUser                   = $memberHandler->getUser($myrow ['userid']);
                         $exportQuiz [$q] ['uname']  = $thisUser->getVar('uname');
                         $exportQuiz [$q] ['name']   = $thisUser->getVar('name');
                         $exportQuiz [$q] ['score']  = $myrow ['score'];
@@ -198,7 +198,7 @@ try {
 							<td width='40%'>
 							</td>
 							<td width='3%'>
-								<img src='" . XOOPS_URL . "/modules/xquiz/assets/images/xls.gif' />
+								<img src='" . XOOPS_URL . "/modules/xquiz/assets/images/xls.gif'>
 							</td>
 							<td>
 								<a href='" . XOOPS_URL . "/uploads/quiz.csv'>
@@ -213,8 +213,8 @@ try {
                 }
                 ///////////////////////////////////////
                 quiz_collapsableBar('newsub', 'topnewsubicon');
-                $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 	</a>&nbsp;" . _AM_XQUIZ_STATISTICS . "</h4><br/>
+                $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 	</a>&nbsp;" . _AM_XQUIZ_STATISTICS . "</h4><br>
 						<div id='newsub' style='text-align: left;'>
 						<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='bg3'>
@@ -264,7 +264,7 @@ try {
                 echo $temp;
 
                 $nav = new XoopsPageNav($nume, $limitUser, $start, 'start', "op=Statistics&Id=$id");
-                echo "<div align='left'>" . $nav->renderImageNav() . '</div><br />';
+                echo "<div align='left'>" . $nav->renderImageNav() . '</div><br>';
             }
 
             //	///////////////////////////////////////////////////////////////
@@ -366,7 +366,7 @@ try {
             $menu->addItem('Preference', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid') . '&amp;&confcat_id=1', '../assets/images/menus/config.png', _AM_XQUIZ_PREFERENCE);
 
             if (!class_exists('XoopsTpl')) {
-                include_once XOOPS_ROOT_PATH . '/class/template.php';
+                require_once XOOPS_ROOT_PATH . '/class/template.php';
             }
             $tpl = $xoopsTpl ?? new XoopsTpl();
             $tpl->assign('menu_css', $menu->getCSS());

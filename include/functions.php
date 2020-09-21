@@ -26,7 +26,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
 }
 @define('_GLOBAL_LEFT', 1 == @_ADM_USE_RTL ? 'right' : 'left');
 @define('_GLOBAL_RIGHT', 1 == @_ADM_USE_RTL ? 'left' : 'right');
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/question.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/question.php';
 
 function findUserScore($userId, $id)
 {
@@ -142,7 +142,7 @@ function userQuestLoader($quizId, $uid)
 			WHERE userId = $uid AND quizId=$quizId AND questId=id";
     $query = $xoopsDB->query($query);
     $q     = 0;
-    while ($myrow = $xoopsDB->fetchArray($query)) {
+    while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
         $list[$q]['questId']  = $myrow['questId'];
         $list[$q]['userAns']  = $myrow['userAns'];
         $list[$q]['qnumber']  = $myrow['qnumber'];
@@ -156,17 +156,17 @@ function userQuestLoader($quizId, $uid)
 
 function showUserQuest($quizId, $uid)
 {
-    global $member_handler;
+    global $memberHandler;
     $list = userQuestLoader($quizId, $uid);
 
     $quiz      = Quiz::retriveQuiz($quizId);
-    $thisUser  = $member_handler->getUser($uid);
+    $thisUser  = $memberHandler->getUser($uid);
     $userImage = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/user.png \" alt='' >";
     $quizImage = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/quizz.png \" alt='' >";
 
     quiz_collapsableBar('newsub', 'topnewsubicon');
-    $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;" . _MD_XQUIZ_USER_ANSWER_DETAIL . "</h4><br/>
+    $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 </a>&nbsp;" . _MD_XQUIZ_USER_ANSWER_DETAIL . "</h4><br>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
@@ -238,7 +238,7 @@ function userQuizzes($uid)
 			WHERE userid = $uid";
     $query      = $xoopsDB->query($query);
     $q          = 0;
-    while ($myrow = $xoopsDB->fetchArray($query)) {
+    while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
         $list[$q]['id']    = $myrow['id'];
         $list[$q]['name']  = $myrow['name'];
         $list[$q]['score'] = $myrow['score'];

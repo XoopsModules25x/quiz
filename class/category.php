@@ -21,7 +21,7 @@
  * Version : $Id:
  * ****************************************************************************
  */
-include_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 
 class QuizCategory extends XoopsTree
 {
@@ -46,7 +46,7 @@ class QuizCategory extends XoopsTree
      */
     public function __construct($table_name, $id_name, $pid_name)
     {
-        //$this->db = Database::getInstance();
+        //$this->db = XoopsDatabaseFactory::getDatabaseConnection();
         $this->db    = XoopsDatabaseFactory::getDatabaseConnection();
         $this->table = $table_name;
         $this->id    = $id_name;
@@ -149,7 +149,7 @@ class QuizCategory extends XoopsTree
         if (0 == $count) {
             return $parray;
         }
-        while ($row = $this->db->fetchArray($result)) {
+        while (false !== ($row = $this->db->fetchArray($result))) {
             array_push($parray, $row);
             $parray = $this->getAllChild($row[$this->id], $order, $parray);
         }
@@ -175,7 +175,7 @@ class QuizCategory extends XoopsTree
         if (0 == $count) {
             return $parray;
         }
-        while ($row = $this->db->fetchArray($result)) {
+        while (false !== ($row = $this->db->fetchArray($result))) {
             $row['prefix'] = $r_prefix . '.';
             array_push($parray, $row);
             $parray = $this->getChildTreeArray($row[$this->id], $order, $parray, $row['prefix']);
@@ -194,7 +194,7 @@ class QuizCategory extends XoopsTree
         $query .= ' LIMIT ' . $eu . ' , ' . $limit;
 
         $query = $this->db->query($query);
-        while ($myrow = $this->db->fetchArray($query)) {
+        while (false !== ($myrow = $this->db->fetchArray($query))) {
             $listCategory[$q]['cid']         = $myrow['cid'];
             $listCategory[$q]['pid']         = $myrow['pid'];
             $listCategory[$q]['title']       = $myrow['title'];
@@ -224,7 +224,7 @@ class QuizCategory extends XoopsTree
         if (0 == $count) {
             return $arr;
         }
-        while ($myrow = $this->db->fetchArray($result)) {
+        while (false !== ($myrow = $this->db->fetchArray($result))) {
             array_push($arr, $myrow);
         }
         return $arr;
@@ -269,11 +269,11 @@ class QuizCategory extends XoopsTree
         } else {
             $groups = XOOPS_GROUP_ANONYMOUS;
         }
-        $gperm_handler = xoops_getHandler('groupperm');
+        $grouppermHandler = xoops_getHandler('groupperm');
 
-        while ($row = $this->db->fetchArray($result)) {
+        while (false !== ($row = $this->db->fetchArray($result))) {
             $row['prefix'] = $r_prefix . '.';
-            if (!$gperm_handler->checkRight($perm_name, $row['cid'], $groups, $module_id)) {
+            if (!$grouppermHandler->checkRight($perm_name, $row['cid'], $groups, $module_id)) {
                 continue;
             }
             $row['description'] = $myts->previewTarea($row['description'], 1, 1, 1, 1, 1);
@@ -394,8 +394,8 @@ function showCategories($start, $limit)
     //$nume = $xt->getNumberList();
     $nume = count($listCategory);
     quiz_collapsableBar('newsub', 'topnewsubicon');
-    $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;" . _AM_XQUIZ_CATEGORIES . "</h4><br/>
+    $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 </a>&nbsp;" . _AM_XQUIZ_CATEGORIES . "</h4><br>
 					<div id='newsub' style='text-align:left;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
@@ -485,7 +485,7 @@ function showCategories($start, $limit)
     echo $temp;
 
     $nav = new XoopsPageNav($nume, $limit, $start, 'start', 'op=Category');
-    echo "<div align='center'>" . $nav->renderImageNav() . '</div><br />';
+    echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
 }
 
 function CategoryForm($op = 'add', $eId = 0)
@@ -499,22 +499,22 @@ function CategoryForm($op = 'add', $eId = 0)
     );
     $addCategory_form->setExtra('enctype="multipart/form-data"');
     // Permissions
-    $member_handler = xoops_getHandler('member');
-    $group_list     = $member_handler->getGroupList();
-    $gperm_handler  = xoops_getHandler('groupperm');
+    $memberHandler = xoops_getHandler('member');
+    $group_list     = $memberHandler->getGroupList();
+    $grouppermHandler  = xoops_getHandler('groupperm');
     $full_list      = array_keys($group_list);
     ////////////////
     if ('edit' == $op) {
         $category           = $xt->getCategory($eId);
         $category_id_v      = $eId;
-        $category_title_v   = $myts->htmlSpecialChars($category[0]['title']);
-        $category_desc_v    = $myts->htmlSpecialChars($category[0]['description']);
+        $category_title_v   = htmlspecialchars($category[0]['title']);
+        $category_desc_v    = htmlspecialchars($category[0]['description']);
         $parent             = $xt->getAllParentId($category_id_v);
         $category_parent_id = (!empty($parent)) ? $parent[0] : 0;
         $category_weight_v  = $category[0]['weight'];
-        $topicimage         = $myts->htmlSpecialChars($category[0]['imgurl']);
+        $topicimage         = htmlspecialchars($category[0]['imgurl']);
 
-        $groups_ids                    = $gperm_handler->getGroupIds('quiz_view', $category_id_v, $xoopsModule->getVar('mid'));
+        $groups_ids                    = $grouppermHandler->getGroupIds('quiz_view', $category_id_v, $xoopsModule->getVar('mid'));
         $groups_ids                    = array_values($groups_ids);
         $groups_quiz_can_view_checkbox = new XoopsFormCheckBox(_AM_XQUIZ_VIEWFORM, 'groups_quiz_can_view[]', $groups_ids);
 
@@ -538,7 +538,7 @@ function CategoryForm($op = 'add', $eId = 0)
     ob_end_clean();
     //$category_description = new XoopsFormDhtmlTextArea(_AM_XQUIZ_CATEGORY_DESC, "cateDesc", $category_desc_v);
 
-    $options_tray = new XoopsFormElementTray(_AM_XQUIZ_CATEGORY_DESC, '<br />');
+    $options_tray = new XoopsFormElementTray(_AM_XQUIZ_CATEGORY_DESC, '<br>');
     if (class_exists('XoopsFormEditor')) {
         $options['name']   = 'cateDesc';
         $options['value']  = $category_desc_v;
@@ -557,7 +557,7 @@ function CategoryForm($op = 'add', $eId = 0)
     // $category_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
 
     $uploadirectory = 'uploads/' . $xoopsModule->dirname() . '/category';
-    $imgtray        = new XoopsFormElementTray(_AM_XQUIZ_CATEGORYIMG, '<br />');
+    $imgtray        = new XoopsFormElementTray(_AM_XQUIZ_CATEGORYIMG, '<br>');
 
     $imgpath      = sprintf(_AM_XQUIZ_UPLOADEDIMG, 'uploads/' . $xoopsModule->dirname() . '/category/');
     $imageselect  = new XoopsFormSelect($imgpath, 'topic_imgurl', $topicimage);
@@ -567,10 +567,10 @@ function CategoryForm($op = 'add', $eId = 0)
     }
     $imageselect->setExtra("onchange='showImgSelected(\"image3\", \"topic_imgurl\", \"" . $uploadirectory . '", "", "' . XOOPS_URL . "\")'");
     $imgtray->addElement($imageselect, false);
-    $imgtray->addElement(new XoopsFormLabel('', "<br /><img src='" . XOOPS_URL . '/' . $uploadirectory . '/' . $topicimage . "' name='image3' id='image3' alt='' />"));
+    $imgtray->addElement(new XoopsFormLabel('', "<br><img src='" . XOOPS_URL . '/' . $uploadirectory . '/' . $topicimage . "' name='image3' id='image3' alt=''>"));
 
     $uploadfolder = sprintf(_AM_XQUIZ_UPLOAD_WARNING, XOOPS_URL . '/uploads/' . $xoopsModule->dirname() . '/category');
-    $fileseltray  = new XoopsFormElementTray('', '<br />');
+    $fileseltray  = new XoopsFormElementTray('', '<br>');
     $fileseltray->addElement(new XoopsFormFile(_AM_XQUIZ_CATEGORY_PICTURE, 'attachedfile', $maxuploadsize), false);
     $fileseltray->addElement(new XoopsFormLabel($uploadfolder), false);
     $imgtray->addElement($fileseltray);
@@ -589,8 +589,8 @@ function CategoryForm($op = 'add', $eId = 0)
     $addCategory_form->addElement($button_tray);
 
     quiz_collapsableBar('newquiz', 'topnewquiz');
-    echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-		 	</a>&nbsp;" . _AM_XQUIZ_CATEGORY_NEW . "</h4><br/>
+    echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+		 	</a>&nbsp;" . _AM_XQUIZ_CATEGORY_NEW . "</h4><br>
 				<div id='newquiz' style='text-align: center;'>";
     $addCategory_form->display();
     echo '</div>';
@@ -613,8 +613,8 @@ function confirmForm($id)
     $delCategory_form->addElement($submit_button);
 
     quiz_collapsableBar('newquiz', 'topnewquiz');
-    echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 	</a>&nbsp;" . _AM_XQUIZ_DELETE . "</h4><br/>
+    echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 	</a>&nbsp;" . _AM_XQUIZ_DELETE . "</h4><br>
 						<div id='newquiz' style='text-align: center;'>";
     $delCategory_form->display();
     echo '</div>';

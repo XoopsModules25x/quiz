@@ -21,8 +21,8 @@
  * Version : $Id:
  * ****************************************************************************
  */
-include 'admin_header.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.sfiles.php';
+require __DIR__ . '/admin_header.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.sfiles.php';
 
 if (isset($_POST ['addQuizSubmit'])) {
     $action = 'addQuiz';
@@ -249,10 +249,10 @@ try {
             }
             $newCid = QuizCategory::addCategory($title, $pid, $description, $imgurl, $weight);
             // Permissions
-            $gperm_handler = xoops_getHandler('groupperm');
+            $grouppermHandler = xoops_getHandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
                 foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
-                    $gperm_handler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
+                    $grouppermHandler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
             throw new Exception(_AM_XQUIZ_ADD_CATEGORY . '||?op=Category');
@@ -308,10 +308,10 @@ try {
             }
             QuizCategory::editCategory($cid, $title, $pid, $description, $imgurl, $weight);
             // Permissions
-            $gperm_handler = xoops_getHandler('groupperm');
+            $grouppermHandler = xoops_getHandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
                 foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
-                    $gperm_handler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));
+                    $grouppermHandler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
             throw new Exception(_AM_XQUIZ_EDIT_CATEGORY . '||?op=Category');

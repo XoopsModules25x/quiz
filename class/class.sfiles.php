@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <https://xoops.org/>                             //
+//                       <https://xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -28,7 +28,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
 }
 
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.mimetype.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.mimetype.php';
 
 class sFiles
 {
@@ -105,7 +105,7 @@ class sFiles
         $ret    = [];
         $sql    = 'SELECT * FROM ' . $this->table . ' WHERE storyid=' . (int)$storyid;
         $result = $this->db->query($sql);
-        while ($myrow = $this->db->fetchArray($result)) {
+        while (false !== ($myrow = $this->db->fetchArray($result))) {
             $ret[] = new sFiles($myrow);
         }
         return $ret;
@@ -221,19 +221,19 @@ class sFiles
         switch ($format) {
             case 'S':
             case 'Show':
-                $filerealname = $myts->htmlSpecialChars($this->filerealname);
+                $filerealname = htmlspecialchars($this->filerealname);
                 break;
             case 'E':
             case 'Edit':
-                $filerealname = $myts->htmlSpecialChars($this->filerealname);
+                $filerealname = htmlspecialchars($this->filerealname);
                 break;
             case 'P':
             case 'Preview':
-                $filerealname = $myts->htmlSpecialChars($myts->stripSlashesGPC($this->filerealname));
+                $filerealname = htmlspecialchars($myts->stripSlashesGPC($this->filerealname));
                 break;
             case 'F':
             case 'InForm':
-                $filerealname = $myts->htmlSpecialChars($myts->stripSlashesGPC($this->filerealname));
+                $filerealname = htmlspecialchars($myts->stripSlashesGPC($this->filerealname));
                 break;
         }
         return $filerealname;
@@ -245,19 +245,19 @@ class sFiles
         switch ($format) {
             case 'S':
             case 'Show':
-                $filemimetype = $myts->htmlSpecialChars($this->mimetype);
+                $filemimetype = htmlspecialchars($this->mimetype);
                 break;
             case 'E':
             case 'Edit':
-                $filemimetype = $myts->htmlSpecialChars($this->mimetype);
+                $filemimetype = htmlspecialchars($this->mimetype);
                 break;
             case 'P':
             case 'Preview':
-                $filemimetype = $myts->htmlSpecialChars($myts->stripSlashesGPC($this->mimetype));
+                $filemimetype = htmlspecialchars($myts->stripSlashesGPC($this->mimetype));
                 break;
             case 'F':
             case 'InForm':
-                $filemimetype = $myts->htmlSpecialChars($myts->stripSlashesGPC($this->mimetype));
+                $filemimetype = htmlspecialchars($myts->stripSlashesGPC($this->mimetype));
                 break;
         }
         return $filemimetype;
@@ -269,19 +269,19 @@ class sFiles
         switch ($format) {
             case 'S':
             case 'Show':
-                $filedownname = $myts->htmlSpecialChars($this->downloadname);
+                $filedownname = htmlspecialchars($this->downloadname);
                 break;
             case 'E':
             case 'Edit':
-                $filedownname = $myts->htmlSpecialChars($this->downloadname);
+                $filedownname = htmlspecialchars($this->downloadname);
                 break;
             case 'P':
             case 'Preview':
-                $filedownname = $myts->htmlSpecialChars($myts->stripSlashesGPC($this->downloadname));
+                $filedownname = htmlspecialchars($myts->stripSlashesGPC($this->downloadname));
                 break;
             case 'F':
             case 'InForm':
-                $filedownname = $myts->htmlSpecialChars($myts->stripSlashesGPC($this->downloadname));
+                $filedownname = htmlspecialchars($myts->stripSlashesGPC($this->downloadname));
                 break;
         }
         return $filedownname;
@@ -303,7 +303,7 @@ class sFiles
             $sql    = 'SELECT storyid, count(fileid) as cnt FROM ' . $this->table . ' WHERE storyid IN (';
             $sql    .= implode(',', $stories) . ') GROUP BY storyid';
             $result = $this->db->query($sql);
-            while ($myrow = $this->db->fetchArray($result)) {
+            while (false !== ($myrow = $this->db->fetchArray($result))) {
                 $ret[$myrow['storyid']] = $myrow['cnt'];
             }
         }

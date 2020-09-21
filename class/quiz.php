@@ -433,7 +433,7 @@ class Quiz
         $quiz_weight     = new XoopsFormText(_AM_XQUIZ_WEIGHT, 'quizWeight', 5, 3, $quiz_weight_v);
         //$quiz_token = new XoopsFormHidden("XOOPS_TOKEN_REQUEST", $GLOBALS['xoopsSecurity']->createToken());
 
-        $options_tray = new XoopsFormElementTray(_AM_XQUIZ_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_AM_XQUIZ_DESC, '<br>');
         if (class_exists('XoopsFormEditor')) {
             $options['name']   = 'quizDesc';
             $options['value']  = $quiz_desc_v;
@@ -458,8 +458,8 @@ class Quiz
         $addQuiz_form->addElement($submit_button);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
-        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 	</a>&nbsp;" . _AM_XQUIZ_NEW . "</h4><br/>
+        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 	</a>&nbsp;" . _AM_XQUIZ_NEW . "</h4><br>
 						<div id='newquiz' style='text-align: center;'>";
         $addQuiz_form->display();
         echo '</div>';
@@ -478,8 +478,8 @@ class Quiz
 
         $listQuiz = self::quiz_listQuizLoader($start, $limit, $categoryId);
         quiz_collapsableBar('newsub', 'topnewsubicon');
-        $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;" . _AM_XQUIZ_QUIZS . "</h4><br/>
+        $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 </a>&nbsp;" . _AM_XQUIZ_QUIZS . "</h4><br>
 					<div id='newsub' style='text-align:left;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 						<tr class='odd'>
@@ -593,7 +593,7 @@ class Quiz
         $temp .= '</table></div>';
         echo $temp;
         $nav = new XoopsPageNav($nume, $limit, $start, 'start', 'op=Quiz');
-        echo "<div align='center'>" . $nav->renderImageNav() . '</div><br />';
+        echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
     }
 
     public static function confirmForm($id)
@@ -612,8 +612,8 @@ class Quiz
         $delQuiz_form->addElement($submit_button);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
-        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;" . DELQUIZFORM . "</h4><br/>
+        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 </a>&nbsp;" . DELQUIZFORM . "</h4><br>
 					<div id='newquiz' style='text-align: center;'>";
         $delQuiz_form->display();
         echo '</div>';
@@ -639,7 +639,7 @@ class Quiz
         $query .= ' LIMIT ' . $eu . ' , ' . $limit;
 
         $query = $xoopsDB->query($query);
-        while ($myrow = $xoopsDB->fetchArray($query)) {
+        while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
             $listQuiz[$q]['id']          = $myrow['id'];
             $listQuiz[$q]['name']        = $myrow['name'];
             $listQuiz[$q]['description'] = $myrow['description'];
@@ -689,7 +689,7 @@ class Quiz
         $listQuiz = [];
         $q        = 1;
         $query    = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizzes') . ' ORDER BY id DESC');
-        while ($myrow = $xoopsDB->fetchArray($query)) {
+        while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
             $listQuiz[$q]['id']   = $myrow['id'];
             $listQuiz[$q]['name'] = $myrow['name'];
             $q++;
@@ -702,7 +702,7 @@ class Quiz
         global $xoopsDB;
         $listQuiz = [];
         $query    = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizzes') . ' ORDER BY \'bdate\' ASC');
-        while ($myrow = $xoopsDB->fetchArray($query)) {
+        while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
             $listQuiz[$myrow['id']] = $myrow['name'];
         }
         return $listQuiz;

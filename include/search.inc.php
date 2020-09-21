@@ -48,7 +48,7 @@ function quiz_search($queryarray, $andor, $limit, $offset, $userid)
     $result = $xoopsDB->query($sql, $limit, $offset);
     $ret    = [];
     $i      = 0;
-    while ($myrow = $xoopsDB->fetchArray($result)) {
+    while (false !== ($myrow = $xoopsDB->fetchArray($result))) {
         $ret[$i]['image'] = 'assets/images/search.png';
         $ret[$i]['link']  = 'index.php?act=v&q=' . ($myrow['id']);
         $ret[$i]['title'] = $myrow['name'];

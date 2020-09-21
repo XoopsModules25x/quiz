@@ -41,7 +41,7 @@
 	<{/if}>
 
 	<{if $quizNum != 0}>
-	<br/>
+	<br>
 	<h4><{$smarty.const._MD_XQUIZ_QUIZS}></h4>
 	<{$smarty.now|date_format:"%A, %B %e, %Y %I:%M %p"}>
 	<table width='100%' class="table table-striped">
@@ -96,7 +96,7 @@
 			<{/if}>
 		<{/foreach}>
 	</table>
-	<br/>
+	<br>
 	
 	<{/if}>
 <{/if}>
@@ -134,7 +134,7 @@
 		</tr>
 	<{/foreach}>
 </table>
-<br/>
+<br>
 
 	<{$commentsnav}> <{$lang_notice}>
 	<{if $comment_mode == "flat"}>
@@ -160,7 +160,7 @@
   		<table class="table table-striped outer" cellspacing="1" align="center">
 		    <!-- start of form elements loop -->
     		<{foreach item=element from=$listquestfrom.elements}>
-      			<{if $element.hidden != true}>
+      			<{if $element.hidden !== true}>
 			      <tr>
         			<td><{$element.caption}></td>
       			  </tr>	
@@ -232,7 +232,7 @@
 		<{/if}>
 	<{/foreach}>
 </table>
-<br/>
+<br>
 
 <{/if}> 
 <{if $showQuiz == 4}>
@@ -241,7 +241,7 @@
 	<{foreach item=questProfile from=$questProfile}>
 		<tr>
 			<td>
-			<br/>
+			<br>
 			<{$questProfile.qnumber}>-<{$questProfile.question}>
 			</td>
 		</tr>
@@ -280,9 +280,9 @@
 		</tr>
 	<{/foreach}>
 </table>
-<br/>
+<br>
 
 <{/if}>
 
-<br/>
+<br>
 <{include file='db:system_notification_select.html'}>

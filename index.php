@@ -21,15 +21,15 @@
  * Version : $Id:
  * ****************************************************************************
  */
-require('../../mainfile.php');
-$xoopsOption['template_main'] = 'xquiz_index.tpl';
-require(XOOPS_ROOT_PATH . '/header.php');
-include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/include/functions.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/questions.php';
+require dirname(__DIR__, 2) . '/mainfile.php';
+$GLOBALS['xoopsOption']['template_main'] = 'xquiz_index.tpl';
+require XOOPS_ROOT_PATH . '/header.php';
+require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/include/functions.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/quiz.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/category.php';
+require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/questions.php';
 
 try {
     $action = $_GET ['act'] ?? '';
@@ -77,8 +77,8 @@ try {
                 } else {
                     $groups = XOOPS_GROUP_ANONYMOUS;
                 }
-                $gperm_handler = xoops_getHandler('groupperm');
-                if (!$gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
+                $grouppermHandler = xoops_getHandler('groupperm');
+                if (!$grouppermHandler->checkRight($perm_name, $cid, $groups, $module_id)) {
                     throw new Exception(_MD_XQUIZ_PERMISSION);
                 }
                 $ts = MyTextSanitizer::getInstance();
@@ -99,7 +99,7 @@ try {
                     $listQuest_form = new XoopsThemeForm ( _MD_XQUIZ_QUEST_LISTQESTFORM, "listquestfrom", $_SERVER ['PHP_SELF'], 'post', true );
                     $quizId = new XoopsFormHidden ( 'quizId', $id );
                     foreach ( $listQuestion as $key ) {
-                    $question_answers [$q] = new XoopsFormRadio ( $key ['qnumber'] . "-" . $ts->previewTarea ( $key ['question'], 1, 1, 1, 1, 1 ) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], $key ['qnumber'], null, "<hr/>" );
+                    $question_answers [$q] = new XoopsFormRadio ( $key ['qnumber'] . "-" . $ts->previewTarea ( $key ['question'], 1, 1, 1, 1, 1 ) . "" . _MD_XQUIZ_QUEST_SCORE . " = " . $key ['score'], $key ['qnumber'], null, "<hr>" );
                     $question_answers [$q]->addOption ( 1, $key ['ans1'] );
                     $question_answers [$q]->addOption ( 2, $key ['ans2'] );
                     $question_answers [$q]->addOption ( 3, $key ['ans3'] );
@@ -179,8 +179,8 @@ try {
             } else {
                 $groups = XOOPS_GROUP_ANONYMOUS;
             }
-            $gperm_handler = xoops_getHandler('groupperm');
-            if (!$gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
+            $grouppermHandler = xoops_getHandler('groupperm');
+            if (!$grouppermHandler->checkRight($perm_name, $cid, $groups, $module_id)) {
                 throw new Exception(_MD_XQUIZ_PERMISSION);
             }
 
@@ -202,8 +202,8 @@ try {
             } else {
                 $groups = XOOPS_GROUP_ANONYMOUS;
             }
-            $gperm_handler = xoops_getHandler('groupperm');
-            if (!$gperm_handler->checkRight($perm_name, $cid, $groups, $module_id)) {
+            $grouppermHandler = xoops_getHandler('groupperm');
+            if (!$grouppermHandler->checkRight($perm_name, $cid, $groups, $module_id)) {
                 throw new Exception(_MD_XQUIZ_PERMISSION);
             }
 
@@ -222,11 +222,11 @@ try {
             $dateformat = $xoopsModuleConfig ['dateformat'];
             $q          = 1;
             $query      = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_score') . ' WHERE id = ' . $id . ' ORDER BY score DESC LIMIT ' . $eu . ' , ' . $limit);
-            while ($myrow = $xoopsDB->fetchArray($query)) {
+            while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
                 $listQuiz [$q] ['id']     = $myrow ['id'];
                 $listQuiz [$q] ['userid'] = $myrow ['userid'];
 
-                $thisUser = $member_handler->getUser($myrow ['userid']);
+                $thisUser = $memberHandler->getUser($myrow ['userid']);
 
                 $listQuiz [$q] ['uname'] = $thisUser->getVar('uname');
                 $listQuiz [$q] ['name']  = $thisUser->getVar('name');
@@ -237,7 +237,7 @@ try {
             ////////////////////////////////////////
             $xoopsTpl->assign('quizStat', $listQuiz);
             $nav = new XoopsPageNav($nume, $limit, $start, 'start', "act=s&q=$id");
-            echo "<div align='center'>" . $nav->renderImageNav() . '</div><br />';
+            echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
             break;
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 'p':
@@ -291,7 +291,7 @@ try {
                 }
             }
             $nav = new XoopsPageNav($count, $limit, $start, 'start', "?cid=$cid");
-            echo "<div align='center'>" . $nav->renderImageNav() . '</div><br />';
+            echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
             $xoopsTpl->assign('listQuiz', $listQuiz);
             $xoopsTpl->assign('quizNum', $count);
     }
@@ -409,10 +409,10 @@ try {
                 {
                     $res = array_diff($ans,$cAns);
                 }
-                echo count($ans) ." And ".count($cAns)."|<br/>";
+                echo count($ans) ." And ".count($cAns)."|<br>";
                 echo "Ans Is <pre>";
                 print_r($ans);
-                echo "</pre><br/>";
+                echo "</pre><br>";
                 echo "cAns is:<pre>";
                 print_r($cAns);
                 echo "</pre>";
@@ -420,7 +420,7 @@ try {
                 $sumScore += $score;
                 break;*/
             }
-            echo "<br/>Sum of Score :$sumScore ";
+            echo "<br>Sum of Score :$sumScore ";
             /*$date = date ( DATE_ATOM );
              $query = "INSERT INTO " . $xoopsDB->prefix ( 'xquiz_score' ) . "
              (id ,userid ,score ,date) VALUES('$quizId','$user','$sumScore','$date')";
@@ -431,7 +431,7 @@ try {
              sendEmail ( $user, $sumScore, $quizId );
              $quizScore = '';
              if ($xoopsModuleConfig ['seeScore'])
-             $quizScore = "<br/>" . _MD_XQUIZ_FINAL_SCORE . " = " . $sumScore;
+             $quizScore = "<br>" . _MD_XQUIZ_FINAL_SCORE . " = " . $sumScore;
              throw new Exception ( _MD_XQUIZ_ADD_SCORE . $quizScore );*/
         }
         /*if (! $GLOBALS ['xoopsSecurity']->check ())
@@ -477,7 +477,7 @@ try {
             sendEmail ( $user, $userScore, $quizId );
             $quizScore = '';
             if ($xoopsModuleConfig ['seeScore'])
-            $quizScore = "<br/>" . _MD_XQUIZ_FINAL_SCORE . " = " . $userScore;
+            $quizScore = "<br>" . _MD_XQUIZ_FINAL_SCORE . " = " . $userScore;
             throw new Exception ( _MD_XQUIZ_ADD_SCORE . $quizScore );
             */
     }
@@ -486,5 +486,5 @@ try {
     redirect_header(XOOPS_URL . '/modules/xquiz/index.php', 3, $e->getMessage());
 }
 
-include XOOPS_ROOT_PATH . '/include/comment_view.php';
-require(XOOPS_ROOT_PATH . '/footer.php');
+require XOOPS_ROOT_PATH . '/include/comment_view.php';
+require XOOPS_ROOT_PATH . '/footer.php';

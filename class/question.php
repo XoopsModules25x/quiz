@@ -210,7 +210,7 @@ class Question
         $query    = $xoopsDB->query(
             ' SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizquestion') . ' WHERE qid = ' . $qid . ' LIMIT ' . $eu . ' , ' . $limit
         );
-        while ($myrow = $xoopsDB->fetchArray($query)) {
+        while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
             $listQuiz[$q]['id']       = $myrow['id'];
             $listQuiz[$q]['qid']      = $myrow['qid'];
             $listQuiz[$q]['question'] = $myrow['question'];
@@ -243,8 +243,8 @@ class Question
 
         $listQuestion = self::question_listQuestionLoader($start, $limit, $qid);
         quiz_collapsableBar('newsub', 'topnewsubicon');
-        $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 </a>&nbsp;" . _AM_XQUIZ_QUESTIONS . "</h4><br/>
+        $temp = "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewsubicon' name='topnewsubicon' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 </a>&nbsp;" . _AM_XQUIZ_QUESTIONS . "</h4><br>
 					<div id='newsub' style='text-align: center;'>
 					<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>
 					<tr class='bg3'>
@@ -301,7 +301,7 @@ class Question
         $temp .= '</table></div>';
         echo $temp;
         $nav = new XoopsPageNav($nume, $limit, $start, 'start', "op=Quest&Id=$qid");
-        echo "<div align='center'>" . $nav->renderImageNav() . '</div><br />';
+        echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
     }
     #endregion
     #region show select quiz form
@@ -403,7 +403,7 @@ class Question
         //$question_description = new XoopsFormDhtmlTextArea(_MD_XQUIZ_QUEST_DESC, "questionDesc", $question_question_v);
 
         global $xoopsModuleConfig;
-        $options_tray = new XoopsFormElementTray(_AM_XQUIZ_QUEST_DESC, '<br />');
+        $options_tray = new XoopsFormElementTray(_AM_XQUIZ_QUEST_DESC, '<br>');
         if (class_exists('XoopsFormEditor')) {
             $options['name']   = 'questionDesc';
             $options['value']  = $question_question_v;
@@ -440,8 +440,8 @@ class Question
         $addQuest_form->addElement($submit_button, true);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
-        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 	</a>&nbsp;" . _AM_XQUIZ_QUEST_NEW . "</h4><br/>
+        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 	</a>&nbsp;" . _AM_XQUIZ_QUEST_NEW . "</h4><br>
 						<div id='newquiz' style='text-align: center;'>";
         $addQuest_form->display();
         echo '</div>';
@@ -547,8 +547,8 @@ class Question
         $delQuest_form->addElement($submit_button);
 
         quiz_collapsableBar('newquiz', 'topnewquiz');
-        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt='' />
-				 	</a>&nbsp;" . _AM_XQUIZ_DELETE . "</h4><br/>
+        echo "<img onclick=\"toggle('toptable'); toggleIcon('toptableicon');\" id='topnewquiz' name='topnewquiz' src='" . XOOPS_URL . "/modules/xquiz/assets/images/close12.gif' alt=''>
+				 	</a>&nbsp;" . _AM_XQUIZ_DELETE . "</h4><br>
 						<div id='newquiz' style='text-align: center;'>";
         $delQuest_form->display();
         echo '</div>';
@@ -561,7 +561,7 @@ class Question
         $listQuest = [];
         $q         = 1;
         $query     = $xoopsDB->query(' SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizquestion') . " WHERE qid = '$qId' ORDER BY 'qnumber' ASC");
-        while ($myrow = $xoopsDB->fetchArray($query)) {
+        while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
             $listQuest[$q]['id']       = $myrow['id'];
             $listQuest[$q]['qid']      = $myrow['qid'];
             $listQuest[$q]['question'] = $myrow['question'];
