@@ -609,7 +609,7 @@ class Questions
 
         $res      = $xoopsDB->query($query);
         $this->id = $xoopsDB->getInsertId();
-        for ($i = 1; $i <= count($ans); $i++) {
+        for ($i = 1, $iMax = count($ans); $i <= $iMax; $i++) {
             $answerObj = new answer();
             $answerObj->setAnswer($ans [$i]);
             if ((!empty($is_cor [$i])) && ('CM' == $this->type)) {
@@ -698,7 +698,7 @@ class Questions
         $res   = $xoopsDB->query($query);
 
         Answer::deleteAnswers($this->getId());
-        for ($i = 1; $i <= count($ans); $i++) {
+        for ($i = 1, $iMax = count($ans); $i <= $iMax; $i++) {
             $answerObj = new answer();
             $answerObj->setAnswer($ans [$i]);
             if ((!empty($is_cor [$i])) && ('CM' == $this->type)) {
