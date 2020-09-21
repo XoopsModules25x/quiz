@@ -619,7 +619,7 @@ class Questions
             }
             $answerObj->setQuestId($this->id);
             $answerObj->addAnswer();
-            array_push($this->answers, $answerObj);
+            $this->answers[] = $answerObj;
         }
 
         if (!$res) {
@@ -671,7 +671,7 @@ class Questions
             $answerObj->setAid($myrow ['answer_id']);
             $answerObj->setIs_correct($myrow ['is_correct']);
             $answerObj->setQuestId($myrow ['question_id']);
-            array_push($this->answers, $answerObj);
+            $this->answers[] = $answerObj;
         }
     }
 
@@ -708,7 +708,7 @@ class Questions
             }
             $answerObj->setQuestId($this->id);
             $answerObj->addAnswer();
-            array_push($this->answers, $answerObj);
+            $this->answers[] = $answerObj;
         }
         if (!$res) {
             throw new \Exception(_AM_XQUIZ_QUEST_DATABASE);

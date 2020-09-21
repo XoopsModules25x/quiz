@@ -84,8 +84,8 @@ class Category extends \XoopsTree
         if (0 == $r_id) {
             return $idarray;
         }
-        array_push($idarray, $r_id);
-        $idarray = $this->getAllParentId($r_id, $order, $idarray);
+        $idarray[] = $r_id;
+        $idarray   = $this->getAllParentId($r_id, $order, $idarray);
         return $idarray;
     }
 
@@ -157,8 +157,8 @@ class Category extends \XoopsTree
             return $parray;
         }
         while (false !== ($row = $this->db->fetchArray($result))) {
-            array_push($parray, $row);
-            $parray = $this->getAllChild($row[$this->id], $order, $parray);
+            $parray[] = $row;
+            $parray   = $this->getAllChild($row[$this->id], $order, $parray);
         }
         return $parray;
     }
@@ -184,8 +184,8 @@ class Category extends \XoopsTree
         }
         while (false !== ($row = $this->db->fetchArray($result))) {
             $row['prefix'] = $r_prefix . '.';
-            array_push($parray, $row);
-            $parray = $this->getChildTreeArray($row[$this->id], $order, $parray, $row['prefix']);
+            $parray[]      = $row;
+            $parray        = $this->getChildTreeArray($row[$this->id], $order, $parray, $row['prefix']);
         }
         return $parray;
     }
@@ -245,7 +245,7 @@ class Category extends \XoopsTree
             return $arr;
         }
         while (false !== ($myrow = $this->db->fetchArray($result))) {
-            array_push($arr, $myrow);
+            $arr[] = $myrow;
         }
         return $arr;
     }
@@ -313,7 +313,7 @@ class Category extends \XoopsTree
                 continue;
             }
             $row['description'] = $myts->previewTarea($row['description'], 1, 1, 1, 1, 1);
-            array_push($parray, $row);
+            $parray[]           = $row;
         }
         return $parray;
     }
