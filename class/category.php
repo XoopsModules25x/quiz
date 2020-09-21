@@ -40,8 +40,8 @@ class QuizCategory extends XoopsTree
     /** constructor of class XoopsTree
     * Sets the names of table, unique id, and parent id
     * @param string $table_name Name of table containing the parent-child structure
-    * @param string $id_name Name of the unique id field in the table
-    * @param $pid_name Name of the parent id field in the table
+    * @param string $id_name    Name of the unique id field in the table
+    * @param Name   $pid_name   of the parent id field in the table
     */
     public function __construct($table_name, $id_name, $pid_name)
     {
