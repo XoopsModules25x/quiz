@@ -154,7 +154,7 @@ class sFiles
         if (!$result = $this->db->query($sql)) {
             return false;
         }
-        if (file_exists($workdir.'/' . $this->downloadname)) {
+        if (is_file($workdir . '/' . $this->downloadname)) {
             unlink($workdir.'/' . $this->downloadname);
         }
         return true;
