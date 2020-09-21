@@ -314,6 +314,7 @@ class Quiz
     /**
      * add new quiz into database
      * with class variable
+     * @throws \Exception
      */
     public function addQuiz()
     {
@@ -330,6 +331,7 @@ class Quiz
     /**
      * delete quiz from database
      *
+     * @throws \Exception
      */
     public function deleteQuiz()
     {
@@ -354,6 +356,7 @@ class Quiz
     /**
      * edit quiz in database
      * with class vriable
+     * @throws \Exception
      */
     public function editQuiz()
     {
