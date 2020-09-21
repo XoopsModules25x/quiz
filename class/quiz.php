@@ -405,7 +405,7 @@ class Quiz
         );
         
         if ("edit" == $op) {
-            $quiz = Quiz::retriveQuiz($eId);
+            $quiz = self::retriveQuiz($eId);
             $quiz_id_v = $quiz['id'];
             $quiz_name_v = $quiz['name'];
             $quiz_category_id = $quiz['cid'];

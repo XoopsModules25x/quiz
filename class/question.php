@@ -356,7 +356,7 @@ class Question
         );
         
         if ("edit" == $op) {
-            $question = Question::retriveQuestion($eId);
+            $question = self::retriveQuestion($eId);
             $question_id_v = $question['id'];
             $question_qid_v = $question['qid'];
             $question_question_v = $question['question'];

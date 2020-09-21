@@ -272,7 +272,7 @@ class questions
 
         $question_qid_v      = $qId;
         $question_question_v = '';
-        $question_number_v   = questions::questionNumber($qId) + 1;
+        $question_number_v   = self::questionNumber($qId) + 1;
 
         $submit_button      = new XoopsFormButton("", "addQstSubmit", _AM_XQUIZ_SUBMIT, "submit");
         $quest_list_array_v = Quiz::quiz_listQuizArray();
