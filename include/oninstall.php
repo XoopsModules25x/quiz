@@ -22,7 +22,9 @@ function xoops_module_install_xquiz()
     $dir = XOOPS_ROOT_PATH . '/uploads/xquiz';
 
     if (!is_dir($dir)) {
-        mkdir($dir, 0777);
+        if (!mkdir($dir, 0777) && !is_dir($dir)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
+        }
 
         chmod($dir, 0777);
     }
@@ -33,7 +35,9 @@ function xoops_module_install_xquiz()
     $dir = XOOPS_ROOT_PATH . '/uploads/xquiz/image';
 
     if (!is_dir($dir)) {
-        mkdir($dir, 0777);
+        if (!mkdir($dir, 0777) && !is_dir($dir)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
+        }
 
         chmod($dir, 0777);
     }
@@ -45,7 +49,9 @@ function xoops_module_install_xquiz()
     $dir = XOOPS_ROOT_PATH . '/uploads/xquiz/category';
 
     if (!is_dir($dir)) {
-        mkdir($dir, 0777);
+        if (!mkdir($dir, 0777) && !is_dir($dir)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
+        }
 
         chmod($dir, 0777);
     }
