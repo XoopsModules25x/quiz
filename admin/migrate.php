@@ -31,6 +31,7 @@
 
 use Xmf\Request;
 use XoopsModules\Xquiz;
+use XoopsModules\Xquiz\Common\Migrate;
 
 require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
@@ -57,7 +58,7 @@ EOF;
 $configurator = new Xquiz\Common\Configurator();
 
 /** @var \XoopsModules\Xquiz\Common\Migrate $migrator */
-$migrator = new \XoopsModules\Xquiz\Common\Migrate($configurator);
+$migrator = new Migrate($configurator);
 
 $op = Request::getCmd('op', 'show');
 $opShow = Request::getCmd('show', null, 'POST');

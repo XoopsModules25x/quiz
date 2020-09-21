@@ -21,12 +21,16 @@
  * Version : $Id:
  * ****************************************************************************
  */
+
+use Xmf\Module\Admin;
+use Xmf\Request;
+use Xmf\Yaml;
 use XoopsModules\Xquiz;
 use XoopsModules\Xquiz\Common;
 
 require __DIR__ . '/admin_header.php';
 xoops_cp_header();
-$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject = Admin::getInstance();
 ////count "total Question"
 ///** @var \XoopsPersistableObjectHandler $questionHandler */
 //$totalQuestion = $questionHandler->getCount();
@@ -123,7 +127,7 @@ $adminObject->displayIndex();
 
 function loadAdminConfig($yamlFile)
 {
-    $config = \Xmf\Yaml::readWrapped($yamlFile); // work with phpmyadmin YAML dumps
+    $config = Yaml::readWrapped($yamlFile); // work with phpmyadmin YAML dumps
     return $config;
 }
 
@@ -131,7 +135,7 @@ function hideButtons($yamlFile)
 {
     $app = [];
     $app['displaySampleButton'] = 0;
-    \Xmf\Yaml::save($app, $yamlFile);
+    Yaml::save($app, $yamlFile);
     redirect_header('index.php', 0, '');
 }
 
@@ -139,11 +143,11 @@ function showButtons($yamlFile)
 {
     $app = [];
     $app['displaySampleButton'] = 1;
-    \Xmf\Yaml::save($app, $yamlFile);
+    Yaml::save($app, $yamlFile);
     redirect_header('index.php', 0, '');
 }
 
-$op = \Xmf\Request::getString('op', 0, 'GET');
+$op = Request::getString('op', 0, 'GET');
 
 switch ($op) {
     case 'hide_buttons':

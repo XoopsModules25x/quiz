@@ -19,14 +19,16 @@
  * @author         Fernando Santos (topet05) <fernando@mastop.com.br>
  */
 
+use Xmf\Module\Admin;
 use Xmf\Request;
 use XoopsModules\Xquiz\Common;
+use XoopsModules\Xquiz\Common\ModuleFeedback;
 
 include __DIR__ . '/admin_header.php';
 
-$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject = Admin::getInstance();
 
-$feedback = new \XoopsModules\Xquiz\Common\ModuleFeedback();
+$feedback = new ModuleFeedback();
 
 // It recovered the value of argument op in URL$
 $op            = Request::getString('op', 'list');
