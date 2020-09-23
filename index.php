@@ -321,7 +321,7 @@ try {
         $myts          = MyTextSanitizer::getInstance();
         $quizId        = $myts->addSlashes($_POST ['quizId']);
         $user          = $xoopsUser->getVar('uid');
-        $userQuizScore = findUserScore($user, $quizId);
+        $userQuizScore = Utility::findUserScore($user, $quizId);
         if ($userQuizScore) {
             throw new Exception(_MD_XQUIZ_DUPLICATE_QUIZ);
         }

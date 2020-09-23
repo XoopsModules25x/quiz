@@ -35,13 +35,15 @@ return (object)[
     'uploadFolders'  => [
         XOOPS_UPLOAD_PATH . '/' . $moduleDirName,
         XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/category',
-        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/screenshots',
+        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/quiz',
+        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/question',
         //XOOPS_UPLOAD_PATH . '/flags'
     ],
     'copyBlankFiles' => [
         XOOPS_UPLOAD_PATH . '/' . $moduleDirName,
         XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/category',
-        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/screenshots',
+        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/quiz',
+        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/question',
         //XOOPS_UPLOAD_PATH . '/flags'
     ],
 
@@ -67,7 +69,7 @@ return (object)[
         '/class/utilities.php',
         '/class/util.php',
         //            '/include/constants.php',
-        //            '/include/functions.php',
+        '/include/functions.php',
         '/ajaxrating.txt',
     ],
     'oldFolders'      => [

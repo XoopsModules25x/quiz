@@ -53,28 +53,28 @@ $adminObject = Admin::getInstance();
 ///** @var \XoopsPersistableObjectHandler $answersHandler */
 //$totalAnswers = $answersHandler->getCount();
 // InfoBox Statistics
-$adminObject->addInfoBox(AM_QUIZ_STATISTICS);
-
-// InfoBox question
-$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_QUESTION, $totalQuestion));
-
-// InfoBox quiz
-$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_QUIZ, $totalQuiz));
-
-// InfoBox cat
-$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_CATEGORY, $totalCat));
-
-// InfoBox quiz_users
-$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_USERS, $totalQuiz_users));
-
-// InfoBox question_user
-$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_QUESTIONUSER, $totalQuestion_user));
-
-// InfoBox questions
-$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_QUESTIONS, $totalQuestions));
-
-// InfoBox answers
-$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_ANSWERS, $totalAnswers));
+//$adminObject->addInfoBox(AM_QUIZ_STATISTICS);
+//
+//// InfoBox question
+//$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_QUESTION, $totalQuestion));
+//
+//// InfoBox quiz
+//$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_QUIZ, $totalQuiz));
+//
+//// InfoBox cat
+//$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_CATEGORY, $totalCat));
+//
+//// InfoBox quiz_users
+//$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_USERS, $totalQuiz_users));
+//
+//// InfoBox question_user
+//$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_QUESTIONUSER, $totalQuestion_user));
+//
+//// InfoBox questions
+//$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_QUESTIONS, $totalQuestions));
+//
+//// InfoBox answers
+//$adminObject->addInfoBoxLine(sprintf(AM_QUIZ_THEREARE_ANSWERS, $totalAnswers));
 
 //------ check Upload Folders ---------------
 $adminObject->addConfigBoxLine('');
