@@ -28,7 +28,7 @@ $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 $modversion = [
     'version'             => 2.00,
     'module_status'       => 'Alpha 1',
-    'release_date'        => '2020/09/21',
+    'release_date'        => '2020/12/31',
     'name'                => _MI_XQUIZ_NAME,
     'description'         => _MI_XQUIZ_DESC,
     'official'            => 0,
@@ -73,12 +73,12 @@ $modversion = [
     'adminmenu'           => 'admin/menu.php',
     // ------------------- Main Menu -------------------
     'hasMain'             => 1,
-    'sub'                 => [
-        [
-            'name' => _MI_XQUIZ_VIEW_SEARCH,
-            'url'  => 'index.php',
-        ],
-    ],
+//    'sub'                 => [
+//        [
+//            'name' => _MI_XQUIZ_VIEW_SEARCH,
+//            'url'  => 'index.php',
+//        ],
+//    ],
 
     // ------------------- Install/Update -------------------
     'onInstall'           => 'include/oninstall.php',

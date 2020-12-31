@@ -52,7 +52,7 @@ $adminObject = Admin::getInstance();
 ////count "total Answers"
 ///** @var \XoopsPersistableObjectHandler $answersHandler */
 //$totalAnswers = $answersHandler->getCount();
-// InfoBox Statistics
+//// InfoBox Statistics
 //$adminObject->addInfoBox(AM_QUIZ_STATISTICS);
 //
 //// InfoBox question

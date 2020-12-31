@@ -28,8 +28,8 @@ use XoopsModules\Xquiz\{
 
 include dirname(__DIR__) . '/preloads/autoloader.php';
 
-@define('_GLOBAL_LEFT', 1 == @_ADM_USE_RTL ? 'right' : 'left');
-@define('_GLOBAL_RIGHT', 1 == @_ADM_USE_RTL ? 'left' : 'right');
+//@define('_GLOBAL_LEFT', 1 == @_ADM_USE_RTL ? 'right' : 'left');
+//@define('_GLOBAL_RIGHT', 1 == @_ADM_USE_RTL ? 'left' : 'right');
 
 $moduleDirName = basename(dirname(__DIR__));
 $moduleDirNameUpper = mb_strtoupper($moduleDirName); //$capsDirName
