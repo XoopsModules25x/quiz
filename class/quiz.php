@@ -27,6 +27,8 @@ namespace XoopsModules\Xquiz;
 require_once dirname(__DIR__) . '/include/common.php';
 require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 
+xoops_loadLanguage('admin', 'xquiz');
+
 /**
  * Class Quiz
  * @package XoopsModules\Xquiz
@@ -560,11 +562,11 @@ class Quiz
         $class       = 'even';
         $onImage     = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/on.png " >';
         $offImage    = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/off.png " >';
-        $delImage    = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
-        $editImage   = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
-        $statImage   = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/stat.gif " title=' . _AM_XQUIZ_STAT . " alt='' >";
-        $addImage    = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/add.png " title=' . _AM_XQUIZ_QUEST_ADD . " alt='' >";
-        $exportImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/export.png " title=' . _AM_XQUIZ_CSV_EXPORT . " alt='' >";
+        $delImage    = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.png " title="' . _AM_XQUIZ_DEL . '" alt="" >';
+        $editImage   = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.png " title="' . _AM_XQUIZ_EDIT . '" alt="" >';
+        $statImage   = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/stat.png " title="' . _AM_XQUIZ_STAT . '" alt="" >';
+        $addImage    = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/add.png " title="' . _AM_XQUIZ_QUEST_ADD . '" alt="" >';
+        $exportImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/export.png " title="' . _AM_XQUIZ_CSV_EXPORT . '" alt="" >';
 
         foreach ($listQuiz as $key) {
             $status = ($key['status']) ? $onImage : $offImage;

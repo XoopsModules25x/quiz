@@ -23,6 +23,7 @@ namespace XoopsModules\Xquiz;
 
 use XoopsModules\Xquiz;
 use XoopsModules\Xquiz\Common;
+use XoopsModules\Xquiz\Common\Configurator;
 use XoopsModules\Xquiz\Constants;
 
 /**
@@ -186,6 +187,9 @@ class Utility extends Common\SysUtility
         global $memberHandler;
         $list = userQuestLoader($quizId, $uid);
 
+        $configurator = new Configurator();
+        $icons = $configurator->icons;
+
         $quiz      = Quiz::retrieveQuiz($quizId);
         $thisUser  = $memberHandler->getUser($uid);
         $userImage = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/user.png \" alt='' >";
@@ -224,7 +228,7 @@ class Utility extends Common\SysUtility
 					</tr>';
 
         $class        = 'even';
-        $delImage     = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
+        $delImage     = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.png " title=' . _AM_XQUIZ_DEL . " alt='' >";
         $validImage   = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/valid.png \" alt='' >";
         $invalidImage = '<img src= "' . XOOPS_URL . "/modules/xquiz/assets/images/invalid.png \" alt='' >";
         $ts           = \MyTextSanitizer::getInstance();
@@ -330,6 +334,10 @@ class Utility extends Common\SysUtility
      */
     public static function showCategories($start, $limit)
     {
+
+        $configurator = new Configurator();
+        $icons = $configurator->icons;
+
         global $xoopsDB;
         $xt = new Category($xoopsDB->prefix('xquiz_categories'), 'cid', 'pid');
 
@@ -365,8 +373,6 @@ class Utility extends Common\SysUtility
 					</tr>';
 
         $class     = 'even';
-        $delImage  = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
-        $editImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
         $goImage   = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/cat.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
 
         foreach ($listCategory as $key) {
@@ -405,20 +411,20 @@ class Utility extends Common\SysUtility
 				<td>
 				<a href="'
                       . XOOPS_URL
-                      . '/modules/xquiz/admin/main.php?op=Category&act=del&Id='
-                      . $key['cid']
-                      . '">
-				'
-                      . $delImage
-                      . '
-				</a>
-				<a href="'
-                      . XOOPS_URL
                       . '/modules/xquiz/admin/main.php?op=Category&act=edit&Id='
                       . $key['cid']
                       . '">
 				'
-                      . $editImage
+                      . $icons['edit']
+                      . '
+				</a>
+				<a href="'
+                      . XOOPS_URL
+                      . '/modules/xquiz/admin/main.php?op=Category&act=del&Id='
+                      . $key['cid']
+                      . '">
+				'
+                      . $icons['delete']
                       . '
 				</td>
 				</tr>';

@@ -242,8 +242,8 @@ class Questions
 
         $class = 'even';
 
-        $delImage  = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.gif " title=' . _AM_XQUIZ_DEL . " alt='' >";
-        $editImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.gif " title=' . _AM_XQUIZ_EDIT . " alt='' >";
+        $delImage  = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/delete.png " title=' . _AM_XQUIZ_DEL . " alt='' >";
+        $editImage = '<img src= "' . XOOPS_URL . '/modules/xquiz/assets/images/edit.png " title=' . _AM_XQUIZ_EDIT . " alt='' >";
         $ts        = \MyTextSanitizer::getInstance();
         foreach ($listQuestion as $key) {
             $class = ('even' == $class) ? 'odd' : 'even';

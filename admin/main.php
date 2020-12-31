@@ -213,7 +213,7 @@ try {
 							<td width='40%'>
 							</td>
 							<td width='3%'>
-								<img src='" . XOOPS_URL . "/modules/xquiz/assets/images/xls.gif'>
+								<img src='" . XOOPS_URL . "/modules/xquiz/assets/images/xls.png'>
 							</td>
 							<td>
 								<a href='" . XOOPS_URL . "/uploads/quiz.csv'>
