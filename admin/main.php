@@ -311,7 +311,7 @@ try {
 
                 case 'del':
                     if (isset($_GET ['Id'])) {
-                        confirmForm($id);
+                        Utility::confirmForm($id);
                     } else {
                         Utility::showCategories($start, $limitCategory);
                     }
