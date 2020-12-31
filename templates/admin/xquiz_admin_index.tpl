@@ -1,4 +1,4 @@
-<{$menu_css}>
+<{$menu_css|default:''}>
 <table width="100%" border="0" cellspacing="10" cellpadding="4">
   <tr>
   <td valign="top" width="40%">
@@ -7,7 +7,7 @@
 	</div>
 	<br>
 	<br>
-	<{$menu}>
+	<{$menu|default:''}>
 	</td>
 	
   	<td valign="top" width="60%">
