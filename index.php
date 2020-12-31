@@ -264,7 +264,7 @@ try {
                 $xoopsTpl->assign('userid', $user);
                 $xoopsTpl->assign('questProfile', $list);
             } else {
-                $list = userQuizzes($user);
+                $list = Utility::userQuizzes($user);
                 $xoopsTpl->assign('showQuiz', 3);
                 $xoopsTpl->assign('userid', $user);
                 $xoopsTpl->assign('quizProfile', $list);
