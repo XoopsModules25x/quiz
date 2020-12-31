@@ -69,9 +69,7 @@ namespace XoopsModules\Xquiz;
  * to use, or modify it however you like.  If you find this script useful please
  * e-mail me.
  **/
-if (!defined('XOOPS_ROOT_PATH')) {
-    die('XOOPS root path not defined');
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
 /**
  * Class Mimetype

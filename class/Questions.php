@@ -609,8 +609,8 @@ class Questions
 
         $res      = $xoopsDB->query($query);
         $this->id = $xoopsDB->getInsertId();
-        for ($i = 1, $iMax = count($ans); $i <= $iMax; $i++) {
-            $answerObj = new answer();
+        for ($i = 1, $iMax = count($ans); $i <= $iMax; ++$i) {
+            $answerObj = new Answer();
             $answerObj->setAnswer($ans [$i]);
             if ((!empty($is_cor [$i])) && ('CM' == $this->type)) {
                 $answerObj->setIs_correct(1);
@@ -666,7 +666,7 @@ class Questions
         $query          = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('xquiz_answers') . " WHERE question_id = '$this->id'");
 
         while (false !== ($myrow = $xoopsDB->fetchArray($query))) {
-            $answerObj = new answer();
+            $answerObj = new Answer();
             $answerObj->setAnswer($myrow ['answer']);
             $answerObj->setAid($myrow ['answer_id']);
             $answerObj->setIs_correct($myrow ['is_correct']);
@@ -698,8 +698,8 @@ class Questions
         $res   = $xoopsDB->query($query);
 
         Answer::deleteAnswers($this->getId());
-        for ($i = 1, $iMax = count($ans); $i <= $iMax; $i++) {
-            $answerObj = new answer();
+        for ($i = 1, $iMax = count($ans); $i <= $iMax; ++$i) {
+            $answerObj = new Answer();
             $answerObj->setAnswer($ans [$i]);
             if ((!empty($is_cor [$i])) && ('CM' == $this->type)) {
                 $answerObj->setIs_correct(1);

@@ -200,7 +200,7 @@ try {
                         $msg .= $key ['uname'] . ',' . $key ['name'] . ',' . $key ['date'] . ',' . $key ['score'] . '
 ';
                     }
-                    #region for csv utf-8 language support
+                    // for csv utf-8 language support
                     $msg = html_entity_decode($msg, ENT_NOQUOTES, 'utf-8');
                     $msg = chr(255) . chr(254) . iconv('UTF-8', 'UTF-16LE', $msg);
                     #end region
@@ -348,7 +348,7 @@ try {
                 case 'edit':
                     Questions::showQuizSelectForm();
                     if (isset($id)) {
-                        $questionObj = new questions();
+                        $questionObj = new Questions();
                         $questionObj->QuestEditForm($id);
                     }
                     break;

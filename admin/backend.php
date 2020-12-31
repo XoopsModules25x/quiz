@@ -222,10 +222,10 @@ try {
             $pid         = 0;
             $weight      = 0;
             if (isset($_POST ['cateTitle'])) {
-                $title = $myts->stripSlashesGPC($_POST ['cateTitle']);
+                $title = ($_POST ['cateTitle']);
             }
             if (isset($_POST ['topic_imgurl']) && '' != $_POST ['topic_imgurl']) {
-                $imgurl = $myts->stripSlashesGPC($_POST ['topic_imgurl']);
+                $imgurl = ($_POST ['topic_imgurl']);
             }
             if (isset($_POST ['cateDesc'])) {
                 $description = $myts->previewTarea($_POST ['cateDesc']);
@@ -276,13 +276,13 @@ try {
             $weight      = 0;
             $cid         = 0;
             if (isset($_POST ['cateTitle'])) {
-                $title = $myts->stripSlashesGPC($_POST ['cateTitle']);
+                $title = ($_POST ['cateTitle']);
             }
             if (isset($_POST ['topic_imgurl']) && '' != $_POST ['topic_imgurl']) {
-                $imgurl = $myts->stripSlashesGPC($_POST ['topic_imgurl']);
+                $imgurl = ($_POST ['topic_imgurl']);
             }
             if (isset($_POST ['cateDesc'])) {
-                $description = $myts->stripSlashesGPC($_POST ['cateDesc']);
+                $description = ($_POST ['cateDesc']);
             }
             if (isset($_POST ['cateParent']) && is_numeric($_POST ['cateParent'])) {
                 $pid = $_POST ['cateParent'];

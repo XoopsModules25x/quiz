@@ -48,7 +48,7 @@ class Question
         $this->myts = \MyTextSanitizer::getInstance();
     }
 
-    #region set and get $id
+    // set and get $id
 
     /**
      * @param $id
@@ -69,8 +69,8 @@ class Question
         }
         return $this->id;
     }
-    #endregion
-    #region set and get $qid
+    
+    // set and get $qid
     /**
      * @param $id
      * @throws \Exception
@@ -90,8 +90,8 @@ class Question
         }
         return $this->qid;
     }
-    #endregion
-    #region set and get $question
+    
+    // set and get $question
     /**
      * @param $question
      */
@@ -107,8 +107,8 @@ class Question
         }
         return $this->question;
     }
-    #endregion
-    #region set and get $qnumber
+    
+    // set and get $qnumber
     /**
      * @param $qnumber
      * @throws \Exception
@@ -128,8 +128,8 @@ class Question
         }
         return $this->qnumber;
     }
-    #endregion
-    #region set and get $ans1
+    
+    // set and get $ans1
     /**
      * @param $ans1
      */
@@ -145,8 +145,8 @@ class Question
         }
         return $this->ans1;
     }
-    #endregion
-    #region set and get $ans2
+    
+    // set and get $ans2
     /**
      * @param $ans2
      */
@@ -162,8 +162,8 @@ class Question
         }
         return $this->ans2;
     }
-    #endregion
-    #region set and get $ans3
+    
+    // set and get $ans3
     /**
      * @param $ans3
      */
@@ -179,8 +179,8 @@ class Question
         }
         return $this->ans3;
     }
-    #endregion
-    #region set and get $ans4
+    
+    // set and get $ans4
     /**
      * @param $ans4
      */
@@ -196,8 +196,8 @@ class Question
         }
         return $this->ans4;
     }
-    #endregion
-    #region set and get $answer
+    
+    // set and get $answer
     /**
      * @param $answer
      */
@@ -213,8 +213,8 @@ class Question
         }
         return $this->answer;
     }
-    #endregion
-    #region set and get $score
+    
+    // set and get $score
     /**
      * @param $score
      * @throws \Exception
@@ -234,9 +234,9 @@ class Question
         }
         return $this->score;
     }
-    #endregion
+    
 
-    #region load number of question from database
+    // load number of question from database
     /**
      * @param $qId
      * @return int
@@ -247,9 +247,9 @@ class Question
         $result = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('xquiz_quizquestion') . " WHERE qid = $qId");
         return $xoopsDB->getRowsNum($result);
     }
-    #endregion
+    
 
-    #region load questions from database
+    // load questions from database
     /**
      * @param $eu
      * @param $limit
@@ -279,8 +279,8 @@ class Question
         }
         return $listQuiz;
     }
-    #endregion
-    #region retrieve question from database
+    
+    // retrieve question from database
     /**
      * @param $eId
      * @return array|false
@@ -292,9 +292,9 @@ class Question
         $myrow = $xoopsDB->fetchArray($query);
         return $myrow;
     }
-    #endregion
+    
 
-    #region List question and show in breaking page
+    // List question and show in breaking page
     /**
      * @param $start
      * @param $limit
@@ -366,8 +366,8 @@ class Question
         $nav = new \XoopsPageNav($nume, $limit, $start, 'start', "op=Quest&Id=$qid");
         echo "<div align='center'>" . $nav->renderImageNav() . '</div><br>';
     }
-    #endregion
-    #region show select quiz form
+    
+    // show select quiz form
     public static function showQuizSelectForm()
     {
         $list = Quiz::allQuizs();
@@ -408,8 +408,8 @@ class Question
 					</table>
 				</div>";
     }
-    #endregion
-    #region show question add & edit form
+    
+    // show question add & edit form
     /**
      * @param        $qId
      * @param string $op
@@ -514,8 +514,8 @@ class Question
         $addQuest_form->display();
         echo '</div>';
     }
-    #endregion
-    #region check exist question in database
+    
+    // check exist question in database
     /**
      * @return bool
      */
@@ -533,8 +533,8 @@ class Question
             return false;
         }
     }
-    #endregion
-    #region add new question into database
+    
+    // add new question into database
     public function addQuestion()
     {
         if ($this->checkExistQuestion()) {
@@ -555,8 +555,8 @@ class Question
         }
     }
 
-    #endregion
-    #region delete question from database
+    
+    // delete question from database
     public function deleteQuestion()
     {
         global $xoopsDB;
@@ -568,8 +568,8 @@ class Question
             throw new \Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
     }
-    #endregion
-    #region edit question
+    
+    // edit question
     public function editQuestion()
     {
         global $xoopsDB;
@@ -590,8 +590,8 @@ class Question
             throw new \Exception(_AM_XQUIZ_QUEST_DATABASE);
         }
     }
-    #endregion
-    #region number of question
+    
+    // number of question
     /**
      * @param $quizId
      * @return mixed
@@ -603,8 +603,8 @@ class Question
         $myrow = $xoopsDB->fetchArray($query);
         return $myrow['CID'];
     }
-    #endregion
-    #region create confirm form for delete question
+    
+    // create confirm form for delete question
     /**
      * @param $id
      */

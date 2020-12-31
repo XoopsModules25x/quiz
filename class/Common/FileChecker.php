@@ -16,14 +16,14 @@ namespace XoopsModules\Xquiz\Common;
  * Xquiz module
  *
  * @copyright       XOOPS Project (https://xoops.org)
- * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author          Xoops Development Team
  */
 
 use Xmf\Request;
 use XoopsModules\Xquiz;
 
-//defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
+//defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
 require_once dirname(__DIR__, 4) . '/mainfile.php';
 $moduleDirName      = basename(dirname(__DIR__, 2));

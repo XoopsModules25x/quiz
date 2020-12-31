@@ -34,7 +34,7 @@ function quiz_search($queryarray, $andor, $limit, $offset, $userid)
     if (is_array($queryarray) && $count = count($queryarray)) {
         $sql .= " WHERE bdate < NOW() AND((name LIKE '$queryarray[0]' OR description LIKE
                '$queryarray[0]')";
-        for ($i = 1; $i < $count; $i++) {
+        for ($i = 1; $i < $count; ++$i) {
             $sql .= " $andor ";
             $sql .= "(name LIKE '$queryarray[$i]' OR description LIKE
                                '$queryarray[$i]')";

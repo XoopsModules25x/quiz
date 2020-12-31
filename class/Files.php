@@ -27,9 +27,8 @@ namespace XoopsModules\Xquiz;
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------- //
-if (!defined('XOOPS_ROOT_PATH')) {
-    die('XOOPS root path not defined');
-}
+
+defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
 use XoopsModules\Xquiz\{
     Helper,
@@ -303,11 +302,11 @@ class Files
                 break;
             case 'P':
             case 'Preview':
-                $filerealname = htmlspecialchars($myts->stripSlashesGPC($this->filerealname), ENT_QUOTES | ENT_HTML5);
+                $filerealname = htmlspecialchars(($this->filerealname), ENT_QUOTES | ENT_HTML5);
                 break;
             case 'F':
             case 'InForm':
-                $filerealname = htmlspecialchars($myts->stripSlashesGPC($this->filerealname), ENT_QUOTES | ENT_HTML5);
+                $filerealname = htmlspecialchars(($this->filerealname), ENT_QUOTES | ENT_HTML5);
                 break;
         }
         return $filerealname;
@@ -331,11 +330,11 @@ class Files
                 break;
             case 'P':
             case 'Preview':
-                $filemimetype = htmlspecialchars($myts->stripSlashesGPC($this->mimetype), ENT_QUOTES | ENT_HTML5);
+                $filemimetype = htmlspecialchars(($this->mimetype), ENT_QUOTES | ENT_HTML5);
                 break;
             case 'F':
             case 'InForm':
-                $filemimetype = htmlspecialchars($myts->stripSlashesGPC($this->mimetype), ENT_QUOTES | ENT_HTML5);
+                $filemimetype = htmlspecialchars(($this->mimetype), ENT_QUOTES | ENT_HTML5);
                 break;
         }
         return $filemimetype;
@@ -359,11 +358,11 @@ class Files
                 break;
             case 'P':
             case 'Preview':
-                $filedownname = htmlspecialchars($myts->stripSlashesGPC($this->downloadname), ENT_QUOTES | ENT_HTML5);
+                $filedownname = htmlspecialchars(($this->downloadname), ENT_QUOTES | ENT_HTML5);
                 break;
             case 'F':
             case 'InForm':
-                $filedownname = htmlspecialchars($myts->stripSlashesGPC($this->downloadname), ENT_QUOTES | ENT_HTML5);
+                $filedownname = htmlspecialchars(($this->downloadname), ENT_QUOTES | ENT_HTML5);
                 break;
         }
         return $filedownname;

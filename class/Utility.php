@@ -442,7 +442,7 @@ class Utility extends Common\SysUtility
         $myts             = \MyTextSanitizer::getInstance();
         $maxuploadsize    = $xoopsModuleConfig['maxuploadsize'];
         $addCategory_form = new \XoopsThemeForm(
-            _AM_XQUIZ_NEW_CATEGORY, 'addcategoyfrom', XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true
+            _AM_XQUIZ_NEW_CATEGORY, 'addcategoryfrom', XOOPS_URL . '/modules/xquiz/admin/backend.php', 'post', true
         );
         $addCategory_form->setExtra('enctype="multipart/form-data"');
         // Permissions
@@ -542,7 +542,7 @@ class Utility extends Common\SysUtility
         echo '</div>';
     }
 
-    #region create confirm form for delete question
+    // create confirm form for delete question
 
     /**
      * @param $id

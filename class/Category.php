@@ -263,7 +263,7 @@ class Category extends \XoopsTree
         return $myrow['pid'];
     }
 
-    #region retrieve Category from database
+    // retrieve Category from database
 
     /**
      * @param $eId
@@ -276,8 +276,8 @@ class Category extends \XoopsTree
         $myrow = $xoopsDB->fetchArray($query);
         return $myrow;
     }
-    #endregion
-    #region retrieve permited category from database
+
+    // retrieve permited category from database
     /**
      * @param int    $sel_id
      * @param string $order
@@ -318,7 +318,7 @@ class Category extends \XoopsTree
         return $parray;
     }
 
-    #endregion
+
 
     /**
      * @param $title

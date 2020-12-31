@@ -52,7 +52,7 @@ class Quiz
     {
         $this->myts = \MyTextSanitizer::getInstance();
     }
-    #region set and get $id
+    // set and get $id
 
     /**
      * set id class variable
@@ -81,8 +81,8 @@ class Quiz
         }
         return $this->id;
     }
-    #endregion
-    #region set and get $name
+
+    // set and get $name
     /**
      * set name class variable
      *
@@ -106,8 +106,8 @@ class Quiz
         }
         return $this->name;
     }
-    #endregion
-    #region set and get $description
+
+    // set and get $description
     /**
      * set description class variable
      *
@@ -131,8 +131,8 @@ class Quiz
         }
         return $this->description;
     }
-    #endregion
-    #region set and get $btime
+
+    // set and get $btime
     /**
      * set begin date of quiz
      *
@@ -156,8 +156,8 @@ class Quiz
         }
         return $this->btime;
     }
-    #endregion
-    #region set and get $etime
+
+    // set and get $etime
     /**
      * set end date of quiz
      *
@@ -181,8 +181,8 @@ class Quiz
         }
         return $this->etime;
     }
-    #endregion
-    #region set and get $bdate
+
+    // set and get $bdate
     /**
      * set begin date of quiz
      *
@@ -218,8 +218,8 @@ class Quiz
         }
         return $this->bdate;
     }
-    #endregion
-    #region set and get $edate
+
+    // set and get $edate
     /**
      * set end date of quiz
      *
@@ -255,8 +255,8 @@ class Quiz
         }
         return $this->edate;
     }
-    #endregion
-    #region set and get $weight
+
+    // set and get $weight
     /**
      * set weight of quiz
      *
@@ -284,8 +284,8 @@ class Quiz
         }
         return $this->weight;
     }
-    #endregion
-    #region set and get $id
+
+    // set and get $id
     /**
      * set Category of quiz
      *
@@ -313,7 +313,7 @@ class Quiz
         }
         return $this->categoryId;
     }
-    #endregion
+
 
     /**
      * add new quiz into database
@@ -571,8 +571,9 @@ class Quiz
             $active = ($key['active']) ? $onImage : $offImage;
             //$statEdit = (!$key['active']) ? $statImage:$editImage;
             //$questLink = ((!$key['status'])&&($key['active']))?
-            $questLink    = (($key['active'])) ? "<a class='btn btn-primary btn-xs' href=\"" . XOOPS_URL . '/modules/xquiz/admin/main.php?op=Question&act=add&Id=' . $key['id'] . '">' . _AM_XQUIZ_QUEST_NEW . ' ' . $addImage . ' ' . $key['question'] . '
-					</a>' : $key['question'];
+            $questLink = (($key['active']))
+                ? ("<a class='btn btn-primary btn-xs' href=\"" . XOOPS_URL . '/modules/xquiz/admin/main.php?op=Question&act=add&Id=' . $key['id'] . '">' . _AM_XQUIZ_QUEST_NEW . ' ' . $addImage . ' ' . $key['question'] . '</a>')
+                : $key['question'];
             $category     = Category::retrieveCategory($key['cid']);
             $quizCategory = '<a href="' . XOOPS_URL . '/modules/xquiz/index.php?cid=' . $category['cid'] . '">' . $category['title'] . '</a>';
 
