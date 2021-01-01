@@ -1,0 +1,21 @@
+-
+    cid: '1'
+    pid: '0'
+    title: Category1
+    imgurl: blank.png
+    description: 'This is Category1'
+    weight: '0'
+-
+    cid: '2'
+    pid: '0'
+    title: Category2
+    imgurl: blank.png
+    description: 'This is Category2'
+    weight: '1'
+-
+    cid: '3'
+    pid: '1'
+    title: Sub-Category1-1
+    imgurl: blank.png
+    description: 'This is SubCategory1-1'
+    weight: '0'

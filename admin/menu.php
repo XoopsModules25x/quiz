@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
@@ -11,45 +12,106 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org)
- * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
- * @package         xquiz
- * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$
+ * @copyright          XOOPS Project (https://xoops.org)
+ * @license            http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package            xquiz
+ * @author             Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version            $Id$
  *
- * Version : $Id:
  * ****************************************************************************
  */
-$adminmenu[0]['title'] = _MI_XQUIZ_INDEX;
-$adminmenu[0]['link'] = 'admin/index.php';
-$adminmenu[0]['icon'] = 'assets/images/menus/tstate.png';
- 
-$adminmenu[1]['title'] = _MI_XQUIZ_CATEGORY;
-$adminmenu[1]['link'] = 'admin/index.php?op=Category';
-$adminmenu[1]['icon'] = 'assets/images/menus/tcategories.png';
- 
-$adminmenu[2]['title'] = _MI_XQUIZ_QUIZS;
-$adminmenu[2]['link'] = 'admin/index.php?op=Quiz';
-$adminmenu[2]['icon'] = 'assets/images/menus/tquizzes.png';
 
-//$adminmenu[3]['title'] = _MI_XQUIZ_QUESTIONS . "";
-//$adminmenu[3]['link'] = 'admin/index.php?op=Quest';
-//$adminmenu[3]['icon'] = 'assets/images/menus/tquestions.png';
+use Xmf\Module\Admin;
+use XoopsModules\Xquiz\{
+    Helper
+};
+/** @var Admin $adminObject */
+/** @var Helper $helper */
 
-$adminmenu[4]['title'] = _MI_XQUIZ_QUESTIONS . "";
-$adminmenu[4]['link'] = 'admin/index.php?op=Question';
-$adminmenu[4]['icon'] = 'assets/images/menus/tquestions.png';
 
-$adminmenu[5]['title'] = _MI_XQUIZ_STATISTICS;
-$adminmenu[5]['link'] = 'admin/index.php?op=Statistics';
-$adminmenu[5]['icon'] = 'assets/images/menus/tstatistic.png';
-   
-$adminmenu[6]['title'] = _MI_MD_XQUIZ_PERMISSIONS;
-$adminmenu[6]['link'] = 'admin/index.php?op=Permission';
-$adminmenu[6]['icon'] = 'assets/images/menus/tpermmision.png';
-  
+include dirname(__DIR__) . '/preloads/autoloader.php';
 
-   
+$moduleDirName = basename(dirname(__DIR__));
+$moduleDirNameUpper = mb_strtoupper($moduleDirName);
+$helper = Helper::getInstance();
+$helper->loadLanguage('common');
+$helper->loadLanguage('feedback');
+
+$pathIcon32 = Admin::menuIconPath('');
+if (is_object($helper->getModule())) {
+    //    $pathModIcon32 = $helper->getModule()->getInfo('modicons32');
+    $pathModIcon32 = $helper->url($helper->getModule()->getInfo('modicons32'));
+}
+
+$adminmenu[] = [
+    'title' => _MI_XQUIZ_INDEX,
+    'link'  => 'admin/index.php',
+    'icon'  => $pathIcon32 . '/home.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_XQUIZ_MENU_01,
+    'link'  => 'admin/main.php',
+    'icon' => $pathIcon32 . '/manage.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_XQUIZ_CATEGORY,
+    'link'  => 'admin/main.php?op=Category',
+    'icon' => $pathIcon32 . '/category.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_XQUIZ_QUIZS,
+    'link'  => 'admin/main.php?op=Quiz',
+    'icon'  => 'assets/images/menus/tquizzes.png',
+];
+
+//$adminmenu[] = [
+//'title' => _MI_XQUIZ_QUESTIONS . "",
+//'link' => 'admin/main.php?op=Quest',
+//'icon' => 'assets/images/menus/tquestions.png',
+//];
+
+$adminmenu[] = [
+    'title' => _MI_XQUIZ_QUESTIONS . '',
+    'link'  => 'admin/main.php?op=Question',
+    'icon'  => 'assets/images/menus/tquestions.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_XQUIZ_STATISTICS,
+    'link'  => 'admin/main.php?op=Statistics',
+    'icon'  => 'assets/images/menus/tstatistic.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_MD_XQUIZ_PERMISSIONS,
+    'link'  => 'admin/main.php?op=Permission',
+    'icon'  => 'assets/images/menus/tpermmision.png',
+];
+
+
+// Blocks Admin
+$adminmenu[] = [
+    'title' => constant('CO_' . $moduleDirNameUpper . '_' . 'BLOCKS'),
+    'link' => 'admin/blocksadmin.php',
+    'icon' => $pathIcon32 . '/block.png',
+];
+
+if (is_object($helper->getModule()) && $helper->getConfig('displayDeveloperTools')) {
+    $adminmenu[] = [
+        'title' => constant('CO_' . $moduleDirNameUpper . '_' . 'ADMENU_MIGRATE'),
+        'link' => 'admin/migrate.php',
+        'icon' => $pathIcon32 . '/database_go.png',
+    ];
+}
+
+$adminmenu[] = [
+    'title' => _MI_XQUIZ_MENU_ABOUT,
+    'link'  => 'admin/about.php',
+    'icon'  => $pathIcon32 . '/about.png',
+];
   
     
     

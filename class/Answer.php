@@ -1,7 +1,13 @@
 <?php
-class answer
+
+namespace XoopsModules\Xquiz;
+
+/**
+ * Class Answer
+ * @package XoopsModules\Xquiz
+ */
+class Answer
 {
-    
     /**
      *
      */
@@ -9,119 +15,126 @@ class answer
     private $questId;
     private $is_correct;
     private $answer;
-    
+
     /**
-     * @return Integer
+     * @return int
      */
     public function getAid()
     {
         return $this->aid;
     }
-    
+
     /**
-     * @return String
+     * @return string
      */
     public function getAnswer()
     {
         return $this->answer;
     }
-    
+
     /**
-     * @return Boolean
+     * @return bool
      */
     public function getIs_correct()
     {
         return $this->is_correct;
     }
-    
+
     /**
-     * @return Integer
+     * @return int
      */
     public function getQuestId()
     {
         return $this->questId;
     }
-    
+
     /**
-     * @param String $aid
+     * @param string $aid
      */
     public function setAid($aid)
     {
-        $this->aid = intval($aid);
+        $this->aid = (int)$aid;
     }
-    
+
     /**
-     * @param String $answer
+     * @param string $answer
      */
     public function setAnswer($answer)
     {
         //$this->answer = $xoopsDB->escape($answer);
-		$this->answer = $answer;
+        $this->answer = $answer;
     }
-    
+
     /**
-     * @param Boolean $is_correct
+     * @param bool $is_correct
      */
     public function setIs_correct($is_correct)
     {
-        $this->is_correct = intval($is_correct);
+        $this->is_correct = (int)$is_correct;
     }
-    
+
     /**
-     * @param Integer $questId
+     * @param int $questId
      */
     public function setQuestId($questId)
     {
-        $this->questId = intval($questId);
+        $this->questId = (int)$questId;
     }
+
     public function __construct()
     {
-        
-    //TODO - Insert your code here
+        //TODO - Insert your code here
     }
-    
+
     /**
      *
      */
     public function __destruct()
     {
-        
-    //TODO - Insert your code here
+        //TODO - Insert your code here
     }
-    
+
     /*
      * TODO - add new answer to database
      * @Return Boolean $res
      */
+    /**
+     * @return bool
+     */
     public function addAnswer()
     {
-		if ($this->is_correct==''){
-			$this->is_correct='0';
-		}
+        if ('' == $this->is_correct) {
+            $this->is_correct = '0';
+        }
         global $xoopsDB;
-        $query = "INSERT into " . $xoopsDB->prefix("xquiz_answers") . "(question_id ,is_correct ,answer)
+        $query = 'INSERT into ' . $xoopsDB->prefix('xquiz_answers') . "(question_id ,is_correct ,answer)
 				VALUES ('$this->questId', '$this->is_correct', '$this->answer');";
-        $res = $xoopsDB->query($query);
-        
-        if (! $res) {
+        $res   = $xoopsDB->query($query);
+
+        if (!$res) {
             return false;
         } else {
             return true;
         }
     }
+
     /*
      * TODO - delete question's answers
      * @param $questionId
-     * @return Boolean
+     * @return bool
+     */
+    /**
+     * @param $questionId
+     * @return bool
      */
     public static function deleteAnswers($questionId)
     {
         global $xoopsDB;
         $questionId = $xoopsDB->escape($questionId);
-        $query = "DELETE FROM " . $xoopsDB->prefix("xquiz_answers") . " WHERE  
+        $query      = 'DELETE FROM ' . $xoopsDB->prefix('xquiz_answers') . " WHERE  
 					  question_id = '$questionId' ";
-        $res = $xoopsDB->query($query);
-        if (! $res) {
+        $res        = $xoopsDB->query($query);
+        if (!$res) {
             return false;
         } else {
             return true;

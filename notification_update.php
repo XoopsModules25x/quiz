@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
@@ -11,14 +12,14 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org)
- * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
- * @package         xquiz
- * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$
+ * @copyright          XOOPS Project (https://xoops.org)
+ * @license            http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package            xquiz
+ * @author             Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version            $Id$
  *
  * Version : $Id:
  * ****************************************************************************
  */
-include_once '../../mainfile.php';
-include_once XOOPS_ROOT_PATH.'/include/notification_update.php';
+require_once dirname(__DIR__, 2) . '/mainfile.php';
+require_once XOOPS_ROOT_PATH . '/include/notification_update.php';

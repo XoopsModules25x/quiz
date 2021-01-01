@@ -5,27 +5,27 @@
 	<div class="CPbigTitle">
 		<strong><{$smarty.const._XQUIZ_INDEX}></strong>
 	</div>
-	<br />
-	<br />
+	<br>
+	<br>
 	<{$menu}>
 	</td>
 	
   	<td valign="top" width="60%">
   	<div class="ddd">
-	<br />
+	<br>
 	<div class="hometitle" ><{$smarty.const._XQUIZ_NOTIFY}></div>
 	<div class="textbody" >
-		<br/>
-		<{$smarty.const._AM_INDEX_ADD_QUEST}><br/><br/>
-		<{$smarty.const._AM_INDEX_USER_EX}><br/><br/>
-		<{$smarty.const._AM_INDEX_USER_QUIZ}><br/><br/>
+		<br>
+		<{$smarty.const._AM_INDEX_ADD_QUEST}><br><br>
+		<{$smarty.const._AM_INDEX_USER_EX}><br><br>
+		<{$smarty.const._AM_INDEX_USER_QUIZ}><br><br>
 	</div>
-	<br/>
-	<br/>
+	<br>
+	<br>
 	
 	<div class="hometitle" ><{$smarty.const._XQUIZ_VERSION_TITLE}></div>
 		<div class="textbody" >
-		<{$quiz_version}><br/>
+		<{$quiz_version}><br>
 	</div>
 	</div>
 	</td>

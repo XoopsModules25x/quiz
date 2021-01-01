@@ -1,5 +1,6 @@
 <?php
-define("_MD_XQUIZ_MODULENAME", "Quiz");
+
+define('_MD_XQUIZ_MODULENAME', 'Quiz');
 define('_MD_XQUIZ_CATEGORIES', 'Categories');
 define('_MD_XQUIZ_DETAIL', 'View details');
 define('_MD_XQUIZ_DUPLICATE_QUIZ', 'You have already tried out this test,no score will be considered for you.');
@@ -7,10 +8,10 @@ define('_MD_XQUIZ_CATEGORY_TITLE', 'Title');
 define('_MD_XQUIZ_CATEGORY_IMAGE', 'Category Image');
 define('_MD_XQUIZ_QUEST_SECURITY_ERROR', 'Error in submitted data,please try again .');
 define('_MD_XQUIZ_USER_ANSWER', 'User ansewer');
-define("_MD_XQUIZ_AC_COPYRIGHT", "M-Jamali");
+define('_MD_XQUIZ_AC_COPYRIGHT', 'M-Jamali');
 define('_MD_XQUIZ_QUEST_TOTAL', 'Total Question');
 define('_MD_XQUIZ_QUEST_SCORE', 'Score');
-define('_MD_XQUIZ_QUEST_MARKS', 'marks');
+define('_MD_XQUIZ_QUEST_MARKS', 'point(s)');
 define('_MD_XQUIZ_QUEST_DESC', 'Questions text');
 define('_MD_XQUIZ_QUEST_SUBMIT', 'Submit');
 define('_MD_XQUIZ_QUEST_DUPLICATE_ERROR', 'A question with such title has been selected before,please select another title.');
@@ -59,7 +60,7 @@ define('_MD_XQUIZ_DATABASE', 'Database connection error');
 define('_MD_XQUIZ_NUMBER_ERROR', 'Submitted data type error');
 define('_MD_XQUIZ_PERMISSION', 'You are not permitted to access this quiz.');
 define('_MD_XQUIZ_BACK', 'Back');
-define("_MD_XQUIZ_EMAIL_DESC", "Dear %s, this is a message transfered from your account at ".$xoopsConfig['sitename']);
+define('_MD_XQUIZ_EMAIL_DESC', 'Dear %s, this is a message transfered from your account at ' . $xoopsConfig['sitename']);
 define('_MD_XQUIZ_EMAIL_MESSAGE', 'Email message');
 define('_MD_XQUIZ_SCORE_PROFILE', 'More details in your quiz profile');
 define('_MD_XQUIZ_EMAIL_SUBJECT', 'Quiz result');

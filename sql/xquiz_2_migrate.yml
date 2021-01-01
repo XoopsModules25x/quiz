@@ -1,0 +1,147 @@
+xquiz_quizzes:
+    options: 'ENGINE=MyISAM DEFAULT CHARSET=utf8'
+    columns:
+        -
+            name: id
+            attributes: ' int(10) unsigned  NOT NULL auto_increment'
+        -
+            name: name
+            attributes: ' varchar(45)  NOT NULL '
+        -
+            name: cid
+            attributes: ' int(10) unsigned  NOT NULL '
+        -
+            name: description
+            attributes: ' text '
+        -
+            name: bdate
+            attributes: ' datetime  NOT NULL '
+        -
+            name: edate
+            attributes: ' datetime  NOT NULL '
+        -
+            name: weight
+            attributes: ' int(11)  DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: id
+            unique: true
+xquiz_categories:
+    options: 'ENGINE=MyISAM DEFAULT CHARSET=utf8'
+    columns:
+        -
+            name: cid
+            attributes: ' int(11) unsigned  NOT NULL auto_increment'
+        -
+            name: pid
+            attributes: ' int(11) unsigned  NOT NULL  DEFAULT ''0'' '
+        -
+            name: title
+            attributes: ' varchar(100)  NOT NULL  DEFAULT '''' '
+        -
+            name: imgurl
+            attributes: ' varchar(255)  NOT NULL  DEFAULT '''' '
+        -
+            name: description
+            attributes: ' text  NOT NULL '
+        -
+            name: weight
+            attributes: ' int(11)  NOT NULL  DEFAULT ''0'' '
+    keys:
+        pid:
+            columns: pid
+            unique: false
+        PRIMARY:
+            columns: cid
+            unique: true
+xquiz_score:
+    options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8'
+    columns:
+        -
+            name: id
+            attributes: ' int(10) unsigned  NOT NULL '
+        -
+            name: userid
+            attributes: ' int(11) unsigned  NOT NULL '
+        -
+            name: quizId
+            attributes: ' int(10)  NOT NULL '
+        -
+            name: score
+            attributes: ' int(11)  NOT NULL '
+        -
+            name: date
+            attributes: ' datetime  NOT NULL '
+    keys:
+        PRIMARY:
+            columns: 'id, userid'
+            unique: true
+xquiz_questions:
+    options: 'ENGINE=MyISAM DEFAULT CHARSET=utf8'
+    columns:
+        -
+            name: question_id
+            attributes: ' int(10) unsigned  NOT NULL auto_increment'
+        -
+            name: quiz_id
+            attributes: ' int(10) unsigned  NOT NULL '
+        -
+            name: score
+            attributes: ' int(10)  DEFAULT ''1'' '
+        -
+            name: qnumber
+            attributes: ' int(5) unsigned  DEFAULT ''1'' '
+        -
+            name: question_type
+            attributes: ' varchar(2) '
+        -
+            name: question
+            attributes: ' text '
+    keys:
+        PRIMARY:
+            columns: question_id
+            unique: true
+        quiz_id:
+            columns: quiz_id
+            unique: false
+xquiz_answers:
+    options: 'ENGINE=MyISAM DEFAULT CHARSET=utf8'
+    columns:
+        -
+            name: answer_id
+            attributes: ' int(10)  NOT NULL auto_increment'
+        -
+            name: question_id
+            attributes: ' int(10)  NOT NULL '
+        -
+            name: is_correct
+            attributes: ' tinyint(1)  DEFAULT ''0'' '
+        -
+            name: answer
+            attributes: ' varchar(255) '
+    keys:
+        PRIMARY:
+            columns: answer_id
+            unique: true
+        question_id:
+            columns: question_id
+            unique: false
+xquiz_useranswers:
+    options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8'
+    columns:
+        -
+            name: questId
+            attributes: ' int(10)  NOT NULL '
+        -
+            name: quizId
+            attributes: ' int(10)  NOT NULL '
+        -
+            name: userId
+            attributes: ' int(11)  NOT NULL '
+        -
+            name: userAns
+            attributes: ' enum(''1'',''2'',''3'',''4'')  NOT NULL '
+    keys:
+        PRIMARY:
+            columns: 'questId, quizId, userId'
+            unique: true

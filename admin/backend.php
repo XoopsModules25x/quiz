@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
@@ -11,17 +12,27 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org)
- * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
- * @package         xquiz
- * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$
+ * @copyright          XOOPS Project (https://xoops.org)
+ * @license            http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package            xquiz
+ * @author             Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version            $Id$
  *
  * Version : $Id:
  * ****************************************************************************
  */
-include 'admin_header.php';
-include_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.sfiles.php';
+
+use XoopsModules\Xquiz\{
+    Category,
+    Files,
+    Helper,
+    Quiz,
+    Question,
+    Questions
+};
+
+require __DIR__ . '/admin_header.php';
+//require_once XOOPS_ROOT_PATH . '/modules/xquiz/class/class.sfiles.php';
 
 if (isset($_POST ['addQuizSubmit'])) {
     $action = 'addQuiz';
@@ -49,26 +60,26 @@ if (isset($_POST ['addQuizSubmit'])) {
     $action = 'delCategory';
 }
 
-$myts = MyTextSanitizer::getInstance();
+$myts = \MyTextSanitizer::getInstance();
 
 $maxuploadsize = $xoopsModuleConfig ['maxuploadsize'];
 
 try {
-    if (! $GLOBALS ['xoopsSecurity']->check()) {
-        throw new Exception($GLOBALS ['xoopsSecurity']->getErrors() . _AM_XQUIZ_QUEST_SECURITY_ERROR);
+    if (!$GLOBALS ['xoopsSecurity']->check()) {
+        throw new \Exception($GLOBALS ['xoopsSecurity']->getErrors() . _AM_XQUIZ_QUEST_SECURITY_ERROR);
     }
-    
+
     switch ($action) {
         case 'addQuiz':
-            $name = $_POST ['quizName'];
+            $name        = $_POST ['quizName'];
             $description = $_POST ['quizDesc'];
-            $bdate = $_POST ['quizBDate'] ['date'];
-            $btime = $_POST ['quizBDate'] ['time'];
-            $edate = $_POST ['quizEDate'] ['date'];
-            $etime = $_POST ['quizEDate'] ['time'];
-            $weight = $_POST ['quizWeight'];
-            $categoryId = $_POST ['quizCategory'];
-            
+            $bdate       = $_POST ['quizBDate'] ['date'];
+            $btime       = $_POST ['quizBDate'] ['time'];
+            $edate       = $_POST ['quizEDate'] ['date'];
+            $etime       = $_POST ['quizEDate'] ['time'];
+            $weight      = $_POST ['quizWeight'];
+            $categoryId  = $_POST ['quizCategory'];
+
             $objQuiz = new Quiz();
             $objQuiz->set_name($name);
             $objQuiz->set_description($description);
@@ -78,22 +89,22 @@ try {
             $objQuiz->set_edate($edate);
             $objQuiz->set_weight($weight);
             $objQuiz->set_cid($categoryId);
-            
+
             $objQuiz->addQuiz();
-            throw new Exception(_AM_XQUIZ_ADD . "||?op=Quiz");
+            throw new \Exception(_AM_XQUIZ_ADD . '||?op=Quiz');
             break;
-        
+
         case 'editQuiz':
-            $id = $_POST ['quizId'];
-            $name = $_POST ['quizName'];
+            $id          = $_POST ['quizId'];
+            $name        = $_POST ['quizName'];
             $description = $_POST ['quizDesc'];
-            $bdate = $_POST ['quizBDate'] ['date'];
-            $btime = $_POST ['quizBDate'] ['time'];
-            $edate = $_POST ['quizEDate'] ['date'];
-            $etime = $_POST ['quizEDate'] ['time'];
-            $weight = $_POST ['quizWeight'];
-            $categoryId = $_POST ['quizCategory'];
-            
+            $bdate       = $_POST ['quizBDate'] ['date'];
+            $btime       = $_POST ['quizBDate'] ['time'];
+            $edate       = $_POST ['quizEDate'] ['date'];
+            $etime       = $_POST ['quizEDate'] ['time'];
+            $weight      = $_POST ['quizWeight'];
+            $categoryId  = $_POST ['quizCategory'];
+
             $objQuiz = new Quiz();
             $objQuiz->set_id($id);
             $objQuiz->set_name($name);
@@ -104,41 +115,41 @@ try {
             $objQuiz->set_edate($edate);
             $objQuiz->set_weight($weight);
             $objQuiz->set_cid($categoryId);
-            
+
             $objQuiz->editQuiz();
-            throw new Exception(_AM_XQUIZ_EDIT . "||?op=Quiz");
+            throw new \Exception(_AM_XQUIZ_EDIT . '||?op=Quiz');
             break;
-        
+
         case 'delQuiz':
-            $id = $_POST ['quizId'];
+            $id      = $_POST ['quizId'];
             $confirm = $_POST ['delConfirm'];
-            if (! $confirm) {
-                throw new Exception(_AM_XQUIZ_RETURN);
+            if (!$confirm) {
+                throw new \Exception(_AM_XQUIZ_RETURN);
             }
             $objQuiz = new Quiz();
             $objQuiz->set_id($id);
             $objQuiz->deleteQuiz();
-            throw new Exception(_AM_XQUIZ_DELETE . "||?op=Quiz");
+            throw new \Exception(_AM_XQUIZ_DELETE . '||?op=Quiz');
             break;
-        
+
         case 'addQuest':
-            $qid = $myts->addslashes($_POST ['quizId']);
-            
-            if (! Quiz::quiz_checkExpireQuiz($qid)) {
-                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
+            $qid = $myts->addSlashes($_POST ['quizId']);
+
+            if (!Quiz::quiz_checkExpireQuiz($qid)) {
+                throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE . '||?op=Quest');
             }
             if (Quiz::quiz_checkActiveQuiz($qid)) {
-                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest");
+                throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE . '||?op=Quest');
             }
             $question = $_POST ['questionDesc'];
-            $score = $_POST ['questionScore'];
-            $ans1 = $_POST ['questionAns1'];
-            $ans2 = $_POST ['questionAns2'];
-            $ans3 = $_POST ['questionAns3'];
-            $ans4 = $_POST ['questionAns4'];
-            $answer = $_POST ['questionAnswer'];
-            $qnumber = Question::questionNumber($qid) + 1;
-            
+            $score    = $_POST ['questionScore'];
+            $ans1     = $_POST ['questionAns1'];
+            $ans2     = $_POST ['questionAns2'];
+            $ans3     = $_POST ['questionAns3'];
+            $ans4     = $_POST ['questionAns4'];
+            $answer   = $_POST ['questionAnswer'];
+            $qnumber  = Question::questionNumber($qid) + 1;
+
             $objQuestion = new Question();
             $objQuestion->set_qid($qid);
             $objQuestion->set_question($question);
@@ -149,31 +160,31 @@ try {
             $objQuestion->set_ans3($ans3);
             $objQuestion->set_ans4($ans4);
             $objQuestion->set_answer($answer);
-            
+
             $objQuestion->addQuestion();
-            throw new Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Quest&Id=$qid");
+            throw new \Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Quest&Id=$qid");
             break;
-        
+
         case 'editQuest':
             if (isset($id)) {
-                if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
+                if (!Quiz::quiz_checkExpireQuiz($id)) {
+                    throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
                 }
                 if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
+                    throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
                 }
             }
-            $id = $_POST ['questionId'];
-            $qid = $_POST ['quizId'];
+            $id       = $_POST ['questionId'];
+            $qid      = $_POST ['quizId'];
             $question = $_POST ['questionDesc'];
-            $score = $_POST ['questionScore'];
-            $ans1 = $_POST ['questionAns1'];
-            $ans2 = $_POST ['questionAns2'];
-            $ans3 = $_POST ['questionAns3'];
-            $ans4 = $_POST ['questionAns4'];
-            $answer = $_POST ['questionAnswer'];
-            $qnumber = $_POST ['questionNumber'];
-            
+            $score    = $_POST ['questionScore'];
+            $ans1     = $_POST ['questionAns1'];
+            $ans2     = $_POST ['questionAns2'];
+            $ans3     = $_POST ['questionAns3'];
+            $ans4     = $_POST ['questionAns4'];
+            $answer   = $_POST ['questionAnswer'];
+            $qnumber  = $_POST ['questionNumber'];
+
             $objQuestion = new Question();
             $objQuestion->set_id($id);
             $objQuestion->set_qid($qid);
@@ -185,36 +196,36 @@ try {
             $objQuestion->set_ans3($ans3);
             $objQuestion->set_ans4($ans4);
             $objQuestion->set_answer($answer);
-            
+
             $objQuestion->editQuestion();
-            throw new Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Quest&Id=$qid");
+            throw new \Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Quest&Id=$qid");
             break;
-        
+
         case 'delQuest':
-            $id = $_POST ['questId'];
-			$qid = $_POST ['quizId'];
+            $id      = $_POST ['questId'];
+            $qid     = $_POST ['quizId'];
             $confirm = $_POST ['delConfirm'];
-            if (! $confirm) {
-                throw new Exception(_AM_XQUIZ_RETURN . "||?op=Quest");
+            if (!$confirm) {
+                throw new \Exception(_AM_XQUIZ_RETURN . '||?op=Quest');
             }
             $objQuest = new Question();
-			$objQuest->set_qid($qid);
+            $objQuest->set_qid($qid);
             $objQuest->set_id($id);
             $objQuest->deleteQuestion();
-            throw new Exception(_AM_XQUIZ_QUEST_DELETE . "||?op=Quest");
+            throw new \Exception(_AM_XQUIZ_QUEST_DELETE . '||?op=Quest');
             break;
-        
+
         case 'addCategory':
-            $title = "";
-            $imgurl = "";
-            $description = "";
-            $pid = 0;
-            $weight = 0;
+            $title       = '';
+            $imgurl      = '';
+            $description = '';
+            $pid         = 0;
+            $weight      = 0;
             if (isset($_POST ['cateTitle'])) {
-                $title = $myts->stripSlashesGPC($_POST ['cateTitle']);
+                $title = ($_POST ['cateTitle']);
             }
             if (isset($_POST ['topic_imgurl']) && '' != $_POST ['topic_imgurl']) {
-                $imgurl = $myts->stripSlashesGPC($_POST ['topic_imgurl']);
+                $imgurl = ($_POST ['topic_imgurl']);
             }
             if (isset($_POST ['cateDesc'])) {
                 $description = $myts->previewTarea($_POST ['cateDesc']);
@@ -229,49 +240,49 @@ try {
                 $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
                 $fldname = (get_magic_quotes_gpc()) ? stripslashes($fldname ['name']) : $fldname ['name'];
                 if (xoops_trim('' != $fldname)) {
-                    $sfiles = new sFiles();
-                    $dstpath = XOOPS_ROOT_PATH . '/uploads/' . $xoopsModule->dirname() . '/category';
-                    $destname = $sfiles->createUploadName($dstpath, $fldname, true);
+                    $sfiles         = new Files();
+                    $dstpath        = XOOPS_ROOT_PATH . '/uploads/' . $xoopsModule->dirname() . '/category';
+                    $destname       = $sfiles->createUploadName($dstpath, $fldname, true);
                     $permittedtypes = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'];
-                    $uploader = new XoopsMediaUploader($dstpath, $permittedtypes, $maxuploadsize);
+                    $uploader       = new \XoopsMediaUploader($dstpath, $permittedtypes, $maxuploadsize);
                     $uploader->setTargetFileName($destname);
                     if ($uploader->fetchMedia($_POST ['xoops_upload_file'] [0])) {
                         if ($uploader->upload()) {
                             $imgurl = basename($destname);
                         } else {
-                            throw new Exception(_AM_XQUIZ_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
+                            throw new \Exception(_AM_XQUIZ_UPLOAD_ERROR . ' ' . $uploader->getErrors() . '||?op=Category');
                         }
                     } else {
-                        throw new Exception($uploader->getErrors() . "||?op=Category");
+                        throw new \Exception($uploader->getErrors() . '||?op=Category');
                     }
                 }
             }
-            $newCid = QuizCategory::addCategory($title, $pid, $description, $imgurl, $weight);
+            $newCid = Category::addCategory($title, $pid, $description, $imgurl, $weight);
             // Permissions
-            $gperm_handler = xoops_gethandler('groupperm');
+            $grouppermHandler = xoops_getHandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
                 foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
-                    $gperm_handler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
+                    $grouppermHandler->addRight('quiz_view', $newCid, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
-            throw new Exception(_AM_XQUIZ_ADD_CATEGORY . "||?op=Category");
+            throw new \Exception(_AM_XQUIZ_ADD_CATEGORY . '||?op=Category');
             break;
-        
+
         case 'editCategory':
-            $title = "";
-            $imgurl = "";
-            $description = "";
-            $pid = 0;
-            $weight = 0;
-            $cid = 0;
+            $title       = '';
+            $imgurl      = '';
+            $description = '';
+            $pid         = 0;
+            $weight      = 0;
+            $cid         = 0;
             if (isset($_POST ['cateTitle'])) {
-                $title = $myts->stripSlashesGPC($_POST ['cateTitle']);
+                $title = ($_POST ['cateTitle']);
             }
             if (isset($_POST ['topic_imgurl']) && '' != $_POST ['topic_imgurl']) {
-                $imgurl = $myts->stripSlashesGPC($_POST ['topic_imgurl']);
+                $imgurl = ($_POST ['topic_imgurl']);
             }
             if (isset($_POST ['cateDesc'])) {
-                $description = $myts->stripSlashesGPC($_POST ['cateDesc']);
+                $description = ($_POST ['cateDesc']);
             }
             if (isset($_POST ['cateParent']) && is_numeric($_POST ['cateParent'])) {
                 $pid = $_POST ['cateParent'];
@@ -282,93 +293,93 @@ try {
             if (isset($_POST ['cateId']) && is_numeric($_POST ['cateId'])) {
                 $cid = $_POST ['cateId'];
             } else {
-                throw new Exception(_AM_XQUIZ_QUEST_SECURITY_ERROR . "||?op=Category");
+                throw new \Exception(_AM_XQUIZ_QUEST_SECURITY_ERROR . '||?op=Category');
             }
             if (isset($_POST ['xoops_upload_file'])) {
                 $fldname = $_FILES [$_POST ['xoops_upload_file'] [0]];
                 $fldname = (get_magic_quotes_gpc()) ? stripslashes($fldname ['name']) : $fldname ['name'];
                 if (xoops_trim('' != $fldname)) {
-                    $sfiles = new sFiles();
-                    $dstpath = XOOPS_ROOT_PATH . '/uploads/' . $xoopsModule->dirname() . '/category';
-                    $destname = $sfiles->createUploadName($dstpath, $fldname, true);
+                    $sfiles         = new Files();
+                    $dstpath        = XOOPS_ROOT_PATH . '/uploads/' . $xoopsModule->dirname() . '/category';
+                    $destname       = $sfiles->createUploadName($dstpath, $fldname, true);
                     $permittedtypes = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'];
-                    $uploader = new XoopsMediaUploader($dstpath, $permittedtypes, $maxuploadsize);
+                    $uploader       = new \XoopsMediaUploader($dstpath, $permittedtypes, $maxuploadsize);
                     $uploader->setTargetFileName($destname);
                     if ($uploader->fetchMedia($_POST ['xoops_upload_file'] [0])) {
                         if ($uploader->upload()) {
                             $imgurl = basename($destname);
                         } else {
-                            throw new Exception(_AM_XQUIZ_UPLOAD_ERROR . ' ' . $uploader->getErrors() . "||?op=Category");
+                            throw new \Exception(_AM_XQUIZ_UPLOAD_ERROR . ' ' . $uploader->getErrors() . '||?op=Category');
                         }
                     } else {
-                        throw new Exception($uploader->getErrors() . "||?op=Category");
+                        throw new \Exception($uploader->getErrors() . '||?op=Category');
                     }
                 }
             }
-            QuizCategory::editCategory($cid, $title, $pid, $description, $imgurl, $weight);
+            Category::editCategory($cid, $title, $pid, $description, $imgurl, $weight);
             // Permissions
-            $gperm_handler = xoops_gethandler('groupperm');
+            $grouppermHandler = xoops_getHandler('groupperm');
             if (isset($_POST ['groups_quiz_can_view'])) {
                 foreach ($_POST ['groups_quiz_can_view'] as $onegroup_id) {
-                    $gperm_handler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));
+                    $grouppermHandler->addRight('quiz_view', $cid, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
-            throw new Exception(_AM_XQUIZ_EDIT_CATEGORY . "||?op=Category");
+            throw new \Exception(_AM_XQUIZ_EDIT_CATEGORY . '||?op=Category');
             break;
-        
+
         case 'delCategory':
             $confirm = $_POST ['delConfirm'];
-            if (! $confirm) {
-                throw new Exception(_AM_XQUIZ_RETURN . "||?op=Category");
+            if (!$confirm) {
+                throw new \Exception(_AM_XQUIZ_RETURN . '||?op=Category');
             }
             if (isset($_POST ['categoryId']) && is_numeric($_POST ['categoryId'])) {
                 $cid = $_POST ['categoryId'];
             }
-            QuizCategory::deleteCategory($cid);
-            throw new Exception(_AM_XQUIZ_DELETE_CATEGORY . "||?op=Category");
+            Category::deleteCategory($cid);
+            throw new \Exception(_AM_XQUIZ_DELETE_CATEGORY . '||?op=Category');
             break;
-        
+
         case 'addQst':
-            $qid = $myts->addslashes($_POST ['quizId']);
-            
-            if (! Quiz::quiz_checkExpireQuiz($qid)) {
-                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
+            $qid = $myts->addSlashes($_POST ['quizId']);
+
+            if (!Quiz::quiz_checkExpireQuiz($qid)) {
+                throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
             }
             if (Quiz::quiz_checkActiveQuiz($qid)) {
-                throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
+                throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Quest&Id=$qid");
             }
             $question = $_POST ['questionDesc'];
-            $score = $_POST ['questionScore'];
-            $type = $_POST ['type'];
-            $qnumber = $_POST ['questionNumber'];
-            
-            $obj = new questions();
+            $score    = $_POST ['questionScore'];
+            $type     = $_POST ['type'];
+            $qnumber  = $_POST ['questionNumber'];
+
+            $obj = new Questions();
             $obj->setQid($qid);
             $obj->setQnumber($qnumber);
             $obj->setScore($score);
             $obj->setQuestion($question);
             $obj->setType($type);
             $obj->addQuestion($_POST ['answers'], $_POST ['corrects']);
-            
-            throw new Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Question&Id=$qid");
+
+            throw new \Exception(_AM_XQUIZ_QUEST_ADD . "||?op=Question&Id=$qid");
             break;
         case 'editQst':
             if (isset($id)) {
-                if (! Quiz::quiz_checkExpireQuiz($id)) {
-                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question&Id=$qid");
+                if (!Quiz::quiz_checkExpireQuiz($id)) {
+                    throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question&Id=$qid");
                 }
                 if (Quiz::quiz_checkActiveQuiz($id)) {
-                    throw new Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question&Id=$qid");
+                    throw new \Exception(_AM_XQUIZ_QUEST_ADD_RULE . "||?op=Question&Id=$qid");
                 }
             }
-            $id = $_POST ['questionId'];
-            $qid = $_POST ['quizId'];
+            $id       = $_POST ['questionId'];
+            $qid      = $_POST ['quizId'];
             $question = $_POST ['questionDesc'];
-            $score = $_POST ['questionScore'];
-            $qnumber = $_POST ['questionNumber'];
-            $qtype = $_POST ['type'];
-            
-            $questionObj = new questions();
+            $score    = $_POST ['questionScore'];
+            $qnumber  = $_POST ['questionNumber'];
+            $qtype    = $_POST ['type'];
+
+            $questionObj = new Questions();
             $questionObj->setId($id);
             $questionObj->setQid($qid);
             $questionObj->setQuestion($question);
@@ -376,24 +387,24 @@ try {
             $questionObj->setQnumber($qnumber);
             $questionObj->setType($qtype);
             $questionObj->editQuestion($_POST ['answers'], $_POST ['corrects']);
-            
-            throw new Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Question&Id=$qid");
+
+            throw new \Exception(_AM_XQUIZ_QUEST_EDIT . "||?op=Question&Id=$qid");
             break;
-            
+
         case 'delQst':
-            $id = $_POST ['questId'];
-			$qid = $_POST ['quizId'];
+            $id      = $_POST ['questId'];
+            $qid     = $_POST ['quizId'];
             $confirm = $_POST ['delConfirm'];
-            if (! $confirm) {
-                throw new Exception(_AM_XQUIZ_RETURN . "||?op=Question");
+            if (!$confirm) {
+                throw new \Exception(_AM_XQUIZ_RETURN . '||?op=Question');
             }
-            $objQuest = new questions();
-			$objQuest->setQid($qid);
+            $objQuest = new Questions();
+            $objQuest->setQid($qid);
             $objQuest->setId($id);
             $objQuest->deleteQuestion();
-            throw new Exception(_AM_XQUIZ_QUEST_DELETE . "||?op=Question");
+            throw new \Exception(_AM_XQUIZ_QUEST_DELETE . '||?op=Question');
             break;
-        
+
         default:
             echo $action;
     }

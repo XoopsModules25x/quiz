@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ****************************************************************************
  * xquiz - MODULE FOR XOOPS
@@ -11,13 +12,13 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   	XOOPS Project (https://xoops.org)
- * @license			http://www.fsf.org/copyleft/gpl.html GNU public license
- * @package         xquiz
- * @author 			Mojtaba Jamali(jamali.mojtaba@gmail.com)
- * @version      	$Id$
+ * @copyright          XOOPS Project (https://xoops.org)
+ * @license            http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package            xquiz
+ * @author             Mojtaba Jamali(jamali.mojtaba@gmail.com)
+ * @version            $Id$
  *
  * Version : $Id:
  * ****************************************************************************
  */
-echo "This is Help!";
+echo 'This is Help!';
